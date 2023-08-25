@@ -8,4 +8,5 @@ export const InputStyled = styled.input`
   border: none;
   border-radius: 5px;
   box-shadow: inset 0px 0px 8px 0px #33333347;
+  fontSize:15px;
 `;

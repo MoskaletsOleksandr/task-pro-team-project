@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import GlobalStyles from './GlobalStyles';
 import { TestThemeBtn } from './TestThemeBtn/TestThemeBtn';
 
+import { FormikContainer } from './formik_formik/FormikContainer';
+
+
 export const App = () => {
   const [theme, setTheme] = useState('dark');
 
@@ -19,6 +22,7 @@ export const App = () => {
       style={{
         height: '100vh',
         display: 'flex',
+        gap:'20px',
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: 40,
@@ -41,6 +45,10 @@ export const App = () => {
       >
         Тема dark
       </TestThemeBtn>
+      {/* <MainForm/> */}
+      <FormikContainer/>
+     
+    
     </div>
   );
 };
