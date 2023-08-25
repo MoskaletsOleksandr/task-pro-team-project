@@ -12,7 +12,8 @@ function FormikCheckbox(props) {
             {({field})=>{
                 return options.map(option=>{
                     return(
-                        <React.Fragment key={option.key}><label>{option.key} <input type='checkbox'{...field} value={option.value} checked={field.value.includes(option.value)}/></label>
+                        <React.Fragment key={option.key}><label>{option.key} <input type='checkbox'{...field} 
+                        value={option.value} checked={field.value.includes(option.value)}/></label>
                
                         </React.Fragment> 
                     )
