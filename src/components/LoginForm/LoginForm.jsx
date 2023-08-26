@@ -30,7 +30,7 @@ function LoginForm() {
 < RegistrationFormStyled>
     <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
     {formik=><Form>
-        <FormTitle active="Registration" inactive="Log In"/>
+        <FormTitle title="Registration" subtitle="Log In"/>
        
         <AuthController control='input' type='email' placeholder='Enter your email' name='email'/>
         <AuthController control='input' type='password' placeholder='Enter your password' name='password'/>

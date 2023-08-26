@@ -7,9 +7,9 @@ width: 344px;
 border-radius: 8px;
 border: none;
 margin-top: 20px;
-background-color:'#bedbbo';
+background-color:rgba(190, 219, 176, 1);
 
-color:'#161616';
+color:#161616;
 font-size:14px;
 padding:0;
 

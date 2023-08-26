@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import GlobalStyles from './GlobalStyles';
 import { TestThemeBtn } from './TestThemeBtn/TestThemeBtn';
-import RegistrationForm from './registrationForm/RegistrationForm';
-import LoginForm from './LoginForm/LoginForm';
+
 // import { FormikContainer } from './formik_formik/FormikContainer';
 
 
@@ -46,10 +45,9 @@ export const App = () => {
       >
         Тема dark
       </TestThemeBtn>
-      {/* <MainForm/> */}
+ 
       {/* <FormikContainer/> */}
-      <LoginForm/>
-      <RegistrationForm/>
+     
      
     
     </div>

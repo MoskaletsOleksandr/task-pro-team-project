@@ -1,5 +1,5 @@
 import React from 'react';
-import {Field,ErrorMessage} from 'formik'
+import {ErrorMessage} from 'formik'
 import AuthTextError from './authTextError';
 import { AuthLabelSyled,Input } from './RegistrationFormStyled';
 

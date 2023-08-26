@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import { AuthTitle,AuthSpan } from './AuthTitleStyled';
 
-function FormTitle({active,inactive}) {
+function FormTitle({title,subtitle}) {
   return (
-    <AuthTitle>{active}<AuthSpan>{inactive}</AuthSpan></AuthTitle>
+    <AuthTitle>{title}<AuthSpan>{subtitle}</AuthSpan></AuthTitle>
   )
 }
 

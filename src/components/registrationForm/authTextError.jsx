@@ -1,8 +1,11 @@
 import React from 'react'
+import styled from '@emotion/styled';
 
+const ErrorStyle=styled.div`
+color:white;`
 function AuthTextError(props) {
   return (
-    <div className="error">{props.children}</div>
+    <ErrorStyle>{props.children}</ErrorStyle>
   )
 }
 

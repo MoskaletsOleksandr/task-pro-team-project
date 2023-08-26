@@ -4,10 +4,10 @@ import FilteredPropsInputField from './FilteredPropsInput';
 export const RegistrationFormStyled=styled.div`
 width: 424px;
 padding:40px;
-background-color:'#151515';
+background-color:#161616;
 font-size:14px;
 border: solid 1px black;
-position:'relative';
+border-radius: 8px;
 
 `
 export const AuthLabelSyled=styled.label`
@@ -15,8 +15,8 @@ export const AuthLabelSyled=styled.label`
 width: 100%;
 `
 export const Input = styled(FilteredPropsInputField)`
-  background-color: white;
-  border: 1px solid lightgrey;
+  background-color: #161616;
+  border: 1px solid rgba(255, 255, 255, 30%);;
   border-radius: 8px;
   font-size: 1rem;
   line-height: 1.5rem;
@@ -27,10 +27,4 @@ export const Input = styled(FilteredPropsInputField)`
   padding: 0.75rem 0.75rem;
   position:'relative'`
 
-  export const EyeSvg=styled.svg`
-  fill:'black';
-  stroke:'black';
- position:'absolute';
- top:0;
-
-  `
+ 
