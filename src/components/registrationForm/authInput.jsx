@@ -11,9 +11,8 @@ function authInput(props) {
     <div className="form-control">
         
         <AuthLabelSyled>
-        <Input name={name} placeholder={placeholder}{...rest} />
-        
         <ErrorMessage name={name} component={AuthTextError}/>
+        <Input name={name} placeholder={placeholder}{...rest} />
         </AuthLabelSyled>
     </div>
   )
