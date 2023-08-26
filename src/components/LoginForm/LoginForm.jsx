@@ -20,9 +20,8 @@ function LoginForm() {
          
      };
      const validationSchema=Yup.object({
-       
         email:Yup.string().required('email is required').email('Invalid email address'),
-        password:Yup.string().required('name is required'),
+        password:Yup.string().required('password is required').min(8).max(64),
         
      })
  

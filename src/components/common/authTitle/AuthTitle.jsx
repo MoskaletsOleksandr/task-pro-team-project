@@ -2,14 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import { AuthTitle,AuthSpan } from './AuthTitleStyled';
 
-function FormTitle({title,subtitle}) {
+function FormTitle({title,subtitle,name}) {
+
   return (
-    <AuthTitle>{title}<AuthSpan>{subtitle}</AuthSpan></AuthTitle>
+    <AuthTitle name={name}>{title}<AuthSpan name={name}>{subtitle}</AuthSpan></AuthTitle>
   )
 }
 
 FormTitle.propTypes={
-    active:PropTypes.string.isRequired,
-    inactive:PropTypes.string.isRequired
+    title:PropTypes.string.isRequired,
+    subtitle:PropTypes.string.isRequired,
+    
 }
 export default FormTitle
