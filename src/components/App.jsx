@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import GlobalStyles from './GlobalStyles';
 import { TestThemeBtn } from './TestThemeBtn/TestThemeBtn';
-
+import RegistrationForm from './registrationForm/RegistrationForm';
 // import { FormikContainer } from './formik_formik/FormikContainer';
 
 
@@ -48,7 +48,7 @@ export const App = () => {
  
       {/* <FormikContainer/> */}
      
-     
+     <RegistrationForm/>
     
     </div>
   );

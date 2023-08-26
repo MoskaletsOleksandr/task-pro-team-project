@@ -8,14 +8,15 @@ background-color:#161616;
 font-size:14px;
 border: solid 1px black;
 border-radius: 8px;
-position:'relative'
+
 
 `
 export const AuthLabelSyled=styled.label`
-display:block;
+
 color:white;
 fill:white;
 width: 100%;
+position:relative;
 
 
 `
@@ -31,6 +32,13 @@ export const Input = styled(FilteredPropsInputField)`
   margin-top: 0.5rem;
   padding: 0.75rem 0.75rem;
   color:white;
+  // color:black;
+  &:focus{
+    outline:none;
+    
+    
+    
+  }
   `
 
  
