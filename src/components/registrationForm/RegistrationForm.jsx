@@ -30,7 +30,7 @@ function RegistrationForm() {
   return (
 < RegistrationFormStyled>
     <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
-    {formik=><Form autocomplete='off'>
+    {formik=><Form autoComplete={'off'}>
         <FormTitle title="Registration" subtitle="Log In" name='register'/>
         <AuthController control='input' type='text' placeholder='Enter your name' name='name' />
         <AuthController control='input' type='email' placeholder='Enter your email' name='email'/>
