@@ -5,6 +5,7 @@ import { AuthButton } from 'components/common/authButton/AuthButton';
 import AuthController from 'components/registrationForm/authControll';
 import { RegistrationFormStyled } from 'components/registrationForm/RegistrationFormStyled';
 import FormTitle from 'components/common/authTitle/AuthTitle';
+// import Eyesvg from 'components/registrationForm/Eyesvg';
 
 
 function LoginForm() {
@@ -28,11 +29,11 @@ function LoginForm() {
   return (
 < RegistrationFormStyled>
     <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
-    {formik=><Form>
+    {formik=><Form autoComplete='off'>
         <FormTitle title="Registration" subtitle="Log In"/>
-       
         <AuthController control='input' type='email' placeholder='Enter your email' name='email'/>
         <AuthController control='input' type='password' placeholder='Enter your password' name='password'/>
+        {/* <Eyesvg/> */}
         <AuthButton >Register Now </AuthButton>
          </Form>}
 </Formik>
