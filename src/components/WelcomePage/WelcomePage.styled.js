@@ -19,9 +19,11 @@ const Picture = styled.img`
 `;
 
 const ContainerTitle = styled.div`
+  margin-top: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 24px;
 `;
 
 const ContainerSvg = styled.div`
@@ -32,10 +34,10 @@ const ContainerSvg = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 8px;
+  
 `;
 
 const Title = styled.h1`
-  margin-bottom: 24px;
   color: #161616;
   font-family: Poppins;
   font-size: 40px;
@@ -62,7 +64,7 @@ const Text = styled.p`
   font-weight: 400;
   line-height: 18px;
   letter-spacing: -0.02em;
-  max-width: 390px;
+  max-width: 473px;
   height: 36px;
   margin-bottom: 48px;
   margin-block-start: 0;
