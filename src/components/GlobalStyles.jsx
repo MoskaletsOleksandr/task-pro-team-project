@@ -91,6 +91,10 @@ export const GlobalStyles = () => {
             --add-column-btn-bg-color: #121212;
             --add-column-btn-text-color: #ffffff;
             --add-column-btn-plus-bg-color: #ffffff;
+            --add-column-btn-plus-color: #121212; //vit
+            --new-dashboadr-text-color: #FFFFFF80; //vit
+            --new-dashboadr-text-accent-color: #BEDBB0;//vit 
+
             //variables for HeaderDashboard
             --header-dashboard-title-color: #ffffff;
             --filter-text-color: #ffffffCC;
@@ -102,7 +106,7 @@ export const GlobalStyles = () => {
             --filter-low-color: #8FA1D0;
             --filter-medium-color: #E09CB5;
             --filter-high-color: #BEDBB0;
-
+            
             //variables for columns
             --vertical-scroll-bar-bg-color: #FFFFFF1A
             --vertical-scroll-slider-bg-color: #121212;
@@ -176,7 +180,11 @@ export const GlobalStyles = () => {
             --screens-page-bg-color: #F6F6F7;
             --add-column-btn-bg-color: #ffffff;
             --add-column-btn-text-color: #161616;
-            --add-column-btn-plus-bg-color: #161616;            
+            --add-column-btn-plus-bg-color: #161616;
+            --add-column-btn-plus-color: #ffffff; //vit
+            --new-dashboadr-text-color: #16161670; //vit
+            --new-dashboadr-text-accent-color: #BEDBB0; //vit
+                        
             //variables for HeaderDashboard
             --header-dashboard-title-color: #161616;
             --filter-text-color: #161616CC;
@@ -264,6 +272,10 @@ export const GlobalStyles = () => {
             --add-column-btn-bg-color: #ffffff;
             --add-column-btn-text-color: #161616;
             --add-column-btn-plus-bg-color: #5255BC;
+            --add-column-btn-plus-color: #FFFFFF; //vit
+            --new-dashboadr-text-color: #16161670; //vit
+            --new-dashboadr-text-accent-color: #5255BC; //vit
+
             //variables for HeaderDashboard
             --header-dashboard-title-color: #161616;
             --filter-text-color: #161616CC;
