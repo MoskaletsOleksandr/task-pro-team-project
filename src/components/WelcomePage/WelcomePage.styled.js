@@ -17,7 +17,6 @@ const Picture = styled.img`
   margin-left: auto;
   margin-right: auto;
 `;
-
 const ContainerTitle = styled.div`
   margin-top: 24px;
   display: flex;
@@ -25,7 +24,6 @@ const ContainerTitle = styled.div`
   justify-content: center;
   margin-bottom: 24px;
 `;
-
 const ContainerSvg = styled.div`
   display: flex;
   width: 48px;
@@ -34,9 +32,12 @@ const ContainerSvg = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-  
 `;
-
+const SvgLogo = styled.svg`
+  width: 18px;
+  height: 24px;
+  fill: white;
+`;
 const Title = styled.h1`
   color: #161616;
   font-family: Poppins;
@@ -47,14 +48,12 @@ const Title = styled.h1`
   letter-spacing: -1.6px;
   margin-left: 14px;
 `;
-
 const ContentMain = styled.div`
   text-align: center;
   display: flex;
   justify-content: center;
   flex-direction: column;
 `;
-
 const Text = styled.p`
   color: #161616;
   text-align: center;
@@ -69,14 +68,12 @@ const Text = styled.p`
   margin-bottom: 48px;
   margin-block-start: 0;
 `;
-
 const Nav = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
   gap: 14px;
 `;
-
 const RegistrationBtn = styled(Link)`
   font-family: Poppins;
   font-style: normal;
@@ -95,9 +92,7 @@ const RegistrationBtn = styled(Link)`
   color: #fff;
   text-decoration: none;
   cursor: pointer;
-  
 `;
-
 const LoginBtn = styled(Link)`
   font-family: Poppins;
   font-style: normal;
@@ -108,7 +103,6 @@ const LoginBtn = styled(Link)`
   color: #161616;
   text-decoration: none;
   cursor: pointer;
-  
 `;
 
 export {
@@ -116,10 +110,11 @@ export {
   Picture,
   ContainerTitle,
   ContainerSvg,
+  SvgLogo,
   Text,
   Title,
+  Nav,
   RegistrationBtn,
   LoginBtn,
-  Nav,
   ContentMain,
 };
