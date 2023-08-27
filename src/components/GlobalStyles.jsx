@@ -6,7 +6,27 @@ export const GlobalStyles = () => {
     <>
       <style>
         {`
-          @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+//           @font-face {
+//   font-family: 'Poppins';
+//   src: url('../fonts/poppins-regular.ttf') format('truetype');
+//   font-weight: 400;
+//   font-style: normal;
+// }
+
+// @font-face {
+//   font-family: 'Poppins';
+//   src: url('../fonts/poppins-medium.ttf') format('truetype');
+//   font-weight: 500;
+//   font-style: normal;
+// }
+
+// @font-face {
+//   font-family: 'Poppins';
+//   src: url('../fonts/poppins-semibold.ttf') format('truetype');
+//   font-weight: 600;
+//   font-style: normal;
+// }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
         `}
       </style>
       <Global
