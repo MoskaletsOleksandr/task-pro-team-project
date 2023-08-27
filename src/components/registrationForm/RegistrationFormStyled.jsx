@@ -16,7 +16,8 @@ export const AuthLabelSyled=styled.label`
 color:white;
 fill:white;
 width: 100%;
-position:relative;
+display:flex;
+align-item:center;
 
 
 `
@@ -32,7 +33,8 @@ export const Input = styled(FilteredPropsInputField)`
   margin-top: 0.5rem;
   padding: 0.75rem 0.75rem;
   color:white;
-  // color:black;
+ -webkit-box-shadow:inset f f f 50px;
+ -webkit-text-fill-color:#fff;
   &:focus{
     outline:none;
     

@@ -6,7 +6,6 @@ import AuthPage from './AuthPage/AuthPage';
 
 export const App = () => {
   return (
-     
     <Routes>
       <Route index element={<WelcomePage />} />
       <Route path="/welcome" element={<WelcomePage />} />
