@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import Header from 'components/Header/Header';
+import { Outlet } from 'react-router-dom';
 // import ScreensPage from 'components/ScreensPage/ScreensPage';
 // import Sidebar from 'components/Sidebar/Sidebar';
 // import Backdrop from '../components/Sidebar/Backdrop';
@@ -42,6 +43,7 @@ const HomePage = () => {
           }}
         >
           <Header onToggleSidebar={toggleSidebar} />
+          <Outlet />
           {/* <ScreensPage /> */}
         </div>
       </div>
