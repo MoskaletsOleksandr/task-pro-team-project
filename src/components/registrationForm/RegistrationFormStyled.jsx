@@ -30,7 +30,7 @@ export const Input = styled(FilteredPropsInputField)`
   color: white;
 
   &:-webkit-autofill {
-    -webkit-box-shadow: inset f f f 50px;
+    -webkit-box-shadow: inset f f f 50px #1f1f1f;
     -webkit-text-fill-color: #fff;
   }
 
