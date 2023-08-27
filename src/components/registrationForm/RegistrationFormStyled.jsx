@@ -35,6 +35,7 @@ export const Input = styled(FilteredPropsInputField)`
     -webkit-border-before-color:rgba(255, 255, 255, 30%);
     // -webkit-border-color:rgba(255, 255, 255, 30%);
     outline: transparent;
+
   }
 
   &:-webkit-autofill:focus {
