@@ -1,26 +1,21 @@
 import styled from '@emotion/styled';
 import FilteredPropsInputField from './FilteredPropsInput';
 
-export const RegistrationFormStyled=styled.div`
-width: 424px;
-padding:40px;
-background-color:#161616;
-font-size:14px;
-border: solid 1px black;
-border-radius: 8px;
-
-
-`
-export const AuthLabelSyled=styled.label`
-
-color:white;
-fill:white;
-width: 100%;
-display:flex;
-align-item:center;
-
-
-`
+export const RegistrationFormStyled = styled.div`
+  width: 424px;
+  padding: 40px;
+  background-color: #161616;
+  font-size: 14px;
+  border: solid 1px black;
+  border-radius: 8px;
+`;
+export const AuthLabelSyled = styled.label`
+  color: white;
+  fill: white;
+  width: 100%;
+  display: flex;
+  align-item: center;
+`;
 export const Input = styled(FilteredPropsInputField)`
   background-color: #161616;
   border: 1px solid rgba(255, 255, 255, 30%);
@@ -32,15 +27,14 @@ export const Input = styled(FilteredPropsInputField)`
   width: 100%;
   margin-top: 0.5rem;
   padding: 0.75rem 0.75rem;
-  color:white;
- -webkit-box-shadow:inset f f f 50px;
- -webkit-text-fill-color:#fff;
-  &:focus{
-    outline:none;
-    
-    
-    
-  }
-  `
+  color: white;
 
- 
+  &:-webkit-autofill {
+    -webkit-box-shadow: inset f f f 50px;
+    -webkit-text-fill-color: #fff;
+  }
+
+  &:focus {
+    outline: none;
+  }
+`;
