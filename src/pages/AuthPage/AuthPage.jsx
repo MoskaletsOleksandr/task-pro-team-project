@@ -1,9 +1,9 @@
 import { useParams } from 'react-router-dom';
 import RegistrationForm from 'components/registrationForm/RegistrationForm';
 import LoginForm from 'components/LoginForm/LoginForm';
-import { Container } from 'components/WelcomePage/WelcomePage.styled';
+import { Container } from 'pages/WelcomePage/WelcomePage.styled';
 import axios from 'axios';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const instance = axios.create({
   baseURL: 'https://task-pro-group-1-backend.onrender.com',
@@ -27,23 +27,21 @@ const login = async body => {
 
 const AuthPage = () => {
   const { id } = useParams();
-  const[userData, setUserData]=useState({});
+  const [userData, setUserData] = useState({});
 
   const getUserData = data => {
     console.log('data in AuthPage');
-    setUserData(data)
+    setUserData(data);
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     if (id === 'login') {
-            login(userData);
-          } else {
-            signUp(userData);
-          }
-  },[userData,id])
-  
+      login(userData);
+    } else {
+      signUp(userData);
+    }
+  }, [userData, id]);
 
- 
   if (id === 'register') {
     return (
       <Container>

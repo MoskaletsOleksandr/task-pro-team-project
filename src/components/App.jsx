@@ -1,7 +1,7 @@
 import GlobalStyles from './GlobalStyles';
 import { Routes, Route } from 'react-router-dom';
-import WelcomePage from './WelcomePage/WelcomePage';
-import AuthPage from './AuthPage/AuthPage';
+import WelcomePage from '../pages/WelcomePage/WelcomePage';
+import AuthPage from '../pages/AuthPage/AuthPage';
 import HomePage from './../pages/HomePages';
 
 export const App = () => {
