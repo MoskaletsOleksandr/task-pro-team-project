@@ -79,6 +79,8 @@ export const GlobalStyles = () => {
             //variables for Header
             --header-bg-color: #161616;
             --header-name-color: #ffffff;
+            --header-user-fill: #1F1F1F
+            --header-user-stroke: #151515
             --header-theme-color: #ffffffCC;
             --header-theme-select-bg-color: #151515;
             --header-theme-select-border-color: #BEDBB0;
@@ -165,6 +167,8 @@ export const GlobalStyles = () => {
             //variables for Header
             --header-bg-color: #FCFCFC;
             --header-name-color: #161616;
+            --header-user-fill: #F6F6F7;
+            --header-user-stroke: #FFFFFF;
             --header-theme-color: #161616CC;
             --header-theme-select-bg-color: #FCFCFC;
             --header-theme-select-border-color: #BEDBB0;
@@ -252,6 +256,8 @@ export const GlobalStyles = () => {
             //variables for Header
             --header-bg-color: #ffffff;
             --header-name-color: #161616;
+            --header-user-fill: #ECEDFD;
+            --header-user-stroke: #FFFFFF;
             --header-theme-color: #161616CC;
             --header-theme-select-bg-color: #FCFCFC;
             --header-theme-select-border-color: #ECEDFD;

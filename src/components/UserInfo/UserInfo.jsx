@@ -6,9 +6,9 @@ import sprite from '../../images/sprite.svg';
 // import ModalEditProfile from 'components/ModalEditProfile/ModalEditProfile';
 
 import {
+  UserName,
   IconAvatar,
   Container,
-  IconPlus,
   AvasarSetin,
   // AvatarImg,
 } from './UserInfo.styled';
@@ -28,25 +28,19 @@ const UserInfo = () => {
   return (
     <Container>
       {/* <div>{name ? name : 'User'}</div> */}
-      <div>User</div>
+      <UserName>User</UserName>
       {/* <AvasarSetin onClick={onOpen}> */}
       <AvasarSetin>
         {/* {avatar ? (
           <AvatarImg src={avatar} alt="user avatar" />
         ) : (
           <IconAvatar>
-            <use href={`${sprite}#icon-user`}></use>
+            <use href={`${sprite}#iicon-avatar`}></use>
           </IconAvatar>
         )} */}
         <IconAvatar>
-          <use href={`${sprite}#icon-user`}></use>
+          <use href={`${sprite}#icon-avatar`}></use>
         </IconAvatar>
-
-        <div>
-          <IconPlus>
-            <use href={`${sprite}#icon-plus-01`}></use>
-          </IconPlus>
-        </div>
       </AvasarSetin>
       {/* {showModal && <ModalEditProfile onClose={onClose} />} */}
     </Container>
