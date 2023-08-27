@@ -32,8 +32,8 @@ const WelcomePage = () => {
                 fill="white"
               />
             </svg> */}
-            <svg width="18" height="24" viewBox="0 0 18 24" fill="white">
-              <use href={sprite + '#icon-logo-lightning'}></use>
+            <svg width="18" height="24" fill="none">
+              <use href={sprite + '#icon-eye'}></use>
             </svg>
           </ContainerSvg>
           <Title>Task Pro</Title>
