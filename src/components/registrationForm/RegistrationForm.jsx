@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import{Formik,Form} from 'formik';
 import *as Yup from 'yup';
 import { AuthButton } from 'components/common/authButton/AuthButton';
@@ -8,7 +8,9 @@ import FormTitle from 'components/common/authTitle/AuthTitle';
 // import Eyesvg from './Eyesvg';
 
 
-function RegistrationForm() {
+function RegistrationForm({getData}) {
+
+  const [userData, setUserData]=useState({})
     const initialValues={
         name:'',
         email:'', 
@@ -16,7 +18,11 @@ function RegistrationForm() {
         
      };
      const onSubmit=(values,{resetForm})=>{
-         console.log(values);
+         
+         
+         setUserData(values);
+         console.log(userData);
+         getData(userData)
          resetForm();
          
      };
