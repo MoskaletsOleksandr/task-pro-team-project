@@ -1,15 +1,21 @@
 {
   "files": {
-    "main.css": "/task-pro-team-project/static/css/main.cd2e038f.css",
-    "main.js": "/task-pro-team-project/static/js/main.ebd7a31a.js",
+    "main.css": "/task-pro-team-project/static/css/main.c0501f60.css",
+    "main.js": "/task-pro-team-project/static/js/main.3e34f557.js",
+    "static/media/Poppins-Regular.woff": "/task-pro-team-project/static/media/Poppins-Regular.ab6122bd28174ddf9eeb.woff",
+    "static/media/Poppins-SemiBold.woff": "/task-pro-team-project/static/media/Poppins-SemiBold.ee8ae013a422a80622c6.woff",
+    "static/media/Poppins-Medium.woff": "/task-pro-team-project/static/media/Poppins-Medium.c162ccbbda8bd6839b3a.woff",
+    "static/media/Poppins-Regular.woff2": "/task-pro-team-project/static/media/Poppins-Regular.9641d5d087bc9e626d4c.woff2",
+    "static/media/Poppins-SemiBold.woff2": "/task-pro-team-project/static/media/Poppins-SemiBold.b2be0bf638eacbb24415.woff2",
+    "static/media/Poppins-Medium.woff2": "/task-pro-team-project/static/media/Poppins-Medium.13c404f85f4b8532e4e9.woff2",
     "static/media/Image-title.png": "/task-pro-team-project/static/media/Image-title.6370c83571764935d58b.png",
-    "static/media/sprite.svg": "/task-pro-team-project/static/media/sprite.1c1f5c510abffc3d1595711e1688d09b.svg",
+    "static/media/sprite.svg": "/task-pro-team-project/static/media/sprite.07c3e6ff9caea623867e8440d4dc304e.svg",
     "index.html": "/task-pro-team-project/index.html",
-    "main.cd2e038f.css.map": "/task-pro-team-project/static/css/main.cd2e038f.css.map",
-    "main.ebd7a31a.js.map": "/task-pro-team-project/static/js/main.ebd7a31a.js.map"
+    "main.c0501f60.css.map": "/task-pro-team-project/static/css/main.c0501f60.css.map",
+    "main.3e34f557.js.map": "/task-pro-team-project/static/js/main.3e34f557.js.map"
   },
   "entrypoints": [
-    "static/css/main.cd2e038f.css",
-    "static/js/main.ebd7a31a.js"
+    "static/css/main.c0501f60.css",
+    "static/js/main.3e34f557.js"
   ]
 }
