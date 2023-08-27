@@ -9,12 +9,12 @@ export const RegistrationFormStyled = styled.div`
   border: solid 1px black;
   border-radius: 8px;
 `;
-export const AuthLabelSyled = styled.label`
-  color: white;
-  fill: white;
+export const AuthLabelStyled = styled.label`
+  // color: white;
+  // fill: white;
   width: 100%;
   display: flex;
-  align-item: center;
+  align-items: center;
 `;
 export const Input = styled(FilteredPropsInputField)`
   background-color: #161616;
@@ -30,11 +30,15 @@ export const Input = styled(FilteredPropsInputField)`
   color: white;
 
   &:-webkit-autofill {
-    -webkit-box-shadow: inset 0 0 0 50px #1f1f1f;
-    -webkit-text-fill-color: #fff;
+    -webkit-box-shadow: rgb(22,22,22) 0px 0px 0px 50px inset;;
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    -webkit-border-before-color:rgba(255, 255, 255, 30%);
+    // -webkit-border-color:rgba(255, 255, 255, 30%);
+    outline: transparent;
+
   }
 
-  &:focus {
-    outline: none;
+  &:-webkit-autofill:focus {
+    outline: transparent;
   }
 `;
