@@ -104,7 +104,7 @@ export const GlobalStyles = () => {
             --filter-high-color: #BEDBB0;
 
             //variables for columns
-            --vertical-scroll-bar-bg-color: #FFFFFF1A
+            --vertical-scroll-bar-bg-color: #FFFFFF80;
             --vertical-scroll-slider-bg-color: #121212;
             --horizontal-scroll-bar-bg-color: #121212;
             --horizontal-scroll-slider-bg-color: #FFFFFF1A;
@@ -116,7 +116,7 @@ export const GlobalStyles = () => {
             //variables for cards
             --card-bg-color: #121212;
             --card-title-color: #ffffff;
-            --card-primary-text-color: #ffffff80;
+            --card-primary-text-color: #ffffff;
             --card-secondary-text-color: #ffffff80;
             --card-icon-color: #ffffff80;
 
