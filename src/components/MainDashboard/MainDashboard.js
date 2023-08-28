@@ -1,5 +1,9 @@
 import React from 'react';
 
+import { currentBoardForScreensPage } from '../../fakeData/fakeData';
+import Column from '../../components/BoardPage/Column/Column';
+import Board from '../../components/BoardPage/Board/Board';
+
 import {
   Section,
   SectionTitle,
@@ -8,6 +12,7 @@ import {
   BtnAddColumn,
   Title,
   SvgIconPlus,
+  SectionBoards,
 } from './MainDashboard.styled';
 
 import sprite from '../../images/sprite.svg';
@@ -34,12 +39,25 @@ const MainDashboard = () => {
         </BtnFilters>
       </SectionTitle>
 
-      <BtnAddColumn type="submit" onClick={handleAddNewColumn}>
-        <SvgIconPlus>
-          + <use href={sprite + '#icon-plus'}></use>
-        </SvgIconPlus>
-        Add another column
-      </BtnAddColumn>
+      {/* Boardes */}
+      <SectionBoards>
+        <Board>
+          {currentBoardForScreensPage.columns.map(column => (
+            <Column
+              key={column._id}
+              title={column.title}
+              tasks={column.tasks}
+            />
+          ))}
+        </Board>
+
+        <BtnAddColumn type="submit" onClick={handleAddNewColumn}>
+          <SvgIconPlus>
+            + <use href={sprite + '#icon-plus'}></use>
+          </SvgIconPlus>
+          Add another column
+        </BtnAddColumn>
+      </SectionBoards>
     </Section>
   );
 };

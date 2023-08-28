@@ -28,6 +28,10 @@ export const BtnFilters = styled.button`
   cursor: pointer;
 `;
 
+export const SectionBoards = styled.section`
+  display: flex;
+`;
+
 export const SvgIconFilters = styled.svg`
   margin-right: 8px;
   width: 16px;

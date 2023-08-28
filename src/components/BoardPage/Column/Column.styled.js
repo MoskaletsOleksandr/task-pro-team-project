@@ -3,25 +3,25 @@ import styled from '@emotion/styled';
 const WhiteIcon = styled.svg`
   width: 14px;
   height: 14px;
-  stroke: var(--card-icon-color); 
-  stroke-width: 2; 
-  fill: none
+  stroke: var(--card-icon-color);
+  stroke-width: 2;
+  fill: none;
 `;
 const Icons = styled.div`
-display: inline-flex;
-gap:8px;
-margin-right:27px;
+  display: inline-flex;
+  gap: 8px;
+  margin-right: 27px;
 `;
 
 const ColumnContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px; 
+  margin-bottom: 16px;
 `;
 
 const Title = styled.h3`
   margin-left: 20px;
-  color:var(--card-title-color);
+  color: var(--card-title-color);
   font-family: 'Poppins';
   font-size: 14px;
   font-style: normal;
@@ -32,7 +32,7 @@ const Title = styled.h3`
 `;
 
 const TitleIcon = styled.div`
-  margin-top: 20px;
+  /* margin-top: 20px; */
   display: inline-flex;
   background-color: var(--card-bg-color);
   border-radius: 8px;
@@ -50,9 +50,8 @@ const ScrollContainer = styled.div`
 
   ::-webkit-scrollbar {
     width: 8px;
-    height:370px;
+    height: 370px;
   }
-
 
   ::-webkit-scrollbar-thumb {
     background-color: var(--vertical-scroll-bar-bg-color);
@@ -62,7 +61,7 @@ const ScrollContainer = styled.div`
   ::-webkit-scrollbar-track {
     background-color: var(--vertical-scroll-slider-bg-color);
     border-radius: 4px;
-    margin-left:  16px;
+    margin-left: 16px;
   }
 `;
 
@@ -70,14 +69,12 @@ const ScrollContent = styled.div`
   /* Add any additional styling for scrollable content */
 `;
 
-
-
 export {
-    WhiteIcon,
-    ScrollContainer,
-    ScrollContent,
-    Title,
-    TitleIcon,
-    ColumnContainer,
-    Icons
-}
+  WhiteIcon,
+  ScrollContainer,
+  ScrollContent,
+  Title,
+  TitleIcon,
+  ColumnContainer,
+  Icons,
+};
