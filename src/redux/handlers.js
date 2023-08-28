@@ -20,8 +20,27 @@ export const handleSignUpThunkFullfilled = (state, { payload }) => {
     state.isLoading = false;
     state.isLoggedIn = true;
   };
+
+  export const handleLogOutFulfilled = (state, { payload }) => {
+    state.token = '';
+    state.isLoading = false;
+    state.user = {};
+    state.isLoggedIn = false;
+    
+  };
+  export const handleLogOutPending = (state, { payload }) => {
+    state.isLoading = true;
+    state.error = null;
+    state.isLoggedIn=false;
+    }
+  export const handleLogOutRejected = (state, { error,payload }) => {
+    state.error = error?error.message:payload;
+    state.isLoading = false;
+    state.isLoggedIn=false;
+   
+  };
   export const handleGetThemeFulfilled=(state,{payload})=>{
-    state.theme=payload.theme;
+    state.user.theme=payload.theme;
     state.isLoading = false;
   }
   export const handleGetThemePending=(state,{payload})=>{

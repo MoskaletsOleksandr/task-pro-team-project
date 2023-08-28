@@ -1,9 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { SignUpThunk, SignInThunk, GetThemeThunk } from './thunks';
+import { SignUpThunk, SignInThunk, GetThemeThunk, LogOutThunk } from './thunks';
 import {
   handleGetThemeFulfilled,
   handleGetThemePending,
   handleGetThemeRejected,
+  handleLogOutFulfilled,
+  handleLogOutPending,
+  handleLogOutRejected,
   handleSignInFulfilled,
   handleSignUpThunkFullfilled,
   handleThunkPending,
@@ -15,7 +18,7 @@ const initialState = {
   isLoading: false,
   error: '',
   user: {},
-  theme: '',
+  // theme: '',
 };
 
 const authSlice = createSlice({
@@ -28,6 +31,9 @@ const authSlice = createSlice({
       .addCase(GetThemeThunk.fulfilled, handleGetThemeFulfilled)
       .addCase(GetThemeThunk.pending, handleGetThemePending)
       .addCase(GetThemeThunk.rejected, handleGetThemeRejected)
+      .addCase(LogOutThunk.fulfilled, handleLogOutFulfilled)
+      .addCase(LogOutThunk.pending, handleLogOutPending)
+      .addCase(LogOutThunk.rejected, handleLogOutRejected)
       .addMatcher(action => {
         action.type.endsWith('/pending');
       }, handleThunkPending)

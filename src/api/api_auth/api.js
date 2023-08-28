@@ -9,6 +9,10 @@ const instance = axios.create({
     instance.defaults.headers.common['Authorization'] = token;
   };
 
+  export const clearToken=()=>{
+    instance.defaults.headers.common['Authorization'] = ''
+  }
+
   export const signUp=async body=>{
     const response=await instance.post('users/register',body);
     setToken(`Bearer ${response.data.token}`);
@@ -19,6 +23,12 @@ const instance = axios.create({
     const response = await instance.post('users/login', body);
     setToken(`Bearer ${response.data.token}`);
     return response.data;
+  };
+
+  export const logOut = async () => {
+    const response = await instance.post('users/logout');
+    clearToken();
+    return response;
   };
 
   //theme

@@ -1,52 +1,64 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import RegistrationForm from 'components/registrationForm/RegistrationForm';
 import LoginForm from 'components/LoginForm/LoginForm';
 import { Container } from 'pages/WelcomePage/WelcomePage.styled';
-import axios from 'axios';
+// import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-// import { SignInThunk, SignUpThunk } from 'redux/thunks';
-
-const instance = axios.create({
-  baseURL: 'https://task-pro-group-1-backend.onrender.com',
-});
-
-const signUp = async body => {
-  try {
-    const response = await instance.post('users/register', body);
-    console.log(response.data);
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-const login = async body => {
-  const response = await instance.post('users/login', body);
-  console.log(response.data);
-  return response.data;
-};
+import {  SignInThunk, SignUpThunk } from 'redux/thunks';
+// import { AuthButton } from 'components/common/authButton/AuthButton';
 
 const AuthPage = () => {
-  const dispatch=useDispatch();
- 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { id } = useParams();
   const [userData, setUserData] = useState({});
 
   const getUserData = data => {
-    console.log('data in AuthPage',data);
+    console.log('data in AuthPage', data);
     setUserData(data);
   };
 
+  // const onClick =  e => {
+  //   console.log(e)
+  //   try {
+  //     dispatch(LogOutThunk());
+  //   } catch (error) 
+  //   {console.log(error)}
+  // };
+
   useEffect(() => {
     if (id === 'login') {
-      // dispatch(SignInThunk(userData))
-      login(userData);
+      try {
+        dispatch(SignInThunk(userData))
+          .unwrap()
+          .then(data => {
+            console.log(data);
+            if (data) {
+
+              navigate('/home');
+            }
+          });
+      } catch (error) {
+        console.log('registration failed');
+      }
     } else {
-      // dispatch(SignUpThunk(userData))
-      signUp(userData);
+      try {
+        const response = dispatch(SignUpThunk(userData))
+          .unwrap()
+          .then(data => {
+            if (data) {
+              navigate('/home');
+            }
+          });
+        console.log(response);
+      } catch (error) {
+        console.log('Logged in failed');
+      }
+
     }
-  }, [userData, id,dispatch]);
+  }, [userData, id, dispatch,navigate]);
 
   if (id === 'register') {
     return (
@@ -59,6 +71,9 @@ const AuthPage = () => {
     return (
       <Container>
         <LoginForm getData={getUserData} />
+        {/* <AuthButton  onClick={onClick}>
+          Log out
+        </AuthButton> */}
       </Container>
     );
   }
