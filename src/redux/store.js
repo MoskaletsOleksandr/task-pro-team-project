@@ -12,6 +12,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import { boardsReducer } from './dashboards/slise';
 
 // const middleware = [
 //   ...getDefaultMiddleware({
@@ -30,14 +31,14 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-   
+    boards: boardsReducer,
   },
-    middleware: getDefaultMiddleware =>
-      getDefaultMiddleware({
-        serializableCheck: {
-          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-        },
-      }),
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 export const persistor = persistStore(store);
