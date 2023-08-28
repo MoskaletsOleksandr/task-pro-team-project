@@ -16,7 +16,6 @@ const Icons = styled.div`
 const ColumnContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px;
 `;
 
 const Title = styled.h3`
@@ -32,41 +31,46 @@ const Title = styled.h3`
 `;
 
 const TitleIcon = styled.div`
-  /* margin-top: 20px; */
   display: inline-flex;
   background-color: var(--card-bg-color);
   border-radius: 8px;
   width: 338px;
   padding-top: 18px;
   padding-bottom: 17px;
-  margin-bottom: 4px;
+  margin-bottom: 14px;
   align-items: center;
   justify-content: space-between;
 `;
 
 const ScrollContainer = styled.div`
-  height: 100vh;
-  overflow-y: auto;
-
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 370px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: var(--vertical-scroll-bar-bg-color);
-    border-radius: 4px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background-color: var(--vertical-scroll-slider-bg-color);
-    border-radius: 4px;
-    margin-left: 16px;
-  }
+  height: 70vh;
+  overflow-y: hidden;
 `;
 
+
 const ScrollContent = styled.div`
-  /* Add any additional styling for scrollable content */
+height: 56vh;
+overflow-y: auto;
+padding-right: 8px;
+width: 100%; 
+box-sizing: border-box;
+ 
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--vertical-scroll-bar-bg-color);
+  border-radius: 4px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--vertical-scroll-slider-bg-color);
+  border-radius: 4px;
+  margin-left: 16px;
+  height: 130px;
+}
 `;
 
 export {

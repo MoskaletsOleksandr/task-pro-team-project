@@ -110,8 +110,8 @@ export const GlobalStyles = () => {
             --filter-high-color: #BEDBB0;
             
             //variables for columns
-            --vertical-scroll-bar-bg-color: #FFFFFF80;
-            --vertical-scroll-slider-bg-color: #121212;
+            --vertical-scroll-bar-bg-color: #121212;
+            --vertical-scroll-slider-bg-color:#FFFFFF1A;
             --horizontal-scroll-bar-bg-color: #121212;
             --horizontal-scroll-slider-bg-color: #FFFFFF1A;
             --column-add-btn-bg-color: #BEDBB0;
@@ -124,6 +124,7 @@ export const GlobalStyles = () => {
             --card-title-color: #ffffff;
             --card-primary-text-color: #ffffff;
             --card-secondary-text-color: #ffffff80;
+            --card-border-color: #FFFFFF4D;
             --card-icon-color: #ffffff80;
 
 
@@ -202,8 +203,8 @@ export const GlobalStyles = () => {
             --filter-high-color: #BEDBB0;
 
             //variables for columns
-            --vertical-scroll-bar-bg-color: #E8E8E8
-            --vertical-scroll-slider-bg-color: #1616161A;
+            --vertical-scroll-bar-bg-color: #1616161A;
+            --vertical-scroll-slider-bg-color:  #E8E8E8;
             --horizontal-scroll-bar-bg-color: #ffffff;
             --horizontal-scroll-slider-bg-color: #E8E8E8;
             --column-add-btn-bg-color: #BEDBB0;
@@ -217,6 +218,7 @@ export const GlobalStyles = () => {
             --card-primary-text-color: #161616B2;
             --card-secondary-text-color: #16161680;
             --card-icon-color: #16161680;
+            --card-border-color: #e8e8e8;
 
 
             //variables for modals
@@ -295,8 +297,8 @@ export const GlobalStyles = () => {
             --filter-high-color: #BEDBB0;
 
             //variables for columns
-            --vertical-scroll-bar-bg-color: #ffffff
-            --vertical-scroll-slider-bg-color: #B8BCFD;
+            --vertical-scroll-bar-bg-color: #B8BCFD;
+            --vertical-scroll-slider-bg-color: #ffffff;
             --horizontal-scroll-bar-bg-color: #ffffff;
             --horizontal-scroll-slider-bg-color: #B8BCFD;
             --column-add-btn-bg-color: #5255BC;
@@ -310,6 +312,7 @@ export const GlobalStyles = () => {
             --card-primary-text-color: #161616B2;
             --card-secondary-text-color: #16161680;
             --card-icon-color: #16161680;
+            --card-border-color: #e8e8e8;
 
             //variables for modals
             --modal-bg-color: #FCFCFC;
