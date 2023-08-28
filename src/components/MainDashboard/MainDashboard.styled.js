@@ -72,7 +72,7 @@ export const SvgIconPlus = styled.svg`
   margin-right: 8px;
   width: 28px;
   height: 28px;
-  fill: var(--add-column-btn-plus-color);
+  stroke: var(--add-column-btn-plus-color);
   border-radius: 8px;
   background-color: var(--add-column-btn-plus-bg-color);
 `;

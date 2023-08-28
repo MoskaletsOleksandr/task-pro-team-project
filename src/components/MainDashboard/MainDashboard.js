@@ -36,7 +36,7 @@ const MainDashboard = () => {
 
       <BtnAddColumn type="submit" onClick={handleAddNewColumn}>
         <SvgIconPlus>
-          + <use href={sprite + '#icon-Project'}></use>
+          + <use href={sprite + '#icon-plus'}></use>
         </SvgIconPlus>
         Add another column
       </BtnAddColumn>
