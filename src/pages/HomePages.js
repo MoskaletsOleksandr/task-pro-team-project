@@ -8,6 +8,8 @@ import { Outlet } from 'react-router-dom';
 // import Backdrop from '../components/Sidebar/Backdrop';
 
 const HomePage = () => {
+  const user=useSelector(state=>state.auth.user.theme);
+  console.log(user)
   const [showSidebar, setShowSidebar] = useState(true);
 
   const toggleSidebar = () => {
