@@ -117,6 +117,7 @@ export const GlobalStyles = () => {
             --column-add-btn-bg-color: #BEDBB0;
             --column-add-btn-bg-color-hover: #9DC888;
             --column-add-btn-text-color: #161616;
+            --column-add-btn-plus-color: #FFFFFF; //vit
             --column-add-btn-plus-bg-color: #161616;
 
             //variables for cards
@@ -210,6 +211,7 @@ export const GlobalStyles = () => {
             --column-add-btn-bg-color: #BEDBB0;
             --column-add-btn-bg-color-hover: #9DC888;
             --column-add-btn-text-color: #161616;
+            --column-add-btn-plus-color: #FFFFFF; //vit
             --column-add-btn-plus-bg-color: #161616;
 
             //variables for cards
@@ -304,6 +306,7 @@ export const GlobalStyles = () => {
             --column-add-btn-bg-color: #5255BC;
             --column-add-btn-bg-color-hover: #7B7EDE;
             --column-add-btn-text-color: #ffffff;
+            --column-add-btn-plus-color:#161616; //vit
             --column-add-btn-plus-bg-color: #ffffff;
 
             //variables for cards

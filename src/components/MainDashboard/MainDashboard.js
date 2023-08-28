@@ -1,9 +1,10 @@
 import React from 'react';
+import sprite from '../../images/sprite.svg';
 
 import { currentBoardForScreensPage } from '../../fakeData/fakeData';
 import Column from '../../components/BoardPage/Column/Column';
 import Board from '../../components/BoardPage/Board/Board';
-
+// import AddNewCard from 'components/BoardPage/AddNewCardBtn/AddNewCardBtn';
 import {
   Section,
   SectionTitle,
@@ -13,9 +14,8 @@ import {
   Title,
   SvgIconPlus,
   SectionBoards,
+  WrapSvg,
 } from './MainDashboard.styled';
-
-import sprite from '../../images/sprite.svg';
 
 const MainDashboard = () => {
   const handleFilters = e => {
@@ -33,7 +33,7 @@ const MainDashboard = () => {
 
         <BtnFilters type="submit" onClick={handleFilters}>
           <SvgIconFilters>
-            + <use href={sprite + '#icon-filter'}></use>
+            <use href={sprite + '#icon-filter'}></use>
           </SvgIconFilters>
           Filter
         </BtnFilters>
@@ -52,9 +52,11 @@ const MainDashboard = () => {
         </Board>
 
         <BtnAddColumn type="submit" onClick={handleAddNewColumn}>
-          <SvgIconPlus>
-            + <use href={sprite + '#icon-plus'}></use>
-          </SvgIconPlus>
+          <WrapSvg>
+            <SvgIconPlus>
+              + <use href={sprite + '#icon-plus'}></use>
+            </SvgIconPlus>
+          </WrapSvg>
           Add another column
         </BtnAddColumn>
       </SectionBoards>
