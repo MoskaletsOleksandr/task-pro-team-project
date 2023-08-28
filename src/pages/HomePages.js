@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import Header from 'components/Header/Header';
 import { Outlet } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+
 // import ScreensPage from 'components/ScreensPage/ScreensPage';
 // import Sidebar from 'components/Sidebar/Sidebar';
 // import Backdrop from '../components/Sidebar/Backdrop';
@@ -43,6 +43,7 @@ const HomePage = () => {
             maxHeight: '100vh',
             display: 'flex',
             flexDirection: 'column',
+            backgroundColor: 'var(--screens-page-bg-color)',
           }}
         >
           <Header onToggleSidebar={toggleSidebar} />
