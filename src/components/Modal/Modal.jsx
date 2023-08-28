@@ -6,6 +6,7 @@ import {
   Overlay,
   Content,
   CloseButton,
+  CloseSVG,
 } from 'components/Modal/Modal.styled';
 
 const Modal = ({ isOpen, onClose, children }) => {
@@ -45,15 +46,17 @@ const Modal = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
 
   return ReactDOM.createPortal(
-      <Overlay onClick={handleBackdropClick}>
-        <Content>
-            <CloseButton className="modal-close" onClick={handleClose}>
-              <use href={`${sprite}#icon-x-close`} />
-            </CloseButton>
-            {children}
-          </Content>
-      </Overlay>,
-    document.getElementById('modal-root'),
+    <Overlay onClick={handleBackdropClick}>
+      <Content>
+        <CloseButton onClick={handleClose}>
+          <CloseSVG>
+            <use href={sprite + '#icon-x-close'}></use>
+          </CloseSVG>
+        </CloseButton>
+        {children}
+      </Content>
+    </Overlay>,
+    document.getElementById('modal-root')
   );
 };
 
