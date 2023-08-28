@@ -8,14 +8,14 @@ import {
   getCurrentBoard,
   updateBoardById,
   updateColumnById,
-} from 'api/dashBoardsApi';
+} from 'api/boardsApi/dashBoardsApi';
 import {
   createNewTask,
   deleteTaskById,
   getAllTasks,
   updateTaskById,
   updateTasksColumnById,
-} from 'api/tasksApi';
+} from 'api/boardsApi/tasksApi';
 
 //Отримання всіх дощок
 export const getAllBoardsThunk = createAsyncThunk(
