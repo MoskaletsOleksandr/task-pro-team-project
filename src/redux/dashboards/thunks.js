@@ -17,6 +17,7 @@ import {
   updateTasksColumnById,
 } from 'api/tasksApi';
 
+//Отримання всіх дощок
 export const getAllBoardsThunk = createAsyncThunk(
   'boards/getAllBoards',
   async (_, { rejectWithValue }) => {
@@ -29,6 +30,8 @@ export const getAllBoardsThunk = createAsyncThunk(
   }
 );
 
+//Отримання об'єкту однієї дошки// при її виклику передаємо їй id обраної дошки
+// діспатчимо її одночасно із getAllTasksThunk
 export const getCurrentBoardThunk = createAsyncThunk(
   'boards/getCurrentBoard',
   async (id, { rejectWithValue }) => {
@@ -41,6 +44,7 @@ export const getCurrentBoardThunk = createAsyncThunk(
   }
 );
 
+//Створення дошки// сюди передаємо от такого формату об'єкт {title: "", icon: "", background: ""}
 export const createNewBoardThunk = createAsyncThunk(
   'boards/createNewBoard',
   async (body, { rejectWithValue, dispatch }) => {
@@ -54,6 +58,7 @@ export const createNewBoardThunk = createAsyncThunk(
   }
 );
 
+//Оновлення дошки// сюди передаємо от такого формату об'єкт { id, body: {title: "", icon: "", background: ""}}
 export const updateBoardByIdThunk = createAsyncThunk(
   'boards/updateBoardById',
   async ({ id, body }, { rejectWithValue, dispatch }) => {
@@ -67,6 +72,7 @@ export const updateBoardByIdThunk = createAsyncThunk(
   }
 );
 
+//Видалення  однієї дошки// при її виклику передаємо їй id обраної дошки
 export const deleteBoardByIdThunk = createAsyncThunk(
   'boards/deleteBoardById',
   async (id, { rejectWithValue, dispatch }) => {
@@ -80,6 +86,7 @@ export const deleteBoardByIdThunk = createAsyncThunk(
   }
 );
 
+//Створення колонки// сюди передаємо от такого формату об'єкт { boardId, body: {title: ""}}
 export const createNewColumnThunk = createAsyncThunk(
   'boards/createNewColumn',
   async ({ boardId, body }, { rejectWithValue }) => {
@@ -92,6 +99,7 @@ export const createNewColumnThunk = createAsyncThunk(
   }
 );
 
+//Оновлення колонки// сюди передаємо от такого формату об'єкт { boardId, columnId, body: {title: ""}}
 export const updateColumnByIdThunk = createAsyncThunk(
   'boards/updateColumnById',
   async ({ boardId, columnId, body }, { rejectWithValue }) => {
@@ -104,6 +112,8 @@ export const updateColumnByIdThunk = createAsyncThunk(
   }
 );
 
+//Видалення колонки// при її виклику передаємо їй boardId дошки, на якій вона лежить та
+// columnId самої колокни
 export const deleteColumnByIdThunk = createAsyncThunk(
   'boards/deleteColumnById',
   async ({ boardId, columnId }, { rejectWithValue }) => {
@@ -116,6 +126,7 @@ export const deleteColumnByIdThunk = createAsyncThunk(
   }
 );
 
+//Отримання всіх тасок// сюди передаємо от такого формату об'єкт {boardId:""}
 export const getAllTasksThunk = createAsyncThunk(
   'boards/getAllTasks',
   async (body, { rejectWithValue }) => {
@@ -128,6 +139,8 @@ export const getAllTasksThunk = createAsyncThunk(
   }
 );
 
+//Створення таски// сюди передаємо от такого формату об'єкт
+//{ title: "", text: "", priority: "", deadline: "", boardId: "", columnId: "" }
 export const createNewTaskThunk = createAsyncThunk(
   'boards/createNewTask',
   async (body, { rejectWithValue }) => {
@@ -140,6 +153,8 @@ export const createNewTaskThunk = createAsyncThunk(
   }
 );
 
+//Оновлення таски// сюди передаємо от такого формату об'єкт
+//{idTask, body: { title: "", text: "", priority: "", deadline: "", boardId: "", columnId: "" }}
 export const updateTaskByIdThunk = createAsyncThunk(
   'boards/updateTaskById',
   async ({ idTask, body }, { rejectWithValue }) => {
@@ -152,6 +167,7 @@ export const updateTaskByIdThunk = createAsyncThunk(
   }
 );
 
+//Видалення таски// при її виклику передаємо їй idTask обраної таски
 export const deleteTaskByIdThunk = createAsyncThunk(
   'boards/deleteTaskById',
   async (idTask, { rejectWithValue }) => {
@@ -164,6 +180,8 @@ export const deleteTaskByIdThunk = createAsyncThunk(
   }
 );
 
+//Переміщення картки в іншу колонку//сюди передаємо от такого формату об'єкт
+//{idTask, body: {columnId:""}}
 export const updateTasksColumnByIdThunk = createAsyncThunk(
   'boards/updateTasksColumnById',
   async ({ idTask, body }, { rejectWithValue }) => {

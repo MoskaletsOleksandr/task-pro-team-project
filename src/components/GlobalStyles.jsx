@@ -79,6 +79,8 @@ export const GlobalStyles = () => {
             //variables for Header
             --header-bg-color: #161616;
             --header-name-color: #ffffff;
+            --header-user-fill: #1F1F1F
+            --header-user-stroke: #151515
             --header-theme-color: #ffffffCC;
             --header-theme-select-bg-color: #151515;
             --header-theme-select-border-color: #BEDBB0;
@@ -108,7 +110,7 @@ export const GlobalStyles = () => {
             --filter-high-color: #BEDBB0;
             
             //variables for columns
-            --vertical-scroll-bar-bg-color: #FFFFFF1A
+            --vertical-scroll-bar-bg-color: #FFFFFF80;
             --vertical-scroll-slider-bg-color: #121212;
             --horizontal-scroll-bar-bg-color: #121212;
             --horizontal-scroll-slider-bg-color: #FFFFFF1A;
@@ -120,7 +122,7 @@ export const GlobalStyles = () => {
             //variables for cards
             --card-bg-color: #121212;
             --card-title-color: #ffffff;
-            --card-primary-text-color: #ffffff80;
+            --card-primary-text-color: #ffffff;
             --card-secondary-text-color: #ffffff80;
             --card-icon-color: #ffffff80;
 
@@ -169,6 +171,8 @@ export const GlobalStyles = () => {
             //variables for Header
             --header-bg-color: #FCFCFC;
             --header-name-color: #161616;
+            --header-user-fill: #F6F6F7;
+            --header-user-stroke: #FFFFFF;
             --header-theme-color: #161616CC;
             --header-theme-select-bg-color: #FCFCFC;
             --header-theme-select-border-color: #BEDBB0;
@@ -260,6 +264,8 @@ export const GlobalStyles = () => {
             //variables for Header
             --header-bg-color: #ffffff;
             --header-name-color: #161616;
+            --header-user-fill: #ECEDFD;
+            --header-user-stroke: #FFFFFF;
             --header-theme-color: #161616CC;
             --header-theme-select-bg-color: #FCFCFC;
             --header-theme-select-border-color: #ECEDFD;
