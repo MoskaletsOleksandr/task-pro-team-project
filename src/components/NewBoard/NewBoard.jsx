@@ -5,7 +5,8 @@ import { useDispatch } from 'react-redux';
 import sprite from '../../images/sprite.svg';
 // import картинки для Backgrounds;
 import { createNewBoardThunk } from 'redux/dashboards/thunks';
-import NewBoardButtonForm from 'components/NewBoardButton/NewBoardButton';
+import ButtonForForms from 'components/ButtonForForms/ButtonForForms';
+import ChildButtonNewBoard from 'components/ButtonForForms/ChildButtonNewBoard';
 
 import {
   NewBoardTitle,
@@ -61,14 +62,14 @@ const NewBoard = ({ onClose }) => {
 
   const renderIcons = () => {
     const icons = [
-      'Project',
-      'star',
-      'loading',
-      'puzzle-piece',
-      'container',
-      'lightning',
-      'colors',
-      'hexagon',
+      'icon-Project',
+      'icon-star',
+      'icon-loading',
+      'icon-puzzle-piece',
+      'icon-container',
+      'icon-lightning-icon',
+      'icon-colors',
+      'icon-hexagon',
     ];
 
     return icons.map(icon => (
@@ -113,7 +114,8 @@ const NewBoard = ({ onClose }) => {
         <BackgroundTitle>Background</BackgroundTitle>
         {/* <BgIcon>{renderBackgrounds()}</BgIcon> */}
 
-        <NewBoardButtonForm
+        <ButtonForForms 
+          textButton={() => <ChildButtonNewBoard textContent="Create" />}
           type="submit"
         />
       </form>

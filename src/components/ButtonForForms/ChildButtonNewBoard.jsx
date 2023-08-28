@@ -1,19 +1,21 @@
-import { BtnForm, ContainerSvg, Svg } from './NewBoardButton.styled';
+import PropTypes from 'prop-types';
+import { ContainerSvg, Svg } from './ChildButtonNewBoard.styled';
 import sprite from '../../images/sprite.svg';
 
-function NewBoardButtonForm({ textContent }) {
+export function ChildButtonNewBoard({ textContent }) {
   return (
-    <>
-      <BtnForm type="submit">      
+    <>     
       <ContainerSvg>
         <Svg width="14px" height="14px">
           <use href={sprite + '#icon-plus'}></use>
         </Svg>
       </ContainerSvg>
+
       <p>{textContent}</p>
-      </BtnForm>
     </>
   );
 }
 
-export default NewBoardButtonForm;
+ChildButtonNewBoard.propTypes = {
+  textContent: PropTypes.string.isRequired,
+};
