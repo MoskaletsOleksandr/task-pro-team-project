@@ -4,6 +4,8 @@ import LoginForm from 'components/LoginForm/LoginForm';
 import { Container } from 'pages/WelcomePage/WelcomePage.styled';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+// import { SignInThunk, SignUpThunk } from 'redux/thunks';
 
 const instance = axios.create({
   baseURL: 'https://task-pro-group-1-backend.onrender.com',
@@ -26,21 +28,25 @@ const login = async body => {
 };
 
 const AuthPage = () => {
+  const dispatch=useDispatch();
+ 
   const { id } = useParams();
   const [userData, setUserData] = useState({});
 
   const getUserData = data => {
-    console.log('data in AuthPage');
+    console.log('data in AuthPage',data);
     setUserData(data);
   };
 
   useEffect(() => {
     if (id === 'login') {
+      // dispatch(SignInThunk(userData))
       login(userData);
     } else {
+      // dispatch(SignUpThunk(userData))
       signUp(userData);
     }
-  }, [userData, id]);
+  }, [userData, id,dispatch]);
 
   if (id === 'register') {
     return (
