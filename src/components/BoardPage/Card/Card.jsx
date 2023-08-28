@@ -4,7 +4,6 @@ import { currentBoardForScreensPage } from '../../../fakeData/fakeData';
 import {
   PriorityCircle,
   TruncatedText,
-  // TruncatedTextWithMargin,
   CustomCard,
   CardContentWrapper,
   TitleTypography,
@@ -35,17 +34,17 @@ const TaskCard = ({ taskId }) => {
   let priorityCircleColor;
 
   if (selectedTask.priority === 'low') {
-    priorityCircleColor = '#8FA1D0';
-    priorityBorderColor = '#8FA1D0';
+    priorityCircleColor = 'var(--filter-low-color)';
+    priorityBorderColor = 'var(--filter-low-color)';
   } else if (selectedTask.priority === 'medium') {
-    priorityCircleColor = '#E09CB5';
-    priorityBorderColor = '#E09CB5';
+    priorityCircleColor = 'var(--filter-medium-color)';
+    priorityBorderColor = 'var(--filter-medium-color)';
   } else if (selectedTask.priority === 'high') {
-    priorityCircleColor = '#BEDBB0';
-    priorityBorderColor = '#BEDBB0';
+    priorityCircleColor = 'var(--filter-high-color)';
+    priorityBorderColor = 'var(--filter-high-color)';
   } else {
-    priorityCircleColor = '#FFFFFF4D';
-    priorityBorderColor = '#FFFFFF4D';
+    priorityCircleColor = 'var(--filter-without-priority-color)';
+    priorityBorderColor = 'var(--filter-without-priority-color)';
   }
 
   return (
@@ -58,7 +57,7 @@ const TaskCard = ({ taskId }) => {
             maxLine="2"
             ellipsis="..."
             trimRight
-            basedOn="letters"
+            basedOn="words"
           />
         </TruncatedText>
         <BottomInfo>

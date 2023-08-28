@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const Section = styled.section`
   padding: 0px 24px;
+  width: 100vw; 
 `;
 export const SectionTitle = styled.div`
   display: flex;
@@ -29,7 +30,25 @@ export const BtnFilters = styled.button`
 `;
 
 export const SectionBoards = styled.section`
-  display: flex;
+display: flex;
+flex-direction: row;
+width: 100%; 
+overflow-x: auto;
+
+::-webkit-scrollbar {
+  height: 12px; 
+  width: 100%; 
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--horizontal-scroll-slider-bg-color);
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--horizontal-scroll-bar-bg-color);
+  border-radius: 12px;
+}
 `;
 
 export const SvgIconFilters = styled.svg`
@@ -55,7 +74,7 @@ export const BtnAddColumn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 335px;
+  min-width: 335px;
   height: 56px;
 
   font-family: Poppins;
