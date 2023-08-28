@@ -54,7 +54,7 @@ const MainDashboard = () => {
         <BtnAddColumn type="submit" onClick={handleAddNewColumn}>
           <WrapSvg>
             <SvgIconPlus>
-              + <use href={sprite + '#icon-plus'}></use>
+              <use href={sprite + '#icon-plus'}></use>
             </SvgIconPlus>
           </WrapSvg>
           Add another column
