@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const BtnForm = styled.button`
+export const ButtonForm = styled.button`
 `;
 export const ContainerSvg = styled.div`
 `;
