@@ -6,8 +6,8 @@ export const BtnAddNewCard = styled.button`
   align-items: center;
   width: 334px;
   height: 56px;
-  margin-top: 14px;
-  margin-left: auto;
+  // margin-top: 40px;
+  // margin-left: auto;
 
   font-family: Poppins;
   font-weight: 500;

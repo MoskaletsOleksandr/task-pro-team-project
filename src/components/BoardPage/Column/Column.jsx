@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from '../Card/Card';
 import sprite from '../../../images/sprite.svg';
 import {
@@ -11,14 +11,22 @@ import {
   Icons,
 } from './Column.styled';
 import AddNewCard from 'components/BoardPage/AddNewCardBtn/AddNewCardBtn';
+import ColumnModal from 'components/BoardPage/ColumnModal/ColumnModal';
 
-const Column = ({ title, tasks }) => {
+const Column = ({ title, tasks, newColumnTitle }) => {
+  const [showTestModal, setShowTestModal] = useState(false);
+
+  const toggleModal = e => {
+    setShowTestModal(prevShowTestModal => !prevShowTestModal);
+  };
+
+
   return (
     <ColumnContainer>
       <TitleIcon>
-        <Title>{title}</Title>
+        <Title>{newColumnTitle ? newColumnTitle : title}</Title>
         <Icons>
-          <WhiteIcon className="icon-search">
+          <WhiteIcon className="icon-search" type="submit" onClick={toggleModal} >
             <use href={sprite + '#icon-pencil-01'}></use>
           </WhiteIcon>
           <WhiteIcon className="icon-search">
@@ -35,6 +43,10 @@ const Column = ({ title, tasks }) => {
         </ScrollContent>
       </ScrollContainer>
       <AddNewCard />
+      <ColumnModal
+        closeModal={toggleModal}
+        isOpen={showTestModal}
+        name="Edit Column" />
     </ColumnContainer>
   );
 };

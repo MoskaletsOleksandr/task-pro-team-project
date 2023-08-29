@@ -142,12 +142,13 @@ export const GlobalStyles = () => {
             --modal-button-plus-bg-color: #161616
             --modal-input-bg-color: #1f1f1f;
             --modal-input-text-color: #ffffff;
-            --modal-input-placeholder-color: #ffffff4c;
+            --modal-input-placeholder-color: #ffffff;
             --modal-input-border-color: #bedbb0;
             --modal-icon-color: #ffffff80;
             --modal-selected-icon-color: #ffffff;
-            --modal-plus-btn-bg-color: #BEDBB0;
+            --modal-plus-btn-bg-color: #161616;
             --modal-plus-btn-bg-color-hover: #9DC888;
+            --modal-selected-plus-color:#ffffff;
 
             //variables for progress popup
             --progress-popup-bg-color: #1f1f1f;
@@ -237,12 +238,13 @@ export const GlobalStyles = () => {
             --modal-button-plus-bg-color: #161616
             --modal-input-bg-color: #FCFCFC;
             --modal-input-text-color: #161616;
-            --modal-input-placeholder-color: #1616164c;
+            --modal-input-placeholder-color: #161616;
             --modal-input-border-color: #bedbb0;
             --modal-icon-color: #16161680;
             --modal-selected-icon-color: #161616;
-            --modal-plus-btn-bg-color: #BEDBB0;
+            --modal-plus-btn-bg-color: #161616;
             --modal-plus-btn-bg-color-hover: #9DC888;
+            --modal-selected-plus-color:#ffffff;
 
             //variables for progress popup
             --progress-popup-bg-color: #FCFCFC;
@@ -329,15 +331,16 @@ export const GlobalStyles = () => {
             --modal-btn-bg-color: #5255BC;
             --modal-btn-bg-color-hover: #7B7EDE;
             --modal-btn-text-color: #ffffff;
-            --modal-button-plus-bg-color: #ffffff
+            --modal-button-plus-bg-color: #ffffff;
             --modal-input-bg-color: #FCFCFC;
             --modal-input-text-color: #161616;
-            --modal-input-placeholder-color: #1616164c;
+            --modal-input-placeholder-color: #161616;
             --modal-input-border-color: #5255BC;
             --modal-icon-color: #16161680;
             --modal-selected-icon-color: #161616;
-            --modal-plus-btn-bg-color: #5255BC;
+            --modal-plus-btn-bg-color :#ffffff;
             --modal-plus-btn-bg-color-hover: #7B7EDE;
+            --modal-selected-plus-color:#161616;
 
             //variables for progress popup
             --progress-popup-bg-color: #FCFCFC;
