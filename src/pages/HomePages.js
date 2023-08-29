@@ -56,7 +56,7 @@ const HomePage = () => {
         >
           <Header onToggleSidebar={toggleSidebar} />
           <Outlet />
-          <button
+          {/* <button
             onClick={toggleModal}
             style={{
               position: 'absolute',
@@ -70,7 +70,7 @@ const HomePage = () => {
           </button>
           {showTestModal && (
             <TestModal closeModal={toggleModal} isOpen={showTestModal} />
-          )}
+          )} */}
           {/* <ScreensPage /> */}
         </div>
       </div>

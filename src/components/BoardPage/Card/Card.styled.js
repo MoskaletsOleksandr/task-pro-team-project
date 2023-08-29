@@ -93,12 +93,12 @@ gap: 5px;
 const PriorityDateContainer = styled.div`
 display: flex;
 gap: 23px;
-align-items: center;
+align-items: flex-end;
 `;
 const BottomInfo = styled.div`
 display: flex;
 padding-top: 14px;
-align-items: center;
+align-items: flex-end;
 justify-content: space-between;
 `;
 

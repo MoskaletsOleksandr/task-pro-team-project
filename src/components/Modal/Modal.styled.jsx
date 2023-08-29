@@ -14,12 +14,12 @@ export const Overlay = styled.div`
 `;
 
 export const Content = styled.div`
+  color: var(--modal-title-color);
+  background-color:var( --modal-bg-color); 
   position: relative;
-  background-color: #fff;
-  width: 300px;
   height: 200px;
   padding: 20px;
-  border-radius: 4px;
+  border-radius: 8px;
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 `;
@@ -27,15 +27,18 @@ export const Content = styled.div`
 export const CloseButton = styled.button`
   padding: 0;
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 10px;
+  right: 10px;
   width: 18px;
   height: 18px;
-  background-color: black;
+  border: none;
+  background-color :var(--modal-bg-color) ;
 `;
 
 export const CloseSVG = styled.svg`
-  width: 18px;
-  height: 18px;
-  fill: white;
+width: 18px;
+height: 18px;
+stroke: var(--modal-title-color);
+stroke-width: 2;
+fill: none;
 `;

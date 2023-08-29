@@ -43,8 +43,9 @@ const TitleIcon = styled.div`
 `;
 
 const ScrollContainer = styled.div`
-  height: 70vh;
+  // height: 70vh;
   overflow-y: hidden;
+  margin-bottom:100px
 `;
 
 
@@ -54,6 +55,7 @@ overflow-y: auto;
 padding-right: 8px;
 width: 100%; 
 box-sizing: border-box;
+
  
 ::-webkit-scrollbar {
   width: 8px;
