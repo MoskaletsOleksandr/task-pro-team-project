@@ -9,7 +9,7 @@ import {
   CloseSVG,
 } from 'components/Modal/Modal.styled';
 
-const Modal = ({ isOpen, onClose, children }) => {
+const Modal = ({ isOpen, onClose, custom, children }) => {
   const handleClose = () => {
     onClose();
   };
@@ -47,7 +47,7 @@ const Modal = ({ isOpen, onClose, children }) => {
 
   return ReactDOM.createPortal(
     <Overlay onClick={handleBackdropClick}>
-      <Content>
+      <Content custom={custom ? true : false}>
         <CloseButton onClick={handleClose}>
           <CloseSVG>
             <use href={sprite + '#icon-x-close'}></use>

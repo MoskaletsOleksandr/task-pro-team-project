@@ -131,6 +131,7 @@ export const GlobalStyles = () => {
 
             //variables for modals
             --modal-bg-color: #151515;
+            --modal-window-shadow: rgba(22, 22, 22, 0.05);
             --modal-title-color: #ffffff;
             --modal-primary-text-color: #ffffff;
             --modal-secondary-text-color: #ffffff80;
@@ -226,6 +227,7 @@ export const GlobalStyles = () => {
 
             //variables for modals
             --modal-bg-color: #FCFCFC;
+            --modal-window-shadow: rgba(22, 22, 22, 0.05);
             --modal-title-color: #161616;
             --modal-primary-text-color: #161616;
             --modal-secondary-text-color: #16161680;
@@ -321,6 +323,7 @@ export const GlobalStyles = () => {
 
             //variables for modals
             --modal-bg-color: #FCFCFC;
+            --modal-window-shadow: rgba(22, 22, 22, 0.05);
             --modal-title-color: #161616;
             --modal-primary-text-color: #161616;
             --modal-secondary-text-color: #16161680;
