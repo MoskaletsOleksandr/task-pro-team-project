@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import LinesEllipsis from 'react-lines-ellipsis';
 import { currentBoardForScreensPage } from '../../../fakeData/fakeData';
 import {
@@ -18,17 +18,21 @@ import {
   BottomInfo,
   DeadlineInfo,
   PriorityInfo,
+  PopUpMenu,
+  Backdrop
 } from '../Card/Card.styled';
+import CustomPopUpItem from '../PopUp/PopUp';
 import sprite from '../../../images/sprite.svg';
 
-const TaskCard = ({ taskId }) => {
-  const selectedTask = currentBoardForScreensPage.columns
-    .flatMap(column => column.tasks)
-    .find(taskData => taskData._id === taskId);
+  const TaskCard = ({ taskId, togglePopUpMenu, isPopupOpen }) => {
+    const selectedTask = currentBoardForScreensPage.columns
+      .flatMap(column => column.tasks)
+      .find(taskData => taskData._id === taskId);
 
-  if (!selectedTask) {
-    return null;
-  }
+    if (!selectedTask) {
+      return null;
+    }
+
 
   let priorityBorderColor;
   let priorityCircleColor;
@@ -77,7 +81,9 @@ const TaskCard = ({ taskId }) => {
             </DedlineWrapper>
           </PriorityDateContainer>
           <Icons>
-            <WhiteIcon className="icon-search">
+            <WhiteIcon
+              className="icon-search"
+              onClick={() => togglePopUpMenu(taskId)}>
               <use href={sprite + '#icon-arrow-circle-broken-right'}></use>
             </WhiteIcon>
             <WhiteIcon className="icon-search">
@@ -89,8 +95,20 @@ const TaskCard = ({ taskId }) => {
           </Icons>
         </BottomInfo>
       </CardContentWrapper>
+
+
+      {isPopupOpen && (
+        <Backdrop backgroundColor={priorityBorderColor} onClick={() => togglePopUpMenu(taskId)} />
+      )}
+      {isPopupOpen && (
+        <PopUpMenu>
+          <CustomPopUpItem text="In Progress" iconHref={sprite + '#icon-arrow-circle-broken-right'} />
+          <CustomPopUpItem text="Done" iconHref={sprite + '#icon-arrow-circle-broken-right'} />
+        </PopUpMenu>
+      )}
     </CustomCard>
   );
 };
 
 export default TaskCard;
+

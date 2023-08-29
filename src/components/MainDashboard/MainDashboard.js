@@ -67,11 +67,10 @@ const MainDashboard = () => {
               key={column._id}
               title={column.title}
               tasks={column.tasks}
-              newColumnTitle={null} 
+              newColumnTitle={null}
             />
           ))}
         </Board>
-
         <BtnAddColumn type="submit" onClick={toggleModal}>
           <WrapSvg>
             <SvgIconPlus>

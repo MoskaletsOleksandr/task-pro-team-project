@@ -151,9 +151,11 @@ export const GlobalStyles = () => {
             --modal-selected-plus-color:#ffffff;
 
             //variables for progress popup
-            --progress-popup-bg-color: #1f1f1f;
+            --progress-popup-bg-color: #151515;
             --progress-popup-text-color: #ffffff80;
             --progress-popup-text-color-hover: #BEDBB0;
+            --progress-backdrop: rgba(255, 255, 255, 0.30);
+           
           }
           .light {
             --primary-text-color: #161616;
@@ -250,6 +252,9 @@ export const GlobalStyles = () => {
             --progress-popup-bg-color: #FCFCFC;
             --progress-popup-text-color: #161616;
             --progress-popup-text-color-hover: #BEDBB0;
+            // --progress-backdrop:  rgba(0, 0, 0, 0.3);
+            --progress-backdrop:  #BEDBB033;
+        
           }
 
           .violet {
@@ -346,7 +351,10 @@ export const GlobalStyles = () => {
             --progress-popup-bg-color: #FCFCFC;
             --progress-popup-text-color: #161616;
             --progress-popup-text-color-hover: #5255BC;
+            // --progress-backdrop:  rgba(0, 0, 0, 0.3);
+            --progress-backdrop:  #5255BC33;
           }
+          
         `}
       />
     </>
