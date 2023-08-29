@@ -1,48 +1,34 @@
-// import { useSelector } from 'react-redux';
-// import { avatarURL, setName } from 'redux/auth/authSelectors';
+import React, { useState } from 'react';
+
+import ModalEditProfile from 'components/ModalEditProfile';
 
 import sprite from '../../images/sprite.svg';
-
-// import ModalEditProfile from 'components/ModalEditProfile/ModalEditProfile';
 
 import {
   UserName,
   IconAvatar,
   Container,
   AvasarSetin,
-  // AvatarImg,
 } from './UserInfo.styled';
 
 const UserInfo = () => {
-  // const name = useSelector(setName);
-  // const avatar = useSelector(avatarURL);
+  const [showModal, setShowModal] = useState(false);
 
-  // const onOpen = () => {
-  //   setShowModal(true);
-  // };
-
-  // const onClose = () => {
-  //   setShowModal(false);
-  // };
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
 
   return (
     <Container>
-      {/* <div>{name ? name : 'User'}</div> */}
       <UserName>User</UserName>
-      {/* <AvasarSetin onClick={onOpen}> */}
       <AvasarSetin>
-        {/* {avatar ? (
-          <AvatarImg src={avatar} alt="user avatar" />
-        ) : (
-          <IconAvatar>
-            <use href={`${sprite}#iicon-avatar`}></use>
-          </IconAvatar>
-        )} */}
-        <IconAvatar>
+        <IconAvatar onClick={toggleModal}>
           <use href={`${sprite}#icon-avatar`}></use>
         </IconAvatar>
+        {showModal && (
+          <ModalEditProfile closeModal={toggleModal} isOpen={showModal} />
+        )}
       </AvasarSetin>
-      {/* {showModal && <ModalEditProfile onClose={onClose} />} */}
     </Container>
   );
 };
