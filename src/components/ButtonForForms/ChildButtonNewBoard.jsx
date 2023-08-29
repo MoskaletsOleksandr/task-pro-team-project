@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { ContainerSvg, Svg } from './ChildButtonNewBoard.styled';
 import sprite from '../../images/sprite.svg';
 
-export function ChildButtonNewBoard({ textContent }) {
+export default function ChildButtonNewBoard({ textContent }) {
   return (
     <>     
       <ContainerSvg>

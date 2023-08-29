@@ -14,14 +14,14 @@ import {
   IconWrap,
   Icon,
   BackgroundTitle,
-  // BgIcon,
-  // BackgroundItem,
-  // BackgroundImage,
+  BgIcon,
+  BackgroundItem,
+  BackgroundImage,
   Input,
   ErrorMessage,
 } from './NewBoard.styled';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { TitleSchema } from 'schemas';
+// import { TitleSchema } from 'schemas';
 
 const NewBoard = ({ onClose }) => {
   const {
@@ -30,11 +30,11 @@ const NewBoard = ({ onClose }) => {
     setValue,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(TitleSchema),
+    // resolver: yupResolver(TitleSchema),
     mode: 'onChange',
   });
   const [selectedIcon, setSelectedIcon] = useState('');
-  // const [selectedBackgroundId, setSelectedBackgroundId] = useState('');
+  const [selectedBackgroundId, setSelectedBackgroundId] = useState('');
   const dispatch = useDispatch();
 
   const handleTitleChange = event => {
@@ -46,10 +46,10 @@ const NewBoard = ({ onClose }) => {
     setValue('icon', icon);
   };
 
-  // const handleBackgroundSelect = backgroundId => {
-  //   setSelectedBackgroundId(backgroundId);
-  //   setValue('background', backgroundId.toString());
-  // };
+  const handleBackgroundSelect = backgroundId => {
+    setSelectedBackgroundId(backgroundId);
+    setValue('background', backgroundId.toString());
+  };
 
   const handleCreateBoard = data => {
     dispatch(createNewBoardThunk(data)).then(() => {

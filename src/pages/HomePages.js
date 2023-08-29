@@ -14,7 +14,7 @@ import {
 // } from 'redux/dashboards/thunks';
 
 // import ScreensPage from 'components/ScreensPage/ScreensPage';
-// import Sidebar from 'components/Sidebar/Sidebar';
+import Sidebar from 'components/Sidebar/Sidebar';
 // import Backdrop from '../components/Sidebar/Backdrop';
 
 const HomePage = () => {
@@ -56,8 +56,8 @@ const HomePage = () => {
   return (
     <>
       <div style={{ display: 'flex' }}>
-        {/* {showSidebar && <Sidebar />}
-        {showSidebar && <Backdrop onClick={toggleSidebar} />} */}
+        {showSidebar && <Sidebar />}
+        {/* {showSidebar && <Backdrop onClick={toggleSidebar} />} */}
         <div
           style={{
             flexGrow: '1',
