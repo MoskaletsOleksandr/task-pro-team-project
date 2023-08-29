@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Card from '../Card/Card';
 import sprite from '../../../images/sprite.svg';
 import {
@@ -20,13 +20,16 @@ const Column = ({ title, tasks, newColumnTitle }) => {
     setShowTestModal(prevShowTestModal => !prevShowTestModal);
   };
 
-
   return (
     <ColumnContainer>
       <TitleIcon>
         <Title>{newColumnTitle ? newColumnTitle : title}</Title>
         <Icons>
-          <WhiteIcon className="icon-search" type="submit" onClick={toggleModal} >
+          <WhiteIcon
+            className="icon-search"
+            type="submit"
+            onClick={toggleModal}
+          >
             <use href={sprite + '#icon-pencil-01'}></use>
           </WhiteIcon>
           <WhiteIcon className="icon-search">
@@ -46,7 +49,8 @@ const Column = ({ title, tasks, newColumnTitle }) => {
       <ColumnModal
         closeModal={toggleModal}
         isOpen={showTestModal}
-        name="Edit Column" />
+        name="Edit Column"
+      />
     </ColumnContainer>
   );
 };
