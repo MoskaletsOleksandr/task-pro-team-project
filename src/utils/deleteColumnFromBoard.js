@@ -12,4 +12,5 @@ export const deleteColumnFromBoard = (board, deletedColumn) => {
     column => column._id !== deletedColumn._id
   );
 
-  return updatedBoard; 
+  return updatedBoard;
+};
