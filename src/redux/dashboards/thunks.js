@@ -16,6 +16,7 @@ import {
   updateTaskById,
   updateTasksColumnById,
 } from 'api/boardsApi/tasksApi';
+import { getFilteredTasks } from 'api/boardsApi/filterApi';
 
 //Отримання всіх дощок
 export const getAllBoardsThunk = createAsyncThunk(
@@ -187,6 +188,19 @@ export const updateTasksColumnByIdThunk = createAsyncThunk(
   async ({ idTask, body }, { rejectWithValue }) => {
     try {
       const data = await updateTasksColumnById(idTask, body);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+// Отримання відфільтрованих тасок по пріоритетності//сюди передаємо обєкт такого формату {boardId:"", priority:"назва пріпрітету"}
+export const getFilteredTasksThunk = createAsyncThunk(
+  'tasks/getFilteredTasks',
+  async (body, { rejectWithValue }) => {
+    try {
+      const data = await getFilteredTasks(body);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
