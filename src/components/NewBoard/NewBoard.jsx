@@ -20,8 +20,8 @@ import {
   Input,
   ErrorMessage,
 } from './NewBoard.styled';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { TitleSchema } from 'schemas';
+// import { yupResolver } from '@hookform/resolvers/yup';
+// import { TitleSchema } from 'schemas';
 
 const NewBoard = ({ onClose }) => {
   const {
@@ -30,7 +30,7 @@ const NewBoard = ({ onClose }) => {
     setValue,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(TitleSchema),
+    // resolver: yupResolver(TitleSchema),
     mode: 'onChange',
   });
   const [selectedIcon, setSelectedIcon] = useState('');
@@ -114,7 +114,7 @@ const NewBoard = ({ onClose }) => {
         <BackgroundTitle>Background</BackgroundTitle>
         {/* <BgIcon>{renderBackgrounds()}</BgIcon> */}
 
-        <ButtonForForms 
+        <ButtonForForms
           textButton={() => <ChildButtonNewBoard textContent="Create" />}
           type="submit"
         />

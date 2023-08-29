@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { Formik, Form } from 'formik';
-import * as Yup from 'yup';
 import { AuthButton } from 'components/common/authButton/AuthButton';
 import AuthController from 'components/registrationForm/authControll';
 import { RegistrationFormStyled } from 'components/registrationForm/RegistrationFormStyled';
 import FormTitle from 'components/common/authTitle/AuthTitle';
-// import Eyesvg from 'components/registrationForm/Eyesvg';
+import { authLoginValidationSchema } from 'validation/authValidation';
 
 function LoginForm({ getData }) {
   const [visible, setVisible] = useState(false);
@@ -22,19 +21,19 @@ function LoginForm({ getData }) {
     getData(values);
     resetForm();
   };
-  const validationSchema = Yup.object({
-    email: Yup.string()
-      .required('email is required')
-      .email('Invalid email address'),
-    password: Yup.string().required('password is required').min(8).max(64),
-  });
+  // const validationSchema = Yup.object({
+  //   email: Yup.string()
+  //     .required('email is required')
+  //     .email('Invalid email address'),
+  //   password: Yup.string().required('password is required').min(8).max(64),
+  // });
 
   return (
     <RegistrationFormStyled>
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
-        validationSchema={validationSchema}
+        validationSchema={authLoginValidationSchema}
       >
         {formik => (
           <Form autoComplete="off">

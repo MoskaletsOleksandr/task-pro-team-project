@@ -14,14 +14,6 @@ import {
 } from 'redux-persist';
 import { boardsReducer } from './dashboards/slise';
 
-// const middleware = [
-//   ...getDefaultMiddleware({
-//     serializableCheck: {
-//       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//     },
-//   }),
-// ];
-
 const authPersistConfig = {
   key: 'auth',
   storage,

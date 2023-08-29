@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import sprite from '../../images/sprite.svg';
 // import { useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
@@ -21,7 +21,9 @@ import {
 
 const MainDashboard = () => {
   const [showTestModal, setShowTestModal] = useState(false);
-  const [currentColumns, setCurrentColumns] = useState(currentBoardForScreensPage.columns);
+  const [currentColumns, setCurrentColumns] = useState(
+    currentBoardForScreensPage.columns
+  );
   const [newColumnTitle, setNewColumnTitle] = useState('');
 
   const toggleModal = () => {

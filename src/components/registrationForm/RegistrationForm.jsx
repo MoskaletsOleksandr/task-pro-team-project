@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Formik, Form } from 'formik';
-import * as Yup from 'yup';
+
 import { AuthButton } from 'components/common/authButton/AuthButton';
 import AuthController from './authControll';
 import { RegistrationFormStyled } from './RegistrationFormStyled';
 import FormTitle from 'components/common/authTitle/AuthTitle';
+import { authValidationSchema } from 'validation/authValidation';
 
 
 function RegistrationForm({ getData }) {
@@ -25,20 +26,20 @@ function RegistrationForm({ getData }) {
 
     resetForm();
   };
-  const validationSchema = Yup.object({
-    name: Yup.string().required('name is required').min(2).max(32),
-    email: Yup.string()
-      .required('email is required')
-      .email('Invalid email address'),
-    password: Yup.string().required('password is required').min(8).max(64),
-  });
+  // const validationSchema = Yup.object({
+  //   name: Yup.string().required('name is required').min(2).max(32),
+  //   email: Yup.string()
+  //     .required('email is required')
+  //     .email('Invalid email address'),
+  //   password: Yup.string().required('password is required').min(8).max(64),
+  // });
 
   return (
     <RegistrationFormStyled>
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
-        validationSchema={validationSchema}
+        validationSchema={authValidationSchema}
       >
         {formik => (
           <Form autoComplete={'off'}>

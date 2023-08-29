@@ -20,7 +20,17 @@ import {
   updateColumnByIdThunk,
   updateTaskByIdThunk,
   updateTasksColumnByIdThunk,
+  getFilteredTasksThunk,
 } from './thunks';
+
+const handlePending = state => {
+  state.isLoading = true;
+};
+
+const handleRejected = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = payload;
+};
 
 const handleGetAllBoardsFulfilled = (state, { payload }) => {
   state.boards = payload;
@@ -94,6 +104,11 @@ const handleUpdateTasksColumnByIdFulfilled = (state, { payload }) => {
 const boardSlice = createSlice({
   name: 'boards',
   initialState: dashBoardsInitialState,
+  reducers: {
+    setPriority: (state, action) => {
+      state.priority = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(getAllBoardsThunk.fulfilled, handleGetAllBoardsFulfilled)
@@ -111,8 +126,15 @@ const boardSlice = createSlice({
       .addCase(
         updateTasksColumnByIdThunk.fulfilled,
         handleUpdateTasksColumnByIdFulfilled
-      );
+      )
+      .addCase(
+        getFilteredTasksThunk.fulfilled,
+        handleUpdateTasksColumnByIdFulfilled
+      )
+      .addMatcher(action => action.type.endsWith('/pending'), handlePending)
+      .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);
   },
 });
 
+export const { setPriority } = boardSlice.actions;
 export const boardsReducer = boardSlice.reducer;
