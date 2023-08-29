@@ -22,6 +22,15 @@ import {
   updateTasksColumnByIdThunk,
 } from './thunks';
 
+const handlePending = state => {
+  state.isLoading = true;
+};
+
+const handleRejected = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = payload;
+};
+
 const handleGetAllBoardsFulfilled = (state, { payload }) => {
   state.boards = payload;
 };
@@ -111,7 +120,9 @@ const boardSlice = createSlice({
       .addCase(
         updateTasksColumnByIdThunk.fulfilled,
         handleUpdateTasksColumnByIdFulfilled
-      );
+      )
+      .addMatcher(action => action.type.endsWith('/pending'), handlePending)
+      .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);
   },
 });
 

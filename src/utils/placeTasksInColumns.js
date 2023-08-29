@@ -1,6 +1,6 @@
 export const placeTasksInColumns = (board, tasks) => {
   const columnTasksMap = {};
-
+  // тут мутація
   board.columns.forEach(column => {
     columnTasksMap[column._id] = [];
   });
