@@ -5,7 +5,7 @@ import { AuthButton } from 'components/common/authButton/AuthButton';
 import AuthController from './authControll';
 import { RegistrationFormStyled } from './RegistrationFormStyled';
 import FormTitle from 'components/common/authTitle/AuthTitle';
-
+import NewColumn from 'components/modals/TestModal/NewColumn/NewColumn';
 
 function RegistrationForm({ getData }) {
   const [visible, setVisible] = useState(false);
@@ -34,6 +34,7 @@ function RegistrationForm({ getData }) {
   });
 
   return (
+    <>
     <RegistrationFormStyled>
       <Formik
         initialValues={initialValues}
@@ -67,7 +68,11 @@ function RegistrationForm({ getData }) {
           </Form>
         )}
       </Formik>
+      
     </RegistrationFormStyled>
+    <NewColumn/>
+    </>
+   
   );
 }
 
