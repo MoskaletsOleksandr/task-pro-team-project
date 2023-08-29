@@ -73,7 +73,6 @@ const MainDashboard = () => {
             />
           ))}
         </Board>
-
         <BtnAddColumn type="submit" onClick={toggleModal}>
           <WrapSvg>
             <SvgIconPlus>

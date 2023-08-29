@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
+import { keyframes } from '@emotion/react';
 
 
 const CustomCard = styled.div`
   width: 334px;
   height: 154px;
   margin-right: 0;
-
+  position:relative;
   margin-bottom: 9px;
   border-radius: 8px;
   background-color: var(--card-bg-color);
@@ -102,17 +103,72 @@ align-items: flex-end;
 justify-content: space-between;
 `;
 
+
+const Icons = styled.div`
+display: inline-flex;
+gap:8px;
+
+`;
+
+const PopUpMenu = styled.div`
+position:absolute;
+z-index: 1;
+display: flex;
+flex-direction: column;
+gap:8px;
+width:135px;
+padding:18px;
+background-color:var(--progress-popup-bg-color);
+border-radius: 8px;
+box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.10);
+top:35px;
+right:100px;
+`;
+
 const WhiteIcon = styled.svg`
   width: 14px;
   height: 14px;
   stroke: var(--card-icon-color); 
   stroke-width: 2; 
-  fill: none
+  fill: none;
+  &:hover{
+    stroke:var(--progress-popup-text-color-hover);
+  }
 `;
-const Icons = styled.div`
-display: inline-flex;
-gap:8px;
 
+const PopUpItem = styled.div`
+display: flex;
+align-items: center;
+justify-content: space-between;
+color:var(--progress-popup-text-color);
+  &:hover {
+    color: var(--progress-popup-text-color-hover);
+    stroke: var(--progress-popup-text-color-hover);
+    cursor: pointer;
+  }
+}
+`;
+
+const fillFromLeft = keyframes`
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+`;
+
+const Backdrop = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 8px;
+  // background-color: ${props => `${props.backgroundColor}33`}; 
+  background-color:var(--progress-backdrop);
+  animation: ${fillFromLeft} 1s ease-in-out forwards; 
+  z-index: 0; 
 `;
 
 export {
@@ -132,4 +188,7 @@ export {
   BottomInfo,
   PriorityInfo,
   DeadlineInfo,
+  PopUpMenu,
+  PopUpItem,
+  Backdrop
 }

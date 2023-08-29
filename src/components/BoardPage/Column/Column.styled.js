@@ -6,6 +6,9 @@ const WhiteIcon = styled.svg`
   stroke: var(--card-icon-color);
   stroke-width: 2;
   fill: none;
+  &:hover{
+    stroke:var(--progress-popup-text-color-hover);
+  }
 `;
 const Icons = styled.div`
   display: inline-flex;
@@ -43,14 +46,13 @@ const TitleIcon = styled.div`
 `;
 
 const ScrollContainer = styled.div`
-  // height: 70vh;
   overflow-y: hidden;
-  margin-bottom:100px
+  margin-bottom:20px;
 `;
 
 
 const ScrollContent = styled.div`
-height: 56vh;
+height: 65vh;
 overflow-y: auto;
 padding-right: 8px;
 width: 100%; 

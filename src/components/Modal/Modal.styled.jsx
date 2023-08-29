@@ -24,6 +24,7 @@ export const Content = styled.div`
   border-radius: 8px;
   background-color: var(--modal-bg-color);
   box-shadow: 0px 4px 16px 0px var(--modal-window-shadow);
+  color: var(--modal-title-color);
 
   @media screen and (min-width: 375px) {
     width: 335px;
@@ -43,11 +44,9 @@ export const Content = styled.div`
 
 export const CloseButton = styled.div`
   position: absolute;
-
   top: 14px;
   right: 14px;
   cursor: pointer;
-
   &:hover,
   :focus {
     svg {
