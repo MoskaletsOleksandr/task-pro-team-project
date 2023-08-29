@@ -5,8 +5,8 @@ const CustomCard = styled.div`
   width: 334px;
   height: 154px;
   margin-right: 0;
-  border: 1px solid black;
-  margin-bottom: 8px;
+
+  margin-bottom: 9px;
   border-radius: 8px;
   background-color: var(--card-bg-color);
   color: #fff;
@@ -27,7 +27,8 @@ const TruncatedText = styled.div`
   letter-spacing: -0.24px;
   margin-top: 8px;
   line-height: 1.4;
-  margin-bottom:14px
+  height:38px;
+  border-bottom: 1px solid var(--card-border-color);
 `;
 
 
@@ -59,7 +60,7 @@ const PriorityTypography = styled.p`
 const PriorityInfo = styled.p`
   font-size: 12px;
   font-family: 'Poppins';
-  color: var( --primary-text-color);
+  color: var( --card-primary-text-color);
 `;
 const DeadlineTypography = styled.p`
   font-size: 12px;
@@ -69,7 +70,7 @@ const DeadlineTypography = styled.p`
 const DeadlineInfo = styled.p`
   font-size: 12px;
   font-family: 'Poppins';
-  color: var( --primary-text-color);
+  color:var( --card-primary-text-color);
 `;
 
 const PriorityWrapper = styled.div`
@@ -94,8 +95,7 @@ display: flex;
 gap: 23px;
 align-items: center;
 `;
-const BottomInfo =  styled.div`
-border-top: 1px solid #FFFFFF4D;
+const BottomInfo = styled.div`
 display: flex;
 padding-top: 14px;
 align-items: center;
@@ -116,22 +116,20 @@ gap:8px;
 `;
 
 export {
-    PriorityCircle,
-    TruncatedText,
-    CustomCard,
-    CardContentWrapper,
-    TitleTypography,
-    PriorityTypography,
-    DeadlineTypography,
-    PriorityWrapper,
-    DedlineWrapper,
-    PriorityDateContainer,
-    PriorityDateItem,
-    WhiteIcon,
-    Icons,
-    BottomInfo ,
-    PriorityInfo,
-    DeadlineInfo,
-    // TruncatedTextWithMargin
-
+  PriorityCircle,
+  TruncatedText,
+  CustomCard,
+  CardContentWrapper,
+  TitleTypography,
+  PriorityTypography,
+  DeadlineTypography,
+  PriorityWrapper,
+  DedlineWrapper,
+  PriorityDateContainer,
+  PriorityDateItem,
+  WhiteIcon,
+  Icons,
+  BottomInfo,
+  PriorityInfo,
+  DeadlineInfo,
 }

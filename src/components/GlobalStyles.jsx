@@ -93,6 +93,10 @@ export const GlobalStyles = () => {
             --add-column-btn-bg-color: #121212;
             --add-column-btn-text-color: #ffffff;
             --add-column-btn-plus-bg-color: #ffffff;
+            --add-column-btn-plus-color: #121212; //vit
+            --new-dashboadr-text-color: #FFFFFF80; //vit
+            --new-dashboadr-text-accent-color: #BEDBB0;//vit 
+
             //variables for HeaderDashboard
             --header-dashboard-title-color: #ffffff;
             --filter-text-color: #ffffffCC;
@@ -104,15 +108,16 @@ export const GlobalStyles = () => {
             --filter-low-color: #8FA1D0;
             --filter-medium-color: #E09CB5;
             --filter-high-color: #BEDBB0;
-
+            
             //variables for columns
-            --vertical-scroll-bar-bg-color: #FFFFFF80;
-            --vertical-scroll-slider-bg-color: #121212;
+            --vertical-scroll-bar-bg-color: #121212;
+            --vertical-scroll-slider-bg-color:#FFFFFF1A;
             --horizontal-scroll-bar-bg-color: #121212;
             --horizontal-scroll-slider-bg-color: #FFFFFF1A;
             --column-add-btn-bg-color: #BEDBB0;
             --column-add-btn-bg-color-hover: #9DC888;
             --column-add-btn-text-color: #161616;
+            --column-add-btn-plus-color: #FFFFFF; //vit
             --column-add-btn-plus-bg-color: #161616;
 
             //variables for cards
@@ -120,6 +125,7 @@ export const GlobalStyles = () => {
             --card-title-color: #ffffff;
             --card-primary-text-color: #ffffff;
             --card-secondary-text-color: #ffffff80;
+            --card-border-color: #FFFFFF4D;
             --card-icon-color: #ffffff80;
 
 
@@ -180,7 +186,11 @@ export const GlobalStyles = () => {
             --screens-page-bg-color: #F6F6F7;
             --add-column-btn-bg-color: #ffffff;
             --add-column-btn-text-color: #161616;
-            --add-column-btn-plus-bg-color: #161616;            
+            --add-column-btn-plus-bg-color: #161616;
+            --add-column-btn-plus-color: #ffffff; //vit
+            --new-dashboadr-text-color: #16161670; //vit
+            --new-dashboadr-text-accent-color: #BEDBB0; //vit
+                        
             //variables for HeaderDashboard
             --header-dashboard-title-color: #161616;
             --filter-text-color: #161616CC;
@@ -194,13 +204,14 @@ export const GlobalStyles = () => {
             --filter-high-color: #BEDBB0;
 
             //variables for columns
-            --vertical-scroll-bar-bg-color: #E8E8E8
-            --vertical-scroll-slider-bg-color: #1616161A;
+            --vertical-scroll-bar-bg-color: #1616161A;
+            --vertical-scroll-slider-bg-color:  #E8E8E8;
             --horizontal-scroll-bar-bg-color: #ffffff;
             --horizontal-scroll-slider-bg-color: #E8E8E8;
             --column-add-btn-bg-color: #BEDBB0;
             --column-add-btn-bg-color-hover: #9DC888;
             --column-add-btn-text-color: #161616;
+            --column-add-btn-plus-color: #FFFFFF; //vit
             --column-add-btn-plus-bg-color: #161616;
 
             //variables for cards
@@ -209,6 +220,7 @@ export const GlobalStyles = () => {
             --card-primary-text-color: #161616B2;
             --card-secondary-text-color: #16161680;
             --card-icon-color: #16161680;
+            --card-border-color: #e8e8e8;
 
 
             //variables for modals
@@ -270,6 +282,10 @@ export const GlobalStyles = () => {
             --add-column-btn-bg-color: #ffffff;
             --add-column-btn-text-color: #161616;
             --add-column-btn-plus-bg-color: #5255BC;
+            --add-column-btn-plus-color: #FFFFFF; //vit
+            --new-dashboadr-text-color: #16161670; //vit
+            --new-dashboadr-text-accent-color: #5255BC; //vit
+
             //variables for HeaderDashboard
             --header-dashboard-title-color: #161616;
             --filter-text-color: #161616CC;
@@ -283,13 +299,14 @@ export const GlobalStyles = () => {
             --filter-high-color: #BEDBB0;
 
             //variables for columns
-            --vertical-scroll-bar-bg-color: #ffffff
-            --vertical-scroll-slider-bg-color: #B8BCFD;
+            --vertical-scroll-bar-bg-color: #B8BCFD;
+            --vertical-scroll-slider-bg-color: #ffffff;
             --horizontal-scroll-bar-bg-color: #ffffff;
             --horizontal-scroll-slider-bg-color: #B8BCFD;
             --column-add-btn-bg-color: #5255BC;
             --column-add-btn-bg-color-hover: #7B7EDE;
             --column-add-btn-text-color: #ffffff;
+            --column-add-btn-plus-color:#161616; //vit
             --column-add-btn-plus-bg-color: #ffffff;
 
             //variables for cards
@@ -298,6 +315,7 @@ export const GlobalStyles = () => {
             --card-primary-text-color: #161616B2;
             --card-secondary-text-color: #16161680;
             --card-icon-color: #16161680;
+            --card-border-color: #e8e8e8;
 
             //variables for modals
             --modal-bg-color: #FCFCFC;
