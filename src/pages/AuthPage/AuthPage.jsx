@@ -5,8 +5,9 @@ import { Container } from 'pages/WelcomePage/WelcomePage.styled';
 // import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import {  SignInThunk, SignUpThunk } from 'redux/thunks';
+import { SignInThunk, SignUpThunk } from 'redux/thunks';
 import { toast } from 'react-hot-toast';
+
 // import { AuthButton } from 'components/common/authButton/AuthButton';
 
 const AuthPage = () => {
@@ -17,10 +18,8 @@ const AuthPage = () => {
   const [userData, setUserData] = useState({});
 
   const getUserData = data => {
-    console.log('data in AuthPage', data);
     setUserData(data);
   };
-
 
   useEffect(() => {
     if (id === 'login') {
@@ -52,9 +51,8 @@ const AuthPage = () => {
       } catch (error) {
         console.log('Registration failed');
       }
-
     }
-  }, [userData, id, dispatch,navigate]);
+  }, [userData, id, dispatch, navigate]);
 
   if (id === 'register') {
     return (
