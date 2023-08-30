@@ -15,13 +15,13 @@ import ColumnModal from 'components/BoardPage/ColumnModal/ColumnModal';
 
 const Column = ({ title, tasks, newColumnTitle }) => {
   const [showTestModal, setShowTestModal] = useState(false);
-  const [openTaskId, setOpenTaskId] = useState(null); 
+  const [openTaskId, setOpenTaskId] = useState(null);
 
   const toggleModal = () => {
     setShowTestModal(prevShowTestModal => !prevShowTestModal);
   };
 
-  const togglePopUpMenu = (clickedTaskId) => {
+  const togglePopUpMenu = clickedTaskId => {
     if (clickedTaskId === openTaskId) {
       setOpenTaskId(null);
     } else {
@@ -54,7 +54,7 @@ const Column = ({ title, tasks, newColumnTitle }) => {
               key={task._id}
               taskId={task._id}
               togglePopUpMenu={togglePopUpMenu}
-              isPopupOpen={openTaskId === task._id} 
+              isPopupOpen={openTaskId === task._id}
             />
           ))}
         </ScrollContent>
