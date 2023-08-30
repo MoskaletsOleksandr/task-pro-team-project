@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { signUp, login, getTheme, logOut } from 'api/api_auth/api';
-import { selectToken } from './authSelectors';
+import { signUp, login, getTheme, logOut, sendHelpLetter } from 'api/api_auth/api';
+
+
 
 export const SignUpThunk = createAsyncThunk(
   'auth/signup',
@@ -29,17 +30,17 @@ export const SignInThunk = createAsyncThunk(
 export const LogOutThunk = createAsyncThunk(
   'auth/logOut',
   async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const currentToken = state.auth.token;
+    // const state = thunkAPI.getState();
+    // const currentToken = state.auth.token;
 
-    if (currentToken === '') {
-      return thunkAPI.rejectWithValue('Unable to fetch user');
-    }
+    // if (currentToken === '') {
+    //   return thunkAPI.rejectWithValue('Unable to fetch user');
+    // }
     try {
       const data = await logOut();
       return data;
     } catch (error) {
-      selectToken(`Bearer ${currentToken}`);
+      // selectToken(`Bearer ${currentToken}`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -63,3 +64,22 @@ export const GetThemeThunk = createAsyncThunk(
     }
   }
 );
+
+
+export const SendLetterThunk=createAsyncThunk('user/sendLetter',async(body,thunkAPI)=>{
+  const state = thunkAPI.getState();
+  const currentToken = state.auth.token;
+  
+  if (currentToken === '') {
+    return thunkAPI.rejectWithValue('Unable to fetch user');
+  }
+
+  try {
+   
+    const data = await sendHelpLetter(body);
+    return data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+}
+)
