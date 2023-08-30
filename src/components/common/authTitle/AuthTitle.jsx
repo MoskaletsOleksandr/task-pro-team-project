@@ -1,11 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import { AuthTitle,AuthSpan } from './AuthTitleStyled';
+import { AuthTitle,StyledLink} from './AuthTitleStyled';
 
-function FormTitle({title,subtitle,name}) {
+
+function FormTitle() {
 
   return (
-    <AuthTitle name={name}>{title}<AuthSpan name={name}>{subtitle}</AuthSpan></AuthTitle>
+    <AuthTitle >
+      <StyledLink to='/auth/register' >Registration</StyledLink>
+      <StyledLink to='/auth/login'> Log In</StyledLink>
+      </AuthTitle>
   )
 }
 

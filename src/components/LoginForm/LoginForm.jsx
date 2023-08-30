@@ -32,7 +32,7 @@ function LoginForm({ getData }) {
       >
         {formik => (
           <Form autoComplete="off">
-            <FormTitle title="Registration" subtitle="Log In" />
+            <FormTitle />
             <AuthController
               control="input"
               type="email"
