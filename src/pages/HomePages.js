@@ -15,12 +15,19 @@ import {
 
 // import ScreensPage from 'components/ScreensPage/ScreensPage';
 import Sidebar from 'components/Sidebar/Sidebar';
+import { TestNewBoardModal } from 'TestNewBoardModal/TestNewBoardModal';
 // import Backdrop from '../components/Sidebar/Backdrop';
 
 const HomePage = () => {
   const user = useSelector(state => state.auth.user.theme);
   console.log(user);
   const [showSidebar, setShowSidebar] = useState(true);
+
+  const [showTestModal, setShowTestModal] = useState(false);
+
+  const toggleModal = () => {
+    setShowTestModal(prevShowTestModal => !prevShowTestModal);
+  };
 
   // const dispatch = useDispatch();
 
@@ -70,6 +77,24 @@ const HomePage = () => {
         >
           <Header onToggleSidebar={toggleSidebar} />
           <Outlet />
+          <button
+            onClick={toggleModal}
+            style={{
+              position: 'absolute',
+              bottom: '100px',
+              right: '30px',
+              width: '200px',
+              height: '30px',
+            }}
+          >
+            Open Test Modal
+          </button>
+          {showTestModal && (
+            <TestNewBoardModal
+              closeModal={toggleModal}
+              isOpen={showTestModal}
+            />
+          )}
           {/* <ScreensPage /> */}
         </div>
       </div>
