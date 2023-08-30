@@ -43,7 +43,7 @@ function RegistrationForm({ getData }) {
       >
         {formik => (
           <Form autoComplete={'off'}>
-            <FormTitle title="Registration" subtitle="Log In" name="register" />
+            <FormTitle  />
             <AuthController
               control="input"
               type="text"

@@ -6,6 +6,7 @@ import { Container } from 'pages/WelcomePage/WelcomePage.styled';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import {  SignInThunk, SignUpThunk } from 'redux/thunks';
+import { toast } from 'react-hot-toast';
 // import { AuthButton } from 'components/common/authButton/AuthButton';
 
 const AuthPage = () => {
@@ -20,13 +21,6 @@ const AuthPage = () => {
     setUserData(data);
   };
 
-  // const onClick =  e => {
-  //   console.log(e)
-  //   try {
-  //     dispatch(LogOutThunk());
-  //   } catch (error) 
-  //   {console.log(error)}
-  // };
 
   useEffect(() => {
     if (id === 'login') {
@@ -36,12 +30,13 @@ const AuthPage = () => {
           .then(data => {
             console.log(data);
             if (data) {
-
+              toast.success('Logged In successfully')
               navigate('/home');
             }
           });
       } catch (error) {
-        console.log('registration failed');
+        toast.error('Login failed')
+        console.log(error);
       }
     } else {
       try {
@@ -49,12 +44,13 @@ const AuthPage = () => {
           .unwrap()
           .then(data => {
             if (data) {
+              toast.success('Registered successfully')
               navigate('/home');
             }
           });
         console.log(response);
       } catch (error) {
-        console.log('Logged in failed');
+        console.log('Registration failed');
       }
 
     }
