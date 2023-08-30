@@ -1,13 +1,20 @@
 import GlobalStyles from './GlobalStyles';
 import { Routes, Route } from 'react-router-dom';
-import WelcomePage from '../pages/WelcomePage/WelcomePage';
-import AuthPage from '../pages/AuthPage/AuthPage';
-import HomePage from './../pages/HomePages';
-import ScreenPage from 'pages/ScreenPage/ScreenPage';
+// import WelcomePage from '../pages/WelcomePage/WelcomePage';
+// import AuthPage from '../pages/AuthPage/AuthPage';
+// import HomePage from './../pages/HomePages';
+// import ScreenPage from 'pages/ScreenPage/ScreenPage';
+import { Suspense, lazy } from 'react';
+import Loader  from "./Loader/Loader"
+
+const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
+const AuthPage = lazy(() => import('../pages/AuthPage/AuthPage'));
+const HomePage = lazy(() => import('./../pages/HomePages'));
+const ScreenPage = lazy(() => import('pages/ScreenPage/ScreenPage'));
 
 export const App = () => {
   return (
-    <>
+    <Suspense fallback={<Loader/>}>
       <GlobalStyles />
       <Routes>
         <Route index element={<WelcomePage />} />
@@ -18,6 +25,6 @@ export const App = () => {
         </Route>
         <Route path="*" element={<WelcomePage />} />
       </Routes>
-    </>
+    </Suspense>
   );
 };

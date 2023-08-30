@@ -79,6 +79,8 @@ export const GlobalStyles = () => {
             //variables for Header
             --header-bg-color: #161616;
             --header-name-color: #ffffff;
+            --header-user-fill: #1F1F1F
+            --header-user-stroke: #151515
             --header-theme-color: #ffffffCC;
             --header-theme-select-bg-color: #151515;
             --header-theme-select-border-color: #BEDBB0;
@@ -91,6 +93,10 @@ export const GlobalStyles = () => {
             --add-column-btn-bg-color: #121212;
             --add-column-btn-text-color: #ffffff;
             --add-column-btn-plus-bg-color: #ffffff;
+            --add-column-btn-plus-color: #121212; //vit
+            --new-dashboadr-text-color: #FFFFFF80; //vit
+            --new-dashboadr-text-accent-color: #BEDBB0;//vit 
+
             //variables for HeaderDashboard
             --header-dashboard-title-color: #ffffff;
             --filter-text-color: #ffffffCC;
@@ -102,27 +108,30 @@ export const GlobalStyles = () => {
             --filter-low-color: #8FA1D0;
             --filter-medium-color: #E09CB5;
             --filter-high-color: #BEDBB0;
-
+            
             //variables for columns
-            --vertical-scroll-bar-bg-color: #FFFFFF1A
-            --vertical-scroll-slider-bg-color: #121212;
+            --vertical-scroll-bar-bg-color: #121212;
+            --vertical-scroll-slider-bg-color:#FFFFFF1A;
             --horizontal-scroll-bar-bg-color: #121212;
             --horizontal-scroll-slider-bg-color: #FFFFFF1A;
             --column-add-btn-bg-color: #BEDBB0;
             --column-add-btn-bg-color-hover: #9DC888;
             --column-add-btn-text-color: #161616;
+            --column-add-btn-plus-color: #FFFFFF; //vit
             --column-add-btn-plus-bg-color: #161616;
 
             //variables for cards
             --card-bg-color: #121212;
             --card-title-color: #ffffff;
-            --card-primary-text-color: #ffffff80;
+            --card-primary-text-color: #ffffff;
             --card-secondary-text-color: #ffffff80;
+            --card-border-color: #FFFFFF4D;
             --card-icon-color: #ffffff80;
 
 
             //variables for modals
             --modal-bg-color: #151515;
+            --modal-window-shadow: rgba(22, 22, 22, 0.05);
             --modal-title-color: #ffffff;
             --modal-primary-text-color: #ffffff;
             --modal-secondary-text-color: #ffffff80;
@@ -133,17 +142,20 @@ export const GlobalStyles = () => {
             --modal-button-plus-bg-color: #161616
             --modal-input-bg-color: #1f1f1f;
             --modal-input-text-color: #ffffff;
-            --modal-input-placeholder-color: #ffffff4c;
+            --modal-input-placeholder-color: #ffffff;
             --modal-input-border-color: #bedbb0;
             --modal-icon-color: #ffffff80;
             --modal-selected-icon-color: #ffffff;
-            --modal-plus-btn-bg-color: #BEDBB0;
+            --modal-plus-btn-bg-color: #161616;
             --modal-plus-btn-bg-color-hover: #9DC888;
+            --modal-selected-plus-color:#ffffff;
 
             //variables for progress popup
-            --progress-popup-bg-color: #1f1f1f;
+            --progress-popup-bg-color: #151515;
             --progress-popup-text-color: #ffffff80;
             --progress-popup-text-color-hover: #BEDBB0;
+            --progress-backdrop: rgba(255, 255, 255, 0.30);
+           
           }
           .light {
             --primary-text-color: #161616;
@@ -165,6 +177,8 @@ export const GlobalStyles = () => {
             //variables for Header
             --header-bg-color: #FCFCFC;
             --header-name-color: #161616;
+            --header-user-fill: #F6F6F7;
+            --header-user-stroke: #FFFFFF;
             --header-theme-color: #161616CC;
             --header-theme-select-bg-color: #FCFCFC;
             --header-theme-select-border-color: #BEDBB0;
@@ -176,7 +190,11 @@ export const GlobalStyles = () => {
             --screens-page-bg-color: #F6F6F7;
             --add-column-btn-bg-color: #ffffff;
             --add-column-btn-text-color: #161616;
-            --add-column-btn-plus-bg-color: #161616;            
+            --add-column-btn-plus-bg-color: #161616;
+            --add-column-btn-plus-color: #ffffff; //vit
+            --new-dashboadr-text-color: #16161670; //vit
+            --new-dashboadr-text-accent-color: #BEDBB0; //vit
+                        
             //variables for HeaderDashboard
             --header-dashboard-title-color: #161616;
             --filter-text-color: #161616CC;
@@ -190,13 +208,14 @@ export const GlobalStyles = () => {
             --filter-high-color: #BEDBB0;
 
             //variables for columns
-            --vertical-scroll-bar-bg-color: #E8E8E8
-            --vertical-scroll-slider-bg-color: #1616161A;
+            --vertical-scroll-bar-bg-color: #1616161A;
+            --vertical-scroll-slider-bg-color:  #E8E8E8;
             --horizontal-scroll-bar-bg-color: #ffffff;
             --horizontal-scroll-slider-bg-color: #E8E8E8;
             --column-add-btn-bg-color: #BEDBB0;
             --column-add-btn-bg-color-hover: #9DC888;
             --column-add-btn-text-color: #161616;
+            --column-add-btn-plus-color: #FFFFFF; //vit
             --column-add-btn-plus-bg-color: #161616;
 
             //variables for cards
@@ -205,10 +224,12 @@ export const GlobalStyles = () => {
             --card-primary-text-color: #161616B2;
             --card-secondary-text-color: #16161680;
             --card-icon-color: #16161680;
+            --card-border-color: #e8e8e8;
 
 
             //variables for modals
             --modal-bg-color: #FCFCFC;
+            --modal-window-shadow: rgba(22, 22, 22, 0.05);
             --modal-title-color: #161616;
             --modal-primary-text-color: #161616;
             --modal-secondary-text-color: #16161680;
@@ -219,17 +240,21 @@ export const GlobalStyles = () => {
             --modal-button-plus-bg-color: #161616
             --modal-input-bg-color: #FCFCFC;
             --modal-input-text-color: #161616;
-            --modal-input-placeholder-color: #1616164c;
+            --modal-input-placeholder-color: #161616;
             --modal-input-border-color: #bedbb0;
             --modal-icon-color: #16161680;
             --modal-selected-icon-color: #161616;
-            --modal-plus-btn-bg-color: #BEDBB0;
+            --modal-plus-btn-bg-color: #161616;
             --modal-plus-btn-bg-color-hover: #9DC888;
+            --modal-selected-plus-color:#ffffff;
 
             //variables for progress popup
             --progress-popup-bg-color: #FCFCFC;
             --progress-popup-text-color: #161616;
             --progress-popup-text-color-hover: #BEDBB0;
+            // --progress-backdrop:  rgba(0, 0, 0, 0.3);
+            --progress-backdrop:  #BEDBB033;
+        
           }
 
           .violet {
@@ -252,6 +277,8 @@ export const GlobalStyles = () => {
             //variables for Header
             --header-bg-color: #ffffff;
             --header-name-color: #161616;
+            --header-user-fill: #ECEDFD;
+            --header-user-stroke: #FFFFFF;
             --header-theme-color: #161616CC;
             --header-theme-select-bg-color: #FCFCFC;
             --header-theme-select-border-color: #ECEDFD;
@@ -264,6 +291,10 @@ export const GlobalStyles = () => {
             --add-column-btn-bg-color: #ffffff;
             --add-column-btn-text-color: #161616;
             --add-column-btn-plus-bg-color: #5255BC;
+            --add-column-btn-plus-color: #FFFFFF; //vit
+            --new-dashboadr-text-color: #16161670; //vit
+            --new-dashboadr-text-accent-color: #5255BC; //vit
+
             //variables for HeaderDashboard
             --header-dashboard-title-color: #161616;
             --filter-text-color: #161616CC;
@@ -277,13 +308,14 @@ export const GlobalStyles = () => {
             --filter-high-color: #BEDBB0;
 
             //variables for columns
-            --vertical-scroll-bar-bg-color: #ffffff
-            --vertical-scroll-slider-bg-color: #B8BCFD;
+            --vertical-scroll-bar-bg-color: #B8BCFD;
+            --vertical-scroll-slider-bg-color: #ffffff;
             --horizontal-scroll-bar-bg-color: #ffffff;
             --horizontal-scroll-slider-bg-color: #B8BCFD;
             --column-add-btn-bg-color: #5255BC;
             --column-add-btn-bg-color-hover: #7B7EDE;
             --column-add-btn-text-color: #ffffff;
+            --column-add-btn-plus-color:#161616; //vit
             --column-add-btn-plus-bg-color: #ffffff;
 
             //variables for cards
@@ -292,9 +324,11 @@ export const GlobalStyles = () => {
             --card-primary-text-color: #161616B2;
             --card-secondary-text-color: #16161680;
             --card-icon-color: #16161680;
+            --card-border-color: #e8e8e8;
 
             //variables for modals
             --modal-bg-color: #FCFCFC;
+            --modal-window-shadow: rgba(22, 22, 22, 0.05);
             --modal-title-color: #161616;
             --modal-primary-text-color: #161616;
             --modal-secondary-text-color: #16161680;
@@ -302,21 +336,25 @@ export const GlobalStyles = () => {
             --modal-btn-bg-color: #5255BC;
             --modal-btn-bg-color-hover: #7B7EDE;
             --modal-btn-text-color: #ffffff;
-            --modal-button-plus-bg-color: #ffffff
+            --modal-button-plus-bg-color: #ffffff;
             --modal-input-bg-color: #FCFCFC;
             --modal-input-text-color: #161616;
-            --modal-input-placeholder-color: #1616164c;
+            --modal-input-placeholder-color: #161616;
             --modal-input-border-color: #5255BC;
             --modal-icon-color: #16161680;
             --modal-selected-icon-color: #161616;
-            --modal-plus-btn-bg-color: #5255BC;
+            --modal-plus-btn-bg-color :#ffffff;
             --modal-plus-btn-bg-color-hover: #7B7EDE;
+            --modal-selected-plus-color:#161616;
 
             //variables for progress popup
             --progress-popup-bg-color: #FCFCFC;
             --progress-popup-text-color: #161616;
             --progress-popup-text-color-hover: #5255BC;
+            // --progress-backdrop:  rgba(0, 0, 0, 0.3);
+            --progress-backdrop:  #5255BC33;
           }
+          
         `}
       />
     </>
