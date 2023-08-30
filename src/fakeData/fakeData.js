@@ -53,7 +53,7 @@ export const currentBoardForScreensPage = {
                   columnId: 'board-1-column-1',
                   text: 'Reflect on how to make the most of your time today.Brainstorm and develop creative concepts and ideas that align with the projects objectives, considering factors such as target audience, messaging, and visual representation',
                   priority: 'without',
-                  deadline: '2023-09-30',
+                  deadline: '2023-08-30',
                   order: '3',
               },
               {
@@ -63,7 +63,7 @@ export const currentBoardForScreensPage = {
                   columnId: 'board-1-column-1',
                   text: 'This is a new task description for testing',
                   priority: 'medium',
-                  deadline: '2023-10-15',
+                  deadline: '2023-08-30',
                   order: '4',
               },
               {
@@ -127,7 +127,7 @@ export const currentBoardForScreensPage = {
                   columnId: 'board-1-column-3',
                   text: 'Your task text here.Reflect on how to make the most of your time today. Reflect on how to make the most of your time today', // Replace with desired task text
                   priority: 'low',
-                  deadline: '2023-08-30',
+                  deadline: '2023-08-31',
                   order: '1',
               },
               {
@@ -137,7 +137,7 @@ export const currentBoardForScreensPage = {
                   columnId: 'board-1-column-3',
                   text: 'Your task text here', // Replace with desired task text
                   priority: 'high',
-                  deadline: '2023-08-31',
+                  deadline: '2023-08-30',
                   order: '2',
               },
           ],
@@ -169,33 +169,33 @@ export const currentBoardForScreensPage = {
               },
           ],
       },
-      {
-          _id: 'board-1-column-5',
-          title: 'column title 5',
-          boardId: 'board-1',
-          tasks: [
-              {
-                  _id: 'board-1-column-5-task-1',
-                  title: 'task title 1',
-                  boardId: 'board-1',
-                  columnId: 'board-1-column-5',
-                  text: 'Generate ideas for a new marketing campaign and create a brainstorming document with your findings. Consider target audience, messaging, and potential channels.',
-                  priority: 'high',
-                  deadline: '2023-09-15',
-                  order: '1',
-              },
-              {
-                  _id: 'board-1-column-5-task-2',
-                  title: 'task 2',
-                  boardId: 'board-1',
-                  columnId: 'board-1-column-5',
-                  text: 'Conduct a thorough analysis of the company\'s social media metrics for the past quarter. Identify trends, engagement rates, and areas for improvement.',
-                  priority: 'medium',
-                  deadline: '2023-09-20',
-                  order: '2',
-              },
-          ],
-      },
+    //   {
+    //       _id: 'board-1-column-5',
+    //       title: 'column title 5',
+    //       boardId: 'board-1',
+    //       tasks: [
+    //           {
+    //               _id: 'board-1-column-5-task-1',
+    //               title: 'task title 1',
+    //               boardId: 'board-1',
+    //               columnId: 'board-1-column-5',
+    //               text: 'Generate ideas for a new marketing campaign and create a brainstorming document with your findings. Consider target audience, messaging, and potential channels.',
+    //               priority: 'high',
+    //               deadline: '2023-09-15',
+    //               order: '1',
+    //           },
+    //           {
+    //               _id: 'board-1-column-5-task-2',
+    //               title: 'task 2',
+    //               boardId: 'board-1',
+    //               columnId: 'board-1-column-5',
+    //               text: 'Conduct a thorough analysis of the company\'s social media metrics for the past quarter. Identify trends, engagement rates, and areas for improvement.',
+    //               priority: 'medium',
+    //               deadline: '2023-09-20',
+    //               order: '2',
+    //           },
+    //       ],
+    //   },
     //   {
     //       _id: 'board-1-column-6',
     //       title: 'title column 6',

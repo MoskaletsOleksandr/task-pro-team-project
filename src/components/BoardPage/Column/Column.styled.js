@@ -57,10 +57,12 @@ overflow-y: auto;
 padding-right: 8px;
 width: 100%; 
 box-sizing: border-box;
+margin-right: 8px;
 
  
 ::-webkit-scrollbar {
   width: 8px;
+ 
 }
 
 ::-webkit-scrollbar-thumb {
@@ -72,7 +74,6 @@ box-sizing: border-box;
 ::-webkit-scrollbar-track {
   background-color: var(--vertical-scroll-slider-bg-color);
   border-radius: 4px;
-  margin-left: 16px;
   height: 130px;
 }
 `;
