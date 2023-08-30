@@ -13,7 +13,9 @@ const Board = () => {
       <DashboardContent>
         {currentBoardForScreensPage.columns.map(column => (
           <ColumnWrapper key={column._id}>
-            <Column title={column.title} tasks={column.tasks} />
+            <Column 
+            title={column.title} 
+            tasks={column.tasks} />
           </ColumnWrapper>
         ))}
       </DashboardContent>
