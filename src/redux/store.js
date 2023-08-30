@@ -29,4 +29,5 @@ export const persistor = persistStore(store, null, () => {
   if (token) {
     setToken(`Bearer ${token}`);
   }
+  return;
 });
