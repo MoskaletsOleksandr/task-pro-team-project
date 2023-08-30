@@ -13,7 +13,6 @@ export const FiltersTitle = styled.h2`
   font-size: 18px;
   line-height: 27px;
   letter-spacing: -0.24px;
-  /* letter-spacing: -0.02em; */
   color: var(--modal-title-color);
   border-bottom: 1px solid var(--modal-title-border-color);
 `;
