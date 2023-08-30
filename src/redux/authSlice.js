@@ -28,7 +28,7 @@ const initialState = {
   error: '',
   user: {},
   sentLetter: false,
-  isLoggedIn:false,
+  isLoggedIn: false,
 };
 
 const authSlice = createSlice({

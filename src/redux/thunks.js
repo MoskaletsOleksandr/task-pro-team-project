@@ -1,7 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { signUp, login, getTheme, logOut, sendHelpLetter } from 'api/api_auth/api';
-
-
+import {
+  signUp,
+  login,
+  getTheme,
+  logOut,
+  sendHelpLetter,
+} from 'api/api_auth/api';
 
 export const SignUpThunk = createAsyncThunk(
   'auth/signup',
@@ -65,24 +69,24 @@ export const GetThemeThunk = createAsyncThunk(
   }
 );
 
+export const SendLetterThunk = createAsyncThunk(
+  'user/sendLetter',
+  async (body, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const currentToken = state.auth.token;
 
-export const SendLetterThunk=createAsyncThunk('user/sendLetter',async(body,thunkAPI)=>{
-  const state = thunkAPI.getState();
-  const currentToken = state.auth.token;
-  
-  if (currentToken === '') {
-    return thunkAPI.rejectWithValue('Unable to fetch user');
-  }
+    if (currentToken === '') {
+      return thunkAPI.rejectWithValue('Unable to fetch user');
+    }
 
-  try {
-   
-    const data = await sendHelpLetter(body);
-    return data;
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    try {
+      const data = await sendHelpLetter(body);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
-}
-)
+);
 
 // export const refreshUser = createAsyncThunk(
 //   'auth/refresh',
