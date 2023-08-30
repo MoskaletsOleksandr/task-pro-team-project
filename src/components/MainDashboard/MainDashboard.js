@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import {
-  useDispatch,
-  useSelector,
-} from 'react-redux';
+import // useDispatch,
+// useSelector,
+'react-redux';
 import sprite from '../../images/sprite.svg';
 // import { useSelector } from 'react-redux';
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 import { currentBoardForScreensPage } from '../../fakeData/fakeData';
 import Column from '../../components/BoardPage/Column/Column';
 import Board from '../../components/BoardPage/Board/Board';
@@ -23,11 +22,11 @@ import {
   WrapSvg,
 } from './MainDashboard.styled';
 
-import {
-  createNewBoardThunk,
-  createNewColumnThunk,
-  getCurrentBoardThunk,
-} from 'redux/dashboards/thunks';
+// import {
+//   createNewBoardThunk,
+//   createNewColumnThunk,
+//   getCurrentBoardThunk,
+// } from 'redux/dashboards/thunks';
 
 const MainDashboard = () => {
   const [showTestModal, setShowTestModal] = useState(false);
@@ -36,7 +35,6 @@ const MainDashboard = () => {
   );
   const [newColumnTitle, setNewColumnTitle] = useState('');
 
-
   const toggleModal = () => {
     setShowTestModal(prevShowTestModal => !prevShowTestModal);
     if (!showTestModal) {
@@ -44,11 +42,10 @@ const MainDashboard = () => {
     }
   };
 
-  const handleCreateNewColumn = (newColumn) => {
+  const handleCreateNewColumn = newColumn => {
     setCurrentColumns(prevColumns => [...prevColumns, newColumn]);
     toggleModal();
   };
-
 
   const handleFilters = e => {
     alert('Handle Button Filters');
