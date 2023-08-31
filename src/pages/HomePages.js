@@ -14,7 +14,7 @@ import {
 
 // import ScreensPage from 'components/ScreensPage/ScreensPage';
 import Sidebar from 'components/Sidebar/Sidebar';
-// import { TestNewBoardModal } from 'TestNewBoardModal/TestNewBoardModal';
+import { TestNewBoardModal } from 'TestNewBoardModal/TestNewBoardModal';
 // import Backdrop from '../components/Sidebar/Backdrop';
 
 const HomePage = () => {
@@ -35,12 +35,11 @@ const HomePage = () => {
   }, []);
   
   const [showSidebar, setShowSidebar] = useState(true);
+  const [showTestModal, setShowTestModal] = useState(false);
 
-  // const [showTestModal, setShowTestModal] = useState(false);
-
-  // const toggleModal = () => {
-  //   setShowTestModal(prevShowTestModal => !prevShowTestModal);
-  // };
+  const toggleModal = () => {
+    setShowTestModal(prevShowTestModal => !prevShowTestModal);
+  };
 
   // const dispatch = useDispatch();
 
@@ -117,7 +116,9 @@ const HomePage = () => {
         >
           <Header openSidebar={openSidebar} />
           <Outlet />
-          {/* <button
+
+          <button
+
             onClick={toggleModal}
             style={{
               position: 'absolute',
@@ -134,7 +135,9 @@ const HomePage = () => {
               closeModal={toggleModal}
               isOpen={showTestModal}
             />
-          )} */}
+
+          )}
+
           {/* <ScreensPage /> */}
         </div>
       </div>
