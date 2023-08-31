@@ -14,17 +14,13 @@ function BoardList() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const boards = useSelector(state => state.boards.boards);
-  console.log(boards);
-  useEffect(() => {
-    // Виконуємо запит за поточною дошкою
-    dispatch(getCurrentBoardThunk(boardName));
-  }, [dispatch, boardName]);
+
   useEffect(() => {
     dispatch(getAllBoardsThunk());
   }, [dispatch]);
 
   const handleOpenBoard = (id, title) => {
-    console.log(id);
+    console.log('id:', id);
     dispatch(getCurrentBoardThunk(id));
 
     const normalizedTitle = title.toLowerCase().replace(/\s+/g, '-');
