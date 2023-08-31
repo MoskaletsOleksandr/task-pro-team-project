@@ -15,6 +15,7 @@ import {
 
 // import ScreensPage from 'components/ScreensPage/ScreensPage';
 import Sidebar from 'components/Sidebar/Sidebar';
+import ModalAddEditCard from 'components/Modals/ModalAddEditCard/ModalAddEditCard';
 // import Backdrop from '../components/Sidebar/Backdrop';
 
 const HomePage = () => {
@@ -70,6 +71,7 @@ const HomePage = () => {
         >
           <Header onToggleSidebar={toggleSidebar} />
           <Outlet />
+          <ModalAddEditCard/>
           {/* <ScreensPage /> */}
         </div>
       </div>
