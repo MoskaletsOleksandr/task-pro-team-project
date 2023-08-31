@@ -21,6 +21,7 @@ import {
   PriorityInfo,
   PopUpMenu,
   Backdrop,
+  BackDropHiden
 } from '../Card/Card.styled';
 import CustomPopUpItem from '../PopUp/PopUp';
 import sprite from '../../../images/sprite.svg';
@@ -98,10 +99,16 @@ const TaskCard = ({ taskId, togglePopUpMenu, isPopupOpen }) => {
       </CardContentWrapper>
 
       {isPopupOpen && (
+        // Vit
+       <> 
+        <BackDropHiden onClick={() => togglePopUpMenu(taskId)}>
+           </BackDropHiden>
         <Backdrop
           backgroundColor={priorityBorderColor}
           onClick={() => togglePopUpMenu(taskId)}
         />
+       </>
+       
       )}
       {isPopupOpen && (
         <PopUpMenu>
