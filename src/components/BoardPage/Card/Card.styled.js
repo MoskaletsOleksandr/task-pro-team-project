@@ -27,7 +27,7 @@ const TruncatedText = styled.div`
   font-weight: 400;
   letter-spacing: -0.24px;
   margin-top: 8px;
-  line-height: 1.4;
+  line-height: 1.5;
   height:38px;
   border-bottom: 1px solid var(--card-border-color);
 `;
