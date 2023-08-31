@@ -18,6 +18,11 @@ export const logOut = async () => {
   return response;
 };
 
+export const getCurrentUser=async body=>{
+  const response=await authInstance.get('users/current');
+  return response;
+}
+
 //theme
 export const getTheme = async body => {
   const response = await authInstance.patch('users/{id}/theme', body);

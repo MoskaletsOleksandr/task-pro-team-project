@@ -4,8 +4,9 @@ import {
   login,
   getTheme,
   logOut,
-  sendHelpLetter,
+  sendHelpLetter,getCurrentUser,
 } from 'api/api_auth/api';
+import { setToken } from 'api/axiosConfig';
 
 export const SignUpThunk = createAsyncThunk(
   'auth/signup',
@@ -34,13 +35,15 @@ export const SignInThunk = createAsyncThunk(
 export const LogOutThunk = createAsyncThunk(
   'auth/logOut',
   async (_, thunkAPI) => {
-    // const state = thunkAPI.getState();
-    // const currentToken = state.auth.token;
+    const state = thunkAPI.getState();
+    const currentToken = state.auth.token;
 
-    // if (currentToken === '') {
-    //   return thunkAPI.rejectWithValue('Unable to fetch user');
-    // }
+    if (currentToken === '') {
+      return thunkAPI.rejectWithValue('Unable to fetch user');
+    }
     try {
+    setToken(`Bearer ${currentToken}`)
+      
       const data = await logOut();
       return data;
     } catch (error) {
@@ -88,25 +91,26 @@ export const SendLetterThunk = createAsyncThunk(
   }
 );
 
-// export const refreshUser = createAsyncThunk(
-//   'auth/refresh',
-//   async (_, thunkAPI) => {
-//     // Reading the token from the state via getState()
-//     const state = thunkAPI.getState();
-//     const persistedToken = state.auth.token;
+export const refreshUserThunk = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    // Reading the token from the state via getState()
+    const state = thunkAPI.getState();
+    const currentToken = state.auth.token;
+    const currentEmail=state.auth.user.email
 
-//     if (persistedToken === null) {
-//       // If there is no token, exit without performing any request
-//       return thunkAPI.rejectWithValue('Unable to fetch user');
-//     }
+    if (currentToken === null) {
+      // If there is no token, exit without performing any request
+      return thunkAPI.rejectWithValue('Unable to fetch user');
+    }
 
-//     try {
-//       // If there is a token, add it to the HTTP header and perform the request
-//       setAuthHeader(persistedToken);
-//       const res = await axios.get('/users/me');
-//       return res.data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
+    try {
+      // If there is a token, add it to the HTTP header and perform the request
+      setToken(`Bearer ${currentToken}`)
+      const data = await getCurrentUser(currentEmail);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
