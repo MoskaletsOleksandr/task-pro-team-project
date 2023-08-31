@@ -21,7 +21,7 @@ const Column = ({ title, tasks, newColumnTitle }) => {
     setShowTestModal(prevShowTestModal => !prevShowTestModal);
   };
 
-  const togglePopUpMenu = (clickedTaskId) => {
+  const togglePopUpMenu = clickedTaskId => {
     if (clickedTaskId === openTaskId) {
       setOpenTaskId(null);
     } else {

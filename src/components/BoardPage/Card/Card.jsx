@@ -1,5 +1,4 @@
-import React from // ,{ useState }
-  'react';
+import React from 'react'; // ,{ useState }
 import LinesEllipsis from 'react-lines-ellipsis';
 import { currentBoardForScreensPage } from '../../../fakeData/fakeData';
 import {
@@ -21,13 +20,13 @@ import {
   PriorityInfo,
   PopUpMenu,
   Backdrop,
-  BellIcon
+  BackDropHiden,
+  BellIcon,
 } from '../Card/Card.styled';
 import CustomPopUpItem from '../PopUp/PopUp';
 import sprite from '../../../images/sprite.svg';
 
 const TaskCard = ({ taskId, togglePopUpMenu, isPopupOpen }) => {
-
   const today = new Date().toISOString().slice(0, 10);
 
   const selectedTask = currentBoardForScreensPage.columns
@@ -109,10 +108,16 @@ const TaskCard = ({ taskId, togglePopUpMenu, isPopupOpen }) => {
       </CardContentWrapper>
 
       {isPopupOpen && (
-        <Backdrop
-          backgroundColor={priorityBorderColor}
-          onClick={() => togglePopUpMenu(taskId)}
-        />
+        // Vit
+        <>
+          <BackDropHiden
+            onClick={() => togglePopUpMenu(taskId)}
+          ></BackDropHiden>
+          <Backdrop
+            backgroundColor={priorityBorderColor}
+            onClick={() => togglePopUpMenu(taskId)}
+          />
+        </>
       )}
       {isPopupOpen && (
         <PopUpMenu>
