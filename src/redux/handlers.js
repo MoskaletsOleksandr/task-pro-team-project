@@ -12,7 +12,6 @@ export const handleThunkPending = (state, { payload }) => {
 export const handleThunkRejected = (state, { error, payload }) => {
   state.error = error ? error.message : payload;
   state.isLoading = false;
-  
 };
 export const handleSignInFulfilled = (state, { payload }) => {
   state.token = payload.token;
@@ -30,12 +29,10 @@ export const handleLogOutFulfilled = (state, { payload }) => {
 export const handleLogOutPending = (state, { payload }) => {
   state.isLoading = true;
   state.error = null;
-  
 };
 export const handleLogOutRejected = (state, { error, payload }) => {
   state.error = error ? error.message : payload;
   state.isLoading = false;
-  
 };
 export const handleGetThemeFulfilled = (state, { payload }) => {
   state.user.theme = payload.theme;
@@ -67,7 +64,7 @@ export const handleSendLetterThunkRejected = (state, { error, payload }) => {
 };
 
 export const handleGetCurrentUserThunkFulfilled = (state, { payload }) => {
-  state.token = payload.token;
+  state.token = payload.user.token;
   state.user = payload.user;
   state.isLoading = false;
   state.isLoggedIn = true;
