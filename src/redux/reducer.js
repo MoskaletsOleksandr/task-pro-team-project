@@ -7,12 +7,23 @@ import storage from 'redux-persist/lib/storage';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'user'],
 };
 
-const persistedReducer = persistReducer(authPersistConfig, authReducer);
+const boardsPersistConfig = {
+  key: 'boards',
+  storage,
+  whitelist: ['currentBoard'],
+};
+
+const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
+
+const persistedBoardsReducer = persistReducer(
+  boardsPersistConfig,
+  boardsReducer
+);
 
 export const reducer = combineReducers({
-  auth: persistedReducer,
-  boards: boardsReducer,
+  auth: persistedAuthReducer,
+  boards: persistedBoardsReducer,
 });

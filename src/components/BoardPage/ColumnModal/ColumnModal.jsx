@@ -9,6 +9,7 @@ const ColumnModal = ({ closeModal, isOpen, name, newColumnTitle }) => {
   const [inputValue, setInputValue] = useState(newColumnTitle);
   const dispatch = useDispatch();
   const boardId = useSelector(state => state.boards.currentBoard._id);
+  console.log(boardId);
   const handleInputChange = e => {
     setInputValue(e.target.value);
   };

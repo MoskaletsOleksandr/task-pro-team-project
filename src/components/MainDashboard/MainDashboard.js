@@ -9,7 +9,8 @@ import { currentBoardForScreensPage } from '../../fakeData/fakeData';
 import Column from '../../components/BoardPage/Column/Column';
 import Board from '../../components/BoardPage/Board/Board';
 import ColumnModal from '../../components/BoardPage/ColumnModal/ColumnModal';
-// import AddNewCard from 'components/BoardPage/AddNewCardBtn/AddNewCardBtn';
+import FiltersModal from 'components/ModalFilters/FilterModal';
+
 import {
   Section,
   SectionTitle,
@@ -21,6 +22,7 @@ import {
   SectionBoards,
   WrapSvg,
 } from './MainDashboard.styled';
+import Modal from 'components/Modal/Modal';
 
 // import {
 //   createNewBoardThunk,
@@ -30,11 +32,12 @@ import {
 
 const MainDashboard = () => {
   const [showTestModal, setShowTestModal] = useState(false);
+
   const [currentColumns, setCurrentColumns] = useState(
     currentBoardForScreensPage.columns
   );
   const [newColumnTitle, setNewColumnTitle] = useState('');
-
+  console.log(newColumnTitle);
   const toggleModal = () => {
     setShowTestModal(prevShowTestModal => !prevShowTestModal);
     if (!showTestModal) {
@@ -47,21 +50,33 @@ const MainDashboard = () => {
     toggleModal();
   };
 
-  const handleFilters = e => {
-    alert('Handle Button Filters');
+  // Filters Modal
+  const [showFiltersModal, setShowFiltersModal] = useState(false);
+  const toggleFiltersModal = () => {
+    setShowFiltersModal(prevShowFiltersModal => !prevShowFiltersModal);
   };
 
   return (
     <Section>
       <SectionTitle>
         <Title>Project office</Title>
-        <BtnFilters type="submit" onClick={handleFilters}>
+        <BtnFilters type="submit" onClick={toggleFiltersModal}>
           <SvgIconFilters>
             <use href={sprite + '#icon-filter'}></use>
           </SvgIconFilters>
           Filter
         </BtnFilters>
       </SectionTitle>
+      {/* FilterModal */}
+      {showFiltersModal && (
+        <Modal
+          onClose={toggleFiltersModal}
+          isOpen={showFiltersModal}
+          children={<FiltersModal />}
+        />
+      )}
+
+      {/* <FiltersModal /> */}
 
       <SectionBoards>
         <Board>

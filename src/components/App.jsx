@@ -8,6 +8,10 @@ import { Suspense, lazy } from 'react';
 import Loader from './Loader/Loader';
 import PublicRouter from './PublicRouter/PublicRouter';
 import PrivateRouter from './PrivateRouter/PrivateRouter';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { GetCurrentUserThunk } from 'redux/thunks';
+
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 const AuthPage = lazy(() => import('../pages/AuthPage/AuthPage'));
@@ -15,6 +19,12 @@ const HomePage = lazy(() => import('./../pages/HomePages'));
 const ScreenPage = lazy(() => import('pages/ScreenPage/ScreenPage'));
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(GetCurrentUserThunk());
+  }, [dispatch]);
+
   return (
     <Suspense fallback={<Loader />}>
       <GlobalStyles />

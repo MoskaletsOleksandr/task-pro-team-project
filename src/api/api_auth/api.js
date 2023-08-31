@@ -18,6 +18,11 @@ export const logOut = async () => {
   return response;
 };
 
+export const getCurrentUser = async body => {
+  const response = await authInstance.get('users/current');
+  return response;
+};
+
 //theme
 export const getTheme = async body => {
   const response = await authInstance.patch('users/{id}/theme', body);
@@ -26,7 +31,7 @@ export const getTheme = async body => {
 
 // help letter
 
-export const sendHelpLetter=async body=>{
-  const response= await authInstance.post('/users/letter',body);
+export const sendHelpLetter = async body => {
+  const response = await authInstance.post('/users/letter', body);
   return response.data;
-}
+};

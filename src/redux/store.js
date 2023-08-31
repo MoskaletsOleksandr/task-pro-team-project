@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { setToken } from 'api/axiosConfig';
 import { persistStore } from 'redux-persist';
 import {
   FLUSH,
@@ -21,13 +20,4 @@ export const store = configureStore({
     }),
 });
 
-// export const persistor = persistStore(store);
-
-export const persistor = persistStore(store, null, () => {
-  const token = store.getState().auth.token;  
-  console.log('token:', token);
-  if (token) {
-    setToken(`Bearer ${token}`);
-  }
-  return;
-});
+export const persistor = persistStore(store);
