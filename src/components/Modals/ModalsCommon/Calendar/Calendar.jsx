@@ -1,36 +1,34 @@
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
 
 import sprite from '../../../../images/sprite.svg';
 import SvgModal from '../SvgModal';
+import { DesktopDatePicker } from '@mui/x-date-pickers';
 
 export const Calendar = ({ deadline }) => {
   dayjs().format();
 
-  // console.log(deadline);
-  // console.log(Date.parse('Aug 24 2023'));
-
-  // const today = new Date().toISOString().slice(0, 10); В такому форматі передавати час!!!
-  // console.log(new Date().toISOString())
-
   return (
     <>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DatePicker
-          // defaultValue={dayjs('2022-04-17')}
+        <DesktopDatePicker
+          //  {/* <DatePicker */}
+          defaultValue={dayjs(new Date())}
           views={['month', 'day']}
+          disablePast={true}
           onChange={date => {
-            // const newDate = String(date.$d).split(' ').splice(1, 3).join()
             const newDate = String(date.$d).split(' ').splice(1, 3).join(' ');
-            // console.log(new Date(newDate).toISOString())
             const newDateIso = new Date(newDate).toISOString().slice(0, 19);
             deadline(newDateIso);
           }}
           slots={{
             openPickerIcon: () => (
-              <SvgModal>
+              <SvgModal
+                stroke="var(--modal-date-text-color)"
+                width="18px"
+                height="18px"
+              >
                 <use href={sprite + '#icon-chevron-down'} />
               </SvgModal>
             ),
@@ -40,7 +38,7 @@ export const Calendar = ({ deadline }) => {
               sx: {
                 borderRadius: '8px',
                 color: 'var(--modal-primary-text-color)',
-                backgroundColor: 'var(--modal-input-bg-color)',
+                backgroundColor: 'var(--modal-calendar-bg-color)',
                 '& .MuiPickersCalendarHeader-labelContainer': {
                   position: 'absolute',
                   left: '50%',
@@ -49,14 +47,24 @@ export const Calendar = ({ deadline }) => {
                 '& .MuiPickersCalendarHeader-label': {
                   fontSize: '16px',
                   fontWeight: '500',
+                  textAlign: ' center',
+                  width: '125px',
+                },
+                '& .MuiPickersCalendarHeader-root': {
+                  width: '100%',
+                  padding: '0',
+
+                  margin: '0',
+                  borderBottomWidth: '2px',
+                  borderBottomStyle: 'solid',
                 },
                 '& .MuiPickersArrowSwitcher-root': {
-                  width: '189px',
+                  width: '190px',
                   justifyContent: 'space-between',
                 },
                 '& .MuiSvgIcon-root': {
                   fill: 'var(--modal-primary-text-color)',
-                  height: '10px',
+                  height: '18px',
                 },
                 '& .MuiTypography-root': {
                   color: 'var(--modal-secondary-text-color)',
@@ -77,20 +85,11 @@ export const Calendar = ({ deadline }) => {
                   fontWeight: '400',
                   lineHeight: '18px',
                 },
-                '& .MuiPickersCalendarHeader-root': {
-                  width: '100%',
-                  padding: '0',
-
-                  margin: '0',
-                  borderBottomWidth: '2px',
-                  borderBottomStyle: 'solid',
-                },
                 '& .MuiDateCalendar-root': {
                   width: '233px',
                   height: '254px',
                   padding: '18px',
                   boxSizing: 'border-box',
-                  background: '',
                 },
 
                 '& .MuiPickersDay-hiddenDaySpacingFiller': {
@@ -124,10 +123,15 @@ export const Calendar = ({ deadline }) => {
               variant: 'outlined',
               sx: {
                 '& input': {
-                  width: '105px',
-                  height: '23px',
+                  // display: 'none'
+                  width: '103px',
+                  height: '16px',
                   color: 'var(--modal-date-text-color)',
+                  fontFamily: 'Poppins, sans-serif',
                   fontSize: '14px',
+                  fontWeight: '500',
+                  padding: '0px',
+                  margin: '0px',
                 },
                 '& fieldset': { border: 'none' },
               },

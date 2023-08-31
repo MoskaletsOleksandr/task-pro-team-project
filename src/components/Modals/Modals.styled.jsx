@@ -5,7 +5,7 @@ export const ModalTitle = styled.p`
   font-weight: ${props => props.fontWeight || '500'};
   line-height: ${props => props.lineHeight || '1.2'};
   margin-bottom: ${props => props.marginBottom || '24px'};
-  color: ${props => props.color || 'var(--modal-title-color)'}; 
+  color: ${props => props.color || 'var(--modal-title-color)'};
 `;
 
 export const ModalLabel = styled.label`
@@ -17,26 +17,28 @@ export const ModalLabel = styled.label`
 `;
 
 export const ModalInput = styled.input`
-display: ${props => props.display || 'flex'};
+  display: ${props => props.display || 'flex'};
   width: ${props => props.width || '100%'};
   max-width: ${props => props.maxWidth || '302px'};
   height: ${props => props.height || '46px'};
-  border: ${props => props.border || '1px solid var(--modal-input-border-color)'};
-  border-radius: ${props => props.borderRadius || '8px'};    
-  padding-top: ${props => props.padding || '14px'};  
-  padding-right: ${props => props.padding || '18px'};  
-  padding-bottom: ${props => props.padding || '14px'};  
-  padding-left: ${props => props.padding || '18px'};  
+  border: ${props =>
+    props.border || '1px solid var(--modal-input-border-color)'};
+  border-radius: ${props => props.borderRadius || '8px'};
+  padding-top: ${props => props.padding || '14px'};
+  padding-right: ${props => props.padding || '18px'};
+  padding-bottom: ${props => props.padding || '14px'};
+  padding-left: ${props => props.padding || '18px'};
   font-size: ${props => props.fontSize || '14px'};
   line-height: ${props => props.lineHeight || '1.2'};
-  background-color: ${props => props.backgroundColor || 'var(--modal-input-bg-color)'};
+  background-color: ${props =>
+    props.backgroundColor || 'var(--modal-input-bg-color)'};
   color: ${props => props.color || 'var(--modal-input-text-color)'};
   outline: transparent;
-    opacity: 0.4;
-    transition: opacity var(--timing-function);
+  opacity: 0.4;
+  transition: opacity var(--timing-function);
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
   cursor: text;
-  
+
   &:hover,
   &:focus {
     border-color: var(--modal-input-border-color);
@@ -45,26 +47,28 @@ display: ${props => props.display || 'flex'};
 `;
 
 export const ModalTextarea = styled.textarea`
-/* display: ${props => props.display || 'flex'}; */
+  /* display: ${props => props.display || 'flex'}; */
   width: ${props => props.width || '100%'};
   max-width: ${props => props.maxWidth || '352px'};
   height: ${props => props.height || '120px'};
-  border: ${props => props.border || '1px solid var(--modal-input-border-color)'};
-  border-radius: ${props => props.borderRadius || '8px'};    
-  padding-top: ${props => props.padding || '14px'};  
-  padding-right: ${props => props.padding || '18px'};  
-  padding-bottom: ${props => props.padding || '14px'};  
-  padding-left: ${props => props.padding || '18px'};  
+  border: ${props =>
+    props.border || '1px solid var(--modal-input-border-color)'};
+  border-radius: ${props => props.borderRadius || '8px'};
+  padding-top: ${props => props.padding || '14px'};
+  padding-right: ${props => props.padding || '18px'};
+  padding-bottom: ${props => props.padding || '14px'};
+  padding-left: ${props => props.padding || '18px'};
   font-size: ${props => props.fontSize || '14px'};
   line-height: ${props => props.lineHeight || '1.2'};
   background-color: var(--modal-input-bg-color);
   color: var(--modal-input-text-color);
   outline: transparent;
-    opacity: 0.4;
-    transition: opacity var(--timing-function);
+  opacity: 0.4;
+  transition: opacity var(--timing-function);
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+  resize: ${props => props.resize || 'none'};
   cursor: text;
-  
+
   &:hover,
   &:focus {
     border-color: var(--modal-input-border-color);
@@ -73,83 +77,77 @@ export const ModalTextarea = styled.textarea`
 `;
 
 export const ModalSvg = styled.svg`
-width: ${props => props.width || '18px'};
-height: ${props => props.height || '18px'};
-stroke: ${props => props.stroke || 'var(--modal-selected-plus-color)'};
-cursor: pointer;
-&:hover,
+  width: ${props => props.width || '18px'};
+  height: ${props => props.height || '18px'};
+  stroke: ${props => props.stroke || 'var(--modal-selected-plus-color)'};
+  cursor: pointer;
+  &:hover,
   &:focus,
   &:checked {
-    stroke: ${props => props.stroke || 'var(--modal-selected-plus-color)'};    
-   }
-
+    stroke: ${props => props.stroke || 'var(--modal-selected-plus-color)'};
+  }
 `;
 
 export const ModalWrapperComponent = styled.div`
-display: ${props => props.display || 'flex'};
-justify-content: ${props => props.justifyContent || 'start'};
-align-items: ${props => props.alignItems || 'center'};
-flex-wrap: ${props => props.flexWrap || 'wrap'};
-gap: ${props => props.gap || '8px'};
-max-width: ${props => props.maxWidth || '100%'};
-margin-bottom: ${props => props.marginBottom || '24px'};
+  display: ${props => props.display || 'flex'};
+  justify-content: ${props => props.justifyContent || 'start'};
+  align-items: ${props => props.alignItems || 'center'};
+  flex-wrap: ${props => props.flexWrap || 'wrap'};
+  gap: ${props => props.gap || '8px'};
+  max-width: ${props => props.maxWidth || '100%'};
+  margin-bottom: ${props => props.marginBottom || '24px'};
 `;
 
 export const ModalImg = styled.div`
-position: relative;
-width: ${props => props.width || '28px'};
-height: ${props => props.height || '28px'};
-background-color: ${props => props.backgroundColor || 'transparent'};
-border: ${props => props.border || '1px solid var(--modal-input-border-color)'};
-border-radius: ${props => props.borderRadius || '6px'};
-cursor: pointer;
-
-/* &:after {
-  content: '';
-  position: absolute;       
-  padding-top: '100%';
-  border: ${props => props.border || '10px solid red'};
-  background-color: ${props => props.backgroundColor || 'red'};
-  color: ${props => props.color || 'red'};
-  display: 'inline-block';
-} */
+  position: relative;
+  width: ${props => props.width || '28px'};
+  height: ${props => props.height || '28px'};
+  background-color: ${props => props.backgroundColor || 'transparent'};
+  border: ${props =>
+    props.border || '1px solid var(--modal-input-border-color)'};
+  border-radius: ${props => props.borderRadius || '6px'};
+  cursor: pointer; 
 `;
 
 export const ModalButton = styled.button`
-position: ${props => props.position || 'static'};
-top: ${props => props.top || '0px'};
-right: ${props => props.right || '0px'};;
-display: ${props => props.display || 'flex'};
-justify-content: ${props => props.justifyContent || 'center'};
-align-items: ${props => props.alignItems || 'center'};
-width: ${props => props.width || '100%'};
-height: ${props => props.height || '49px'};  
-padding: ${props => props.padding || '10px 0px'};
+  position: ${props => props.position || 'static'};
+  top: ${props => props.top || '0px'};
+  right: ${props => props.right || '0px'};
+  display: ${props => props.display || 'flex'};
+  justify-content: ${props => props.justifyContent || 'center'};
+  align-items: ${props => props.alignItems || 'center'};
+  width: ${props => props.width || '100%'};
+  height: ${props => props.height || '49px'};
+  padding: ${props => props.padding || '10px 0px'};
   border: ${props => props.border || 'none'};
   border-radius: ${props => props.borderRadius || '8px'};
   font-family: 'Poppins', sans-serif;
-    font-weight: ${props => props.fontWeight || '500'};
+  font-weight: ${props => props.fontWeight || '500'};
   font-size: ${props => props.fontSize || '14px'};
   line-height: ${props => props.lineHeight || '1.2'};
-  background-color: ${props => props.backgroundColor || 'var(--modal-btn-bg-color)'};
+  background-color: ${props =>
+    props.backgroundColor || 'var(--modal-btn-bg-color)'};
   color: ${props => props.color || 'var(--modal-btn-text-color)'};
+  margin-top: ${props => props.marginTop || '0px'};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-  
+
   &:hover,
   &:focus {
-    background-color: ${props => props.backgroundColorHover || 'var(--modal-btn-bg-color-hover)'};
+    background-color: ${props =>
+      props.backgroundColorHover || 'var(--modal-btn-bg-color-hover)'};
     outline: none;
-    }
+  }
 `;
 
 export const ModalSvgPlus = styled.div`
-display: ${props => props.display || 'flex'};
-justify-content: ${props => props.justifyContent || 'start'};
-align-items: ${props => props.alignItems || 'center'};
-width: ${props => props.width || '28px'};
-height: ${props => props.height || '28px'};
-padding: ${props => props.padding || '7px'};
-background-color: ${props => props.backgroundColor || 'var(--modal-plus-btn-bg-color)'};
-border-radius: ${props => props.borderRadius || '8px'};
-margin-right: ${props => props.marginRight || '8px'};
+  display: ${props => props.display || 'flex'};
+  justify-content: ${props => props.justifyContent || 'start'};
+  align-items: ${props => props.alignItems || 'center'};
+  width: ${props => props.width || '28px'};
+  height: ${props => props.height || '28px'};
+  padding: ${props => props.padding || '7px'};
+  background-color: ${props =>
+    props.backgroundColor || 'var(--modal-plus-btn-bg-color)'};
+  border-radius: ${props => props.borderRadius || '8px'};
+  margin-right: ${props => props.marginRight || '8px'};
 `;

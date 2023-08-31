@@ -1,6 +1,5 @@
 import { Modal } from 'components/common/Modal';
-
-import ButtonCloseModal from '../ModalsCommon/ButtonCloseModal';
+import sprite from '../../../images/sprite.svg';
 import { Formik, Form } from 'formik';
 import TitleModal from '../ModalsCommon/TitleModal';
 import LabelModal from '../ModalsCommon/LabelModal';
@@ -10,47 +9,54 @@ import ImgModal from '../ModalsCommon/ImgModal';
 import WrapperComponentModal from '../ModalsCommon/WrapperComponentModal';
 import ButtonPlusModal from '../ModalsCommon/ButtonPlusModal';
 import { Calendar } from '../ModalsCommon/Calendar/Calendar';
-import { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { selectAllBoards } from 'redux/dashboards/selectors';
-import { useDispatch, useSelector } from 'react-redux';
-import { getCurrentBoardThunk } from 'redux/dashboards/thunks';
+import { useEffect, useState } from 'react';
+import { CloseButton, CloseSVG } from 'components/Modal/Modal.styled';
+import { radioButtons } from './radioBattons';
 
 const ModalAddEditCard = ({ closeModal, nameButton }) => {
-  // const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
 
-  const radioButtons = [
-    { priority: 'low', color: '#8FA1D0' },
-    { priority: 'medium', color: '#E09CB5' },
-    { priority: 'high', color: '#BEDBB0' },
-    { priority: 'without', color: 'rgba(255, 255, 255, 0.3)' },
-  ];
+  //   ------------ Підключення модалки ---------------
+  //   ================================================
+
+  // 1. Перенести в компонент, в якому підключається модалка
+  //   const [showModal, setShowModal] = useState(false);
+  //   const [nameButton, setNameButton] = useState('');
+
+  //   const openModal = (e) => {
+  //     setNameButton(e.target.name);
+  //     setShowModal(true);
+  //   }
+
+  // const closeModal = () => {
+  //   setShowModal(false);
+  // }
+
+  // 2. В nameButton === 'edit' в useEffect, має бути name однієї з кнопок, що відкриває модалку
+
+  useEffect(() => {
+    if (nameButton === 'edit') {
+      setVisible(true);
+    }
+  }, [nameButton]);
 
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [priority, setPriority] = useState('without');
   const [deadline, setDeadline] = useState('');
 
-  const dispatch = useDispatch()
-  const selector = useSelector(selectAllBoards)
-dispatch(getCurrentBoardThunk)
-
-console.log(dispatch(getCurrentBoardThunk));
-  
-  console.log(selector);
-  // useEffect(() => {
-  //   if(nameButton === 'edit') {
-  //     setVisible(true);
-  //   }
-  // }, [nameButton]);
+  // const dispatch = useDispatch()
+  // const selector = useSelector(selectAllBoards)
 
   const handleChangeTitle = e => {
     const { value } = e.currentTarget;
+
     setTitle(value);
   };
 
   const handleChangeDescription = e => {
     const { value } = e.currentTarget;
+
     setText(value);
   };
 
@@ -60,12 +66,14 @@ console.log(dispatch(getCurrentBoardThunk));
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (!title) {
+    if (title.trim() === '') {
       alert('Enter title');
       return;
-    } else if (!text) {
+    } else if (text.trim() === '') {
       alert('Enter Description');
       return;
+    } else if (!deadline) {
+      alert('Select date');
     } else {
       console.log(title);
       console.log(text);
@@ -84,17 +92,20 @@ console.log(dispatch(getCurrentBoardThunk));
   return (
     <Modal width="350px" height="522px" onClose={closeModal}>
       <>
-        <ButtonCloseModal onClick={closeModal} />
+        <CloseButton onClick={closeModal}>
+          <CloseSVG>
+            <use href={sprite + '#icon-x-close'}></use>
+          </CloseSVG>
+        </CloseButton>
         <Formik>
           <Form autoComplete="off">
-            <TitleModal>Add card</TitleModal>
+            <TitleModal>{!visible ? 'Add card' : 'Edit card'}</TitleModal>
             <LabelModal>
               <InputModal
                 onChange={handleChangeTitle}
                 value={title}
                 type="text"
                 name="modalAddEditCardTitle"
-                // pattern={pattern}
                 title="Enter title"
                 required
                 placeholder="Title"
@@ -106,7 +117,6 @@ console.log(dispatch(getCurrentBoardThunk));
                 value={text}
                 type="text"
                 name="modalDescription"
-                // pattern={pattern}
                 title="Enter title"
                 required
                 placeholder="Comment"
@@ -129,7 +139,7 @@ console.log(dispatch(getCurrentBoardThunk));
             >
               {radioButtons.map(({ priority, color }) => {
                 return (
-                  <LabelModal marginBottom="0px">
+                  <LabelModal key={priority} marginBottom="0px">
                     <InputModal
                       onChange={onChangeColor}
                       checked={priority === { priority } ? true : false}
@@ -137,7 +147,7 @@ console.log(dispatch(getCurrentBoardThunk));
                       name="labelColor"
                       value={priority}
                       display="none"
-                      aria-label = {priority}
+                      aria-label={priority}
                     />
                     <ImgModal
                       width="14px"
@@ -157,13 +167,26 @@ console.log(dispatch(getCurrentBoardThunk));
             >
               Deadline
             </TitleModal>
-            <Calendar deadline={setDeadline} />
+            <WrapperComponentModal marginBottom="0px">
+              {!deadline && (
+                <TitleModal
+                  marginBottom="0px"
+                  fontSize="14px"
+                  fontWeight="500"
+                  color="var(--modal-date-text-color)"
+                >
+                  Today,
+                </TitleModal>
+              )}
+              <Calendar deadline={setDeadline} />
+            </WrapperComponentModal>
             <ButtonPlusModal
               onClick={handleSubmit}
               name="addCard"
-              type="submit"              
+              type="submit"
+              marginTop="40px"
             >
-              Add
+              {!visible ? 'Add' : 'Edit'}
             </ButtonPlusModal>
           </Form>
         </Formik>

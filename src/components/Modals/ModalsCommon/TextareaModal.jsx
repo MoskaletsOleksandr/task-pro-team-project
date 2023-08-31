@@ -1,8 +1,7 @@
-import { ModalTextarea } from "../Modals.styled";
+import { ModalTextarea } from '../Modals.styled';
 
+const TextareaModal = props => {
+  return <ModalTextarea {...props} />;
+};
 
-const TextareaModal = (props) => {
-    return <ModalTextarea{...props}/>
-  }
-
-  export default TextareaModal;
+export default TextareaModal;

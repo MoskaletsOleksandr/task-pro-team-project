@@ -24,7 +24,7 @@ export const store = configureStore({
 // export const persistor = persistStore(store);
 
 export const persistor = persistStore(store, null, () => {
-  const token = store.getState().auth.token;
+  const token = store.getState().auth.token;  
   console.log('token:', token);
   if (token) {
     setToken(`Bearer ${token}`);

@@ -1,8 +1,7 @@
-import { ModalTitle } from "../Modals.styled";
+import { ModalTitle } from '../Modals.styled';
 
+const TitleModal = props => {
+  return <ModalTitle {...props} />;
+};
 
-const TitleModal = (props) => {
-    return <ModalTitle {...props}/>
-  }
-
-  export default TitleModal;
+export default TitleModal;

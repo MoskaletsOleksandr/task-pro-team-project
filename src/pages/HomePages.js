@@ -15,6 +15,8 @@ import {
 
 // import ScreensPage from 'components/ScreensPage/ScreensPage';
 import Sidebar from 'components/Sidebar/Sidebar';
+import ModalAddEditCard from 'components/Modals/ModalAddEditCard/ModalAddEditCard';
+import ButtonPlusModal from 'components/Modals/ModalsCommon/ButtonPlusModal';
 // import Backdrop from '../components/Sidebar/Backdrop';
 
 const HomePage = () => {
@@ -23,6 +25,18 @@ const HomePage = () => {
   const [showSidebar, setShowSidebar] = useState(true);
 
   const [showTestModal, setShowTestModal] = useState(false);
+
+  const [showModal, setShowModal] = useState(false);
+  const [nameButton, setNameButton] = useState('');
+  
+  const openModal = (e) => {    
+    setNameButton(e.target.name);
+    setShowModal(true);    
+  }
+  
+const closeModal = () => {
+  setShowModal(false);
+}
 
   const toggleModal = () => {
     setShowTestModal(prevShowTestModal => !prevShowTestModal);
@@ -76,6 +90,9 @@ const HomePage = () => {
         >
           <Header onToggleSidebar={toggleSidebar} />
           <Outlet />
+          <ButtonPlusModal onClick={openModal} name='new'>New</ButtonPlusModal>
+          <ButtonPlusModal onClick={openModal} name='edit'>Edit</ButtonPlusModal>
+          {showModal && (<ModalAddEditCard closeModal={closeModal} nameButton={nameButton}/>)}
           {/* <ScreensPage /> */}
         </div>
       </div>
