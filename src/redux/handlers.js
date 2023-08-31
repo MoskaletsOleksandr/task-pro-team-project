@@ -64,7 +64,6 @@ export const handleSendLetterThunkRejected = (state, { error, payload }) => {
 };
 
 export const handleGetCurrentUserThunkFulfilled = (state, { payload }) => {
-
   state.user = payload.user;
   state.token = payload.token;
   state.isLoading = false;

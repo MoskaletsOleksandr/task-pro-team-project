@@ -4,7 +4,8 @@ import {
   login,
   getTheme,
   logOut,
-  sendHelpLetter,getCurrentUser,
+  sendHelpLetter,
+  getCurrentUser,
 } from 'api/api_auth/api';
 import { setToken } from 'api/axiosConfig';
 
@@ -42,12 +43,9 @@ export const LogOutThunk = createAsyncThunk(
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
     try {
-    setToken(`Bearer ${currentToken}`)
-      
       const data = await logOut();
       return data;
     } catch (error) {
-      // selectToken(`Bearer ${currentToken}`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -64,7 +62,7 @@ export const GetThemeThunk = createAsyncThunk(
     }
 
     try {
-      setToken(`Bearer ${currentToken}`)
+      setToken(`Bearer ${currentToken}`);
       const response = await getTheme(body);
       return response.data;
     } catch (error) {
@@ -78,15 +76,14 @@ export const SendLetterThunk = createAsyncThunk(
   async (body, thunkAPI) => {
     const state = thunkAPI.getState();
     const currentToken = state.auth.token;
-   
 
     if (currentToken === '') {
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
 
     try {
-      setToken(`Bearer ${currentToken}`)
-      const data = await sendHelpLetter(body);
+      setToken(`Bearer ${currentToken}`);
+      const { data } = await sendHelpLetter(body);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -100,9 +97,9 @@ export const GetCurrentUserThunk = createAsyncThunk(
     // Reading the token from the state via getState()
     const state = thunkAPI.getState();
     const currentToken = state.auth.token;
-    console.log("currentTokeninThunk",currentToken)
-    const currentEmail=state.auth.user.email;
-    console.log("current email", currentEmail)
+    console.log('currentTokeninThunk', currentToken);
+    const currentEmail = state.auth.user.email;
+    console.log('current email', currentEmail);
 
     if (currentToken === null) {
       // If there is no token, exit without performing any request
@@ -111,10 +108,10 @@ export const GetCurrentUserThunk = createAsyncThunk(
 
     try {
       // If there is a token, add it to the HTTP header and perform the request
-      setToken(`Bearer ${currentToken}`)
-      const data = await getCurrentUser(currentEmail);
+      setToken(`Bearer ${currentToken}`);
+      const { data } = await getCurrentUser(currentEmail);
+      console.log(data);
       return data;
-     
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

@@ -8,10 +8,9 @@ import { Suspense, lazy } from 'react';
 import Loader from './Loader/Loader';
 import PublicRouter from './PublicRouter/PublicRouter';
 import PrivateRouter from './PrivateRouter/PrivateRouter';
-import { useDispatch, useSelector } from 'react-redux';
-import {  useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import { GetCurrentUserThunk } from 'redux/thunks';
-// import { Navigate } from 'react-router';
 
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
@@ -20,27 +19,12 @@ const HomePage = lazy(() => import('./../pages/HomePages'));
 const ScreenPage = lazy(() => import('pages/ScreenPage/ScreenPage'));
 
 export const App = () => {
-  const dispatch=useDispatch();
-  const email=useSelector(state=>state.auth.user.email)
-   console.log(email)
+  const dispatch = useDispatch();
 
-   useEffect(()=>{
-    // try {
-    //   const response=dispatch(GetCurrentUserThunk()).unwrap().then(data=>{
-    //     if(data){
-    //       return(<Navigate to='/home'/>)
-    //     }
-    //   })
-    //   console.log(response)
-    // } catch (error) {
-    //   console.log('failed')
-    // }
- 
-  dispatch(GetCurrentUserThunk())
-   },[dispatch])
+  useEffect(() => {
+    dispatch(GetCurrentUserThunk());
+  }, [dispatch]);
 
-   
-  
   return (
     <Suspense fallback={<Loader />}>
       <GlobalStyles />

@@ -5,11 +5,11 @@ import AuthController from 'components/registrationForm/authControll';
 import { RegistrationFormStyled } from 'components/registrationForm/RegistrationFormStyled';
 import FormTitle from 'components/common/authTitle/AuthTitle';
 import { authLoginValidationSchema } from 'validation/authValidation';
-import {  useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 function LoginForm({ getData }) {
-  const token=useSelector(state=>state.auth.token)
-  console.log('Token in form', token)
+  const token = useSelector(state => state.auth.token);
+  console.log('Token in form', token);
 
   const [visible, setVisible] = useState(false);
   const onClick = e => {
@@ -25,7 +25,6 @@ function LoginForm({ getData }) {
     getData(values);
     resetForm();
   };
- 
 
   return (
     <RegistrationFormStyled>

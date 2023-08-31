@@ -14,9 +14,7 @@ import {
   ContainerSvg,
 } from './WelcomePage.styled';
 
-
 const WelcomePage = () => {
- 
   return (
     <Container>
       <ContentMain>
@@ -33,7 +31,7 @@ const WelcomePage = () => {
           Supercharge your productivity and take control of your tasks with Task
           Pro - Don't wait, start achieving your goals now!
         </Text>
-        
+
         <Nav>
           <RegistrationBtn to="auth/register">Registration</RegistrationBtn>
           <LoginBtn to="auth/login">Log In</LoginBtn>

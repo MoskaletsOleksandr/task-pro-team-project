@@ -52,7 +52,10 @@ const authSlice = createSlice({
       .addCase(SendLetterThunk.fulfilled, handleSendLetterThunkFulfilled)
       .addCase(SendLetterThunk.pending, handleSendLetterThunkPending)
       .addCase(SendLetterThunk.rejected, handleSendLetterThunkRejected)
-      .addCase( GetCurrentUserThunk.fulfilled,handleGetCurrentUserThunkFulfilled)
+      .addCase(
+        GetCurrentUserThunk.fulfilled,
+        handleGetCurrentUserThunkFulfilled
+      )
       .addCase(GetCurrentUserThunk.pending, handleGetCurrentUserThunkPending)
       .addCase(GetCurrentUserThunk.rejected, handleGetCurrentUserThunkRejected)
       .addMatcher(action => {
