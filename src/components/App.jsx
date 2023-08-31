@@ -11,6 +11,7 @@ import PrivateRouter from './PrivateRouter/PrivateRouter';
 import { useDispatch, useSelector } from 'react-redux';
 import {  useEffect } from 'react';
 import { GetCurrentUserThunk } from 'redux/thunks';
+// import { Navigate } from 'react-router';
 
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
@@ -24,6 +25,17 @@ export const App = () => {
    console.log(email)
 
    useEffect(()=>{
+    // try {
+    //   const response=dispatch(GetCurrentUserThunk()).unwrap().then(data=>{
+    //     if(data){
+    //       return(<Navigate to='/home'/>)
+    //     }
+    //   })
+    //   console.log(response)
+    // } catch (error) {
+    //   console.log('failed')
+    // }
+ 
   dispatch(GetCurrentUserThunk())
    },[dispatch])
 

@@ -13,35 +13,10 @@ import {
   ContainerTitle,
   ContainerSvg,
 } from './WelcomePage.styled';
-import { useDispatch, useSelector } from 'react-redux';
-import { GetCurrentUserThunk } from 'redux/thunks';
-import {  useEffect } from 'react';
-import { Navigate } from 'react-router';
+
 
 const WelcomePage = () => {
-  //  const email=useSelector(state=>state.auth.user.email)
-  //  console.log(email)
-   const dispatch=useDispatch();
-  
-  //  dispatch(GetCurrentUserThunk())
-
-  
-    try {
-      const response=  dispatch(GetCurrentUserThunk()).unwrap().then(data=>{
-        if(data){
-          return(<Navigate to='/home'/>)
-        }
-      })
-      console.log(response)
-    } catch (error) {
-      console.log('failed')
-    }
  
-   
-  
-
- 
-
   return (
     <Container>
       <ContentMain>

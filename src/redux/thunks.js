@@ -114,6 +114,7 @@ export const GetCurrentUserThunk = createAsyncThunk(
       setToken(`Bearer ${currentToken}`)
       const data = await getCurrentUser(currentEmail);
       return data;
+     
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
