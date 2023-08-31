@@ -23,3 +23,10 @@ export const getTheme = async body => {
   const response = await authInstance.patch('users/{id}/theme', body);
   return response.data;
 };
+
+// help letter
+
+export const sendHelpLetter=async body=>{
+  const response= await authInstance.post('/users/letter',body);
+  return response.data;
+}

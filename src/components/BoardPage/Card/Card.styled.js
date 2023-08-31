@@ -27,7 +27,7 @@ const TruncatedText = styled.div`
   font-weight: 400;
   letter-spacing: -0.24px;
   margin-top: 8px;
-  line-height: 1.4;
+  line-height: 1.5;
   height:38px;
   border-bottom: 1px solid var(--card-border-color);
 `;
@@ -136,6 +136,15 @@ const WhiteIcon = styled.svg`
   }
 `;
 
+const BellIcon = styled.svg`
+  width: 14px;
+  height: 14px;
+  stroke:var(--progress-popup-text-color-hover);
+  stroke-width: 2; 
+  fill: none;
+`;
+
+
 const PopUpItem = styled.div`
 display: flex;
 align-items: center;
@@ -165,7 +174,6 @@ const Backdrop = styled.div`
   right: 0;
   bottom: 0;
   border-radius: 8px;
-  // background-color: ${props => `${props.backgroundColor}33`}; 
   background-color:var(--progress-backdrop);
   animation: ${fillFromLeft} 1s ease-in-out forwards; 
   z-index: 0; 
@@ -190,5 +198,6 @@ export {
   DeadlineInfo,
   PopUpMenu,
   PopUpItem,
-  Backdrop
+  Backdrop,
+  BellIcon
 }

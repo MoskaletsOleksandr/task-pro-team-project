@@ -21,12 +21,7 @@ function LoginForm({ getData }) {
     getData(values);
     resetForm();
   };
-  // const validationSchema = Yup.object({
-  //   email: Yup.string()
-  //     .required('email is required')
-  //     .email('Invalid email address'),
-  //   password: Yup.string().required('password is required').min(8).max(64),
-  // });
+ 
 
   return (
     <RegistrationFormStyled>
@@ -37,7 +32,7 @@ function LoginForm({ getData }) {
       >
         {formik => (
           <Form autoComplete="off">
-            <FormTitle title="Registration" subtitle="Log In" />
+            <FormTitle />
             <AuthController
               control="input"
               type="email"

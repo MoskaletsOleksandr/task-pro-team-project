@@ -15,13 +15,18 @@ import {
 
 // import ScreensPage from 'components/ScreensPage/ScreensPage';
 import Sidebar from 'components/Sidebar/Sidebar';
-import ModalAddEditCard from 'components/Modals/ModalAddEditCard/ModalAddEditCard';
 // import Backdrop from '../components/Sidebar/Backdrop';
 
 const HomePage = () => {
   const user = useSelector(state => state.auth.user.theme);
   console.log(user);
   const [showSidebar, setShowSidebar] = useState(true);
+
+  const [showTestModal, setShowTestModal] = useState(false);
+
+  const toggleModal = () => {
+    setShowTestModal(prevShowTestModal => !prevShowTestModal);
+  };
 
   // const dispatch = useDispatch();
 
@@ -71,7 +76,6 @@ const HomePage = () => {
         >
           <Header onToggleSidebar={toggleSidebar} />
           <Outlet />
-          <ModalAddEditCard/>
           {/* <ScreensPage /> */}
         </div>
       </div>
