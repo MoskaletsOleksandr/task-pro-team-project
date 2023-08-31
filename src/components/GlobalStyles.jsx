@@ -103,8 +103,9 @@ export const GlobalStyles = () => {
             --filter-popup-bg-color: #151515;
             --filter-popup-primary-text-color: #ffffff;
             --filter-popup-secondary-text-color: #ffffff80;
+            --filter-popup-tertiary-text-color: #ffffff;//vit
             --filter-popup-border-color: #BEDBB080;
-            --filter-without-priority-color: #FFFFFF4D;
+            --filter-without-priority-color: #FFFFFF4D;;
             --filter-low-color: #8FA1D0;
             --filter-medium-color: #E09CB5;
             --filter-high-color: #BEDBB0;
@@ -149,6 +150,9 @@ export const GlobalStyles = () => {
             --modal-plus-btn-bg-color: #161616;
             --modal-plus-btn-bg-color-hover: #9DC888;
             --modal-selected-plus-color:#ffffff;
+            --modal-title-border-color: #ffffff10; //vit
+           
+
 
             //variables for progress popup
             --progress-popup-bg-color: #151515;
@@ -201,8 +205,9 @@ export const GlobalStyles = () => {
             --filter-popup-bg-color: #FCFCFC;
             --filter-popup-primary-text-color: #161616;
             --filter-popup-secondary-text-color: #16161680;
+            --filter-popup-tertiary-text-color: #16161650;//vit
             --filter-popup-border-color: #ffffff;
-            --filter-without-priority-color: #1616164D;
+            --filter-without-priority-color: #FFFFFF4D;;//vit
             --filter-low-color: #8FA1D0;
             --filter-medium-color: #E09CB5;
             --filter-high-color: #BEDBB0;
@@ -247,6 +252,7 @@ export const GlobalStyles = () => {
             --modal-plus-btn-bg-color: #161616;
             --modal-plus-btn-bg-color-hover: #9DC888;
             --modal-selected-plus-color:#ffffff;
+            --modal-title-border-color: #16161610; //vit
 
             //variables for progress popup
             --progress-popup-bg-color: #FCFCFC;
@@ -301,8 +307,9 @@ export const GlobalStyles = () => {
             --filter-popup-bg-color: #FCFCFC;
             --filter-popup-primary-text-color: #161616;
             --filter-popup-secondary-text-color: #16161680;
+            --filter-popup-tertiary-text-color: #16161650;//vit
             --filter-popup-border-color: #ffffff;
-            --filter-without-priority-color: #1616164D;
+            --filter-without-priority-color: #FFFFFF4D;;//vit
             --filter-low-color: #8FA1D0;
             --filter-medium-color: #E09CB5;
             --filter-high-color: #BEDBB0;
@@ -346,6 +353,7 @@ export const GlobalStyles = () => {
             --modal-plus-btn-bg-color :#ffffff;
             --modal-plus-btn-bg-color-hover: #7B7EDE;
             --modal-selected-plus-color:#161616;
+            --modal-title-border-color: #16161610; //vit
 
             //variables for progress popup
             --progress-popup-bg-color: #FCFCFC;

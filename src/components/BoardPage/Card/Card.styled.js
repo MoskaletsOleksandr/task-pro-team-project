@@ -130,7 +130,7 @@ const WhiteIcon = styled.svg`
   height: 14px;
   stroke: var(--card-icon-color); 
   stroke-width: 2; 
-  fill: none;
+  fill: none; 
   &:hover{
     stroke:var(--progress-popup-text-color-hover);
   }
@@ -155,7 +155,7 @@ color:var(--progress-popup-text-color);
     stroke: var(--progress-popup-text-color-hover);
     cursor: pointer;
   }
-}
+/* } */
 `;
 
 const fillFromLeft = keyframes`
@@ -166,6 +166,21 @@ const fillFromLeft = keyframes`
     width: 100%;
   }
 `;
+// Vit
+const BackDropHiden = styled.div`
+display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #15151530;
+  overflow-y: auto;
+  z-index: 1;
+width:100%;
+`
 
 const Backdrop = styled.div`
   position: absolute;
@@ -176,7 +191,7 @@ const Backdrop = styled.div`
   border-radius: 8px;
   background-color:var(--progress-backdrop);
   animation: ${fillFromLeft} 1s ease-in-out forwards; 
-  z-index: 0; 
+  z-index: 1; 
 `;
 
 export {
@@ -199,5 +214,7 @@ export {
   PopUpMenu,
   PopUpItem,
   Backdrop,
+  BellIcon,
+  BackDropHiden
   BellIcon
 }

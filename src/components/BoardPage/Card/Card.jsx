@@ -21,6 +21,7 @@ import {
   PriorityInfo,
   PopUpMenu,
   Backdrop,
+  BackDropHiden
   BellIcon
 } from '../Card/Card.styled';
 import CustomPopUpItem from '../PopUp/PopUp';
@@ -109,10 +110,16 @@ const TaskCard = ({ taskId, togglePopUpMenu, isPopupOpen }) => {
       </CardContentWrapper>
 
       {isPopupOpen && (
+        // Vit
+       <> 
+        <BackDropHiden onClick={() => togglePopUpMenu(taskId)}>
+           </BackDropHiden>
         <Backdrop
           backgroundColor={priorityBorderColor}
           onClick={() => togglePopUpMenu(taskId)}
         />
+       </>
+       
       )}
       {isPopupOpen && (
         <PopUpMenu>
