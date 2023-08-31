@@ -107,8 +107,8 @@ const HomePage = () => {
         <div
           style={{
             flexGrow: '1',
-            height: '100vh',
-            maxHeight: '100vh',
+            // height: '100vh',
+            // maxHeight: '100vh',
             display: 'flex',
             flexDirection: 'column',
             backgroundColor: 'var(--screens-page-bg-color)',

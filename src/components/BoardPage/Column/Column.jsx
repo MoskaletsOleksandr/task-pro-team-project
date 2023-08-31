@@ -60,13 +60,14 @@ const Column = ({ title, tasks, newColumnTitle }) => {
         </ScrollContent>
       </ScrollContainer>
       <AddNewCard />
-      <ColumnModal
+      {/* <ColumnModal
         closeModal={toggleModal}
         isOpen={showTestModal}
         name="Edit Column"
-      />
+      /> */}
     </ColumnContainer>
   );
 };
 
 export default Column;
+
