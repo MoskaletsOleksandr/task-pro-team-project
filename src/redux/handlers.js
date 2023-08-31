@@ -12,7 +12,7 @@ export const handleThunkPending = (state, { payload }) => {
 export const handleThunkRejected = (state, { error, payload }) => {
   state.error = error ? error.message : payload;
   state.isLoading = false;
-  state.isLoggedIn = false;
+  
 };
 export const handleSignInFulfilled = (state, { payload }) => {
   state.token = payload.token;
@@ -30,12 +30,12 @@ export const handleLogOutFulfilled = (state, { payload }) => {
 export const handleLogOutPending = (state, { payload }) => {
   state.isLoading = true;
   state.error = null;
-  state.isLoggedIn = false;
+  
 };
 export const handleLogOutRejected = (state, { error, payload }) => {
   state.error = error ? error.message : payload;
   state.isLoading = false;
-  state.isLoggedIn = false;
+  
 };
 export const handleGetThemeFulfilled = (state, { payload }) => {
   state.user.theme = payload.theme;
@@ -64,4 +64,27 @@ export const handleSendLetterThunkPending = (state, { payload }) => {
 export const handleSendLetterThunkRejected = (state, { error, payload }) => {
   state.error = error ? error.message : payload;
   state.isLoading = false;
+};
+
+export const handleGetCurrentUserThunkFulfilled = (state, { payload }) => {
+  state.token = payload.token;
+  state.user = payload.user;
+  state.isLoading = false;
+  state.isLoggedIn = true;
+  state.isRefreshing = false;
+};
+
+export const handleGetCurrentUserThunkPending = (state, { payload }) => {
+  state.isLoading = true;
+  state.isLoggedIn = false;
+  state.isRefreshing = true;
+};
+
+export const handleGetCurrentUserThunkRejected = (
+  state,
+  { error, payload }
+) => {
+  state.error = error ? error.message : payload;
+  state.isLoading = false;
+  state.isRefreshing = false;
 };

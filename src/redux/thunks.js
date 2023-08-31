@@ -64,6 +64,7 @@ export const GetThemeThunk = createAsyncThunk(
     }
 
     try {
+      setToken(`Bearer ${currentToken}`)
       const response = await getTheme(body);
       return response.data;
     } catch (error) {
@@ -77,12 +78,14 @@ export const SendLetterThunk = createAsyncThunk(
   async (body, thunkAPI) => {
     const state = thunkAPI.getState();
     const currentToken = state.auth.token;
+   
 
     if (currentToken === '') {
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
 
     try {
+      setToken(`Bearer ${currentToken}`)
       const data = await sendHelpLetter(body);
       return data;
     } catch (error) {
@@ -91,13 +94,15 @@ export const SendLetterThunk = createAsyncThunk(
   }
 );
 
-export const refreshUserThunk = createAsyncThunk(
+export const GetCurrentUserThunk = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
     // Reading the token from the state via getState()
     const state = thunkAPI.getState();
     const currentToken = state.auth.token;
-    const currentEmail=state.auth.user.email
+    console.log("currentTokeninThunk",currentToken)
+    const currentEmail=state.auth.user.email;
+    console.log("current email", currentEmail)
 
     if (currentToken === null) {
       // If there is no token, exit without performing any request

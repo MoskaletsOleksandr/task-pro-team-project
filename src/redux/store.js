@@ -1,9 +1,7 @@
-import { configureStore } from '@reduxjs/toolkit'
-import storage from 'redux-persist/lib/storage'
-
+import { configureStore } from '@reduxjs/toolkit';
+// import { setToken } from 'api/axiosConfig';
 import { persistStore } from 'redux-persist';
 import {
-  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -11,21 +9,10 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-
-import { authReducer } from './authSlice';
-import { boardsReducer } from './dashboards/slise';
-
-const authPersistConfigs={
-  key:'auth',
-  storage,
-  whiteList:['token', 'user']
-}
+import { reducer } from './reducer';
 
 export const store = configureStore({
-  reducer:{
-    auth:persistReducer(authPersistConfigs, authReducer),
-    boards:boardsReducer
-  },
+  reducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
