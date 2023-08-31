@@ -216,4 +216,5 @@ export {
   Backdrop,
   BellIcon,
   BackDropHiden
+  BellIcon
 }

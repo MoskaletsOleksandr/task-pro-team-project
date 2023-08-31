@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import // useDispatch,
+// useSelector,
+'react-redux';
 import sprite from '../../images/sprite.svg';
 // import { useSelector } from 'react-redux';
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 import { currentBoardForScreensPage } from '../../fakeData/fakeData';
 import Column from '../../components/BoardPage/Column/Column';
 import Board from '../../components/BoardPage/Board/Board';
@@ -21,6 +24,12 @@ import {
 } from './MainDashboard.styled';
 import Modal from 'components/Modal/Modal';
 
+// import {
+//   createNewBoardThunk,
+//   createNewColumnThunk,
+//   getCurrentBoardThunk,
+// } from 'redux/dashboards/thunks';
+
 const MainDashboard = () => {
   const [showTestModal, setShowTestModal] = useState(false);
 
@@ -36,17 +45,9 @@ const MainDashboard = () => {
     }
   };
 
-  const handleAddColumn = () => {
-    if (newColumnTitle.trim() !== '') {
-      const newColumn = {
-        _id: uuidv4(),
-        title: newColumnTitle,
-        tasks: [],
-      };
-      setCurrentColumns(prevColumns => [...prevColumns, newColumn]);
-      setNewColumnTitle('');
-      toggleModal();
-    }
+  const handleCreateNewColumn = newColumn => {
+    setCurrentColumns(prevColumns => [...prevColumns, newColumn]);
+    toggleModal();
   };
 
   // Filters Modal
@@ -102,7 +103,7 @@ const MainDashboard = () => {
         closeModal={toggleModal}
         isOpen={showTestModal}
         name="Add Column"
-        addColumn={handleAddColumn}
+        addColumn={handleCreateNewColumn}
         newColumnTitle={newColumnTitle}
       />
     </Section>

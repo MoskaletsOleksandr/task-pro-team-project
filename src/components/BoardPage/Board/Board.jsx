@@ -1,4 +1,5 @@
 // import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { currentBoardForScreensPage } from '../../../fakeData/fakeData';
 import Column from '../Column/Column';
 import {
@@ -8,10 +9,12 @@ import {
 } from './Board.styled';
 
 const Board = () => {
+  const board = useSelector(state => state.boards.currentBoard);
+  const forRender = board ? board : currentBoardForScreensPage;
   return (
     <DashboardContainer>
       <DashboardContent>
-        {currentBoardForScreensPage.columns.map(column => (
+        {forRender.columns.map(column => (
           <ColumnWrapper key={column._id}>
             <Column title={column.title} tasks={column.tasks} />
           </ColumnWrapper>

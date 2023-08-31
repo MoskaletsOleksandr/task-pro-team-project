@@ -32,7 +32,7 @@ const Column = ({ title, tasks, newColumnTitle }) => {
   return (
     <ColumnContainer>
       <TitleIcon>
-        <Title>{newColumnTitle ? newColumnTitle : title}</Title>
+        <Title>{title ? title : newColumnTitle}</Title>
         <Icons>
           <WhiteIcon
             className="icon-search"

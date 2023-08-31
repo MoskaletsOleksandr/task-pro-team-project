@@ -1,9 +1,16 @@
-// import { useDispatch } from 'react-redux';
+// import {  useDispatch } from 'react-redux';
 import ButtonForForms from 'components/ButtonForForms/ButtonForForms';
 import { Form, Input, Textarea, Title } from './NeedHelpForm.styled';
+// import { SendLetterThunk } from 'redux/thunks';
 
 const NeedHelpForm = () => {
-  // const dispatch = useDispatch();
+  //   const dispatch = useDispatch();
+
+  //   const email='helenblyzniuk@gmail.com'
+  //   const text="need help"
+
+  // dispatch(SendLetterThunk({email,text}))
+
   return (
     <>
       <Form>

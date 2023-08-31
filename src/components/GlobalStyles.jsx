@@ -67,7 +67,7 @@ export const GlobalStyles = () => {
             //variables for SideBar
             --sidebar-bg-color: #121212;
             --sidebar-logo--bg-color: #1f1f1f
-            --sidebar-button-plus-bg-color: #bedbb0;
+            --sidebar-button-plus-bg-color: #BEDBB0;
             --sidebar-button-plus-bg-color-hover: #9dc888;
             --sidebar-need-help-bg-color: #1f1f1f;
             --sidebar-active-board-text-color: #ffffff;

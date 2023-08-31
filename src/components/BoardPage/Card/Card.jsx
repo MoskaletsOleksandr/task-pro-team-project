@@ -1,5 +1,5 @@
 import React from // ,{ useState }
-'react';
+  'react';
 import LinesEllipsis from 'react-lines-ellipsis';
 import { currentBoardForScreensPage } from '../../../fakeData/fakeData';
 import {
@@ -22,11 +22,15 @@ import {
   PopUpMenu,
   Backdrop,
   BackDropHiden
+  BellIcon
 } from '../Card/Card.styled';
 import CustomPopUpItem from '../PopUp/PopUp';
 import sprite from '../../../images/sprite.svg';
 
 const TaskCard = ({ taskId, togglePopUpMenu, isPopupOpen }) => {
+
+  const today = new Date().toISOString().slice(0, 10);
+
   const selectedTask = currentBoardForScreensPage.columns
     .flatMap(column => column.tasks)
     .find(taskData => taskData._id === taskId);
@@ -51,6 +55,8 @@ const TaskCard = ({ taskId, togglePopUpMenu, isPopupOpen }) => {
     priorityCircleColor = 'var(--filter-without-priority-color)';
     priorityBorderColor = 'var(--filter-without-priority-color)';
   }
+
+  const isTodayDeadline = selectedTask.deadline === today;
 
   return (
     <CustomCard borderColor={priorityBorderColor}>
@@ -82,6 +88,11 @@ const TaskCard = ({ taskId, togglePopUpMenu, isPopupOpen }) => {
             </DedlineWrapper>
           </PriorityDateContainer>
           <Icons>
+            {isTodayDeadline && (
+              <BellIcon className="icon-search">
+                <use href={sprite + '#icon-bell'} style={{ color: 'yellow' }} />
+              </BellIcon>
+            )}
             <WhiteIcon
               className="icon-search"
               onClick={() => togglePopUpMenu(taskId)}
