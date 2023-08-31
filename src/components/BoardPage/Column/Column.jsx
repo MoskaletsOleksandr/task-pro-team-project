@@ -30,6 +30,7 @@ const Column = ({ title, tasks, newColumnTitle }) => {
   };
 
   return (
+    <>
     <ColumnContainer>
       <TitleIcon>
         <Title>{title ? title : newColumnTitle}</Title>
@@ -64,8 +65,10 @@ const Column = ({ title, tasks, newColumnTitle }) => {
         closeModal={toggleModal}
         isOpen={showTestModal}
         name="Edit Column"
-      />
+      />          
     </ColumnContainer>
+    
+    </>
   );
 };
 

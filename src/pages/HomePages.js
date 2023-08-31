@@ -14,7 +14,6 @@ import {
 
 // import ScreensPage from 'components/ScreensPage/ScreensPage';
 import Sidebar from 'components/Sidebar/Sidebar';
-import { TestNewBoardModal } from 'TestNewBoardModal/TestNewBoardModal';
 // import Backdrop from '../components/Sidebar/Backdrop';
 
 const HomePage = () => {
@@ -25,15 +24,15 @@ const HomePage = () => {
   const resizeHandler = () => {
     const { clientHeight, clientWidth } = myRef.current || {};
     setSize({ clientHeight, clientWidth });
-    };
+  };
   useEffect(() => {
     window.addEventListener('resize', resizeHandler);
     resizeHandler();
     return () => {
-    window.removeEventListener('resize', resizeHandler);
+      window.removeEventListener('resize', resizeHandler);
     };
   }, []);
-  
+
   const [showSidebar, setShowSidebar] = useState(true);
   const [showTestModal, setShowTestModal] = useState(false);
 
@@ -72,9 +71,6 @@ const HomePage = () => {
     };
   }, []);
 
-
-
-
   useEffect(() => {
     if (size.clientWidth > 1439) {
       setShowSidebar(true);
@@ -100,9 +96,9 @@ const HomePage = () => {
   return (
     <>
       <div style={{ display: 'flex' }}>
-      <div ref={myRef}>
-        <Sidebar isOpen={showSidebar} />
-      </div>
+        <div ref={myRef}>
+          <Sidebar isOpen={showSidebar} />
+        </div>
         {/* {showSidebar && <Backdrop onClick={toggleSidebar} />} */}
         <div
           style={{
@@ -118,7 +114,6 @@ const HomePage = () => {
           <Outlet />
 
           <button
-
             onClick={toggleModal}
             style={{
               position: 'absolute',
@@ -135,7 +130,6 @@ const HomePage = () => {
               closeModal={toggleModal}
               isOpen={showTestModal}
             />
-
           )}
 
           {/* <ScreensPage /> */}
@@ -145,4 +139,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage
+export default HomePage;
