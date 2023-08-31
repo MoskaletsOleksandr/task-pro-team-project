@@ -14,6 +14,7 @@ import {
 
 // import ScreensPage from 'components/ScreensPage/ScreensPage';
 import Sidebar from 'components/Sidebar/Sidebar';
+import { TestNewBoardModal } from 'TestNewBoardModal/TestNewBoardModal';
 // import Backdrop from '../components/Sidebar/Backdrop';
 
 const HomePage = () => {
