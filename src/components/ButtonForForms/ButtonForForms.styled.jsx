@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 
 export const ButtonForm = styled.button`
-width: 100%;
+width: 302px;
+height: 49px;
 padding: 10px 0 11px;
 border-radius: 8px;
 margin: 0 auto;

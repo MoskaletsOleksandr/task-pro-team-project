@@ -14,6 +14,7 @@ align-items: center;
 margin-left: 24px;
 width: 105px;
 height: 32px;
+background-color: transparent;
 `);
 
 export const Icon = styled.svg`
@@ -21,11 +22,4 @@ width: 32px;
 height: 32px;
 stroke: var(--sidebar-logout-icon-color);
 cursor: pointer;
-
-@media screen and (min-width: 1440px) {
-  margin-left: 24px;
-  width: 212px;
-  height: 272px;
-  padding: 20px;
-}
 `;

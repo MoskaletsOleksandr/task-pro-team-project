@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
 
 export const Form = styled.form`
-width: 287px;
+width: 335px;
 color: var(--modal-bg-color);
+
 @media screen and (min-width: 768px) {
-width: 352px;
+width: 400px;
 }
 `;
 
@@ -18,7 +19,7 @@ margin-bottom: 24px;
 
 export const Input = styled.input`
 font-size: 14px;
-width: 100%;
+width: 302px;
 height: 49px;
 padding: 14px 18px;
 background-color: transparent;
@@ -35,7 +36,7 @@ margin-bottom: 4px;
 
 export const Textarea = styled.textarea`
 font-size: 14px;
-width: 100%;
+width: 302px;
 padding: 14px 18px;
 background-color: transparent;
 border: 1px solid var(--modal-input-border-color);

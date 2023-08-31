@@ -10,6 +10,7 @@ margin-bottom: 8px;
 align-self: flex-start;
 color: var(--secondary-text-color);
 font-size: 12px;
+font-weight: 400;
 letter-spacing: -0.24px;
 
 @media screen and (min-width: 768px) {  

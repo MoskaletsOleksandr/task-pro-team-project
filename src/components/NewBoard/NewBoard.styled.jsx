@@ -12,13 +12,6 @@ font-size: 18px;
 line-height: 27px;
 letter-spacing: -0.02em;
 color: var(--modal-title-color);
-
-@media screen and (min-width: 1440px) {
-    margin-left: 24px;
-    width: 212px;
-    height: 272px;
-    padding: 20px;
-}
 `;
 
 export const ErrorMessage = styled.p`
@@ -30,7 +23,7 @@ text-align: center;
 export const Input = styled.input`
 box-sizing: border-box;
 margin: 0 0 24px 0;
-width: 302px;
+width: 287px;
 height: 49px;
 padding-left: 20px;
 background: transparent;
@@ -63,13 +56,6 @@ color: var(--modal-title-color);
     outline: none;
     border: 1px solid #bedbb0;
 }
-
-@media screen and (min-width: 1440px) {
-    margin-left: 24px;
-    width: 212px;
-    height: 272px;
-    padding: 20px;
-}
 `;
 
 export const IconTitle = styled.h3`
@@ -80,13 +66,6 @@ font-size: 14px;
 line-height: 21px;
 letter-spacing: -0.02em;
 color: var(--modal-title-color);
-
-@media screen and (min-width: 1440px) {
-    margin-left: 24px;
-    width: 212px;
-    height: 272px;
-    padding: 20px;
-}
 `;
 
 export const IconWrap = styled.div`
@@ -99,13 +78,6 @@ width: 18px;
 height: 18px;
 stroke: var(--modal-selected-icon-color);
 cursor: pointer;
-
-@media screen and (min-width: 1440px) {
-    margin-left: 24px;
-    width: 212px;
-    height: 272px;
-    padding: 20px;
-}
 `;
 
 export const BackgroundTitle = styled.h3`
@@ -116,13 +88,6 @@ font-size: 14px;
 line-height: 21px;
 letter-spacing: -0.02em;
 color: var(--modal-title-color);
-
-@media screen and (min-width: 1440px) {
-    margin-left: 24px;
-    width: 212px;
-    height: 272px;
-    padding: 20px;
-}
 `;
 
 export const BgIcon = styled.div`

@@ -6,7 +6,7 @@ position: absolute;
 visibility: hidden;
 opacity: 0;
 top: 0px;
-left: -100%;
+left: -450px;
 bottom: 0px;
 width: 225px;
 height: 100vh;
@@ -32,7 +32,7 @@ transition: transform 250ms ease-in 0s, opacity 250ms ease-in 0s, visibility 250
     top: 0px;
     left: 0px;
     bottom: 0px;
-    width: 18%;
+    width: 260px;
     height: 100vh;
     transition: transform 0s ease-in 0s, opacity 0s ease-in 0s,
     visibility 0s ease-in 0s;
