@@ -5,8 +5,12 @@ import {
   GetThemeThunk,
   LogOutThunk,
   SendLetterThunk,
+  GetCurrentUserThunk,
 } from './thunks';
 import {
+  handleGetCurrentUserThunkFulfilled,
+  handleGetCurrentUserThunkPending,
+  handleGetCurrentUserThunkRejected,
   handleGetThemeFulfilled,
   handleGetThemePending,
   handleGetThemeRejected,
@@ -29,6 +33,7 @@ const initialState = {
   user: {},
   sentLetter: false,
   isLoggedIn: false,
+  isRefreshing: false,
 };
 
 const authSlice = createSlice({
@@ -47,6 +52,12 @@ const authSlice = createSlice({
       .addCase(SendLetterThunk.fulfilled, handleSendLetterThunkFulfilled)
       .addCase(SendLetterThunk.pending, handleSendLetterThunkPending)
       .addCase(SendLetterThunk.rejected, handleSendLetterThunkRejected)
+      .addCase(
+        GetCurrentUserThunk.fulfilled,
+        handleGetCurrentUserThunkFulfilled
+      )
+      .addCase(GetCurrentUserThunk.pending, handleGetCurrentUserThunkPending)
+      .addCase(GetCurrentUserThunk.rejected, handleGetCurrentUserThunkRejected)
       .addMatcher(action => {
         action.type.endsWith('/pending');
       }, handleThunkPending)
