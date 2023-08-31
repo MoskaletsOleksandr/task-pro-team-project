@@ -16,7 +16,7 @@ import ColumnModal from 'components/BoardPage/ColumnModal/ColumnModal';
 const Column = ({ title, tasks, newColumnTitle }) => {
   const [showTestModal, setShowTestModal] = useState(false);
   const [openTaskId, setOpenTaskId] = useState(null);
-
+  console.log(showTestModal);
   const toggleModal = () => {
     setShowTestModal(prevShowTestModal => !prevShowTestModal);
   };
@@ -60,14 +60,13 @@ const Column = ({ title, tasks, newColumnTitle }) => {
         </ScrollContent>
       </ScrollContainer>
       <AddNewCard />
-      {/* <ColumnModal
+      <ColumnModal
         closeModal={toggleModal}
         isOpen={showTestModal}
         name="Edit Column"
-      /> */}
+      />
     </ColumnContainer>
   );
 };
 
 export default Column;
-

@@ -37,7 +37,7 @@ const MainDashboard = () => {
     currentBoardForScreensPage.columns
   );
   const [newColumnTitle, setNewColumnTitle] = useState('');
-
+  console.log(newColumnTitle);
   const toggleModal = () => {
     setShowTestModal(prevShowTestModal => !prevShowTestModal);
     if (!showTestModal) {
@@ -99,13 +99,13 @@ const MainDashboard = () => {
         </BtnAddColumn>
       </SectionBoards>
 
-      {/* <ColumnModal
+      <ColumnModal
         closeModal={toggleModal}
         isOpen={showTestModal}
         name="Add Column"
         addColumn={handleCreateNewColumn}
         newColumnTitle={newColumnTitle}
-      /> */}
+      />
     </Section>
   );
 };
