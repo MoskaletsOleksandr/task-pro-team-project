@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+// import { axios } from 'services/axios';
 import {
   signUp,
   login,
@@ -107,6 +108,17 @@ export const SendLetterThunk = createAsyncThunk(
 //       return res.data;
 //     } catch (error) {
 //       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
+// export const getBackgrounds = createAsyncThunk(
+//   'backgrounds',
+//   async (_, thunkAPI) => {
+//     try {
+//       const { data } = await axios.get('/api/backgrounds');   
+//       return data;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.code);
 //     }
 //   }
 // );
