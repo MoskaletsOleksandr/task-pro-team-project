@@ -2,10 +2,11 @@ import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
 
 
+
+
 const CustomCard = styled.div`
-  width: 334px;
-  height: 154px;
-  margin-right: 0;
+  max-height: 154px;
+  // margin-right: 8px;
   position:relative;
   margin-bottom: 9px;
   border-radius: 8px;
@@ -13,6 +14,18 @@ const CustomCard = styled.div`
   color: #fff;
   padding: 14px 24px;
   border-left: 4px solid ${props => props.borderColor};
+
+  @media screen and (min-width: 320px) and (max-width: 374px) {
+      max-width: 290px;
+  }
+  
+  @media screen and (min-width: 375px) and (max-width: 767 px) {
+      max-width: 334px;
+  }
+
+  @media screen and (min-width: 768px) {
+      max-width: 334px;
+  }
 `;
 
 const TruncatedText = styled.div`
@@ -40,7 +53,6 @@ const PriorityCircle = styled.div`
 `;
 
 const CardContentWrapper = styled.div`
-margin-top: 8px;
 margin-bottom: 14px;
 font-size: 14px;
 font-family: 'Poppins';

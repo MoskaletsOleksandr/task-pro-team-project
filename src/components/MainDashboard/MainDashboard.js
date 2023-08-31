@@ -84,13 +84,13 @@ const MainDashboard = () => {
         </BtnAddColumn>
       </SectionBoards>
 
-      <ColumnModal
+      {/* <ColumnModal
         closeModal={toggleModal}
         isOpen={showTestModal}
         name="Add Column"
         addColumn={handleCreateNewColumn}
         newColumnTitle={newColumnTitle}
-      />
+      /> */}
     </Section>
   );
 };

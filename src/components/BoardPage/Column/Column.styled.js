@@ -16,10 +16,6 @@ const Icons = styled.div`
   margin-right: 27px;
 `;
 
-const ColumnContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
 
 const Title = styled.h3`
   margin-left: 20px;
@@ -43,39 +39,61 @@ const TitleIcon = styled.div`
   margin-bottom: 14px;
   align-items: center;
   justify-content: space-between;
+  @media screen and (min-width: 320px) and (max-width: 374px) {
+    max-width: 290px;
+}
+
+@media screen and (min-width: 375px) and (max-width: 767 px) {
+    max-width: 334px;
+}
+
+@media screen and (min-width: 768px) {
+    max-width: 334px;
+}
 `;
 
+
+const ColumnContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+
 const ScrollContainer = styled.div`
+  margin-bottom:14px;
   overflow-y: hidden;
-  margin-bottom:20px;
+  @media screen and (min-width: 375px) {
+    height:100%;
+  }
 `;
 
 
 const ScrollContent = styled.div`
-height: 65vh;
 overflow-y: auto;
 padding-right: 8px;
-width: 100%; 
 box-sizing: border-box;
-margin-right: 8px;
+height:66vh;
 
- 
+
 ::-webkit-scrollbar {
   width: 8px;
- 
+  margin-left:8px;
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: var(--vertical-scroll-bar-bg-color);
   border-radius: 4px;
   height: 10px;
+  margin-left:8px;
 }
 
 ::-webkit-scrollbar-track {
   background-color: var(--vertical-scroll-slider-bg-color);
   border-radius: 4px;
   height: 130px;
+  margin-left:8px;
 }
+
 `;
 
 export {
