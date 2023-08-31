@@ -34,6 +34,7 @@ const ModalAddEditCard = ({ closeModal, nameButton }) => {
 
   // 2. В nameButton === 'edit' в useEffect, має бути name однієї з кнопок, що відкриває модалку
 
+  
   useEffect(() => {
     if (nameButton === 'edit') {
       setVisible(true);
