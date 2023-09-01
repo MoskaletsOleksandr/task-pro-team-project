@@ -4,7 +4,6 @@ import AddBoardButton from 'components/AddBoardButton';
 import { Title } from './BoardList.styled';
 import {
   getAllBoardsThunk,
-  getAllTasksThunk,
   getCurrentBoardThunk,
 } from 'redux/dashboards/thunks';
 import { useNavigate } from 'react-router-dom';
@@ -20,7 +19,6 @@ function BoardList() {
 
   const handleOpenBoard = (id, title) => {
     dispatch(getCurrentBoardThunk(id));
-    dispatch(getAllTasksThunk(id));
 
     const normalizedTitle = title.toLowerCase().replace(/\s+/g, '-');
     navigate(normalizedTitle);

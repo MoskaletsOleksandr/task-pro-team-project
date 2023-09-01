@@ -35,9 +35,10 @@ export const getAllBoardsThunk = createAsyncThunk(
 // діспатчимо її одночасно із getAllTasksThunk
 export const getCurrentBoardThunk = createAsyncThunk(
   'boards/getCurrentBoard',
-  async (id, { rejectWithValue }) => {
+  async (id, { rejectWithValue, dispatch }) => {
     try {
       const data = await getCurrentBoard(id);
+      dispatch(getAllTasksThunk(id));
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
