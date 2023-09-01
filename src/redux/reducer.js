@@ -1,5 +1,5 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { authReducer } from './authSlice';
+import { authReducer } from './auth/authSlice';
 import { boardsReducer } from './dashboards/slise';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';

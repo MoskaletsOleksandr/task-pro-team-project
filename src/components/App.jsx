@@ -10,8 +10,7 @@ import PublicRouter from './PublicRouter/PublicRouter';
 import PrivateRouter from './PrivateRouter/PrivateRouter';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { GetCurrentUserThunk } from 'redux/thunks';
-
+import { GetCurrentUserThunk } from 'redux/auth/thunks';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 const AuthPage = lazy(() => import('../pages/AuthPage/AuthPage'));
