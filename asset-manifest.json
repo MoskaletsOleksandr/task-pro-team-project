@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/task-pro-team-project/static/css/main.c0501f60.css",
-    "main.js": "/task-pro-team-project/static/js/main.e157c751.js",
+    "main.js": "/task-pro-team-project/static/js/main.3c250ba6.js",
     "static/js/453.92bc3268.chunk.js": "/task-pro-team-project/static/js/453.92bc3268.chunk.js",
-    "static/js/851.60087bf6.chunk.js": "/task-pro-team-project/static/js/851.60087bf6.chunk.js",
-    "static/js/999.639986ad.chunk.js": "/task-pro-team-project/static/js/999.639986ad.chunk.js",
+    "static/js/851.703a10b6.chunk.js": "/task-pro-team-project/static/js/851.703a10b6.chunk.js",
+    "static/js/999.8249e044.chunk.js": "/task-pro-team-project/static/js/999.8249e044.chunk.js",
     "static/js/760.46e5aa8e.chunk.js": "/task-pro-team-project/static/js/760.46e5aa8e.chunk.js",
     "static/js/881.fa1026a1.chunk.js": "/task-pro-team-project/static/js/881.fa1026a1.chunk.js",
     "static/js/914.6e0fcfeb.chunk.js": "/task-pro-team-project/static/js/914.6e0fcfeb.chunk.js",
@@ -20,10 +20,10 @@
     "static/media/sprite.svg": "/task-pro-team-project/static/media/sprite.b2cf810a7276fd2816f80248142dfd4d.svg",
     "index.html": "/task-pro-team-project/index.html",
     "main.c0501f60.css.map": "/task-pro-team-project/static/css/main.c0501f60.css.map",
-    "main.e157c751.js.map": "/task-pro-team-project/static/js/main.e157c751.js.map",
+    "main.3c250ba6.js.map": "/task-pro-team-project/static/js/main.3c250ba6.js.map",
     "453.92bc3268.chunk.js.map": "/task-pro-team-project/static/js/453.92bc3268.chunk.js.map",
-    "851.60087bf6.chunk.js.map": "/task-pro-team-project/static/js/851.60087bf6.chunk.js.map",
-    "999.639986ad.chunk.js.map": "/task-pro-team-project/static/js/999.639986ad.chunk.js.map",
+    "851.703a10b6.chunk.js.map": "/task-pro-team-project/static/js/851.703a10b6.chunk.js.map",
+    "999.8249e044.chunk.js.map": "/task-pro-team-project/static/js/999.8249e044.chunk.js.map",
     "760.46e5aa8e.chunk.js.map": "/task-pro-team-project/static/js/760.46e5aa8e.chunk.js.map",
     "881.fa1026a1.chunk.js.map": "/task-pro-team-project/static/js/881.fa1026a1.chunk.js.map",
     "914.6e0fcfeb.chunk.js.map": "/task-pro-team-project/static/js/914.6e0fcfeb.chunk.js.map",
@@ -32,6 +32,6 @@
   },
   "entrypoints": [
     "static/css/main.c0501f60.css",
-    "static/js/main.e157c751.js"
+    "static/js/main.3c250ba6.js"
   ]
 }
