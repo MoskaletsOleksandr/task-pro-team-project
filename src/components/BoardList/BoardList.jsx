@@ -17,6 +17,7 @@ function BoardList() {
 
   useEffect(() => {
     dispatch(getAllBoardsThunk());
+    // dispatch(getBackgrounds());
   }, [dispatch]);
 
   const handleOpenBoard = (id, title) => {

@@ -4,7 +4,7 @@ import LoginForm from 'components/LoginForm/LoginForm';
 import { Container } from 'pages/WelcomePage/WelcomePage.styled';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { SignInThunk, SignUpThunk } from 'redux/thunks';
+import { SignInThunk, SignUpThunk } from 'redux/auth/thunks';
 import { toast } from 'react-hot-toast';
 
 const AuthPage = () => {
