@@ -13,8 +13,11 @@ import {
 import AddNewCard from 'components/BoardPage/AddNewCardBtn/AddNewCardBtn';
 import ColumnModal from 'components/BoardPage/ColumnModal/ColumnModal';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteColumnByIdThunk, updateColumnByIdThunk } from 'redux/dashboards/thunks';
-import ModalAddEditCard from 'components/Modals/ModalAddEditCard/ModalAddEditCard';
+import {
+  deleteColumnByIdThunk,
+  updateColumnByIdThunk,
+} from 'redux/dashboards/thunks';
+// import ModalAddEditCard from 'components/Modals/ModalAddEditCard/ModalAddEditCard';
 
 const Column = ({ title, tasks, columnId }) => {
   const [showTestModal, setShowTestModal] = useState(false);
@@ -23,14 +26,12 @@ const Column = ({ title, tasks, columnId }) => {
   const [inputValue, setInputValue] = useState('');
   const boardId = useSelector(state => state.boards.currentBoard._id);
 
-
+  console.log(inputValue);
 
   const toggleModal = () => {
     setShowTestModal(prevShowTestModal => !prevShowTestModal);
     setInputValue(title);
   };
-
-
 
   const togglePopUpMenu = clickedTaskId => {
     if (clickedTaskId === openTaskId) {
@@ -40,14 +41,14 @@ const Column = ({ title, tasks, columnId }) => {
     }
   };
 
-
   const handleDeleteColumn = () => {
-    dispatch(deleteColumnByIdThunk({
-      boardId,
-      columnId
-    }));
+    dispatch(
+      deleteColumnByIdThunk({
+        boardId,
+        columnId,
+      })
+    );
   };
-
 
   return (
     <>
@@ -62,10 +63,7 @@ const Column = ({ title, tasks, columnId }) => {
             >
               <use href={sprite + '#icon-pencil-01'}></use>
             </WhiteIcon>
-            <WhiteIcon
-              className="icon-search"
-              onClick={handleDeleteColumn}
-            >
+            <WhiteIcon className="icon-search" onClick={handleDeleteColumn}>
               <use href={sprite + '#icon-trash'}></use>
             </WhiteIcon>
           </Icons>
@@ -88,18 +86,16 @@ const Column = ({ title, tasks, columnId }) => {
         <ColumnModal
           closeModal={toggleModal}
           isOpen={showTestModal}
-          name={"Update Column"}
+          name={'Update Column'}
           inputPlaceholder={title}
           actionThunk={updateColumnByIdThunk}
           actionPayload={value => ({ columnId, body: { title: value } })}
-          buttonText={"Update"}
+          buttonText={'Update'}
           initialValue={title}
         />
       </ColumnContainer>
-      
     </>
   );
 };
 
 export default Column;
-

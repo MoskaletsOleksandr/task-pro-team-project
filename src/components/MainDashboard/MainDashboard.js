@@ -18,10 +18,12 @@ import {
 import Modal from 'components/Modal/Modal';
 import { createNewColumnThunk } from 'redux/dashboards/thunks';
 
-
 const MainDashboard = () => {
   const [showTestModal, setShowTestModal] = useState(false);
-  const [currentColumns, setCurrentColumns] = useState([]);
+  const [
+    currentColumns,
+    // setCurrentColumns
+  ] = useState([]);
 
   const toggleModal = () => {
     setShowTestModal(prevShowTestModal => !prevShowTestModal);
@@ -81,11 +83,11 @@ const MainDashboard = () => {
       <ColumnModal
         closeModal={toggleModal}
         isOpen={showTestModal}
-        name={"Add Column"}
+        name={'Add Column'}
         inputPlaceholder="Title"
         actionThunk={createNewColumnThunk}
         actionPayload={value => ({ body: { title: value } })}
-        buttonText={"Add"}
+        buttonText={'Add'}
         initialValue={''}
       />
     </Section>
@@ -93,5 +95,3 @@ const MainDashboard = () => {
 };
 
 export default MainDashboard;
-
-
