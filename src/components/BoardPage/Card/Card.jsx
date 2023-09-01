@@ -1,6 +1,5 @@
 import React from 'react'; // ,{ useState }
 import LinesEllipsis from 'react-lines-ellipsis';
-import { currentBoardForScreensPage } from '../../../fakeData/fakeData';
 import {
   PriorityCircle,
   TruncatedText,
@@ -26,12 +25,10 @@ import {
 import CustomPopUpItem from '../PopUp/PopUp';
 import sprite from '../../../images/sprite.svg';
 
-const TaskCard = ({ taskId, togglePopUpMenu, isPopupOpen }) => {
+const TaskCard = ({ task, togglePopUpMenu, isPopupOpen }) => {
   const today = new Date().toISOString().slice(0, 10);
 
-  const selectedTask = currentBoardForScreensPage.columns
-    .flatMap(column => column.tasks)
-    .find(taskData => taskData._id === taskId);
+  const selectedTask = task;
 
   if (!selectedTask) {
     return null;
@@ -93,7 +90,7 @@ const TaskCard = ({ taskId, togglePopUpMenu, isPopupOpen }) => {
             )}
             <WhiteIcon
               className="icon-search"
-              onClick={() => togglePopUpMenu(taskId)}
+              onClick={() => togglePopUpMenu(task._id)}
             >
               <use href={sprite + '#icon-arrow-circle-broken-right'}></use>
             </WhiteIcon>
@@ -111,11 +108,11 @@ const TaskCard = ({ taskId, togglePopUpMenu, isPopupOpen }) => {
         // Vit
         <>
           <BackDropHiden
-            onClick={() => togglePopUpMenu(taskId)}
+            onClick={() => togglePopUpMenu(task._id)}
           ></BackDropHiden>
           <Backdrop
             backgroundColor={priorityBorderColor}
-            onClick={() => togglePopUpMenu(taskId)}
+            onClick={() => togglePopUpMenu(task._id)}
           />
         </>
       )}

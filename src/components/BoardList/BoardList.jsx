@@ -4,25 +4,23 @@ import AddBoardButton from 'components/AddBoardButton';
 import { Title } from './BoardList.styled';
 import {
   getAllBoardsThunk,
+  getAllTasksThunk,
   getCurrentBoardThunk,
 } from 'redux/dashboards/thunks';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function BoardList() {
-  const { boardName } = useParams();
-  console.log(boardName);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const boards = useSelector(state => state.boards.boards);
 
   useEffect(() => {
     dispatch(getAllBoardsThunk());
-    // dispatch(getBackgrounds());
   }, [dispatch]);
 
   const handleOpenBoard = (id, title) => {
-    console.log('id:', id);
     dispatch(getCurrentBoardThunk(id));
+    dispatch(getAllTasksThunk(id));
 
     const normalizedTitle = title.toLowerCase().replace(/\s+/g, '-');
     navigate(normalizedTitle);

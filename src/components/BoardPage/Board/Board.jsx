@@ -12,8 +12,7 @@ const Board = () => {
     <DashboardContainer>
       <DashboardContent>
         {board.columns.map(column => (
-          <ColumnWrapper key={column._id}
-          >
+          <ColumnWrapper key={column._id}>
             <Column
               title={column.title}
               tasks={column.tasks}

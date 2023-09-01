@@ -1,7 +1,7 @@
 import { tasksInstance } from '../axiosConfig';
 
-export const getAllTasks = async body => {
-  const { data } = await tasksInstance.get('', body);
+export const getAllTasks = async id => {
+  const { data } = await tasksInstance.get(`/${id}`);
   return data;
 };
 

@@ -71,17 +71,19 @@ const Column = ({ title, tasks, columnId }) => {
 
         <ScrollContainer>
           <ScrollContent>
-            {tasks.map(task => (
-              <Card
-                key={task._id}
-                taskId={task._id}
-                togglePopUpMenu={togglePopUpMenu}
-                isPopupOpen={openTaskId === task._id}
-              />
-            ))}
+            {tasks.map(task => {
+              return (
+                <Card
+                  key={task._id}
+                  task={task}
+                  togglePopUpMenu={togglePopUpMenu}
+                  isPopupOpen={openTaskId === task._id}
+                />
+              );
+            })}
           </ScrollContent>
         </ScrollContainer>
-        <AddNewCard />
+        <AddNewCard columnId={columnId} />
 
         <ColumnModal
           closeModal={toggleModal}
