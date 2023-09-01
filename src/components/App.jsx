@@ -11,6 +11,7 @@ import PrivateRouter from './PrivateRouter/PrivateRouter';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { GetCurrentUserThunk } from 'redux/thunks';
+import { Toaster } from 'react-hot-toast';
 
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
@@ -28,6 +29,7 @@ export const App = () => {
   return (
     <Suspense fallback={<Loader />}>
       <GlobalStyles />
+      <Toaster/>
       <Routes>
         <Route index element={<WelcomePage />} />
         <Route

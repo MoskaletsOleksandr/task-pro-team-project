@@ -29,6 +29,7 @@ const AuthPage = () => {
               toast.success('Logged In successfully');
               navigate('/home');
             }
+           
           });
       } catch (error) {
         toast.error('Login failed');
