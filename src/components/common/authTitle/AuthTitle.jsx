@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types';
+
 import { AuthTitle,StyledLink} from './AuthTitleStyled';
 
 
@@ -13,9 +13,5 @@ function FormTitle() {
   )
 }
 
-FormTitle.propTypes={
-    title:PropTypes.string.isRequired,
-    subtitle:PropTypes.string.isRequired,
-    
-}
+
 export default FormTitle

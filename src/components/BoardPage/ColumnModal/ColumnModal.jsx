@@ -3,12 +3,13 @@ import React, { useState } from 'react';
 import { Input, BtnAdd, WrapSvg, SvgIconPlus } from './ColumnModal.styled';
 import sprite from '../../../images/sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { createNewColumnThunk } from 'redux/dashboards/thunks';
 
-const ColumnModal = ({ closeModal, isOpen, name, newColumnTitle }) => {
-  const [inputValue, setInputValue] = useState(newColumnTitle);
+
+const ColumnModal = ({ closeModal, isOpen, name, inputPlaceholder, actionThunk, actionPayload, buttonText, initialValue }) => {
+  const [inputValue, setInputValue] = useState(initialValue || ''); // Use initialValue if provided
   const dispatch = useDispatch();
   const boardId = useSelector(state => state.boards.currentBoard._id);
+
   const handleInputChange = e => {
     setInputValue(e.target.value);
   };
@@ -16,15 +17,15 @@ const ColumnModal = ({ closeModal, isOpen, name, newColumnTitle }) => {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(
-      createNewColumnThunk({
+      actionThunk({
         boardId,
-        body: { title: inputValue },
+        ...actionPayload(inputValue),
       })
     );
     if (inputValue.trim() !== '') {
       setInputValue('');
     }
-    console.log('Input Value:', inputValue);
+    closeModal();
   };
 
   return (
@@ -34,7 +35,7 @@ const ColumnModal = ({ closeModal, isOpen, name, newColumnTitle }) => {
         type="text"
         value={inputValue}
         onChange={handleInputChange}
-        placeholder="Title"
+        placeholder={inputPlaceholder}
       />
 
       <BtnAdd type="submit" onClick={handleSubmit}>
@@ -43,10 +44,10 @@ const ColumnModal = ({ closeModal, isOpen, name, newColumnTitle }) => {
             <use href={sprite + '#icon-plus'}></use>
           </SvgIconPlus>
         </WrapSvg>
-        Add
+        {buttonText}
       </BtnAdd>
     </Modal>
   );
 };
-
 export default ColumnModal;
+

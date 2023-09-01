@@ -2,13 +2,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 import RegistrationForm from 'components/registrationForm/RegistrationForm';
 import LoginForm from 'components/LoginForm/LoginForm';
 import { Container } from 'pages/WelcomePage/WelcomePage.styled';
-// import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { SignInThunk, SignUpThunk } from 'redux/thunks';
+import { SignInThunk, SignUpThunk } from 'redux/auth/thunks';
 import { toast } from 'react-hot-toast';
-
-// import { AuthButton } from 'components/common/authButton/AuthButton';
 
 const AuthPage = () => {
   const dispatch = useDispatch();
@@ -29,12 +26,12 @@ const AuthPage = () => {
           .then(data => {
             console.log(data);
             if (data) {
-              toast.success('Logged In successfully')
+              toast.success('Logged In successfully');
               navigate('/home');
             }
           });
       } catch (error) {
-        toast.error('Login failed')
+        toast.error('Login failed');
         console.log(error);
       }
     } else {
@@ -43,7 +40,7 @@ const AuthPage = () => {
           .unwrap()
           .then(data => {
             if (data) {
-              toast.success('Registered successfully')
+              toast.success('Registered successfully');
               navigate('/home');
             }
           });

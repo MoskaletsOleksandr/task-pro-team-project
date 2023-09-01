@@ -12,16 +12,28 @@ import {
 } from './Column.styled';
 import AddNewCard from 'components/BoardPage/AddNewCardBtn/AddNewCardBtn';
 import ColumnModal from 'components/BoardPage/ColumnModal/ColumnModal';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  deleteColumnByIdThunk,
+  updateColumnByIdThunk,
+} from 'redux/dashboards/thunks';
+// import ModalAddEditCard from 'components/Modals/ModalAddEditCard/ModalAddEditCard';
 
-const Column = ({ title, tasks, newColumnTitle }) => {
+const Column = ({ title, tasks, columnId }) => {
   const [showTestModal, setShowTestModal] = useState(false);
-  const [openTaskId, setOpenTaskId] = useState(null); 
+  const [openTaskId, setOpenTaskId] = useState(null);
+  const dispatch = useDispatch();
+  const [inputValue, setInputValue] = useState('');
+  const boardId = useSelector(state => state.boards.currentBoard._id);
+
+  console.log(inputValue);
 
   const toggleModal = () => {
     setShowTestModal(prevShowTestModal => !prevShowTestModal);
+    setInputValue(title);
   };
 
-  const togglePopUpMenu = (clickedTaskId) => {
+  const togglePopUpMenu = clickedTaskId => {
     if (clickedTaskId === openTaskId) {
       setOpenTaskId(null);
     } else {
@@ -29,43 +41,60 @@ const Column = ({ title, tasks, newColumnTitle }) => {
     }
   };
 
-  return (
-    <ColumnContainer>
-      <TitleIcon>
-        <Title>{title ? title : newColumnTitle}</Title>
-        <Icons>
-          <WhiteIcon
-            className="icon-search"
-            type="submit"
-            onClick={toggleModal}
-          >
-            <use href={sprite + '#icon-pencil-01'}></use>
-          </WhiteIcon>
-          <WhiteIcon className="icon-search">
-            <use href={sprite + '#icon-trash'}></use>
-          </WhiteIcon>
-        </Icons>
-      </TitleIcon>
+  const handleDeleteColumn = () => {
+    dispatch(
+      deleteColumnByIdThunk({
+        boardId,
+        columnId,
+      })
+    );
+  };
 
-      <ScrollContainer>
-        <ScrollContent>
-          {tasks.map(task => (
-            <Card
-              key={task._id}
-              taskId={task._id}
-              togglePopUpMenu={togglePopUpMenu}
-              isPopupOpen={openTaskId === task._id} 
-            />
-          ))}
-        </ScrollContent>
-      </ScrollContainer>
-      <AddNewCard />
-      <ColumnModal
-        closeModal={toggleModal}
-        isOpen={showTestModal}
-        name="Edit Column"
-      />
-    </ColumnContainer>
+  return (
+    <>
+      <ColumnContainer>
+        <TitleIcon>
+          <Title>{title}</Title>
+          <Icons>
+            <WhiteIcon
+              className="icon-search"
+              type="submit"
+              onClick={toggleModal}
+            >
+              <use href={sprite + '#icon-pencil-01'}></use>
+            </WhiteIcon>
+            <WhiteIcon className="icon-search" onClick={handleDeleteColumn}>
+              <use href={sprite + '#icon-trash'}></use>
+            </WhiteIcon>
+          </Icons>
+        </TitleIcon>
+
+        <ScrollContainer>
+          <ScrollContent>
+            {tasks.map(task => (
+              <Card
+                key={task._id}
+                taskId={task._id}
+                togglePopUpMenu={togglePopUpMenu}
+                isPopupOpen={openTaskId === task._id}
+              />
+            ))}
+          </ScrollContent>
+        </ScrollContainer>
+        <AddNewCard />
+
+        <ColumnModal
+          closeModal={toggleModal}
+          isOpen={showTestModal}
+          name={'Update Column'}
+          inputPlaceholder={title}
+          actionThunk={updateColumnByIdThunk}
+          actionPayload={value => ({ columnId, body: { title: value } })}
+          buttonText={'Update'}
+          initialValue={title}
+        />
+      </ColumnContainer>
+    </>
   );
 };
 

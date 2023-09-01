@@ -1,11 +1,38 @@
 import styled from '@emotion/styled';
 
 export const Section = styled.section`
-  padding: 0px 24px;
   width: 100vw;
+  margin-bottom:9px;
+  max-height: 100vh;
+  
+@media screen and (min-width: 320px) and (max-width: 374px) {
+    padding: 0px 15px;
+ }
+
+ @media screen and (min-width: 375px) {
+  padding: 0px  20px;
+}
+
+  @media (min-width: 768px) {
+    width: 100vw;
+    // max-height: 100vh;
+    padding: 0px 40px;
+  }
+
+  @media (min-width: 1439px) {
+    width: 80vw;
+    padding: unset;
+    // max-height: 100vh;
+  }
+
 `;
+
+
 export const SectionTitle = styled.div`
   display: flex;
+  @media (min-width: 1439px) {
+    padding: 0px 20px;
+  }
 `;
 
 export const BtnFilters = styled.button`
@@ -34,10 +61,14 @@ export const SectionBoards = styled.section`
   flex-direction: row;
   width: 100%;
   overflow-x: auto;
-
+  @media (min-width: 1439px) {
+    padding: 0px 20px;
+  }
+  
   ::-webkit-scrollbar {
     height: 12px;
-    width: 100%;
+    width: 100w;
+    padding-bottom:5px;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -48,6 +79,9 @@ export const SectionBoards = styled.section`
   ::-webkit-scrollbar-track {
     background-color: var(--horizontal-scroll-bar-bg-color);
     border-radius: 12px;
+    margin-left: 20px;
+    margin-right:20px;
+    padding-bottom:5px;
   }
 `;
 
@@ -61,7 +95,6 @@ export const SvgIconFilters = styled.svg`
 
 export const Title = styled.h1`
   padding: 10px 0px;
-
   font-family: Poppins;
   font-weight: 500;
   font-size: 18px;
@@ -77,13 +110,13 @@ export const BtnAddColumn = styled.button`
   min-width: 335px;
   width: 335px;
   height: 56px;
-
   font-family: Poppins;
   font-weight: 500;
   font-size: 14px;
   line-height: 21px;
   letter-spacing: -0.02em;
   color: var(--add-column-btn-text-color);
+  margin-left:16px;
 
   border: none;
   border-radius: 8px;
@@ -92,13 +125,15 @@ export const BtnAddColumn = styled.button`
   transition-property: background-color, transform;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
   cursor: pointer;
+  
   &:hover,
   :focus {
     background-color: var(--column-add-btn-bg-color-hover);
     transform: background-color;
   }
+
+  
 `;
 
 export const WrapSvg = styled.div`
