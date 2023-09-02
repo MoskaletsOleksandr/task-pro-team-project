@@ -21,6 +21,6 @@ export const deleteTaskById = async idTask => {
 };
 
 export const updateTasksColumnById = async (idTask, body) => {
-  const { data } = await tasksInstance.patch(`/${idTask}`, body);
+  const { data } = await tasksInstance.patch(`/${idTask}/move`, body);
   return data;
 };

@@ -76,6 +76,7 @@ const Column = ({ title, tasks, columnId }) => {
                 <Card
                   key={task._id}
                   task={task}
+                  columnId={columnId}
                   togglePopUpMenu={togglePopUpMenu}
                   isPopupOpen={openTaskId === task._id}
                 />

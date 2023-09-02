@@ -24,9 +24,13 @@ import {
 } from '../Card/Card.styled';
 import CustomPopUpItem from '../PopUp/PopUp';
 import sprite from '../../../images/sprite.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateTasksColumnByIdThunk } from 'redux/dashboards/thunks';
 
-const TaskCard = ({ task, togglePopUpMenu, isPopupOpen }) => {
+const TaskCard = ({ task, columnId, togglePopUpMenu, isPopupOpen }) => {
+  const dispatch = useDispatch();
   const today = new Date().toISOString().slice(0, 10);
+  const columns = useSelector(state => state.boards.currentBoard.columns);
 
   const selectedTask = task;
 
@@ -52,6 +56,19 @@ const TaskCard = ({ task, togglePopUpMenu, isPopupOpen }) => {
   }
 
   const isTodayDeadline = selectedTask.deadline === today;
+
+  const listForPopup = columns.filter(column => column._id !== columnId);
+  console.log('listForPopup: ', listForPopup);
+
+  const handleMoveTask = columnId => {
+    console.log('handleRemoveTask to', columnId);
+    dispatch(
+      updateTasksColumnByIdThunk({
+        idTask: task._id,
+        body: { newColumnId: columnId },
+      })
+    );
+  };
 
   return (
     <CustomCard borderColor={priorityBorderColor}>
@@ -118,14 +135,23 @@ const TaskCard = ({ task, togglePopUpMenu, isPopupOpen }) => {
       )}
       {isPopupOpen && (
         <PopUpMenu>
-          <CustomPopUpItem
+          {listForPopup.map(({ title, _id }) => (
+            <CustomPopUpItem
+              key={_id}
+              text={title}
+              columnId={_id}
+              handleMoveTask={handleMoveTask}
+              iconHref={sprite + '#icon-arrow-circle-broken-right'}
+            />
+          ))}
+          {/* <CustomPopUpItem
             text="In Progress"
             iconHref={sprite + '#icon-arrow-circle-broken-right'}
           />
           <CustomPopUpItem
             text="Done"
             iconHref={sprite + '#icon-arrow-circle-broken-right'}
-          />
+          /> */}
         </PopUpMenu>
       )}
     </CustomCard>
