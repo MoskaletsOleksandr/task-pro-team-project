@@ -14,7 +14,7 @@ import {
   PriorityLabel,
 } from './FiltersModal.styled';
 
-const FiltersModal = () => {
+const FiltersModal = prorps => {
   const [selectedFilter, setSelectedFilter] = useState('showAll');
   const currentBoardId = useSelector(state => state.boards.currentBoard._id);
   console.log(currentBoardId);
@@ -22,6 +22,7 @@ const FiltersModal = () => {
   const dispatch = useDispatch();
 
   const handleChange = e => {
+    prorps.modalClose();
     setSelectedFilter(e.target.value);
     dispatch(
       getFilteredTasksThunk({

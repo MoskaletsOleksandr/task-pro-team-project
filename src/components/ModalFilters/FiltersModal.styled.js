@@ -32,6 +32,8 @@ export const FilterList = styled.ul`
 `;
 
 export const FilterItem = styled.li`
+  display: flex;
+  height: 24px;
   color: var(--modal-title-color);
 
   &:nth-of-type(1) {
@@ -49,13 +51,14 @@ export const FilterItem = styled.li`
 `;
 
 export const PriorityLabel = styled.label`
-  display: flex;
+  display: inline-flex;
+  align-items: center;
   font-family: Poppins;
   font-weight: 400;
   font-size: 12px;
   line-height: 18px;
   letter-spacing: -0.02em;
-  letter-spacing: -0.24px;
+
   color: var(--filter-popup-secondary-text-color);
 `;
 
@@ -83,5 +86,5 @@ export const AllLabels = styled.label`
 
 export const InputRadioBtn = styled.input`
   transform: scale(1.6);
-  margin-right: 8px;
+  margin-right: 16px;
 `;

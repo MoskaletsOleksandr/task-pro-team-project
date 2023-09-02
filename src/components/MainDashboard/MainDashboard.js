@@ -55,7 +55,7 @@ const MainDashboard = () => {
         <Modal
           onClose={toggleFiltersModal}
           isOpen={showFiltersModal}
-          children={<FiltersModal />}
+          children={<FiltersModal modalClose={toggleFiltersModal} />}
         />
       )}
 
