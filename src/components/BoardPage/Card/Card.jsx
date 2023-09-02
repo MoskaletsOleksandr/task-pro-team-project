@@ -1,4 +1,4 @@
-import React from 'react'; // ,{ useState }
+import React from 'react';
 import LinesEllipsis from 'react-lines-ellipsis';
 import {
   PriorityCircle,
@@ -24,12 +24,11 @@ import {
 } from '../Card/Card.styled';
 import CustomPopUpItem from '../PopUp/PopUp';
 import sprite from '../../../images/sprite.svg';
+import dayjs from 'dayjs';
 
 const TaskCard = ({ task, togglePopUpMenu, isPopupOpen }) => {
-  const today = new Date().toISOString().slice(0, 10);
 
   const selectedTask = task;
-
   if (!selectedTask) {
     return null;
   }
@@ -51,7 +50,16 @@ const TaskCard = ({ task, togglePopUpMenu, isPopupOpen }) => {
     priorityBorderColor = 'var(--filter-without-priority-color)';
   }
 
-  const isTodayDeadline = selectedTask.deadline === today;
+
+  const today = new Date().toLocaleDateString('en-GB');
+  const formattedSelectedDeadline = dayjs(selectedTask.deadline).format('DD/MM/YYYY');
+  const isTodayDeadline = formattedSelectedDeadline === today;
+
+  console.log('today:', today);
+  console.log('formattedSelectedDeadline:', formattedSelectedDeadline);
+  console.log('isTodayDeadline:', isTodayDeadline);
+
+
 
   return (
     <CustomCard borderColor={priorityBorderColor}>
@@ -79,7 +87,7 @@ const TaskCard = ({ task, togglePopUpMenu, isPopupOpen }) => {
             </PriorityDateItem>
             <DedlineWrapper>
               <DeadlineTypography>Deadline:</DeadlineTypography>
-              <DeadlineInfo>{selectedTask.deadline}</DeadlineInfo>
+              <DeadlineInfo>{formattedSelectedDeadline}</DeadlineInfo>
             </DedlineWrapper>
           </PriorityDateContainer>
           <Icons>

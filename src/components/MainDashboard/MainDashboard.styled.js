@@ -31,7 +31,7 @@ export const Section = styled.section`
 export const SectionTitle = styled.div`
   display: flex;
   @media (min-width: 1439px) {
-    padding: 0px 20px;
+    padding: 0px 25px;
   }
 `;
 

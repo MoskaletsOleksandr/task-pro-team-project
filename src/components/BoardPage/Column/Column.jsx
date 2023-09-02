@@ -88,11 +88,11 @@ const Column = ({ title, tasks, columnId }) => {
         <ColumnModal
           closeModal={toggleModal}
           isOpen={showTestModal}
-          name={'Update Column'}
+          name={'Edit column'}
           inputPlaceholder={title}
           actionThunk={updateColumnByIdThunk}
           actionPayload={value => ({ columnId, body: { title: value } })}
-          buttonText={'Update'}
+          buttonText={'Add'}
           initialValue={title}
         />
       </ColumnContainer>
