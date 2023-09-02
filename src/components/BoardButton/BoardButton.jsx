@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router';
+import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import sprite from '../../images/sprite.svg';
 import Modal from 'components/Modal/Modal';
@@ -13,31 +13,20 @@ import {
   IconsWrapper,
   IconButton,
 } from './BoardButton.styled';
-import { getCurrentBoardThunk } from 'redux/dashboards/thunks';
-import { deleteBoardByIdThunk } from 'redux/dashboards/thunks';
+import {
+  deleteBoardByIdThunk,
+  getAllBoardsThunk,
+  getCurrentBoardThunk,
+} from 'redux/dashboards/thunks';
 
 function BoardButton({ name, id, icon }) {
   const [isModalOpen, setModalOpen] = useState(false);
   const dispatch = useDispatch();
-  const params = useParams();
+  // const params = useParams();
   const navigate = useNavigate();
   const [active, setActive] = useState(false);
-  const [click, setClick] = useState(false);
-  useEffect(() => {
-    if (name.toString().toLowerCase() !== params.boardName) {
-      setActive(false);
-    }
-    if (name.toString().toLowerCase() === params.boardName) {
-      setActive(true);
-    }
-  }, [dispatch, params.boardName, name]);
-
-  const handleActive = () => {
-    setActive(true);
-    dispatch(getCurrentBoardThunk(`${id}`));
-    navigate(`${name.toLowerCase()}`);
-  };
-
+  const [click] = useState(false);
+  
   const openModal = () => {
     setModalOpen(true);
   };
@@ -46,10 +35,43 @@ function BoardButton({ name, id, icon }) {
     setModalOpen(false);
   };
 
-  const handleDelete = id => {
-    dispatch(deleteBoardByIdThunk(id));
-    setClick(true);
+  useEffect(() => {
+    dispatch(getAllBoardsThunk());
+  }, [dispatch]);
+  //   if (name.toString().toLowerCase() !== params.boardName) {
+  //     setActive(false);
+  //   }
+  //   if (name.toString().toLowerCase() === params.boardName) {
+  //     setActive(true);
+  //   }
+  // }, [dispatch, params.boardName, name]);
+
+  const handleActive = () => {
+    setActive(true);
+    dispatch(getCurrentBoardThunk(`${id}`));
+    navigate(`${name.toLowerCase()}`);
   };
+
+  // const handleDelete = id => {
+  //   dispatch(deleteBoardByIdThunk(id));
+  //   setClick(true);
+  // };
+  // const handleOpenBoard = (id, title) => {
+  //   dispatch(getCurrentBoardThunk(id));
+  // const normalizedTitle = title.toLowerCase().replace(/\s+/g, '-');
+  // navigate(normalizedTitle);
+  // };
+  const handleEditBoard = (e, boardId) => {
+    e.stopPropagation();
+    console.log('handleEditBoard'); // Зупиняє подальше поширення кліку до обгортки
+    // Додайте код для редагування дошки з ID `boardId`
+  };
+
+  const handleDeleteBoard = (e, boardId) => {
+    e.stopPropagation();
+    dispatch(deleteBoardByIdThunk(boardId));
+  };
+
   useEffect(() => {
     if (click) {
       navigate('/home');
@@ -62,18 +84,20 @@ function BoardButton({ name, id, icon }) {
         <Svg width="18px" height="18px">
           <use href={sprite + `#${icon}`}></use>
         </Svg>
-        <Title>{name}</Title>
+        <Title style={{ color: 'white' }}>{name}</Title>
         {active && (
           <IconsWrapper>
-            <IconButton type="button" onClick={openModal}>
+            <IconButton type="button" onClick={e => handleEditBoard(e, id)}>
               <ActiveSvg width="18px" height="18px">
                 <use href={sprite + '#icon-pencil-01'}></use>
               </ActiveSvg>
+              Edit
             </IconButton>
-            <IconButton type="button" onClick={() => handleDelete(id)}>
+            <IconButton type="button" onClick={e => handleDeleteBoard(e, id)}>
               <ActiveSvg width="16px" height="16px">
                 <use href={sprite + '#icon-trash'}></use>
               </ActiveSvg>
+              Delete
             </IconButton>
           </IconsWrapper>
         )}
@@ -84,7 +108,8 @@ function BoardButton({ name, id, icon }) {
         </Modal>
       )}
     </>
-  );
-}
-
+    );
+      }
+    
+    
 export default BoardButton;

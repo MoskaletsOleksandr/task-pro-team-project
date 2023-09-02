@@ -76,8 +76,12 @@ export const Icon = styled.svg`
 margin-right: 8px;
 width: 18px;
 height: 18px;
-stroke: var(--modal-selected-icon-color);
+fill: var(--modal-icon-color);
 cursor: pointer;
+background-color: var(--modal-button-plus-bg-color);
+&:hover {
+    fill: var(--modal-selected-icon-color);
+}
 `;
 
 export const BackgroundTitle = styled.h3`

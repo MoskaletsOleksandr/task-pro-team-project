@@ -3,7 +3,7 @@ import { ButtonForm } from './ButtonForForms.styled';
 function ButtonForForms ({ textButton }) {
   return (
     <>
-      <ButtonForm type="submit"> {textButton}
+      <ButtonForm type="submit"> {textButton()}
       </ButtonForm>
     </>
   );

@@ -35,9 +35,11 @@ height: 36px;
 background-color: #BEDBB0;
 border-radius: 6px;
 
-&:hover {
-    color: var(--sidebar-button-plus-bg-color-hover);
-  }
+&:hover,
+&focus {
+scale: 1.05;
+background-color: var(--modal-btn-bg-color-hover);
+}
 `;
 
 export const Svg = styled.svg`

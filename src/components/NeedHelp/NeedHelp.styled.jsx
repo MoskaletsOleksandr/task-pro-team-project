@@ -40,13 +40,17 @@ color: var(--link-text-color);
 
 export const Button = styled.button`
 color: var(--primary-text-color);
+width: 197px;
 font-size: 12px;
 font-weight: 500;
 display: flex;
-justify-content: center;
+justify-content: left;
 align-items: center;
 height: 20px;
 background-color: transparent;
+border: none;
+gap: 8px;
+padding-bottom: 19px;
 `;
 
 export const Svg = styled.svg`
@@ -58,5 +62,9 @@ margin-bottom: 14px;
 `;
 
 export const ButtonText = styled.span`
-margin-left: 8px;
+font-family: Poppins;
+// margin-left: 8px;
+color: var(--primary-text-color);
+font-size: 12px;
+font-weight: 500;
 `;

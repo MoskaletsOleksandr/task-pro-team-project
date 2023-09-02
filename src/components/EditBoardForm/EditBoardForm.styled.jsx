@@ -12,19 +12,12 @@ font-size: 18px;
 line-height: 27px;
 letter-spacing: -0.02em;
 color: var(--modal-primary-text-color);
-
-@media screen and (min-width: 1440px) {
-    margin-left: 24px;
-    width: 212px;
-    height: 272px;
-    padding: 20px;
-}
 `;
 
 export const Input = styled.input`
 box-sizing: border-box;
 margin: 0 0 24px 0;
-width: 302px;
+width: 287px;
 height: 49px;
 padding-left: 20px;
 background: transparent;
@@ -67,16 +60,10 @@ font-size: 14;
 line-height: 21px;
 letter-spacing: -0.02em;
 color: var(--modal-title-color);
-
-@media screen and (min-width: 1440px) {
-    margin-left: 24px;
-    width: 212px;
-    height: 272px;
-    padding: 20px;
-}
 `;
 
-export const IconWrap = styled.div`margin: 0 0 24px 0;
+export const IconWrap = styled.div`
+margin: 0 0 24px 0;
 `;
 
 export const Icon = styled.svg`
@@ -85,6 +72,10 @@ width: 18px;
 height: 18px;
 stroke: var(--modal-title-color);
 cursor: pointer;
+background-color: var(--modal-button-plus-bg-color);
+&:hover {
+    fill: var(--modal-selected-icon-color);
+}
 `;
 
 export const BackgroundTitle = styled.h3`
@@ -95,11 +86,6 @@ font-size: 14;
 line-height: 21px;
 letter-spacing: -0.02em;
 color: var(--modal-title-color);
-@media screen and (min-width: 1440px) {
-    margin-left: 24px;
-    width: 212px;
-    height: 272px;
-    padding: 20px;}
 `;
 
 export const BgIcon = styled.div`
