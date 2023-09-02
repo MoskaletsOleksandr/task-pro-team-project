@@ -16,6 +16,11 @@ const Picture = styled.img`
   display: block;
   margin-left: auto;
   margin-right: auto;
+
+  @media screen and (max-width: 768px) {
+    width: 124px;
+    height: 124px;
+  }
 `;
 const ContainerTitle = styled.div`
   margin-top: 24px;
@@ -23,6 +28,10 @@ const ContainerTitle = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: 24px;
+
+  @media screen and (max-width: 768px) {
+    margin-top: 14px;
+  }
 `;
 const ContainerSvg = styled.div`
   display: flex;
@@ -32,11 +41,21 @@ const ContainerSvg = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 8px;
+
+  @media screen and (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+  }
 `;
 const SvgLogo = styled.svg`
-  width: 18px;
-  height: 24px;
+  width: 23px;
+  height: 28px;
   fill: white;
+
+  @media screen and (max-width: 768px) {
+    width: 18px;
+    height: 24px;
+  }
 `;
 const Title = styled.h1`
   color: #161616;
@@ -47,6 +66,9 @@ const Title = styled.h1`
   line-height: normal;
   letter-spacing: -1.6px;
   margin-left: 14px;
+
+  @media screen and (max-width: 768px) {
+  font-size: 28px;
 `;
 const ContentMain = styled.div`
   text-align: center;
@@ -63,10 +85,15 @@ const Text = styled.p`
   font-weight: 400;
   line-height: 18px;
   letter-spacing: -0.02em;
-  max-width: 473px;
+  width: 473px;
   height: 36px;
   margin-bottom: 48px;
   margin-block-start: 0;
+
+  @media screen and (max-width: 768px) {
+    width: 335px;
+    height: 54px;
+  }
 `;
 const Nav = styled.div`
   align-items: center;
@@ -92,6 +119,10 @@ const RegistrationBtn = styled(Link)`
   color: #fff;
   text-decoration: none;
   cursor: pointer;
+
+  @media screen and (max-width: 768px) {
+    width: 335px;
+  }
 `;
 const LoginBtn = styled(Link)`
   font-family: Poppins;
