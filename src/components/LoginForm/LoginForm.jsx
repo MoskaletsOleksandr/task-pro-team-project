@@ -21,11 +21,10 @@ function LoginForm() {
     email: '',
     password: '',
   };
-  const onSubmit = async(values, { resetForm }) => {
-    
+  const onSubmit = async (values, { resetForm }) => {
     try {
       await dispatch(SignInThunk(values)).unwrap();
-      toast.success('Loggged in successfully');
+      toast.success('Logged in successfully');
     } catch (error) {
       toast.error('Login failed');
     }
