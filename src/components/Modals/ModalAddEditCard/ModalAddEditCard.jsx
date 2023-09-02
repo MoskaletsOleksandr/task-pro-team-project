@@ -12,9 +12,13 @@ import { Calendar } from '../ModalsCommon/Calendar/Calendar';
 import { useEffect, useState } from 'react';
 import { CloseButton, CloseSVG } from 'components/Modal/Modal.styled';
 import { radioButtons } from './radioBattons';
+import { useDispatch, useSelector } from 'react-redux';
+import { createNewTaskThunk } from 'redux/dashboards/thunks';
 
-const ModalAddEditCard = ({ closeModal, nameButton }) => {
+const ModalAddEditCard = ({ closeModal, nameButton, columnId }) => {
   const [visible, setVisible] = useState(false);
+  const dispatch = useDispatch();
+  const boardId = useSelector(state => state.boards.currentBoard._id);
 
   //   ------------ Підключення модалки ---------------
   //   ================================================
@@ -34,7 +38,6 @@ const ModalAddEditCard = ({ closeModal, nameButton }) => {
 
   // 2. В nameButton === 'edit' в useEffect, має бути name однієї з кнопок, що відкриває модалку
 
-  
   useEffect(() => {
     if (nameButton === 'edit') {
       setVisible(true);
@@ -76,10 +79,16 @@ const ModalAddEditCard = ({ closeModal, nameButton }) => {
     } else if (!deadline) {
       alert('Select date');
     } else {
-      console.log(title);
-      console.log(text);
-      console.log(priority);
-      console.log(deadline);
+      dispatch(
+        createNewTaskThunk({
+          title,
+          text,
+          priority,
+          deadline,
+          boardId,
+          columnId,
+        })
+      );
       reset();
     }
   };

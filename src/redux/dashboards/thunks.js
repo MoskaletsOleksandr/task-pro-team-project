@@ -35,9 +35,10 @@ export const getAllBoardsThunk = createAsyncThunk(
 // діспатчимо її одночасно із getAllTasksThunk
 export const getCurrentBoardThunk = createAsyncThunk(
   'boards/getCurrentBoard',
-  async (id, { rejectWithValue }) => {
+  async (id, { rejectWithValue, dispatch }) => {
     try {
       const data = await getCurrentBoard(id);
+      dispatch(getAllTasksThunk(id));
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -127,12 +128,12 @@ export const deleteColumnByIdThunk = createAsyncThunk(
   }
 );
 
-//Отримання всіх тасок// сюди передаємо от такого формату об'єкт {boardId:""}
+//Отримання всіх тасок// сюди передаємо id дошки, для якої нам потрібно отримати таски
 export const getAllTasksThunk = createAsyncThunk(
   'boards/getAllTasks',
-  async (body, { rejectWithValue }) => {
+  async (id, { rejectWithValue }) => {
     try {
-      const data = await getAllTasks(body);
+      const data = await getAllTasks(id);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

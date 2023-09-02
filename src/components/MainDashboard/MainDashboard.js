@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
-import // useDispatch,
-// useSelector,
-'react-redux';
 import sprite from '../../images/sprite.svg';
-// import { useSelector } from 'react-redux';
-// import { v4 as uuidv4 } from 'uuid';
-import { currentBoardForScreensPage } from '../../fakeData/fakeData';
 import Column from '../../components/BoardPage/Column/Column';
 import Board from '../../components/BoardPage/Board/Board';
 import ColumnModal from '../../components/BoardPage/ColumnModal/ColumnModal';
 import FiltersModal from 'components/ModalFilters/FilterModal';
-
 import {
   Section,
   SectionTitle,
@@ -23,31 +16,22 @@ import {
   WrapSvg,
 } from './MainDashboard.styled';
 import Modal from 'components/Modal/Modal';
+import { createNewColumnThunk } from 'redux/dashboards/thunks';
+import { useSelector } from 'react-redux';
 
-// import {
-//   createNewBoardThunk,
-//   createNewColumnThunk,
-//   getCurrentBoardThunk,
-// } from 'redux/dashboards/thunks';
 
 const MainDashboard = () => {
+  const boardTitle = useSelector(state => state.boards.currentBoard.title);
   const [showTestModal, setShowTestModal] = useState(false);
+  const [
+    currentColumns,
+    // setCurrentColumns
+  ] = useState([]);
 
-  const [currentColumns, setCurrentColumns] = useState(
-    currentBoardForScreensPage.columns
-  );
-  const [newColumnTitle, setNewColumnTitle] = useState('');
-  console.log(newColumnTitle);
   const toggleModal = () => {
     setShowTestModal(prevShowTestModal => !prevShowTestModal);
     if (!showTestModal) {
-      setNewColumnTitle('');
     }
-  };
-
-  const handleCreateNewColumn = newColumn => {
-    setCurrentColumns(prevColumns => [...prevColumns, newColumn]);
-    toggleModal();
   };
 
   // Filters Modal
@@ -56,10 +40,12 @@ const MainDashboard = () => {
     setShowFiltersModal(prevShowFiltersModal => !prevShowFiltersModal);
   };
 
+
+
   return (
     <Section>
       <SectionTitle>
-        <Title>Project office</Title>
+        <Title>{boardTitle}</Title>
         <BtnFilters type="submit" onClick={toggleFiltersModal}>
           <SvgIconFilters>
             <use href={sprite + '#icon-filter'}></use>
@@ -86,6 +72,7 @@ const MainDashboard = () => {
               title={column.title}
               tasks={column.tasks}
               newColumnTitle={null}
+              columnId={column._id}
             />
           ))}
         </Board>
@@ -98,13 +85,15 @@ const MainDashboard = () => {
           Add another column
         </BtnAddColumn>
       </SectionBoards>
-
       <ColumnModal
         closeModal={toggleModal}
         isOpen={showTestModal}
-        name="Add Column"
-        addColumn={handleCreateNewColumn}
-        newColumnTitle={newColumnTitle}
+        name={'Add column'}
+        inputPlaceholder="Title"
+        actionThunk={createNewColumnThunk}
+        actionPayload={value => ({ body: { title: value } })}
+        buttonText={'Add'}
+        initialValue={''}
       />
     </Section>
   );

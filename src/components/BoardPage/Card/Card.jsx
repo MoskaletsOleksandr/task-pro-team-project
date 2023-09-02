@@ -1,6 +1,5 @@
-import React from 'react'; // ,{ useState }
+import React from 'react';
 import LinesEllipsis from 'react-lines-ellipsis';
-import { currentBoardForScreensPage } from '../../../fakeData/fakeData';
 import {
   PriorityCircle,
   TruncatedText,
@@ -25,14 +24,15 @@ import {
 } from '../Card/Card.styled';
 import CustomPopUpItem from '../PopUp/PopUp';
 import sprite from '../../../images/sprite.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateTasksColumnByIdThunk } from 'redux/dashboards/thunks';
+import dayjs from 'dayjs';
 
-const TaskCard = ({ taskId, togglePopUpMenu, isPopupOpen }) => {
-  const today = new Date().toISOString().slice(0, 10);
+const TaskCard = ({ task, columnId, togglePopUpMenu, isPopupOpen }) => {
+  const dispatch = useDispatch();
+  const columns = useSelector(state => state.boards.currentBoard.columns);
 
-  const selectedTask = currentBoardForScreensPage.columns
-    .flatMap(column => column.tasks)
-    .find(taskData => taskData._id === taskId);
-
+  const selectedTask = task;
   if (!selectedTask) {
     return null;
   }
@@ -54,7 +54,28 @@ const TaskCard = ({ taskId, togglePopUpMenu, isPopupOpen }) => {
     priorityBorderColor = 'var(--filter-without-priority-color)';
   }
 
-  const isTodayDeadline = selectedTask.deadline === today;
+  const today = new Date().toLocaleDateString('en-GB');
+  const formattedSelectedDeadline = dayjs(selectedTask.deadline).format(
+    'DD/MM/YYYY'
+  );
+  const isTodayDeadline = formattedSelectedDeadline === today;
+
+  console.log('today:', today);
+  console.log('formattedSelectedDeadline:', formattedSelectedDeadline);
+  console.log('isTodayDeadline:', isTodayDeadline);
+
+  const listForPopup = columns.filter(column => column._id !== columnId);
+  console.log('listForPopup: ', listForPopup);
+
+  const handleMoveTask = columnId => {
+    console.log('handleRemoveTask to', columnId);
+    dispatch(
+      updateTasksColumnByIdThunk({
+        idTask: task._id,
+        body: { newColumnId: columnId },
+      })
+    );
+  };
 
   return (
     <CustomCard borderColor={priorityBorderColor}>
@@ -82,7 +103,7 @@ const TaskCard = ({ taskId, togglePopUpMenu, isPopupOpen }) => {
             </PriorityDateItem>
             <DedlineWrapper>
               <DeadlineTypography>Deadline:</DeadlineTypography>
-              <DeadlineInfo>{selectedTask.deadline}</DeadlineInfo>
+              <DeadlineInfo>{formattedSelectedDeadline}</DeadlineInfo>
             </DedlineWrapper>
           </PriorityDateContainer>
           <Icons>
@@ -93,7 +114,7 @@ const TaskCard = ({ taskId, togglePopUpMenu, isPopupOpen }) => {
             )}
             <WhiteIcon
               className="icon-search"
-              onClick={() => togglePopUpMenu(taskId)}
+              onClick={() => togglePopUpMenu(task._id)}
             >
               <use href={sprite + '#icon-arrow-circle-broken-right'}></use>
             </WhiteIcon>
@@ -111,24 +132,33 @@ const TaskCard = ({ taskId, togglePopUpMenu, isPopupOpen }) => {
         // Vit
         <>
           <BackDropHiden
-            onClick={() => togglePopUpMenu(taskId)}
+            onClick={() => togglePopUpMenu(task._id)}
           ></BackDropHiden>
           <Backdrop
             backgroundColor={priorityBorderColor}
-            onClick={() => togglePopUpMenu(taskId)}
+            onClick={() => togglePopUpMenu(task._id)}
           />
         </>
       )}
       {isPopupOpen && (
         <PopUpMenu>
-          <CustomPopUpItem
+          {listForPopup.map(({ title, _id }) => (
+            <CustomPopUpItem
+              key={_id}
+              text={title}
+              columnId={_id}
+              handleMoveTask={handleMoveTask}
+              iconHref={sprite + '#icon-arrow-circle-broken-right'}
+            />
+          ))}
+          {/* <CustomPopUpItem
             text="In Progress"
             iconHref={sprite + '#icon-arrow-circle-broken-right'}
           />
           <CustomPopUpItem
             text="Done"
             iconHref={sprite + '#icon-arrow-circle-broken-right'}
-          />
+          /> */}
         </PopUpMenu>
       )}
     </CustomCard>
