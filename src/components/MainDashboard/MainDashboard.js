@@ -19,7 +19,6 @@ import Modal from 'components/Modal/Modal';
 import { createNewColumnThunk } from 'redux/dashboards/thunks';
 import { useSelector } from 'react-redux';
 
-
 const MainDashboard = () => {
   const boardTitle = useSelector(state => state.boards.currentBoard.title);
   const [showTestModal, setShowTestModal] = useState(false);
@@ -40,8 +39,6 @@ const MainDashboard = () => {
     setShowFiltersModal(prevShowFiltersModal => !prevShowFiltersModal);
   };
 
-
-
   return (
     <Section>
       <SectionTitle>
@@ -61,8 +58,6 @@ const MainDashboard = () => {
           children={<FiltersModal />}
         />
       )}
-
-      {/* <FiltersModal /> */}
 
       <SectionBoards>
         <Board>

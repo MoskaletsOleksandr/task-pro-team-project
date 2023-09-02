@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const FiltersContainer = styled.div`
-  padding: 24px;
+  padding: 0px 24px;
   width: 300px;
   height: 234px;
 `;
@@ -56,7 +56,7 @@ export const PriorityLabel = styled.label`
   line-height: 18px;
   letter-spacing: -0.02em;
   letter-spacing: -0.24px;
-  color: var(--filter-popup-tertiary-text-color);
+  color: var(--filter-popup-secondary-text-color);
 `;
 
 export const AllColor = styled.p`
@@ -78,7 +78,7 @@ export const AllLabels = styled.label`
   font-size: 12px;
   line-height: 18px;
   letter-spacing: -0.02em;
-  color: var(--filter-popup-tertiary-text-color);
+  color: var(--filter-popup-secondary-text-color);
 `;
 
 export const InputRadioBtn = styled.input`

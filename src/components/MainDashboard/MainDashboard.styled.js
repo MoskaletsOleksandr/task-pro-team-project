@@ -2,16 +2,16 @@ import styled from '@emotion/styled';
 
 export const Section = styled.section`
   width: 100vw;
-  margin-bottom:9px;
+  margin-bottom: 9px;
   max-height: 100vh;
-  
-@media screen and (min-width: 320px) and (max-width: 374px) {
-    padding: 0px 15px;
- }
 
- @media screen and (min-width: 375px) {
-  padding: 0px  20px;
-}
+  @media screen and (min-width: 320px) and (max-width: 374px) {
+    padding: 0px 15px;
+  }
+
+  @media screen and (min-width: 375px) {
+    padding: 0px 20px;
+  }
 
   @media (min-width: 768px) {
     width: 100vw;
@@ -24,9 +24,7 @@ export const Section = styled.section`
     padding: unset;
     // max-height: 100vh;
   }
-
 `;
-
 
 export const SectionTitle = styled.div`
   display: flex;
@@ -49,7 +47,8 @@ export const BtnFilters = styled.button`
   font-size: 14px;
   line-height: 21px;
   letter-spacing: -0.02em;
-  color: var(--add-column-btn-text-color);
+  /* --add-column-btn-text-color */
+  color: var(--filter-text-color);
 
   border: none;
   background-color: var(--screens-page-bg-color);
@@ -64,11 +63,11 @@ export const SectionBoards = styled.section`
   @media (min-width: 1439px) {
     padding: 0px 20px;
   }
-  
+
   ::-webkit-scrollbar {
     height: 12px;
     width: 100w;
-    padding-bottom:5px;
+    padding-bottom: 5px;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -80,8 +79,8 @@ export const SectionBoards = styled.section`
     background-color: var(--horizontal-scroll-bar-bg-color);
     border-radius: 12px;
     margin-left: 20px;
-    margin-right:20px;
-    padding-bottom:5px;
+    margin-right: 20px;
+    padding-bottom: 5px;
   }
 `;
 
@@ -116,7 +115,7 @@ export const BtnAddColumn = styled.button`
   line-height: 21px;
   letter-spacing: -0.02em;
   color: var(--add-column-btn-text-color);
-  margin-left:16px;
+  margin-left: 16px;
 
   border: none;
   border-radius: 8px;
@@ -126,14 +125,12 @@ export const BtnAddColumn = styled.button`
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  
+
   &:hover,
   :focus {
     background-color: var(--column-add-btn-bg-color-hover);
     transform: background-color;
   }
-
-  
 `;
 
 export const WrapSvg = styled.div`

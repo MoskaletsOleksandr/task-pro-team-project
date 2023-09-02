@@ -19,12 +19,13 @@ const NewDashboard = () => {
 
   return (
     <Section>
-      <BtnFilters type="submit" onClick={handleFilters}>
+      <BtnFilters type="submit" disabled={true} onClick={handleFilters}>
         <SvgIconFilters>
           + <use href={sprite + '#icon-filter'}></use>
         </SvgIconFilters>
         Filter
       </BtnFilters>
+
       <InfoContainer>
         <InfoText>
           Before starting your project, it is essential

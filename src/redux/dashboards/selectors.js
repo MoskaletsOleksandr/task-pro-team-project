@@ -6,4 +6,5 @@ export const selectBoardData = state => state.board.info;
 
 // -------vit--------
 export const selectCurrentBoard = state => state.boards.currentBoard;
+export const selectBoardBackground = state => state.board.background;
 // -------vit--------

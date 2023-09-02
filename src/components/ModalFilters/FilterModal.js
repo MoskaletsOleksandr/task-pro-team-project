@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getFilteredTasksThunk } from 'redux/dashboards/thunks';
+
 import {
   FiltersContainer,
   FiltersTitle,
@@ -13,10 +16,14 @@ import {
 
 const FiltersModal = () => {
   const [selectedFilter, setSelectedFilter] = useState('showAll');
-  console.log(selectedFilter);
+  const currentBoardId = useSelector(state => state.boards.currentBoard._id);
+  console.log(currentBoardId);
+
+  const dispatch = useDispatch();
+
   const handleChange = e => {
     setSelectedFilter(e.target.value);
-    // console.log(selectedFilter);
+    dispatch(getFilteredTasksThunk({ currentBoardId, selectedFilter }));
   };
 
   return (
@@ -41,10 +48,6 @@ const FiltersModal = () => {
           />
           Show all
         </AllLabels>
-
-        {/* <button type="submit" onClick={() => setSelectedFilter('all')}>
-          TEST
-        </button> */}
       </WraperAllColor>
       {/* List */}
       <FilterList>
