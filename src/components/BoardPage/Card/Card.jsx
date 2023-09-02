@@ -18,9 +18,9 @@ import {
   DeadlineInfo,
   PriorityInfo,
   PopUpMenu,
-  Backdrop,
   BackDropHiden,
   BellIcon,
+  ScrollContent
 } from '../Card/Card.styled';
 import CustomPopUpItem from '../PopUp/PopUp';
 import sprite from '../../../images/sprite.svg';
@@ -31,7 +31,7 @@ import dayjs from 'dayjs';
 const TaskCard = ({ task, columnId, togglePopUpMenu, isPopupOpen, idTask }) => {
   const dispatch = useDispatch();
   const columns = useSelector(state => state.boards.currentBoard.columns);
-  // const cardId = 
+  const columnsLength = useSelector(state => state.boards.currentBoard.columns.length);
 
   const selectedTask = task;
   if (!selectedTask) {
@@ -67,9 +67,10 @@ const TaskCard = ({ task, columnId, togglePopUpMenu, isPopupOpen, idTask }) => {
   console.log('formattedSelectedDeadline:', formattedSelectedDeadline);
   console.log('isTodayDeadline:', isTodayDeadline);
 
+
   const listForPopup = columns.filter(column => column._id !== columnId);
   console.log('listForPopup: ', listForPopup);
-
+  console.log(columnsLength);
   const handleMoveTask = columnId => {
     console.log('handleRemoveTask to', columnId);
     dispatch(
@@ -82,7 +83,7 @@ const TaskCard = ({ task, columnId, togglePopUpMenu, isPopupOpen, idTask }) => {
 
   const handleDeleteCard = () => {
     dispatch(deleteTaskByIdThunk(idTask))
-      .unwrap() 
+      .unwrap()
       .then((data) => {
         console.log('Task deleted successfully:', data);
       })
@@ -126,12 +127,16 @@ const TaskCard = ({ task, columnId, togglePopUpMenu, isPopupOpen, idTask }) => {
                 <use href={sprite + '#icon-bell'} style={{ color: 'yellow' }} />
               </BellIcon>
             )}
-            <WhiteIcon
-              className="icon-search"
-              onClick={() => togglePopUpMenu(task._id)}
-            >
-              <use href={sprite + '#icon-arrow-circle-broken-right'}></use>
-            </WhiteIcon>
+            {columnsLength > 1 && (
+              <WhiteIcon
+                className="icon-search"
+                onClick={() => {
+                  togglePopUpMenu(task._id);
+                }}
+              >
+                <use href={sprite + '#icon-arrow-circle-broken-right'}></use>
+              </WhiteIcon>
+            )}
             <WhiteIcon className="icon-search">
               <use href={sprite + '#icon-pencil-01'}></use>
             </WhiteIcon>
@@ -148,23 +153,25 @@ const TaskCard = ({ task, columnId, togglePopUpMenu, isPopupOpen, idTask }) => {
           <BackDropHiden
             onClick={() => togglePopUpMenu(task._id)}
           ></BackDropHiden>
-          <Backdrop
+          {/* <Backdrop
             backgroundColor={priorityBorderColor}
             onClick={() => togglePopUpMenu(task._id)}
-          />
+          /> */}
         </>
       )}
       {isPopupOpen && (
         <PopUpMenu>
-          {listForPopup.map(({ title, _id }) => (
-            <CustomPopUpItem
-              key={_id}
-              text={title}
-              columnId={_id}
-              handleMoveTask={handleMoveTask}
-              iconHref={sprite + '#icon-arrow-circle-broken-right'}
-            />
-          ))}
+          <ScrollContent>
+            {listForPopup.map(({ title, _id }) => (
+              <CustomPopUpItem
+                key={_id}
+                text={title}
+                columnId={_id}
+                handleMoveTask={handleMoveTask}
+                iconHref={sprite + '#icon-arrow-circle-broken-right'}
+              />
+            ))}
+          </ScrollContent>
           {/* <CustomPopUpItem
             text="In Progress"
             iconHref={sprite + '#icon-arrow-circle-broken-right'}
