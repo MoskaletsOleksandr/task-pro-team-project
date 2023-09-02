@@ -17,8 +17,11 @@ import {
 } from './MainDashboard.styled';
 import Modal from 'components/Modal/Modal';
 import { createNewColumnThunk } from 'redux/dashboards/thunks';
+import { useSelector } from 'react-redux';
+
 
 const MainDashboard = () => {
+  const boardTitle = useSelector(state => state.boards.currentBoard.title);
   const [showTestModal, setShowTestModal] = useState(false);
   const [
     currentColumns,
@@ -37,10 +40,12 @@ const MainDashboard = () => {
     setShowFiltersModal(prevShowFiltersModal => !prevShowFiltersModal);
   };
 
+
+
   return (
     <Section>
       <SectionTitle>
-        <Title>Project office</Title>
+        <Title>{boardTitle}</Title>
         <BtnFilters type="submit" onClick={toggleFiltersModal}>
           <SvgIconFilters>
             <use href={sprite + '#icon-filter'}></use>
@@ -83,7 +88,7 @@ const MainDashboard = () => {
       <ColumnModal
         closeModal={toggleModal}
         isOpen={showTestModal}
-        name={'Add Column'}
+        name={'Add column'}
         inputPlaceholder="Title"
         actionThunk={createNewColumnThunk}
         actionPayload={value => ({ body: { title: value } })}
