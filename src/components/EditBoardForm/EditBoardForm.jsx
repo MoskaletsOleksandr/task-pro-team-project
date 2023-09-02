@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { updateBoardByIdThunk } from 'redux/dashboards/thunks';
@@ -14,7 +14,7 @@ import {
   IconTitle,
   IconWrap,
   Icon,
-  BackgroundTitle,
+  // BackgroundTitle,
   // BgIcon,
   // BackgroundItem,
   // BackgroundImage,
@@ -28,21 +28,24 @@ const EditBoardForm = ({ onClose }) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const board = useBoardData();
+  const board = useSelector(state => state.boards.currentBoard);
+  console.log(board);
 
-  // useEffect(() => {
-  //   setValue('title', board.title);
-  //   setSelectedIcon(board.icon);
-  //   setSelectedBackgroundId(board.background);
-  // }, [board.background, board.icon, board.title, setValue]);
+  useEffect(() => {
+    setValue('title', board.title);
+    // setSelectedIcon(board.icon);
+    // setSelectedBackgroundId(board.background);
+  }, [board.title, setValue]);
+  // board.background, board.icon,
 
   const handleTitleChange = event => {
     setValue('title', event.target.value);
   };
 
   const handleIconSelect = icon => {
+    // console.log(icon);
     setSelectedIcon(icon);
-    setValue('selectedIcon', icon);
+    setValue('icon', icon);
   };
 
   // const handleBackgroundSelect = backgroundId => {
@@ -50,41 +53,43 @@ const EditBoardForm = ({ onClose }) => {
   //   setValue('selectedBackgroundId', backgroundId);
   // };
 
-  // const handleEditBoardForm = data => {
-  //   const boardData = {
-  //     boardId: board._id,
-  //     body: {
-  //       title: data.title,
-  //       icon: data.selectedIcon,
-  //       background: data.selectedBackgroundId,
-  //     },
-  //   };
+  const handleEditBoardForm = data => {
+    console.log(data);
+    const boardData = {
+      id: board._id,
+      body: {
+        title: data.title,
+        icon: data.icon,
+        // background: data.selectedBackgroundId,
+      },
+    };
 
-  //   dispatch(updateBoardByIdThunk(boardData))
-  //     .unwrap()
-  //     .then(response => {
-  //       setValue('title', data.title);
-  //       setValue('selectedIcon', data.selectedIcon);
-  //       setValue('selectedBackgroundId', data.selectedBackgroundId);
-  //       onClose();
-  //     })
-  //     .catch(error => {
-  //       console.error('Error:', error);
-  //     });
+    dispatch(updateBoardByIdThunk(boardData))
+      .unwrap()
+      .then(response => {
+        setValue('title', data.title);
+        setValue('icon', '');
+        setValue('selectedIcon', data.icon);
+        // setValue('selectedBackgroundId', data.selectedBackgroundId);
+        onClose();
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
 
-  //   navigate(`${data.title.toLowerCase()}`);
-  // };
+    navigate(`${data.title.toLowerCase()}`);
+  };
 
   const renderIcons = () => {
     const icons = [
-      'Project',
-      'star',
-      'loading',
-      'puzzle-piece',
-      'container',
-      'lightning',
-      'colors',
-      'hexagon',
+      'icon-Project',
+      'icon-star',
+      'icon-loading',
+      'icon-puzzle-piece',
+      'icon-container',
+      'icon-lightning-icon',
+      'icon-colors',
+      'icon-hexagon',
     ];
 
     return icons.map(icon => (
@@ -98,23 +103,23 @@ const EditBoardForm = ({ onClose }) => {
     ));
   };
 
-//   const renderBackgrounds = () => {
-//     return data.map(item => (
-//       <BackgroundItem
-//         key={item.id}
-//         isActive={selectedBackgroundId === item.id}
-//         onClick={() => handleBackgroundSelect(item.id)}
-//       >
-//         <BackgroundImage src={item.image} alt="Background" />
-//       </BackgroundItem>
-//     ));
-//   };
+  // const renderBackgrounds = () => {
+  //   return data.map(item => (
+  //     <BackgroundItem
+  //       key={item.id}
+  //       isActive={selectedBackgroundId === item.id}
+  //       onClick={() => handleBackgroundSelect(item.id)}
+  //     >
+  //       <BackgroundImage src={item.image} alt="Background" />
+  //     </BackgroundItem>
+  //   ));
+  // };
 
   return (
     <div>
       <NewBoardTitle>Edit Board</NewBoardTitle>
-      <form >
-      {/* <form onSubmit={handleSubmit(handleEditBoardForm)}> */}
+
+      <form onSubmit={handleSubmit(handleEditBoardForm)}>
         <Input
           id="newBoardInput"
           type="text"
@@ -122,15 +127,13 @@ const EditBoardForm = ({ onClose }) => {
           {...register('title')}
           onChange={handleTitleChange}
         />
-
         <IconTitle>Icons</IconTitle>
         <IconWrap>{renderIcons()}</IconWrap>
-
-        <BackgroundTitle>Background</BackgroundTitle>
-        {/* <BgIcon>{renderBackgrounds()}</BgIcon> */}
-
+        {/* 
+        <BackgroundTitle>Background</BackgroundTitle> 
+         <BgIcon>{renderBackgrounds()}</BgIcon>  */}
         <ButtonForForms
-          textButton={() => <ChildButtonNewBoard textContent="Edit" />}
+          textButton={<ChildButtonNewBoard textContent="Edit" />}
           type="submit"
         />
       </form>
