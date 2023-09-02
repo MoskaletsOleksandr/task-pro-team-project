@@ -14,7 +14,7 @@ import {
   IconWrap,
   Icon,
   BackgroundTitle,
-  // BgIcon,
+  BgIcon,
   // BackgroundItem,
   // BackgroundImage,
   Input,
@@ -52,10 +52,11 @@ const NewBoard = ({ onClose }) => {
   // };
 
   const handleCreateBoard = data => {
+    console.log(data);
     dispatch(createNewBoardThunk(data)).then(() => {
       setValue('title', '');
       setValue('icon', '');
-      setValue('background', '');
+      // setValue('background', '');
       onClose();
     });
   };
@@ -111,7 +112,7 @@ const NewBoard = ({ onClose }) => {
         <IconTitle>Icons</IconTitle>
         <IconWrap>{renderIcons()}</IconWrap>
 
-        <BackgroundTitle>Background</BackgroundTitle>
+        {/* <BackgroundTitle>Background</BackgroundTitle> */}
         {/* <BgIcon>{renderBackgrounds()}</BgIcon> */}
 
         <ButtonForForms

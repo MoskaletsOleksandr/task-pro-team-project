@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AddBoardButton from 'components/AddBoardButton';
 import { Title } from './BoardList.styled';
@@ -9,14 +9,23 @@ import {
 } from 'redux/dashboards/thunks';
 import { useNavigate } from 'react-router-dom';
 
+import EditBoardForm from 'components/EditBoardForm/EditBoardForm';
+import Modal from 'components/Modal/Modal';
+
 function BoardList() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const boards = useSelector(state => state.boards.boards);
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [selectedBoardId, setSelectedBoardId] = useState(null);
 
   useEffect(() => {
     dispatch(getAllBoardsThunk());
   }, [dispatch]);
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   const handleOpenBoard = (id, title) => {
     dispatch(getCurrentBoardThunk(id));
@@ -27,8 +36,9 @@ function BoardList() {
 
   const handleEditBoard = (e, boardId) => {
     e.stopPropagation();
-    console.log('handleEditBoard'); // Зупиняє подальше поширення кліку до обгортки
-    // Додайте код для редагування дошки з ID `boardId`
+    console.log('handleEditBoard', boardId);
+    setSelectedBoardId(boardId);
+    setModalOpen(true);
   };
 
   const handleDeleteBoard = (e, boardId) => {
@@ -53,6 +63,11 @@ function BoardList() {
           </div>
         </div>
       ))}
+      {isModalOpen && (
+        <Modal isOpen={isModalOpen} onClose={closeModal}>
+          <EditBoardForm onClose={closeModal} boardId={selectedBoardId} />
+        </Modal>
+      )}
     </>
   );
 }
