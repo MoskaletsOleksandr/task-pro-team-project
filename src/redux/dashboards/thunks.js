@@ -4,6 +4,7 @@ import {
   createNewColumn,
   deleteBoardById,
   deleteColumnById,
+  getAllBackgrounds,
   getAllBoards,
   getCurrentBoard,
   updateBoardById,
@@ -202,6 +203,18 @@ export const getFilteredTasksThunk = createAsyncThunk(
   async ({ boardId, priority }, { rejectWithValue }) => {
     try {
       const data = await getFilteredTasks(boardId, priority);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getAllBackgroundsThunk = createAsyncThunk(
+  'boards/getAllBackgrounds',
+  async (_, { rejectWithValue }) => {
+    try {
+      const data = await getAllBackgrounds();
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

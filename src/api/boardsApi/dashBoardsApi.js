@@ -44,3 +44,8 @@ export const deleteColumnById = async (boardId, columnId) => {
   );
   return data;
 };
+
+export const getAllBackgrounds = async () => {
+  const { data } = await dashBoardsInstance.get(`/background`);
+  return data;
+};
