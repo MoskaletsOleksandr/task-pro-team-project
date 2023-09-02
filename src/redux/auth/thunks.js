@@ -44,7 +44,7 @@ export const LogOutThunk = createAsyncThunk(
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
     try {
-      const data = await logOut();
+      const {data} = await logOut();
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -5,11 +5,12 @@ import AuthController from 'components/registrationForm/authControll';
 import { RegistrationFormStyled } from 'components/registrationForm/RegistrationFormStyled';
 import FormTitle from 'components/common/authTitle/AuthTitle';
 import { authLoginValidationSchema } from 'validation/authValidation';
-import { useSelector } from 'react-redux';
+import { SignInThunk } from 'redux/auth/thunks';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-hot-toast';
 
-function LoginForm({ getData }) {
-  const token = useSelector(state => state.auth.token);
-  console.log('Token in form', token);
+function LoginForm() {
+  const dispatch = useDispatch();
 
   const [visible, setVisible] = useState(false);
   const onClick = e => {
@@ -20,9 +21,14 @@ function LoginForm({ getData }) {
     email: '',
     password: '',
   };
-  const onSubmit = (values, { resetForm }) => {
-    console.log(values);
-    getData(values);
+  const onSubmit = async(values, { resetForm }) => {
+    
+    try {
+      await dispatch(SignInThunk(values)).unwrap();
+      toast.success('Loggged in successfully');
+    } catch (error) {
+      toast.error('Login failed');
+    }
     resetForm();
   };
 

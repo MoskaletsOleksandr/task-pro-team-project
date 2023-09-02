@@ -6,9 +6,12 @@ import AuthController from './authControll';
 import { RegistrationFormStyled } from './RegistrationFormStyled';
 import FormTitle from 'components/common/authTitle/AuthTitle';
 import { authValidationSchema } from 'validation/authValidation';
+import { useDispatch } from 'react-redux';
+import { SignUpThunk } from 'redux/auth/thunks';
+import { toast } from 'react-hot-toast';
 
-
-function RegistrationForm({ getData }) {
+function RegistrationForm() {
+  const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
 
   const onClick = e => {
@@ -20,19 +23,18 @@ function RegistrationForm({ getData }) {
     email: '',
     password: '',
   };
-  const onSubmit = (values, { resetForm }) => {
+
+  const onSubmit = async (values, { resetForm }) => {
     console.log('values in the form', values);
-    getData(values);
+    try {
+      await dispatch(SignUpThunk(values)).unwrap();
+      toast.success('Registered successfully');
+    } catch (error) {
+      toast.error('Registration failed');
+    }
 
     resetForm();
   };
-  // const validationSchema = Yup.object({
-  //   name: Yup.string().required('name is required').min(2).max(32),
-  //   email: Yup.string()
-  //     .required('email is required')
-  //     .email('Invalid email address'),
-  //   password: Yup.string().required('password is required').min(8).max(64),
-  // });
 
   return (
     <RegistrationFormStyled>
@@ -43,7 +45,7 @@ function RegistrationForm({ getData }) {
       >
         {formik => (
           <Form autoComplete={'off'}>
-            <FormTitle  />
+            <FormTitle />
             <AuthController
               control="input"
               type="text"
