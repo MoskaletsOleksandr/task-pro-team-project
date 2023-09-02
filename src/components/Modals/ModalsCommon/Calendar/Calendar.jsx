@@ -13,15 +13,26 @@ export const Calendar = ({ deadline }) => {
     <>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DesktopDatePicker
-          //  {/* <DatePicker */}
           defaultValue={dayjs(new Date())}
           views={['month', 'day']}
           disablePast={true}
           onChange={date => {
-            const newDate = String(date.$d).split(' ').splice(1, 3).join(' ');
-            const newDateIso = new Date(newDate).toISOString().slice(0, 19);
-            deadline(newDateIso);
+            const selectedDate = date.$d;
+            const formattedDate = new Date(Date.UTC(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate()));
+            const formattedDateString = formattedDate.toISOString().split('T')[0];
+            deadline(formattedDateString);
           }}
+          
+          // defaultValue={dayjs(new Date())}
+          // views={['month', 'day']}
+          // disablePast={true}
+          // onChange={date => {
+
+          //   // const newDate = String(date.$d).split(' ').splice(1, 3).join(' ');
+          //   // const newDateIso = new Date(newDate).toISOString().slice(0, 19);
+          //   // deadline(newDateIso);
+          //   deadline(formattedDate);
+
           slots={{
             openPickerIcon: () => (
               <SvgModal
