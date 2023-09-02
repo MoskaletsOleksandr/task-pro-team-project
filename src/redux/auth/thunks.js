@@ -26,7 +26,7 @@ export const SignInThunk = createAsyncThunk(
   'auth/signin',
   async (body, { rejectWithValue }) => {
     try {
-      const data = await login(body);
+      const {data} = await login(body);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
