@@ -96,7 +96,7 @@ export const GlobalStyles = () => {
             --add-column-btn-plus-color: #121212; //vit
             --new-dashboadr-text-color: #FFFFFF80; //vit
             --new-dashboadr-text-accent-color: #BEDBB0;//vit 
-
+s
             //variables for HeaderDashboard
             --header-dashboard-title-color: #ffffff;
             --filter-text-color: #ffffffCC;
@@ -105,7 +105,7 @@ export const GlobalStyles = () => {
             --filter-popup-secondary-text-color: #ffffff80;
             --filter-popup-tertiary-text-color: #ffffff;//vit
             --filter-popup-border-color: #BEDBB080;
-            --filter-without-priority-color: #FFFFFF4D;;
+            --filter-without-priority-color: #9b9b9b; 
             --filter-low-color: #8FA1D0;
             --filter-medium-color: #E09CB5;
             --filter-high-color: #BEDBB0;
@@ -206,9 +206,9 @@ export const GlobalStyles = () => {
             --filter-popup-bg-color: #FCFCFC;
             --filter-popup-primary-text-color: #161616;
             --filter-popup-secondary-text-color: #16161680;
-            --filter-popup-tertiary-text-color: #16161650;//vit
+            --filter-popup-tertiary-text-color: #16161650;
             --filter-popup-border-color: #ffffff;
-            --filter-without-priority-color: #FFFFFF4D;;//vit
+            --filter-without-priority-color: #c3c3c3;
             --filter-low-color: #8FA1D0;
             --filter-medium-color: #E09CB5;
             --filter-high-color: #BEDBB0;
@@ -221,7 +221,7 @@ export const GlobalStyles = () => {
             --column-add-btn-bg-color: #BEDBB0;
             --column-add-btn-bg-color-hover: #9DC888;
             --column-add-btn-text-color: #161616;
-            --column-add-btn-plus-color: #FFFFFF; //vit
+            --column-add-btn-plus-color: #FFFFFF; 
             --column-add-btn-plus-bg-color: #161616;
 
             //variables for cards
@@ -309,9 +309,9 @@ export const GlobalStyles = () => {
             --filter-popup-bg-color: #FCFCFC;
             --filter-popup-primary-text-color: #161616;
             --filter-popup-secondary-text-color: #16161680;
-            --filter-popup-tertiary-text-color: #16161650;//vit
+            --filter-popup-tertiary-text-color: #16161650;
             --filter-popup-border-color: #ffffff;
-            --filter-without-priority-color: #FFFFFF4D;;//vit
+            --filter-without-priority-color: #c3c3c3;
             --filter-low-color: #8FA1D0;
             --filter-medium-color: #E09CB5;
             --filter-high-color: #BEDBB0;

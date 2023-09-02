@@ -25,12 +25,13 @@ import {
 import CustomPopUpItem from '../PopUp/PopUp';
 import sprite from '../../../images/sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateTasksColumnByIdThunk } from 'redux/dashboards/thunks';
+import { updateTasksColumnByIdThunk, deleteTaskByIdThunk } from 'redux/dashboards/thunks';
 import dayjs from 'dayjs';
 
-const TaskCard = ({ task, columnId, togglePopUpMenu, isPopupOpen }) => {
+const TaskCard = ({ task, columnId, togglePopUpMenu, isPopupOpen, idTask }) => {
   const dispatch = useDispatch();
   const columns = useSelector(state => state.boards.currentBoard.columns);
+  // const cardId = 
 
   const selectedTask = task;
   if (!selectedTask) {
@@ -54,6 +55,8 @@ const TaskCard = ({ task, columnId, togglePopUpMenu, isPopupOpen }) => {
     priorityBorderColor = 'var(--filter-without-priority-color)';
   }
 
+  // #c3c3c3
+
   const today = new Date().toLocaleDateString('en-GB');
   const formattedSelectedDeadline = dayjs(selectedTask.deadline).format(
     'DD/MM/YYYY'
@@ -75,6 +78,17 @@ const TaskCard = ({ task, columnId, togglePopUpMenu, isPopupOpen }) => {
         body: { newColumnId: columnId },
       })
     );
+  };
+
+  const handleDeleteCard = () => {
+    dispatch(deleteTaskByIdThunk(idTask))
+      .unwrap() 
+      .then((data) => {
+        console.log('Task deleted successfully:', data);
+      })
+      .catch((error) => {
+        console.error('Error deleting task:', error);
+      });
   };
 
   return (
@@ -121,7 +135,7 @@ const TaskCard = ({ task, columnId, togglePopUpMenu, isPopupOpen }) => {
             <WhiteIcon className="icon-search">
               <use href={sprite + '#icon-pencil-01'}></use>
             </WhiteIcon>
-            <WhiteIcon className="icon-search">
+            <WhiteIcon className="icon-search" onClick={handleDeleteCard}>
               <use href={sprite + '#icon-trash'}></use>
             </WhiteIcon>
           </Icons>
