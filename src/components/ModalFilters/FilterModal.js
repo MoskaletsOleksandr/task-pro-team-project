@@ -23,7 +23,12 @@ const FiltersModal = () => {
 
   const handleChange = e => {
     setSelectedFilter(e.target.value);
-    dispatch(getFilteredTasksThunk({ currentBoardId, selectedFilter }));
+    dispatch(
+      getFilteredTasksThunk({
+        boardId: currentBoardId,
+        priority: selectedFilter,
+      })
+    );
   };
 
   return (
