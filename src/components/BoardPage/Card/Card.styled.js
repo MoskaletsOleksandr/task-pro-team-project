@@ -145,6 +145,7 @@ const WhiteIcon = styled.svg`
   fill: none;
   &:hover {
     stroke: var(--progress-popup-text-color-hover);
+    cursor: pointer;
   }
 `;
 

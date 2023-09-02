@@ -19,7 +19,7 @@ import {
 } from 'redux/dashboards/thunks';
 // import ModalAddEditCard from 'components/Modals/ModalAddEditCard/ModalAddEditCard';
 
-const Column = ({ title, tasks, columnId }) => {
+const Column = ({ title, tasks, columnId, idTask }) => {
   const [showTestModal, setShowTestModal] = useState(false);
   const [openTaskId, setOpenTaskId] = useState(null);
   const dispatch = useDispatch();
@@ -79,6 +79,7 @@ const Column = ({ title, tasks, columnId }) => {
                   columnId={columnId}
                   togglePopUpMenu={togglePopUpMenu}
                   isPopupOpen={openTaskId === task._id}
+                  idTask={task._id}
                 />
               );
             })}
