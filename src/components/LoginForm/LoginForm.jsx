@@ -26,7 +26,7 @@ function LoginForm() {
       await dispatch(SignInThunk(values)).unwrap();
       toast.success('Logged in successfully');
     } catch (error) {
-      console.log(error)
+     
       toast.error('Login failed');
     }
     resetForm();
