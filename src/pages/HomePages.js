@@ -1,6 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from 'components/Header/Header';
+
+//-------vit--------
+import NewDashboard from 'components/NewDashboard/NewDashboard';
+import { selectCurrentBoard } from 'redux/dashboards/selectors';
+//-------vit--------
+
 import {
   // useDispatch,
   useSelector,
@@ -40,6 +46,10 @@ const HomePage = () => {
   const toggleModal = () => {
     setShowTestModal(prevShowTestModal => !prevShowTestModal);
   };
+
+  //-------vit--------
+  const currentBoard = useSelector(selectCurrentBoard);
+  //-------vit--------
 
   // const dispatch = useDispatch();
 
@@ -112,7 +122,10 @@ const HomePage = () => {
           }}
         >
           <Header openSidebar={openSidebar} />
-          <Outlet />
+
+          {/* -------vit-------- */}
+          {currentBoard ? <Outlet /> : <NewDashboard />}
+          {/* -------vit-------- */}
 
           <button
             onClick={toggleModal}
@@ -132,7 +145,6 @@ const HomePage = () => {
               isOpen={showTestModal}
             />
           )}
-
           {/* <ScreensPage /> */}
         </div>
       </div>

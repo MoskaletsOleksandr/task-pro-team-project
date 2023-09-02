@@ -103,7 +103,7 @@ export const GlobalStyles = () => {
             --filter-popup-bg-color: #151515;
             --filter-popup-primary-text-color: #ffffff;
             --filter-popup-secondary-text-color: #ffffff80;
-            --filter-popup-tertiary-text-color: #ffffff;//vit
+            --filter-popup-tertiary-text-color: #ffffff50;//vit
             --filter-popup-border-color: #BEDBB080;
             --filter-without-priority-color: #FFFFFF4D;;
             --filter-low-color: #8FA1D0;
