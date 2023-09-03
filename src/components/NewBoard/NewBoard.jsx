@@ -20,6 +20,7 @@ import {
   Input,
   ErrorMessage,
 } from './NewBoard.styled';
+import { useNavigate } from 'react-router-dom';
 // import { yupResolver } from '@hookform/resolvers/yup';
 // import { TitleSchema } from 'schemas';
 
@@ -37,6 +38,7 @@ const NewBoard = ({ onClose }) => {
   const backgrounds = useSelector(state => state.boards.backgrounds);
   const [selectedBackground, setSelectedBackground] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   let timeoutId;
 
@@ -76,6 +78,8 @@ const NewBoard = ({ onClose }) => {
   const handleCreateBoard = data => {
     dispatch(createNewBoardThunk(data))
       .then(() => {
+        const normalizedTitle = data.title.toLowerCase().replace(/\s+/g, '-');
+        navigate(normalizedTitle);
         toast.success('The board was created successfully');
         setValue('title', '');
         setValue('icon', '');

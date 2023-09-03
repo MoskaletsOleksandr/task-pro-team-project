@@ -39,14 +39,15 @@ export const LogOutThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const currentToken = state.auth.accessToken;
-    console.log("token in thunk logout",currentToken)
+    console.log('token in thunk logout', currentToken);
 
     if (currentToken === '') {
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
     try {
       setToken(`Bearer ${currentToken}`);
-      const {data} = await logOut();
+      const { data } = await logOut();
+      localStorage.removeItem('persist:boards');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
