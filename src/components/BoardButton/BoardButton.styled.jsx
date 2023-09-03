@@ -7,8 +7,8 @@ export const Wrapper = styled.li`
   align-items: center;
   width: 100%;
   padding: 20px 14px;
-  scroll-snap-align: start;
   opacity: 0.4;
+  scroll-snap-align: start;
 
   @media screen and (min-width: 768px) {
     padding: 20px 24px;
@@ -31,14 +31,12 @@ export const Wrapper = styled.li`
       border-left: 4px solid #BEDBB0;
       border-bottom-left-radius: 4px;
       border-top-left-radius: 4px;
-      scroll-snap-align: start;
     }
   }
 `;
 
 export const Svg = styled.svg`
-  stroke: var(--sidebar-active-board-text-color);
-  fill: transparent;
+  fill: var(--sidebar-active-board-text-color);
 `;
 
 export const Title = styled.p`
@@ -51,12 +49,12 @@ export const Title = styled.p`
 `;
 
 export const ActiveSvg = styled.svg`
-  stroke: var(--sidebar-inactive-board-text-color);
-  fill: transparent;
+  fill: var(--sidebar-inactive-board-text-color);
   transition: scale 250ms ease-in 0s, stroke 250ms ease-in 0s;
   &:hover,
   &:focus {
-    stroke: #BEDBB0;
+    border: 1.5px solid #BEDBB0;
+    fill: #BEDBB0;
     scale: 1.08;
   }
 `;
@@ -64,6 +62,8 @@ export const ActiveSvg = styled.svg`
 export const IconButton = styled.button`
   display: block;
   height: 16px;
+  background-color: transparent;
+  border: none;
 `;
 
 export const IconsWrapper = styled.div`

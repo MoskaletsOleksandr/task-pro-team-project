@@ -90,7 +90,7 @@ function BoardButton({ name, id, icon }) {
         {active && (
           <IconsWrapper>
             <IconButton type="button" onClick={e => handleEditBoard(e, id)}>
-              <ActiveSvg width="18px" height="18px">
+              <ActiveSvg width="16px" height="16px">
                 <use href={sprite + '#icon-pencil-01'}></use>
               </ActiveSvg>
               Edit
