@@ -86,6 +86,7 @@ const HomePage = () => {
             // maxHeight: '100vh',
             display: 'flex',
             flexDirection: 'column',
+            
             // backgroundColor: 'var(--screens-page-bg-color)', //-----vit------
           }}
         >

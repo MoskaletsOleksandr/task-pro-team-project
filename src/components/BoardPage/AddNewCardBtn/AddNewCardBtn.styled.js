@@ -29,19 +29,22 @@ export const BtnAddNewCard = styled.button`
   :focus {
     background-color: var(--column-add-btn-bg-color-hover);
     transform: background-color;
+
+    scale: 1.02;
+    transition: scale 350ms;
   }
 
   @media screen and (min-width: 320px) and (max-width: 374px) {
     max-width: 290px;
-}
+  }
 
-@media screen and (min-width: 375px) and (max-width: 767 px) {
+  @media screen and (min-width: 375px) and (max-width: 767px) {
     max-width: 334px;
-}
+  }
 
-@media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     max-width: 335px;
-}
+  }
 `;
 
 export const WrapSvg = styled.div`
