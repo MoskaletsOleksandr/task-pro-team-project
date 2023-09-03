@@ -33,9 +33,6 @@ authInstance.interceptors.response.use(
       const { data } = await authInstance.post('users/refresh', {
         refreshToken,
       });
-      console.log('====================================');
-      console.log('data:', data);
-      console.log('====================================');
       setToken(`Bearer ${data.accessToken}`);
       localStorage.setItem('refreshToken', data.refreshToken);
       return authInstance({
@@ -57,9 +54,6 @@ dashBoardsInstance.interceptors.response.use(
       const { data } = await authInstance.post('users/refresh', {
         refreshToken,
       });
-      console.log('====================================');
-      console.log('data:', data);
-      console.log('====================================');
       setToken(`Bearer ${data.accessToken}`);
       localStorage.setItem('refreshToken', data.refreshToken);
       dashBoardsInstance({
@@ -81,9 +75,6 @@ tasksInstance.interceptors.response.use(
       const { data } = await authInstance.post('users/refresh', {
         refreshToken,
       });
-      console.log('====================================');
-      console.log('data:', data);
-      console.log('====================================');
       setToken(`Bearer ${data.accessToken}`);
       localStorage.setItem('refreshToken', data.refreshToken);
       return tasksInstance({

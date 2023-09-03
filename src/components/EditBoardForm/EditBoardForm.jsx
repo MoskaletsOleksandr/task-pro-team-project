@@ -25,9 +25,6 @@ import {
 } from './EditBoardForm.styled';
 
 const EditBoardForm = ({ onClose, boardId }) => {
-  console.log('====================================');
-  console.log('boardId:', boardId);
-  console.log('====================================');
   const { register, handleSubmit, setValue } = useForm();
   const [selectedIcon, setSelectedIcon] = useState('');
   const [selectedBackgroundId, setSelectedBackgroundId] = useState('');
