@@ -20,24 +20,24 @@ export const TestNewBoardModal = ({ closeModal, isOpen }) => {
   //       background: selectedBackground,
   //     })
   //   );
-    
+
   // };
 
-const handleCreateBoard = async () => {
-  try {
-    await dispatch(
-      createNewBoardThunk({
-        title: title,
-        icon: 'selectedIcon',
-        background: selectedBackground,
-      })
-    );
-    toast.success('Board created successfully'); 
-    closeModal();
-  } catch (error) {
-    toast.error('Error creating board');
-  }
-};
+  const handleCreateBoard = async () => {
+    try {
+      await dispatch(
+        createNewBoardThunk({
+          title: title,
+          icon: 'selectedIcon',
+          background: selectedBackground,
+        })
+      );
+      toast.success('Board created successfully');
+      closeModal();
+    } catch (error) {
+      toast.error('Error creating board');
+    }
+  };
 
   // const handleTitleChange = event => {
   //   setTitle(event.target.value);
@@ -46,9 +46,9 @@ const handleCreateBoard = async () => {
   const handleTitleChange = event => {
     try {
       setTitle(event.target.value);
-      toast.success('Title changed successfully'); 
+      toast.success('Title changed successfully');
     } catch (error) {
-      toast.error('Error changing title'); 
+      toast.error('Error changing title');
     }
   };
 
@@ -59,9 +59,9 @@ const handleCreateBoard = async () => {
   const handleBackgroundSelect = iconId => {
     try {
       setSelectedBackground(iconId);
-      toast.success('Background selected successfully'); 
+      toast.success('Background selected successfully');
     } catch (error) {
-      toast.error('Error selecting background'); 
+      toast.error('Error selecting background');
     }
   };
 
@@ -94,7 +94,7 @@ const handleCreateBoard = async () => {
           </span>
         </label>
         {backgrounds.map(background => (
-          <label key={background._id}>
+          <label key={background.previewURL}>
             <input
               type="radio"
               value={background._id}
