@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { useAllBoards } from 'components/hooks';
 import BoardButton from 'components/BoardButton/BoardButton';
 import { List } from './ButtonList.styled';
-import { getCurrentBoardThunk, getAllBoardsThunk } from 'redux/dashboards/thunks';
+import {
+  getCurrentBoardThunk,
+  getAllBoardsThunk,
+} from 'redux/dashboards/thunks';
 import { useNavigate } from 'react-router-dom';
 
 function ButtonList() {
@@ -22,29 +25,32 @@ function ButtonList() {
     dispatch(getAllBoardsThunk());
   }, [dispatch]);
 
-    const handleOpenBoard = (id, title) => {
-      dispatch(getCurrentBoardThunk(id));
-  
-      const normalizedTitle = title.toLowerCase().replace(/\s+/g, '-');
-      navigate(normalizedTitle);
-    };
+  const handleOpenBoard = (id, title) => {
+    dispatch(getCurrentBoardThunk(id));
 
-  
+    const normalizedTitle = title.toLowerCase().replace(/[\s/]+/g, '-');
+    console.log('====================================');
+    console.log('normalizedTitle:', normalizedTitle);
+    console.log('====================================');
+
+    navigate(normalizedTitle);
+  };
+
   return (
     <>
       <List>
         {/* {boards.length !== 0 && */}
         {boards.map(({ _id, title, icon, active }) => (
-        <BoardButton
-        key={_id}
-        name={title}
-        onClick={() => handleOpenBoard(_id, title)}
-        style={{ display: 'flex', justifyContent: 'space-between' }}
-        id={_id}
-        // icon={icon}
-        // isActive={active}s
-        />
-        ))} 
+          <BoardButton
+            key={_id}
+            name={title}
+            onClick={() => handleOpenBoard(_id, title)}
+            style={{ display: 'flex', justifyContent: 'space-between' }}
+            id={_id}
+            // icon={icon}
+            // isActive={active}s
+          />
+        ))}
       </List>
     </>
   );

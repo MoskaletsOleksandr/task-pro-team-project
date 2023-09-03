@@ -48,8 +48,10 @@ function BoardButton({ name, id, icon }) {
 
   const handleActive = () => {
     setActive(true);
+
+    const normalizeName = name.toLowerCase().replace(/[\s/]+/g, '-');
     dispatch(getCurrentBoardThunk(`${id}`));
-    navigate(`${name.toLowerCase()}`);
+    navigate(normalizeName);
   };
 
   // const handleDelete = id => {
