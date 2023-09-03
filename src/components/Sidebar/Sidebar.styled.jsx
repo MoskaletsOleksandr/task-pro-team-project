@@ -6,7 +6,6 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding: 24px;
-  height: calc(100vh - 24px);
   margin: 0;
   background: var(--sidebar-bg-color);
   transform: ${({ isOpen }) =>

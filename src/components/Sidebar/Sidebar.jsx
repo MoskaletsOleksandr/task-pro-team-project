@@ -6,7 +6,7 @@ import { Container } from './Sidebar.styled';
 
 function Sidebar({ isOpen }) {
   return (
-    <Container isOpen={isOpen}>
+    <Container className="sidebar" isOpen={isOpen}>
       <LogoComponent />
       <BoardList />
       <NeedHelp />
