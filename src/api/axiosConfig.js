@@ -13,10 +13,10 @@ export const tasksInstance = axios.create({
 });
 
 //auth
-export const setToken = token => {
-  authInstance.defaults.headers.common['Authorization'] = token;
-  dashBoardsInstance.defaults.headers.common['Authorization'] = token;
-  tasksInstance.defaults.headers.common['Authorization'] = token;
+export const setToken = accessToken => {
+  authInstance.defaults.headers.common['Authorization'] = accessToken;
+  dashBoardsInstance.defaults.headers.common['Authorization'] = accessToken;
+  tasksInstance.defaults.headers.common['Authorization'] = accessToken;
 };
 
 export const clearToken = () => {

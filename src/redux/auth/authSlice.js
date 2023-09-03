@@ -27,18 +27,28 @@ import {
 } from './handlers';
 
 const initialState = {
-  token: '',
+  // token: '',
   isLoading: false,
   error: '',
   user: {},
   sentLetter: false,
   isLoggedIn: false,
   isRefreshing: false,
+  accessToken:'',
+  refreshToken:'',
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers:{
+    addGoogleInfo(state,{payload}){
+  state.accessToken=payload.accessToken;
+  state.refreshToken=payload.refreshToken;
+  state.user=payload.user;
+  state.isLoggedIn=true;
+    }
+  },
   extraReducers: builder => {
     builder
       .addCase(SignUpThunk.fulfilled, handleSignUpThunkFullfilled)
@@ -68,3 +78,4 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
+export const {addGoogleInfo}=authSlice.actions;

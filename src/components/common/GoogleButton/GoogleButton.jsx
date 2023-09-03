@@ -8,7 +8,7 @@ const StyledLink = styled.a`
   color: #161616;
 
 `;
-const StyledContainer=styled.div`
+const StyledContainer=styled.button`
 font-family: Poppins;
   font-style: normal;
   font-weight: 500;
@@ -31,11 +31,12 @@ font-family: Poppins;
 
 export const GoogleButton = () => {
     return(
-        <StyledContainer>
+        <StyledContainer >
            <Google width="30" height='30'/>
             <StyledLink href="https://task-pro-group-1-backend.onrender.com/users/google">
         Register with Google
-      </StyledLink></StyledContainer>
+      </StyledLink>
+      </StyledContainer>
     
     )
  
