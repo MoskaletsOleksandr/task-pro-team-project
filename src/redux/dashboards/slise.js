@@ -136,7 +136,7 @@ const boardSlice = createSlice({
         updateTasksColumnByIdThunk.fulfilled,
         handleUpdateTasksColumnByIdFulfilled
       )
-      .addCase(getFilteredTasksThunk.fulfilled, handleGetAllBoardsFulfilled)
+      .addCase(getFilteredTasksThunk.fulfilled, handleGetAllTasksFulfilled)
       .addCase(
         getAllBackgroundsThunk.fulfilled,
         handleGetAllBackgroundsFulfilled
