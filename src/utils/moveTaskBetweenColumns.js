@@ -1,3 +1,4 @@
+import { toast } from "react-hot-toast";
 // export const moveTaskBetweenColumns = (board, task) => {
 //   const { _id, columnId } = task;
 
@@ -31,32 +32,68 @@
 
 // оновлений без мутації
 
+// export const moveTaskBetweenColumns = (board, task) => {
+//   const { _id, columnId } = task;
+
+//   const updatedBoard = JSON.parse(JSON.stringify(board)); // Клонуємо об'єкт дошки
+
+//   const sourceColumnIndex = updatedBoard.columns.findIndex(column =>
+//     column.tasks.some(t => t._id === _id)
+//   );
+
+//   if (sourceColumnIndex !== -1) {
+//     const sourceColumn = updatedBoard.columns[sourceColumnIndex];
+//     sourceColumn.tasks = sourceColumn.tasks.filter(t => t._id !== _id);
+
+//     const targetColumnIndex = updatedBoard.columns.findIndex(
+//       col => col._id === columnId
+//     );
+
+//     if (targetColumnIndex !== -1) {
+//       const targetColumn = updatedBoard.columns[targetColumnIndex];
+//       targetColumn.tasks.push(task);
+//     } else {
+//       console.error(`Column with ID ${columnId} not found.`);
+//     }
+//   } else {
+//     console.error(`Task with ID ${_id} not found.`);
+//   }
+
+//   return updatedBoard; // Повертаємо оновлену копію об'єкта дошки
+// };
+
 export const moveTaskBetweenColumns = (board, task) => {
-  const { _id, columnId } = task;
+  try {
+    const { _id, columnId } = task;
 
-  const updatedBoard = JSON.parse(JSON.stringify(board)); // Клонуємо об'єкт дошки
+    const updatedBoard = JSON.parse(JSON.stringify(board)); // Клонуємо об'єкт дошки
 
-  const sourceColumnIndex = updatedBoard.columns.findIndex(column =>
-    column.tasks.some(t => t._id === _id)
-  );
-
-  if (sourceColumnIndex !== -1) {
-    const sourceColumn = updatedBoard.columns[sourceColumnIndex];
-    sourceColumn.tasks = sourceColumn.tasks.filter(t => t._id !== _id);
-
-    const targetColumnIndex = updatedBoard.columns.findIndex(
-      col => col._id === columnId
+    const sourceColumnIndex = updatedBoard.columns.findIndex(column =>
+      column.tasks.some(t => t._id === _id)
     );
 
-    if (targetColumnIndex !== -1) {
-      const targetColumn = updatedBoard.columns[targetColumnIndex];
-      targetColumn.tasks.push(task);
-    } else {
-      console.error(`Column with ID ${columnId} not found.`);
-    }
-  } else {
-    console.error(`Task with ID ${_id} not found.`);
-  }
+    if (sourceColumnIndex !== -1) {
+      const sourceColumn = updatedBoard.columns[sourceColumnIndex];
+      sourceColumn.tasks = sourceColumn.tasks.filter(t => t._id !== _id);
 
-  return updatedBoard; // Повертаємо оновлену копію об'єкта дошки
+      const targetColumnIndex = updatedBoard.columns.findIndex(
+        col => col._id === columnId
+      );
+
+      if (targetColumnIndex !== -1) {
+        const targetColumn = updatedBoard.columns[targetColumnIndex];
+        targetColumn.tasks.push(task);
+        toast.success('Task moved successfully between columns.');
+      } else {
+        throw new Error(`Column with ID ${columnId} not found.`);
+      }
+    } else {
+      throw new Error(`Task with ID ${_id} not found.`);
+    }
+
+    return updatedBoard;
+  } catch (error) {
+    toast.error('Error moving task between columns.');
+    return board; // Повертаємо оригінальну дошку у випадку помилки.
+  }
 };
