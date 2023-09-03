@@ -25,6 +25,7 @@ import {
   handleThunkPending,
   handleThunkRejected,
 } from './handlers';
+import { setToken } from 'api/axiosConfig';
 
 const initialState = {
   // token: '',
@@ -34,20 +35,21 @@ const initialState = {
   sentLetter: false,
   isLoggedIn: false,
   isRefreshing: false,
-  accessToken:'',
-  refreshToken:'',
+  accessToken: '',
+  refreshToken: '',
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers:{
-    addGoogleInfo(state,{payload}){
-  state.accessToken=payload.accessToken;
-  state.refreshToken=payload.refreshToken;
-  state.user=payload.user;
-  state.isLoggedIn=true;
-    }
+  reducers: {
+    addGoogleInfo(state, { payload }) {
+      setToken(payload.accessToken);
+      state.accessToken = payload.accessToken;
+      state.refreshToken = payload.refreshToken;
+      state.user = payload.user;
+      state.isLoggedIn = true;
+    },
   },
   extraReducers: builder => {
     builder
@@ -78,4 +80,4 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
-export const {addGoogleInfo}=authSlice.actions;
+export const { addGoogleInfo } = authSlice.actions;

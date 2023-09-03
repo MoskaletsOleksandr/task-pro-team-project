@@ -22,13 +22,17 @@ export const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(GetCurrentUserThunk());
+    const authData = JSON.parse(localStorage.getItem('persist:auth'));
+
+    if (authData && authData.accessToken) {
+      dispatch(GetCurrentUserThunk());
+    }
   }, [dispatch]);
 
   return (
     <Suspense fallback={<Loader />}>
       <GlobalStyles />
-      <Toaster/>
+      <Toaster />
       <Routes>
         <Route index element={<WelcomePage />} />
         <Route

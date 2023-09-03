@@ -6,30 +6,28 @@ import { useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addGoogleInfo } from 'redux/auth/authSlice';
-
+import { setToken } from 'api/axiosConfig';
 
 const AuthPage = () => {
   const [searchParams] = useSearchParams();
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    const accessToken = searchParams.get('accessToken');
+    console.log('accessToken:', accessToken);
 
-  useEffect(()=>{
-    const accessToken=searchParams.get('accessToken');
-  
-  const refreshToken=searchParams.get('refreshToken');
-  console.log(refreshToken)
-  const user=searchParams.get('user');
-  console.log(user)
-  if(accessToken&&refreshToken&&user){
-    
-    dispatch(addGoogleInfo({accessToken,refreshToken,user}))
-  }
-  },[searchParams,dispatch])
-
- 
+    const refreshToken = searchParams.get('refreshToken');
+    console.log('refreshToken:', refreshToken);
+    const user = searchParams.get('user');
+    console.log(user);
+    if (accessToken && refreshToken && user) {
+      dispatch(addGoogleInfo({ accessToken, refreshToken, user }));
+      setToken(`Bearer ${accessToken}`);
+    }
+  }, [searchParams, dispatch]);
 
   const { id } = useParams();
- 
+
   if (id === 'register') {
     return (
       <Container>
@@ -40,8 +38,7 @@ const AuthPage = () => {
   if (id === 'login') {
     return (
       <Container>
-        <LoginForm  />
-      
+        <LoginForm />
       </Container>
     );
   }
