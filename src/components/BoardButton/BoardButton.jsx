@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import sprite from '../../images/sprite.svg';
 import Modal from 'components/Modal/Modal';
 import EditBoardForm from 'components/EditBoardForm/EditBoardForm';
@@ -34,7 +34,7 @@ function BoardButton({ name, id, icon }) {
   const closeModal = () => {
     setModalOpen(false);
   };
-
+  // console.log(id);
   useEffect(() => {
     dispatch(getAllBoardsThunk());
   }, [dispatch]);
@@ -63,7 +63,9 @@ function BoardButton({ name, id, icon }) {
   // };
   const handleEditBoard = (e, boardId) => {
     e.stopPropagation();
-    console.log('handleEditBoard'); // Зупиняє подальше поширення кліку до обгортки
+    // console.log('handleEditBoard');
+    setModalOpen(true);
+    // Зупиняє подальше поширення кліку до обгортки
     // Додайте код для редагування дошки з ID `boardId`
   };
 
@@ -104,7 +106,7 @@ function BoardButton({ name, id, icon }) {
       </Wrapper>
       {isModalOpen && (
         <Modal isOpen={isModalOpen} onClose={closeModal}>
-          <EditBoardForm onClose={closeModal} />
+          <EditBoardForm onClose={closeModal} boardId={id} />
         </Modal>
       )}
     </>
