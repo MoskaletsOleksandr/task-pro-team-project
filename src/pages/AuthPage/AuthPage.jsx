@@ -19,6 +19,7 @@ const AuthPage = () => {
     if (accessToken && refreshToken && user) {
       dispatch(addGoogleInfo({ accessToken, refreshToken, user }));
       setToken(`Bearer ${accessToken}`);
+      localStorage.setItem('refreshToken',refreshToken)
     }
   }, [searchParams, dispatch]);
 

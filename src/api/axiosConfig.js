@@ -24,3 +24,34 @@ export const clearToken = () => {
   dashBoardsInstance.defaults.headers.common['Authorization'] = '';
   tasksInstance.defaults.headers.common['Authorization'] = '';
 };
+
+authInstance.interceptors.response.use(response=>response,async(error)=>{
+  if(error.response.status===401){
+    const refreshToken=localStorage.getItem("refreshToken")
+    const{data}=await authInstance.post('users/refresh',{refreshToken})
+    setToken(data.accessToken)
+    localStorage.setItem(data.refreshToken)
+    return authInstance(error.config)
+  }
+  return Promise.reject(error)
+})
+dashBoardsInstance.interceptors.response.use(response=>response,async(error)=>{
+  if(error.response.status===401){
+    const refreshToken=localStorage.getItem("refreshToken")
+    const{data}=await authInstance.post('users/refresh',{refreshToken})
+    setToken(data.accessToken)
+    localStorage.setItem(data.refreshToken)
+    return dashBoardsInstance(error.config)
+  }
+  return Promise.reject(error)
+})
+tasksInstance.interceptors.response.use(response=>response,async(error)=>{
+  if(error.response.status===401){
+    const refreshToken=localStorage.getItem("refreshToken")
+    const{data}=await authInstance.post('users/refresh',{refreshToken})
+    setToken(data.accessToken)
+    localStorage.setItem(data.refreshToken)
+    return tasksInstance(error.config)
+  }
+  return Promise.reject(error)
+})
