@@ -4,6 +4,7 @@ import { createNewBoardThunk } from 'redux/dashboards/thunks';
 import Modal from 'components/Modal';
 import ModalTitle from 'components/ModalTitle';
 import sprite from '../images/sprite.svg';
+import { toast } from 'react-hot-toast';
 
 export const TestNewBoardModal = ({ closeModal, isOpen }) => {
   const [title, setTitle] = useState('');
