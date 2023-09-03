@@ -39,10 +39,11 @@ const NeedHelp = () => {
 
         <Button onClick={openModal}>
           <Svg width="20px" height="20px">
-            <use href={sprite + '#icon-help-circle'}></use>
+            <use href={sprite +'#icon-help-circle'}></use>
           </Svg>
-        <ButtonText>Need help?</ButtonText>
+          <ButtonText> Need help? </ButtonText>
         </Button>
+        
         <Modal isOpen={isModalOpen} onClose={closeModal}>
           <NeedHelpForm />
         </Modal>

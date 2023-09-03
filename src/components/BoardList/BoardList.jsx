@@ -1,56 +1,58 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import AddBoardButton from 'components/AddBoardButton';
 import { Title } from './BoardList.styled';
 import {
-  deleteBoardByIdThunk,
+  // deleteBoardByIdThunk,
   getAllBoardsThunk,
-  getCurrentBoardThunk,
+  // getCurrentBoardThunk,
 } from 'redux/dashboards/thunks';
-import { useNavigate } from 'react-router-dom';
+// import { useAllBoards } from 'components/hooks';
+// import { useNavigate } from 'react-router-dom';
+import ButtonList from 'components/ButtonList/ButtonList';
 
 import EditBoardForm from 'components/EditBoardForm/EditBoardForm';
 import Modal from 'components/Modal/Modal';
 
 function BoardList() {
+  // const allBoards = useAllBoards();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const boards = useSelector(state => state.boards.boards);
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [selectedBoardId, setSelectedBoardId] = useState(null);
+
+  // const navigate = useNavigate();
+  // const boards = useSelector(state => state.boards.boards);
+
 
   useEffect(() => {
     dispatch(getAllBoardsThunk());
   }, [dispatch]);
 
-  const closeModal = () => {
-    setModalOpen(false);
-  };
+  // const handleOpenBoard = (id, title) => {
+  //   dispatch(getCurrentBoardThunk(id));
 
-  const handleOpenBoard = (id, title) => {
-    dispatch(getCurrentBoardThunk(id));
 
-    const normalizedTitle = title.toLowerCase().replace(/\s+/g, '-');
-    navigate(normalizedTitle);
-  };
+  //   const normalizedTitle = title.toLowerCase().replace(/\s+/g, '-');
+  //   navigate(normalizedTitle);
+  // };
 
-  const handleEditBoard = (e, boardId) => {
-    e.stopPropagation();
-    console.log('handleEditBoard', boardId);
-    setSelectedBoardId(boardId);
-    setModalOpen(true);
-  };
 
-  const handleDeleteBoard = (e, boardId) => {
-    e.stopPropagation();
-    dispatch(deleteBoardByIdThunk(boardId));
-  };
+  // const handleEditBoard = (e, boardId) => {
+  //   e.stopPropagation();
+  //   console.log('handleEditBoard'); // Зупиняє подальше поширення кліку до обгортки
+  //   // Додайте код для редагування дошки з ID `boardId`
+  // };
+
+
+  // const handleDeleteBoard = (e, boardId) => {
+  //   e.stopPropagation();
+  //   dispatch(deleteBoardByIdThunk(boardId));
+  // };
 
   return (
     <>
       <Title>My boards</Title>
       <AddBoardButton />
-      {boards.map(({ _id, title }) => (
+      {/* {boards.map(({ _id, title }) => (
         <div
           key={_id}
           onClick={() => handleOpenBoard(_id, title)}
@@ -62,12 +64,10 @@ function BoardList() {
             <button onClick={e => handleDeleteBoard(e, _id)}>Delete</button>
           </div>
         </div>
-      ))}
-      {isModalOpen && (
-        <Modal isOpen={isModalOpen} onClose={closeModal}>
-          <EditBoardForm onClose={closeModal} boardId={selectedBoardId} />
-        </Modal>
-      )}
+      ))} */}
+      <ButtonList />
+      {/* {boards.length !== 0 && <ButtonList />} */}
+
     </>
   );
 }

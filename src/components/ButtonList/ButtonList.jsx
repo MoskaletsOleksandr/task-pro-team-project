@@ -1,37 +1,50 @@
-import { useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
-import { useDraggable } from 'react-use-draggable-scroll';
-// import { useAllBoards, useBoardId } from 'components/hooks';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+// import { useAllBoards } from 'components/hooks';
 import BoardButton from 'components/BoardButton/BoardButton';
 import { List } from './ButtonList.styled';
-import { getCurrentBoardThunk } from 'redux/dashboards/thunks';
+import { getCurrentBoardThunk, getAllBoardsThunk } from 'redux/dashboards/thunks';
+import { useNavigate } from 'react-router-dom';
 
 function ButtonList() {
   // const allBoards = useAllBoards();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const boards = useSelector(state => state.boards.boards);
   // const boardID = useBoardId();
-  const ref = useRef(null);
-  const { onMouseDown } = useDraggable(ref, { direction: 'vertical' });
+  // const ref = useRef(null);
+  // const { onMouseDown } = useDraggable(ref, { direction: 'vertical' });
 
-  // useEffect(() => {
-  //   if (allBoards.length !== 0 && boardID) {
-  //     dispatch(getCurrentBoardThunk(boardID));
-  //   }
-  // }, [allBoards, boardID, dispatch]);
+  useEffect(() => {
+    // if (allBoards.length !== 0 && boardID) {
+    //   dispatch(getCurrentBoardThunk(boardID));
+    // }
+    dispatch(getAllBoardsThunk());
+  }, [dispatch]);
 
+    const handleOpenBoard = (id, title) => {
+      dispatch(getCurrentBoardThunk(id));
+  
+      const normalizedTitle = title.toLowerCase().replace(/\s+/g, '-');
+      navigate(normalizedTitle);
+    };
+
+  
   return (
     <>
-      <List ref={ref} onMouseDown={onMouseDown}>
-        {/* {allBoards.length !== 0 &&
-          allBoards.map(({ _id, title, icon, active }) => ( */}
+      <List>
+        {/* {boards.length !== 0 && */}
+        {boards.map(({ _id, title, icon, active }) => (
         <BoardButton
-        // key={_id}
-        // name={title}
-        // id={_id}
+        key={_id}
+        name={title}
+        onClick={() => handleOpenBoard(_id, title)}
+        style={{ display: 'flex', justifyContent: 'space-between' }}
+        id={_id}
         // icon={icon}
-        // isActive={active}
+        // isActive={active}s
         />
-        {/* ))} */}
+        ))} 
       </List>
     </>
   );
