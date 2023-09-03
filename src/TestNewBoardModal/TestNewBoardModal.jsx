@@ -12,22 +12,57 @@ export const TestNewBoardModal = ({ closeModal, isOpen }) => {
   const [selectedBackground, setSelectedBackground] = useState('');
   const dispatch = useDispatch();
 
-  const handleCreateBoard = () => {
-    dispatch(
+  // const handleCreateBoard = () => {
+  //   dispatch(
+  //     createNewBoardThunk({
+  //       title: title,
+  //       icon: 'selectedIcon',
+  //       background: selectedBackground,
+  //     })
+  //   );
+    
+  // };
+
+const handleCreateBoard = async () => {
+  try {
+    await dispatch(
       createNewBoardThunk({
         title: title,
         icon: 'selectedIcon',
         background: selectedBackground,
       })
     );
-  };
+    toast.success('Board created successfully'); 
+    closeModal();
+  } catch (error) {
+    toast.error('Error creating board');
+  }
+};
+
+  // const handleTitleChange = event => {
+  //   setTitle(event.target.value);
+  // };
 
   const handleTitleChange = event => {
-    setTitle(event.target.value);
+    try {
+      setTitle(event.target.value);
+      toast.success('Title changed successfully'); 
+    } catch (error) {
+      toast.error('Error changing title'); 
+    }
   };
 
+  // const handleBackgroundSelect = iconId => {
+  //   setSelectedBackground(iconId);
+  // };
+
   const handleBackgroundSelect = iconId => {
-    setSelectedBackground(iconId);
+    try {
+      setSelectedBackground(iconId);
+      toast.success('Background selected successfully'); 
+    } catch (error) {
+      toast.error('Error selecting background'); 
+    }
   };
 
   return (
