@@ -4,54 +4,72 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { updateBoardByIdThunk } from 'redux/dashboards/thunks';
 import sprite from '../../images/sprite.svg';
-// картинки
 // import { useBoardData } from 'components/hooks';
 import ChildButtonNewBoard from 'components/ButtonForForms/ChildButtonNewBoard';
 import ButtonForForms from 'components/ButtonForForms/ButtonForForms';
+import { toast } from 'react-hot-toast';
 
 import {
   NewBoardTitle,
   IconTitle,
   IconWrap,
   Icon,
-  // BackgroundTitle,
-  // BgIcon,
-  // BackgroundItem,
-  // BackgroundImage,
+  BackgroundTitle,
+  BgIcon,
+  BackgroundItem,
+  BackgroundImage,
   Input,
 } from './EditBoardForm.styled';
 
 const EditBoardForm = ({ onClose }) => {
   const { register, handleSubmit, setValue } = useForm();
   const [selectedIcon, setSelectedIcon] = useState('');
-  // const [selectedBackgroundId, setSelectedBackgroundId] = useState('');
+  const [selectedBackgroundId, setSelectedBackgroundId] = useState('');
+  const backgrounds = useSelector(state => state.boards.backgrounds);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const board = useSelector(state => state.boards.currentBoard);
-  console.log(board);
 
   useEffect(() => {
     setValue('title', board.title);
-    // setSelectedIcon(board.icon);
-    // setSelectedBackgroundId(board.background);
-  }, [board.title, setValue]);
-  // board.background, board.icon,
+    setSelectedIcon(board.icon);
+    setSelectedBackgroundId(board.background);
+  }, [board.title, board.background, board.icon, setValue]);
 
+  let timeoutId;
   const handleTitleChange = event => {
-    setValue('title', event.target.value);
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      try {
+        setValue('title', event.target.value);
+        toast.success('Title changed successfully');
+      } catch {
+        toast.error('Error changing title');
+      }
+    }, 1500);
   };
 
   const handleIconSelect = icon => {
-    // console.log(icon);
-    setSelectedIcon(icon);
-    setValue('icon', icon);
+    try {
+      setSelectedIcon(icon);
+      setValue('icon', icon);
+      toast.success('Icon selected successfully');
+    } catch {
+      toast.error('Error occurred while selecting the icon');
+    }
   };
 
-  // const handleBackgroundSelect = backgroundId => {
-  //   setSelectedBackgroundId(backgroundId);
-  //   setValue('selectedBackgroundId', backgroundId);
-  // };
+  const handleBackgroundSelect = backgroundId => {
+    // console.log(backgroundId);
+    try {
+      setSelectedBackgroundId(backgroundId);
+      setValue('selectedBackgroundId', backgroundId);
+      toast.success('Background selected successfully');
+    } catch {
+      toast.error('Error selecting background');
+    }
+  };
 
   const handleEditBoardForm = data => {
     console.log(data);
@@ -60,20 +78,22 @@ const EditBoardForm = ({ onClose }) => {
       body: {
         title: data.title,
         icon: data.icon,
-        // background: data.selectedBackgroundId,
+        background: data.selectedBackgroundId,
       },
     };
 
     dispatch(updateBoardByIdThunk(boardData))
       .unwrap()
       .then(response => {
+        toast.success('The board was changed successfully');
         setValue('title', data.title);
         setValue('icon', '');
         setValue('selectedIcon', data.icon);
-        // setValue('selectedBackgroundId', data.selectedBackgroundId);
+        setValue('selectedBackground', data.selectedBackgroundId);
         onClose();
       })
       .catch(error => {
+        toast.error('Error occurred while editing the board');
         console.error('Error:', error);
       });
 
@@ -103,17 +123,39 @@ const EditBoardForm = ({ onClose }) => {
     ));
   };
 
-  // const renderBackgrounds = () => {
-  //   return data.map(item => (
-  //     <BackgroundItem
-  //       key={item.id}
-  //       isActive={selectedBackgroundId === item.id}
-  //       onClick={() => handleBackgroundSelect(item.id)}
-  //     >
-  //       <BackgroundImage src={item.image} alt="Background" />
-  //     </BackgroundItem>
-  //   ));
-  // };
+  const renderBackgrounds = () => {
+    const placeholder = (
+      <BackgroundItem
+        key="null-background"
+        isActive={selectedBackgroundId === 'null-background'}
+        onClick={() => handleBackgroundSelect('null-background')}
+      >
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '28px',
+            height: '28px',
+          }}
+        >
+          <svg style={{ width: '16px', height: '16px' }}>
+            <use href={sprite + '#null-background'}></use>
+          </svg>
+        </div>
+      </BackgroundItem>
+    );
+    const backgroundItems = backgrounds.map(item => (
+      <BackgroundItem
+        key={item.previewURL}
+        isActive={selectedBackgroundId === item._id}
+        onClick={() => handleBackgroundSelect(item._id)}
+      >
+        <BackgroundImage src={item.previewURL} alt="Background" />
+      </BackgroundItem>
+    ));
+    return [placeholder, ...backgroundItems];
+  };
 
   return (
     <div>
@@ -129,11 +171,11 @@ const EditBoardForm = ({ onClose }) => {
         />
         <IconTitle>Icons</IconTitle>
         <IconWrap>{renderIcons()}</IconWrap>
-        {/* 
-        <BackgroundTitle>Background</BackgroundTitle> 
-         <BgIcon>{renderBackgrounds()}</BgIcon>  */}
+
+        <BackgroundTitle>Background</BackgroundTitle>
+        <BgIcon>{renderBackgrounds()}</BgIcon>
         <ButtonForForms
-          textButton={<ChildButtonNewBoard textContent="Edit" />}
+          textButton={() => <ChildButtonNewBoard textContent="Create" />}
           type="submit"
         />
       </form>
