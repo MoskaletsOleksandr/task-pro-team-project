@@ -13,14 +13,14 @@ const NeedHelpForm = () => {
 
   return (
     <>
-      <Form>
+      <Form onSubmit=''>
         <Title>Need help</Title>
 
         <Input placeholder="Email address" />
 
         <Textarea placeholder="Comment"></Textarea>
 
-        <ButtonForForms textButton={() => 'Send'} />
+        <ButtonForForms type="submit" textButton={() => 'Send'} />
       </Form>
     </>
   );
