@@ -5,6 +5,7 @@ import { moveTaskBetweenColumns } from 'utils/moveTaskBetweenColumns';
 import { placeTasksInColumns } from 'utils/placeTasksInColumns';
 import { removeTaskFromBoard } from 'utils/removeTaskFromBoard ';
 import { updateColumnTitleInBoard } from 'utils/updateColumnTitleInBoard';
+import { updateTask } from 'utils/updateTask';
 import { dashBoardsInitialState } from './initialState';
 import {
   createNewBoardThunk,
@@ -88,7 +89,7 @@ const handleCreateNewTaskFulfilled = (state, { payload }) => {
 };
 
 const handleUpdateTaskByIdFulfilled = (state, { payload }) => {
-  const updatedBoard = addTaskToBoard(state.currentBoard, payload);
+  const updatedBoard = updateTask(state.currentBoard, payload);
   state.currentBoard = updatedBoard;
 };
 
