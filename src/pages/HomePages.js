@@ -9,12 +9,12 @@ import { selectCurrentBoard } from 'redux/dashboards/selectors';
 
 import { useDispatch, useSelector } from 'react-redux';
 import Sidebar from 'components/Sidebar/Sidebar';
-import { TestNewBoardModal } from 'TestNewBoardModal/TestNewBoardModal';
 import { getAllBackgroundsThunk } from 'redux/dashboards/thunks';
 
 const HomePage = () => {
   // const user = useSelector(state => state.auth.user.theme);
   const dispatch = useDispatch();
+  const [openedSidebar, setOpenedSidebar] = useState(false);
 
   useEffect(() => {
     const fetchBackgrounds = async () => {
@@ -28,12 +28,25 @@ const HomePage = () => {
     fetchBackgrounds();
   }, [dispatch]);
 
-  const [openedSidebar, setOpenedSidebar] = useState(false);
-  const [showTestModal, setShowTestModal] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1440) {
+        // Якщо ширина екрану більша або рівна 1440px, відкрийте сайдбар.
+        setOpenedSidebar(true);
+      }
+    };
 
-  const toggleModal = () => {
-    setShowTestModal(prevShowTestModal => !prevShowTestModal);
-  };
+    // Додайте слухач події resize при завантаженні компоненту.
+    window.addEventListener('resize', handleResize);
+
+    // Відразу перевірте ширину екрану після завантаження сторінки.
+    handleResize();
+
+    return () => {
+      // При видаленні компоненту видаліть слухача події resize.
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   //-------vit--------
   const currentBoard = useSelector(selectCurrentBoard);
@@ -81,25 +94,6 @@ const HomePage = () => {
           {/* -------vit-------- */}
           {currentBoard ? <Outlet /> : <NewDashboard />}
           {/* -------vit-------- */}
-
-          <button
-            onClick={toggleModal}
-            style={{
-              position: 'absolute',
-              bottom: '100px',
-              right: '30px',
-              width: '200px',
-              height: '30px',
-            }}
-          >
-            Open Test Modal
-          </button>
-          {showTestModal && (
-            <TestNewBoardModal
-              closeModal={toggleModal}
-              isOpen={showTestModal}
-            />
-          )}
         </div>
       </div>
     </>

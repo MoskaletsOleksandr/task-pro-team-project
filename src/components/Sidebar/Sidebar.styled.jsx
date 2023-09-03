@@ -5,12 +5,12 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  box-sizing: content-box;
+  padding: 24px;
   height: calc(100vh - 24px);
   margin: 0;
   background: var(--sidebar-bg-color);
-  transform: translateX(${({ isOpen }) => (isOpen ? '0' : '-100%')});
+  transform: ${({ isOpen }) =>
+    isOpen ? 'translateX(0)' : 'translateX(-100%)'};
   z-index: 100;
   width: 260px;
 
