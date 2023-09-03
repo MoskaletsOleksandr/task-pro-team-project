@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { updateBoardByIdThunk } from 'redux/dashboards/thunks';
+import {
+  getCurrentBoardThunk,
+  updateBoardByIdThunk,
+} from 'redux/dashboards/thunks';
 import sprite from '../../images/sprite.svg';
 // import { useBoardData } from 'components/hooks';
 import ChildButtonNewBoard from 'components/ButtonForForms/ChildButtonNewBoard';
@@ -21,7 +24,10 @@ import {
   Input,
 } from './EditBoardForm.styled';
 
-const EditBoardForm = ({ onClose }) => {
+const EditBoardForm = ({ onClose, boardId }) => {
+  console.log('====================================');
+  console.log('boardId:', boardId);
+  console.log('====================================');
   const { register, handleSubmit, setValue } = useForm();
   const [selectedIcon, setSelectedIcon] = useState('');
   const [selectedBackgroundId, setSelectedBackgroundId] = useState('');
@@ -30,6 +36,10 @@ const EditBoardForm = ({ onClose }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const board = useSelector(state => state.boards.currentBoard);
+
+  useEffect(() => {
+    dispatch(getCurrentBoardThunk(boardId));
+  }, [dispatch, boardId]);
 
   useEffect(() => {
     setValue('title', board.title);
