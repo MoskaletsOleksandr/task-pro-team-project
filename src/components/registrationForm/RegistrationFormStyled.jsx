@@ -8,6 +8,11 @@ export const RegistrationFormStyled = styled.div`
   font-size: 14px;
   border: solid 1px black;
   border-radius: 8px;
+
+  @media screen and (max-width: 767px) {
+  width: 335px;
+  padding: 24px;
+  }
 `;
 export const AuthLabelStyled = styled.label`
   // color: white;
