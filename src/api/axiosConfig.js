@@ -41,6 +41,7 @@ dashBoardsInstance.interceptors.response.use(response=>response,async(error)=>{
   if(error.response.status===401){
     const refreshToken=localStorage.getItem("refreshToken")
     const{data}=await authInstance.post('users/refresh',{refreshToken})
+    console.log(data.accessToken,data.refreshToken)
     setToken(  `Bearer ${data.accessToken}`)
     localStorage.setItem("refreshToken",data.refreshToken)
     return dashBoardsInstance(error.config)
@@ -51,6 +52,7 @@ tasksInstance.interceptors.response.use(response=>response,async(error)=>{
   if(error.response.status===401){
     const refreshToken=localStorage.getItem("refreshToken")
     const{data}=await authInstance.post('users/refresh',{refreshToken})
+    console.log(data.accessToken,data.refreshToken)
     setToken(  `Bearer ${data.accessToken}`)
     localStorage.setItem("refreshToken",data.refreshToken)
     return tasksInstance(error.config)
