@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import sprite from '../../images/sprite.svg';
 import Modal from 'components/Modal/Modal';
 import EditBoardForm from 'components/EditBoardForm/EditBoardForm';

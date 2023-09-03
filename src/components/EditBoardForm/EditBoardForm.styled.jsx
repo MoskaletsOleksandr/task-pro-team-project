@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 
 export const NewBoardTitle = styled.h2`
   margin: 0 0 24px 0;
