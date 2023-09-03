@@ -25,33 +25,75 @@ export const clearToken = () => {
   tasksInstance.defaults.headers.common['Authorization'] = '';
 };
 
-authInstance.interceptors.response.use(response=>response,async(error)=>{
-  if(error.response.status===401){
-    const refreshToken=localStorage.getItem("refreshToken")
-    const{data}=await authInstance.post('users/refresh',{refreshToken})
-    setToken(data.accessToken)
-    localStorage.setItem(data.refreshToken)
-    return authInstance(error.config)
+authInstance.interceptors.response.use(
+  response => response,
+  async error => {
+    if (error.response.status === 401) {
+      const refreshToken = localStorage.getItem('refreshToken');
+      const { data } = await authInstance.post('users/refresh', {
+        refreshToken,
+      });
+      console.log('====================================');
+      console.log('data:', data);
+      console.log('====================================');
+      setToken(`Bearer ${data.accessToken}`);
+      localStorage.setItem('refreshToken', data.refreshToken);
+      return authInstance({
+        ...error.config,
+        headers: {
+          ...error.config.headers,
+          Authorization: `Bearer ${data.accessToken}`,
+        },
+      });
+    }
+    return Promise.reject(error);
   }
-  return Promise.reject(error)
-})
-dashBoardsInstance.interceptors.response.use(response=>response,async(error)=>{
-  if(error.response.status===401){
-    const refreshToken=localStorage.getItem("refreshToken")
-    const{data}=await authInstance.post('users/refresh',{refreshToken})
-    setToken(data.accessToken)
-    localStorage.setItem(data.refreshToken)
-    return dashBoardsInstance(error.config)
+);
+dashBoardsInstance.interceptors.response.use(
+  response => response,
+  async error => {
+    if (error.response.status === 401) {
+      const refreshToken = localStorage.getItem('refreshToken');
+      const { data } = await authInstance.post('users/refresh', {
+        refreshToken,
+      });
+      console.log('====================================');
+      console.log('data:', data);
+      console.log('====================================');
+      setToken(`Bearer ${data.accessToken}`);
+      localStorage.setItem('refreshToken', data.refreshToken);
+      dashBoardsInstance({
+        ...error.config,
+        headers: {
+          ...error.config.headers,
+          Authorization: `Bearer ${data.accessToken}`,
+        },
+      });
+    }
+    return Promise.reject(error);
   }
-  return Promise.reject(error)
-})
-tasksInstance.interceptors.response.use(response=>response,async(error)=>{
-  if(error.response.status===401){
-    const refreshToken=localStorage.getItem("refreshToken")
-    const{data}=await authInstance.post('users/refresh',{refreshToken})
-    setToken(data.accessToken)
-    localStorage.setItem(data.refreshToken)
-    return tasksInstance(error.config)
+);
+tasksInstance.interceptors.response.use(
+  response => response,
+  async error => {
+    if (error.response.status === 401) {
+      const refreshToken = localStorage.getItem('refreshToken');
+      const { data } = await authInstance.post('users/refresh', {
+        refreshToken,
+      });
+      console.log('====================================');
+      console.log('data:', data);
+      console.log('====================================');
+      setToken(`Bearer ${data.accessToken}`);
+      localStorage.setItem('refreshToken', data.refreshToken);
+      return tasksInstance({
+        ...error.config,
+        headers: {
+          ...error.config.headers,
+          Authorization: `Bearer ${data.accessToken}`,
+        },
+      });
+    }
+    return Promise.reject(error);
   }
-  return Promise.reject(error)
-})
+);
