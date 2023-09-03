@@ -14,12 +14,8 @@ const AuthPage = () => {
 
   useEffect(() => {
     const accessToken = searchParams.get('accessToken');
-    console.log('accessToken:', accessToken);
-
     const refreshToken = searchParams.get('refreshToken');
-    console.log('refreshToken:', refreshToken);
     const user = searchParams.get('user');
-    console.log(user);
     if (accessToken && refreshToken && user) {
       dispatch(addGoogleInfo({ accessToken, refreshToken, user }));
       setToken(`Bearer ${accessToken}`);
