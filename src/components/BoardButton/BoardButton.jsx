@@ -26,10 +26,10 @@ function BoardButton({ name, id, icon }) {
   const navigate = useNavigate();
   const [active, setActive] = useState(false);
   const [click] = useState(false);
-  
-  const openModal = () => {
-    setModalOpen(true);
-  };
+
+  // const openModal = () => {
+  //   setModalOpen(true);
+  // };
 
   const closeModal = () => {
     setModalOpen(false);
@@ -108,8 +108,7 @@ function BoardButton({ name, id, icon }) {
         </Modal>
       )}
     </>
-    );
-      }
-    
-    
+  );
+}
+
 export default BoardButton;
