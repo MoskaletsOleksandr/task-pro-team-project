@@ -7,25 +7,15 @@ import NewDashboard from 'components/NewDashboard/NewDashboard';
 import { selectCurrentBoard } from 'redux/dashboards/selectors';
 //-------vit--------
 
-import {
-  // useDispatch,
-  useSelector,
-} from 'react-redux';
-// import { getAllBoardsThunk } from 'redux/dashboards/thunks';
-// import {
-//   createNewBoardThunk,
-//   createNewColumnThunk,
-//   getCurrentBoardThunk,
-// } from 'redux/dashboards/thunks';
-
-// import ScreensPage from 'components/ScreensPage/ScreensPage';
+import { useDispatch, useSelector } from 'react-redux';
 import Sidebar from 'components/Sidebar/Sidebar';
 import { TestNewBoardModal } from 'TestNewBoardModal/TestNewBoardModal';
+import { getAllBackgroundsThunk } from 'redux/dashboards/thunks';
 // import Backdrop from '../components/Sidebar/Backdrop';
 
 const HomePage = () => {
-  const user = useSelector(state => state.auth.user.theme);
-  console.log(user);
+  // const user = useSelector(state => state.auth.user.theme);
+  const dispatch = useDispatch();
   const myRef = useRef(null);
   const [size, setSize] = useState({});
   const resizeHandler = () => {
@@ -40,6 +30,18 @@ const HomePage = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const fetchBackgrounds = async () => {
+      try {
+        await dispatch(getAllBackgroundsThunk());
+      } catch (error) {
+        console.error('Помилка отримання фонів:', error);
+      }
+    };
+
+    fetchBackgrounds();
+  }, [dispatch]);
+
   const [showSidebar, setShowSidebar] = useState(true);
   const [showTestModal, setShowTestModal] = useState(false);
 
@@ -50,22 +52,6 @@ const HomePage = () => {
   //-------vit--------
   const currentBoard = useSelector(selectCurrentBoard);
   //-------vit--------
-
-  // const dispatch = useDispatch();
-
-  // dispatch(getCurrentBoardThunk('64ee3083db29eb5fa80b1b35'));
-  // dispatch(
-  //   createNewBoardThunk({ title: '111', icon: '1111', background: '11111' })
-  // );
-  // dispatch(
-  //   createNewColumnThunk({
-  //     boardId: '64ee3083db29eb5fa80b1b35',
-  //     body: { title: 'scszcscs' },
-  //   })
-  // );
-  // const toggleSidebar = () => {
-  //   setShowSidebar(!showSidebar);
-  // };
 
   const handleWindowResize = () => {
     if (window.innerWidth < 1440) {

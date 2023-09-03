@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Input, BtnAdd, WrapSvg, SvgIconPlus } from './ColumnModal.styled';
 import sprite from '../../../images/sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-hot-toast';
 
 
 const ColumnModal = ({ closeModal, isOpen, name, inputPlaceholder, actionThunk, actionPayload, buttonText, initialValue }) => {
@@ -14,19 +15,21 @@ const ColumnModal = ({ closeModal, isOpen, name, inputPlaceholder, actionThunk, 
     setInputValue(e.target.value);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(
-      actionThunk({
-        boardId,
-        ...actionPayload(inputValue),
-      })
-    );
-    if (inputValue.trim() !== '') {
+    if (inputValue.trim() === '') {
+      toast.error('Column name can not be empty');
+    } else {
+      dispatch(
+        actionThunk({
+          boardId,
+          ...actionPayload(inputValue),
+        })
+      );
       setInputValue('');
+      closeModal();
     }
-    closeModal();
-  };
+  }
 
   return (
     <Modal onClose={closeModal} isOpen={isOpen}>

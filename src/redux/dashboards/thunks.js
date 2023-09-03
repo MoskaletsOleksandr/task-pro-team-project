@@ -4,6 +4,7 @@ import {
   createNewColumn,
   deleteBoardById,
   deleteColumnById,
+  getAllBackgrounds,
   getAllBoards,
   getCurrentBoard,
   updateBoardById,
@@ -13,10 +14,10 @@ import {
   createNewTask,
   deleteTaskById,
   getAllTasks,
+  getFilteredTasks,
   updateTaskById,
   updateTasksColumnById,
 } from 'api/boardsApi/tasksApi';
-import { getFilteredTasks } from 'api/boardsApi/filterApi';
 
 //Отримання всіх дощок
 export const getAllBoardsThunk = createAsyncThunk(
@@ -199,9 +200,21 @@ export const updateTasksColumnByIdThunk = createAsyncThunk(
 // Отримання відфільтрованих тасок по пріоритетності//сюди передаємо обєкт такого формату {boardId:"", priority:"назва пріпрітету"}
 export const getFilteredTasksThunk = createAsyncThunk(
   'tasks/getFilteredTasks',
-  async (body, { rejectWithValue }) => {
+  async ({ boardId, priority }, { rejectWithValue }) => {
     try {
-      const data = await getFilteredTasks(body);
+      const data = await getFilteredTasks(boardId, priority);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getAllBackgroundsThunk = createAsyncThunk(
+  'boards/getAllBackgrounds',
+  async (_, { rejectWithValue }) => {
+    try {
+      const data = await getAllBackgrounds();
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

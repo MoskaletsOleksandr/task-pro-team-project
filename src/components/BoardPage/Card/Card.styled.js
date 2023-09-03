@@ -127,15 +127,45 @@ const PopUpMenu = styled.div`
   z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  width: 135px;
-  padding: 18px;
+  // gap: 8px;
+  width: 160px;
+  padding: 10px;
+  max-height:96px;
   background-color: var(--progress-popup-bg-color);
   border-radius: 8px;
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
-  top: 35px;
-  right: 100px;
+  top: 20%;
+  right: 25%;
 `;
+
+const ScrollContent = styled.div`
+overflow-y: auto;
+display: flex;
+flex-direction: column;
+gap: 4px;
+
+::-webkit-scrollbar {
+  width: 8px;
+  margin-left:8px;
+}
+
+::-webkit-scrollbar-thumb {
+  // background-color: var(--column-add-btn-bg-color);
+  background-color: var(--vertical-scroll-bar-bg-color);
+  border-radius: 4px;
+  // height: 10px;
+  margin-left:8px;
+}
+
+::-webkit-scrollbar-track {
+  // background-color: var(--screens-page-bg-color);
+  background-color: var(--vertical-scroll-slider-bg-color);
+  border-radius: 4px;
+  margin-left:8px;
+}
+
+`;
+
 
 const WhiteIcon = styled.svg`
   width: 14px;
@@ -145,7 +175,7 @@ const WhiteIcon = styled.svg`
   fill: none;
   &:hover {
     stroke: var(--progress-popup-text-color-hover);
-    cursor: pointer;
+    cursor: pointer';
   }
 `;
 
@@ -162,6 +192,7 @@ const PopUpItem = styled.div`
   align-items: center;
   justify-content: space-between;
   color: var(--progress-popup-text-color);
+
   &:hover {
     color: var(--progress-popup-text-color-hover);
     stroke: var(--progress-popup-text-color-hover);
@@ -188,7 +219,7 @@ const BackDropHiden = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #15151530;
+  background-color: var(--progress-backdrop);
   overflow-y: auto;
   z-index: 1;
   width: 100%;
@@ -228,4 +259,5 @@ export {
   Backdrop,
   BellIcon,
   BackDropHiden,
+  ScrollContent
 };

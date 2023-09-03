@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import AddBoardButton from 'components/AddBoardButton';
@@ -11,11 +12,16 @@ import {
 // import { useNavigate } from 'react-router-dom';
 import ButtonList from 'components/ButtonList/ButtonList';
 
+import EditBoardForm from 'components/EditBoardForm/EditBoardForm';
+import Modal from 'components/Modal/Modal';
+
 function BoardList() {
   // const allBoards = useAllBoards();
   const dispatch = useDispatch();
+
   // const navigate = useNavigate();
   // const boards = useSelector(state => state.boards.boards);
+
 
   useEffect(() => {
     dispatch(getAllBoardsThunk());
@@ -24,15 +30,18 @@ function BoardList() {
   // const handleOpenBoard = (id, title) => {
   //   dispatch(getCurrentBoardThunk(id));
 
+
   //   const normalizedTitle = title.toLowerCase().replace(/\s+/g, '-');
   //   navigate(normalizedTitle);
   // };
+
 
   // const handleEditBoard = (e, boardId) => {
   //   e.stopPropagation();
   //   console.log('handleEditBoard'); // Зупиняє подальше поширення кліку до обгортки
   //   // Додайте код для редагування дошки з ID `boardId`
   // };
+
 
   // const handleDeleteBoard = (e, boardId) => {
   //   e.stopPropagation();
@@ -58,6 +67,7 @@ function BoardList() {
       ))} */}
       <ButtonList />
       {/* {boards.length !== 0 && <ButtonList />} */}
+
     </>
   );
 }

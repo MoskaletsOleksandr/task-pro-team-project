@@ -21,6 +21,7 @@ import {
   updateTaskByIdThunk,
   updateTasksColumnByIdThunk,
   getFilteredTasksThunk,
+  getAllBackgroundsThunk,
 } from './thunks';
 
 const handlePending = state => {
@@ -101,6 +102,10 @@ const handleUpdateTasksColumnByIdFulfilled = (state, { payload }) => {
   state.currentBoard = updatedBoard;
 };
 
+const handleGetAllBackgroundsFulfilled = (state, { payload }) => {
+  state.backgrounds = payload;
+};
+
 const boardSlice = createSlice({
   name: 'boards',
   initialState: dashBoardsInitialState,
@@ -127,9 +132,10 @@ const boardSlice = createSlice({
         updateTasksColumnByIdThunk.fulfilled,
         handleUpdateTasksColumnByIdFulfilled
       )
+      .addCase(getFilteredTasksThunk.fulfilled, handleGetAllBoardsFulfilled)
       .addCase(
-        getFilteredTasksThunk.fulfilled,
-        handleUpdateTasksColumnByIdFulfilled
+        getAllBackgroundsThunk.fulfilled,
+        handleGetAllBackgroundsFulfilled
       )
       .addMatcher(action => action.type.endsWith('/pending'), handlePending)
       .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);

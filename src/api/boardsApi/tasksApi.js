@@ -24,3 +24,8 @@ export const updateTasksColumnById = async (idTask, body) => {
   const { data } = await tasksInstance.patch(`/${idTask}/move`, body);
   return data;
 };
+
+export const getFilteredTasks = async (boardId, priority) => {
+  const { data } = await tasksInstance.get(`/${boardId}/${priority}`);
+  return data;
+};
