@@ -38,33 +38,42 @@ const NewBoard = ({ onClose }) => {
   const [selectedBackground, setSelectedBackground] = useState('');
   const dispatch = useDispatch();
 
+  let timeoutId;
+
   const handleTitleChange = event => {
-    setValue('title', event.target.value.toString());
+    const newValue = event.target.value.toString();
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      try {
+        setValue('title', newValue);
+        toast.success('Title changed successfully');
+      } catch {
+        toast.error('Error changing title');
+      }
+    }, 1500);
   };
 
   const handleIconSelect = icon => {
-    setSelectedIcon(icon);
-    setValue('icon', icon);
+    try {
+      setSelectedIcon(icon);
+      setValue('icon', icon);
+      toast.success('Icon selected successfully');
+    } catch {
+      toast.error('Error occurred while selecting the icon');
+    }
   };
 
   const handleBackgroundSelect = backgroundId => {
-    console.log(backgroundId);
-    setSelectedBackground(backgroundId);
-    setValue('background', backgroundId);
+    try {
+      setSelectedBackground(backgroundId);
+      setValue('background', backgroundId);
+      toast.success('Background selected successfully');
+    } catch {
+      toast.error('Error selecting background');
+    }
   };
 
-  // const handleCreateBoard = data => {
-  //   console.log(data);
-  //   dispatch(createNewBoardThunk(data)).then(() => {
-  //     setValue('title', '');
-  //     setValue('icon', '');
-  //     // setValue('background', '');
-  //     onClose();
-  //   });
-  // };
-
   const handleCreateBoard = data => {
-    console.log(data);
     dispatch(createNewBoardThunk(data))
       .then(() => {
         toast.success('The board was created successfully');
