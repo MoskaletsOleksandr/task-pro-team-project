@@ -1,23 +1,22 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import sprite from '../../images/sprite.svg';
-// import картинки для Backgrounds;
 import { createNewBoardThunk } from 'redux/dashboards/thunks';
 import ButtonForForms from 'components/ButtonForForms/ButtonForForms';
 import ChildButtonNewBoard from 'components/ButtonForForms/ChildButtonNewBoard';
-import { toast }  from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 
 import {
   NewBoardTitle,
   IconTitle,
   IconWrap,
   Icon,
-  // BackgroundTitle,
-  // BgIcon,
-  // BackgroundItem,
-  // BackgroundImage,
+  BackgroundTitle,
+  BgIcon,
+  BackgroundItem,
+  BackgroundImage,
   Input,
   ErrorMessage,
 } from './NewBoard.styled';
@@ -35,7 +34,8 @@ const NewBoard = ({ onClose }) => {
     mode: 'onChange',
   });
   const [selectedIcon, setSelectedIcon] = useState('');
-  // const [selectedBackgroundId, setSelectedBackgroundId] = useState('');
+  const backgrounds = useSelector(state => state.boards.backgrounds);
+  const [selectedBackground, setSelectedBackground] = useState('');
   const dispatch = useDispatch();
 
   const handleTitleChange = event => {
@@ -47,10 +47,11 @@ const NewBoard = ({ onClose }) => {
     setValue('icon', icon);
   };
 
-  // const handleBackgroundSelect = backgroundId => {
-  //   setSelectedBackgroundId(backgroundId);
-  //   setValue('background', backgroundId.toString());
-  // };
+  const handleBackgroundSelect = backgroundId => {
+    console.log(backgroundId);
+    setSelectedBackground(backgroundId);
+    setValue('background', backgroundId);
+  };
 
   // const handleCreateBoard = data => {
   //   console.log(data);
@@ -62,19 +63,20 @@ const NewBoard = ({ onClose }) => {
   //   });
   // };
 
-const handleCreateBoard = data => {
-  console.log(data);
-  dispatch(createNewBoardThunk(data))
-    .then(() => {
-      toast.success('The board was created successfully');
-      setValue('title', '');
-      setValue('icon', '');
-      onClose();
-    })
-    .catch(error => {
-      toast.error('Error occurred while creating the board');
-    });
-};
+  const handleCreateBoard = data => {
+    console.log(data);
+    dispatch(createNewBoardThunk(data))
+      .then(() => {
+        toast.success('The board was created successfully');
+        setValue('title', '');
+        setValue('icon', '');
+        setValue('background', '');
+        onClose();
+      })
+      .catch(error => {
+        toast.error('Error occurred while creating the board');
+      });
+  };
 
   const renderIcons = () => {
     const icons = [
@@ -99,17 +101,41 @@ const handleCreateBoard = data => {
     ));
   };
 
-  // const renderBackgrounds = () => {
-  //   return картинки.map(item => (
-  //     <BackgroundItem
-  //       key={item.id}
-  //       isActive={selectedBackgroundId === item.id}
-  //       onClick={() => handleBackgroundSelect(item.id)}
-  //     >
-  //       <BackgroundImage src={item.image} alt="Background" />
-  //     </BackgroundItem>
-  //   ));
-  // };
+  const renderBackgrounds = () => {
+    const placeholder = (
+      <BackgroundItem
+        key="null-background"
+        isActive={selectedBackground === 'null-background'}
+        onClick={() => handleBackgroundSelect('null-background')}
+      >
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '28px',
+            height: '28px',
+          }}
+        >
+          <svg style={{ width: '16px', height: '16px' }}>
+            <use href={sprite + '#null-background'}></use>
+          </svg>
+        </div>
+      </BackgroundItem>
+    );
+
+    const backgroundItems = backgrounds.map(item => (
+      <BackgroundItem
+        key={item.previewURL}
+        isActive={selectedBackground === item._id}
+        onClick={() => handleBackgroundSelect(item._id)}
+      >
+        <BackgroundImage src={item.previewURL} alt="Background" />
+      </BackgroundItem>
+    ));
+
+    return [placeholder, ...backgroundItems];
+  };
 
   return (
     <div>
@@ -127,8 +153,8 @@ const handleCreateBoard = data => {
         <IconTitle>Icons</IconTitle>
         <IconWrap>{renderIcons()}</IconWrap>
 
-        {/* <BackgroundTitle>Background</BackgroundTitle> */}
-        {/* <BgIcon>{renderBackgrounds()}</BgIcon> */}
+        <BackgroundTitle>Background</BackgroundTitle>
+        <BgIcon>{renderBackgrounds()}</BgIcon>
 
         <ButtonForForms
           textButton={() => <ChildButtonNewBoard textContent="Create" />}
