@@ -9,6 +9,7 @@ import {
   getCurrentUser,
 } from 'api/api_auth/api';
 import { setToken } from 'api/axiosConfig';
+import { resetBoards } from 'redux/dashboards/slise';
 
 export const SignUpThunk = createAsyncThunk(
   'auth/signup',
@@ -48,6 +49,7 @@ export const LogOutThunk = createAsyncThunk(
       setToken(`Bearer ${currentToken}`);
       const { data } = await logOut();
       localStorage.removeItem('persist:boards');
+      thunkAPI.dispatch(resetBoards());
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

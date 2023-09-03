@@ -114,6 +114,9 @@ const boardSlice = createSlice({
     setPriority: (state, action) => {
       state.priority = action.payload;
     },
+    resetBoards: state => {
+      return dashBoardsInitialState;
+    },
   },
   extraReducers: builder => {
     builder
@@ -143,5 +146,5 @@ const boardSlice = createSlice({
   },
 });
 
-export const { setPriority } = boardSlice.actions;
+export const { setPriority, resetBoards } = boardSlice.actions;
 export const boardsReducer = boardSlice.reducer;
