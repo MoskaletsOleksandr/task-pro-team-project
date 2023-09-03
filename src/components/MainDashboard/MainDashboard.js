@@ -18,9 +18,19 @@ import {
 import Modal from 'components/Modal/Modal';
 import { createNewColumnThunk } from 'redux/dashboards/thunks';
 import { useSelector } from 'react-redux';
+import {
+  selectboardTitle,
+  selectBoardBackground,
+} from 'redux/dashboards/selectors';
 
 const MainDashboard = () => {
-  const boardTitle = useSelector(state => state.boards.currentBoard.title);
+  // const boardTitle = useSelector(state => state.boards.currentBoard.title);
+  const boardTitle = useSelector(selectboardTitle);
+  const boardBackground = useSelector(selectBoardBackground);
+  console.log('=========');
+  console.log(boardBackground.desktopURL);
+  console.log('=========');
+
   const [showTestModal, setShowTestModal] = useState(false);
   const [
     currentColumns,
@@ -40,7 +50,7 @@ const MainDashboard = () => {
   };
 
   return (
-    <Section>
+    <Section backgroung={boardBackground}>
       <SectionTitle>
         <Title>{boardTitle}</Title>
         <BtnFilters type="submit" onClick={toggleFiltersModal}>

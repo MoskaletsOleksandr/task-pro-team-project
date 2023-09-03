@@ -23,6 +23,7 @@ export const GlobalStyles = () => {
             --auth-input-text-color: #ffffff;
             --auth-input-placeholder-color: #ffffff4c;
             --auth-input-border-color: #bedbb0;
+            
           }
 
           body {
@@ -60,6 +61,7 @@ export const GlobalStyles = () => {
           }
 
           .dark {
+           
             --primary-text-color: #ffffff;
             --secondary-text-color: #ffffff80;
             --link-text-color: #BEDBB0;

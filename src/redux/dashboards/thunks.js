@@ -203,7 +203,6 @@ export const getFilteredTasksThunk = createAsyncThunk(
   async ({ boardId, priority }, { rejectWithValue }) => {
     try {
       const data = await getFilteredTasks(boardId, priority);
-      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

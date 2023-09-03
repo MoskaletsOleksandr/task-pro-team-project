@@ -1,9 +1,19 @@
 import styled from '@emotion/styled';
 
+
+
 export const Section = styled.section`
   width: 100vw;
+  height: 100vw;
   margin-bottom: 9px;
   max-height: 100vh;
+
+  background-color: ${props => (props.backgroung.desktopURL === null ? 'var(--screens-page-bg-color)' : [] )};;
+  background-repeat: no-repeat;
+  background-size:cover; 
+  background-image: url(${props => (props.backgroung.desktopURL !== null ? props.backgroung.desktopURL : [] )});
+ 
+ 
 
   @media screen and (min-width: 320px) and (max-width: 374px) {
     padding: 0px 15px;
@@ -20,7 +30,7 @@ export const Section = styled.section`
   }
 
   @media (min-width: 1439px) {
-    width: 80vw;
+    /* width: 80vw; */
     padding: unset;
     // max-height: 100vh;
   }

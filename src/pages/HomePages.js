@@ -104,7 +104,7 @@ const HomePage = () => {
             // maxHeight: '100vh',
             display: 'flex',
             flexDirection: 'column',
-            backgroundColor: 'var(--screens-page-bg-color)',
+            // backgroundColor: 'var(--screens-page-bg-color)', //-----vit------
           }}
         >
           <Header openSidebar={openSidebar} />
