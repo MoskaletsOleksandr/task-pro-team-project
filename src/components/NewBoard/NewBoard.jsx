@@ -7,6 +7,7 @@ import sprite from '../../images/sprite.svg';
 import { createNewBoardThunk } from 'redux/dashboards/thunks';
 import ButtonForForms from 'components/ButtonForForms/ButtonForForms';
 import ChildButtonNewBoard from 'components/ButtonForForms/ChildButtonNewBoard';
+import { toast }  from 'react-hot-toast';
 
 import {
   NewBoardTitle,
@@ -51,15 +52,29 @@ const NewBoard = ({ onClose }) => {
   //   setValue('background', backgroundId.toString());
   // };
 
-  const handleCreateBoard = data => {
-    console.log(data);
-    dispatch(createNewBoardThunk(data)).then(() => {
+  // const handleCreateBoard = data => {
+  //   console.log(data);
+  //   dispatch(createNewBoardThunk(data)).then(() => {
+  //     setValue('title', '');
+  //     setValue('icon', '');
+  //     // setValue('background', '');
+  //     onClose();
+  //   });
+  // };
+
+const handleCreateBoard = data => {
+  console.log(data);
+  dispatch(createNewBoardThunk(data))
+    .then(() => {
+      toast.success('The board was created successfully');
       setValue('title', '');
       setValue('icon', '');
-      // setValue('background', '');
       onClose();
+    })
+    .catch(error => {
+      toast.error('Error occurred while creating the board');
     });
-  };
+};
 
   const renderIcons = () => {
     const icons = [
