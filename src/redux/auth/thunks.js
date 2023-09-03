@@ -38,12 +38,14 @@ export const LogOutThunk = createAsyncThunk(
   'auth/logOut',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    const currentToken = state.auth.token;
+    const currentToken = state.auth.accessToken;
+    console.log("token in thunk logout",currentToken)
 
     if (currentToken === '') {
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
     try {
+      setToken(`Bearer ${currentToken}`);
       const {data} = await logOut();
       return data;
     } catch (error) {
@@ -56,7 +58,7 @@ export const GetThemeThunk = createAsyncThunk(
   'auth/theme',
   async (body, thunkAPI) => {
     const state = thunkAPI.getState();
-    const currentToken = state.auth.token;
+    const currentToken = state.auth.accessToken;
     const id = state.auth.user.id;
     if (currentToken === '' || !id) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
@@ -76,7 +78,7 @@ export const SendLetterThunk = createAsyncThunk(
   'user/sendLetter',
   async (body, thunkAPI) => {
     const state = thunkAPI.getState();
-    const currentToken = state.auth.token;
+    const currentToken = state.auth.accessToken;
 
     if (currentToken === '') {
       return thunkAPI.rejectWithValue('Unable to fetch user');
@@ -97,7 +99,7 @@ export const GetCurrentUserThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     // Reading the token from the state via getState()
     const state = thunkAPI.getState();
-    const currentToken = state.auth.token;
+    const currentToken = state.auth.accessToken;
     console.log('currentTokeninThunk', currentToken);
     const currentEmail = state.auth.user.email;
     console.log('current email', currentEmail);

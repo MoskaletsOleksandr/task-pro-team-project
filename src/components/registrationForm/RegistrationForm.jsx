@@ -10,10 +10,12 @@ import { useDispatch } from 'react-redux';
 import { SignUpThunk } from 'redux/auth/thunks';
 import { toast } from 'react-hot-toast';
 import { GoogleButton } from 'components/common/GoogleButton/GoogleButton';
+// import { useSearchParams } from 'react-router-dom';
 
 function RegistrationForm() {
   const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
+  // const [searchParams] = useSearchParams();
 
   const onClick = e => {
     setVisible(!visible);
@@ -36,6 +38,25 @@ function RegistrationForm() {
 
     resetForm();
   };
+  // const fetchGoogle = () => {
+  //   return fetch(("https://task-pro-group-1-backend.onrender.com/users/google"))
+  //     .then(response => {
+  //       console.log(response)})
+  //       .catch(error=>console.log(error))
+  // };
+
+  // const handleGoogleClick=(e)=>{
+   
+    // fetchGoogle();
+     
+    // console.log("click on Google Button", e)
+    // const accessToken=searchParams.get('accessToken');
+    // console.log(accessToken)
+    // const refreshToken=searchParams.get('refreshToken');
+    // console.log(refreshToken)
+    // const user=searchParams.get('user');
+    // console.log(user)
+  // }
 
   return (
     <RegistrationFormStyled>
@@ -68,7 +89,7 @@ function RegistrationForm() {
             />
 
             <AuthButton>Register Now </AuthButton>
-            <GoogleButton/>
+            <GoogleButton />
           </Form>
         )}
       </Formik>
