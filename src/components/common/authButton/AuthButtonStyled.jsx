@@ -13,4 +13,8 @@ color:#161616;
 font-size:14px;
 padding:0;
 
+@media screen and (max-width: 767px) {
+width: 100%;;
+  }
+
 `

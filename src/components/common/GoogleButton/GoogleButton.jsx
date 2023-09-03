@@ -25,6 +25,12 @@ const StyledContainer = styled.div`
   color: #161616;
   padding-left: 40px;
   margin-top: 20px;
+
+  @media screen and (max-width: 767px) {
+  width: 100%;
+  gap: 20px;
+  padding-left: 20px;
+  }
 `;
 
 export const GoogleButton = () => {
