@@ -13,33 +13,27 @@ import { useEffect, useState } from 'react';
 import { CloseButton, CloseSVG } from 'components/Modal/Modal.styled';
 import { radioButtons } from './radioBattons';
 import { useDispatch, useSelector } from 'react-redux';
-import { createNewTaskThunk } from 'redux/dashboards/thunks';
+import {
+  createNewTaskThunk,
+  updateTaskByIdThunk,
+} from 'redux/dashboards/thunks';
+import { toast } from 'react-hot-toast';
 
-const ModalAddEditCard = ({ closeModal, nameButton, columnId }) => {
+const ModalAddEditCard = ({
+  closeModal,
+  nameButton,
+  columnId,
+  idEditTask,
+  titleEditTask,
+  textEditTask,
+  priorityEditTask,
+}) => {
   const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
   const boardId = useSelector(state => state.boards.currentBoard._id);
 
-  //   ------------ Підключення модалки ---------------
-  //   ================================================
-
-  // 1. Перенести в компонент, в якому підключається модалка
-  //   const [showModal, setShowModal] = useState(false);
-  //   const [nameButton, setNameButton] = useState('');
-
-  //   const openModal = (e) => {
-  //     setNameButton(e.target.name);
-  //     setShowModal(true);
-  //   }
-
-  // const closeModal = () => {
-  //   setShowModal(false);
-  // }
-
-  // 2. В nameButton === 'edit' в useEffect, має бути name однієї з кнопок, що відкриває модалку
-
   useEffect(() => {
-    if (nameButton === 'edit') {
+    if (nameButton === 'editCard') {
       setVisible(true);
     }
   }, [nameButton]);
@@ -49,18 +43,13 @@ const ModalAddEditCard = ({ closeModal, nameButton, columnId }) => {
   const [priority, setPriority] = useState('without');
   const [deadline, setDeadline] = useState('');
 
-  // const dispatch = useDispatch()
-  // const selector = useSelector(selectAllBoards)
-
   const handleChangeTitle = e => {
     const { value } = e.currentTarget;
-
     setTitle(value);
   };
 
   const handleChangeDescription = e => {
     const { value } = e.currentTarget;
-
     setText(value);
   };
 
@@ -68,28 +57,73 @@ const ModalAddEditCard = ({ closeModal, nameButton, columnId }) => {
     setPriority(e.target.value);
   };
 
-  const handleSubmit = e => {
+  const handleSubmitAdd = async e => {
     e.preventDefault();
     if (title.trim() === '') {
-      alert('Enter title');
+      toast.error('Enter title');
       return;
     } else if (text.trim() === '') {
-      alert('Enter Description');
+      toast.error('Enter Description');
       return;
     } else if (!deadline) {
-      alert('Select date');
+      toast.error('Select date');
+      return;
     } else {
-      dispatch(
-        createNewTaskThunk({
-          title,
-          text,
-          priority,
-          deadline,
-          boardId,
-          columnId,
-        })
-      );
-      reset();
+      try {
+        await dispatch(
+          createNewTaskThunk({
+            title,
+            text,
+            priority,
+            deadline,
+            boardId,
+            columnId,
+          })
+        )
+          .unwrap()
+          .then(async res => {
+            await res;
+            toast.success(`Card added`);
+            reset();
+            closeModal();
+            return;
+          });
+      } catch (error) {
+        toast.error('Failed to add card');
+      }
+    }
+  };
+
+  const handleSubmitEdit = async e => {
+    e.preventDefault();
+    if (title.trim() === '') {
+      toast.error('Enter title');
+      return;
+    } else if (text.trim() === '') {
+      toast.error('Enter Description');
+      return;
+    } else if (!deadline) {
+      toast.error('Select date');
+      return;
+    } else {
+      try {
+        await dispatch(
+          updateTaskByIdThunk({
+            idTask: idEditTask,
+            body: { title, text, priority, deadline, boardId, columnId },
+          })
+        )
+          .unwrap()
+          .then(async res => {
+            await res;
+            toast.success(`Card edit`);
+            reset();
+            closeModal();
+            return;
+          });
+      } catch (error) {
+        toast.error('Failed to edit');
+      }
     }
   };
 
@@ -132,7 +166,8 @@ const ModalAddEditCard = ({ closeModal, nameButton, columnId }) => {
                 placeholder="Comment"
                 maxWidth="302px"
                 height="154px"
-              />
+              >                
+              </TextareaModal>
             </LabelModal>
             <TitleModal
               fontSize="12px"
@@ -152,7 +187,13 @@ const ModalAddEditCard = ({ closeModal, nameButton, columnId }) => {
                   <LabelModal key={priority} marginBottom="0px">
                     <InputModal
                       onChange={onChangeColor}
-                      checked={priority === { priority } ? true : false}
+                      checked={
+                        !visible
+                          ? priority === { priority }
+                            ? true
+                            : false
+                          : priorityEditTask
+                      }
                       type="radio"
                       name="labelColor"
                       value={priority}
@@ -191,7 +232,7 @@ const ModalAddEditCard = ({ closeModal, nameButton, columnId }) => {
               <Calendar deadline={setDeadline} />
             </WrapperComponentModal>
             <ButtonPlusModal
-              onClick={handleSubmit}
+              onClick={!visible ? handleSubmitAdd : handleSubmitEdit}
               name="addCard"
               type="submit"
               marginTop="40px"

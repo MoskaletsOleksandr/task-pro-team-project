@@ -17,6 +17,7 @@ import {
   deleteColumnByIdThunk,
   updateColumnByIdThunk,
 } from 'redux/dashboards/thunks';
+import ModalAddEditCard from 'components/Modals/ModalAddEditCard/ModalAddEditCard';
 // import ModalAddEditCard from 'components/Modals/ModalAddEditCard/ModalAddEditCard';
 
 const Column = ({ title, tasks, columnId, idTask }) => {
@@ -25,6 +26,17 @@ const Column = ({ title, tasks, columnId, idTask }) => {
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
   const boardId = useSelector(state => state.boards.currentBoard._id);
+
+  const [showModal, setShowModal] = useState(false);
+  const [nameButton, setNameButton] = useState('');  
+  const [idEditTask, setIdEditTask] = useState('');
+  const [titleEditTask, setTitleEditTask] = useState('');
+  const [textEditTask, setTextEditTask] = useState('');
+  const [priorityEditTask, setPriorityEditTask] = useState('');
+  
+  const openAddEditCardModal = () => {
+    setShowModal(true);
+  };
 
   console.log(inputValue);
 
@@ -80,12 +92,21 @@ const Column = ({ title, tasks, columnId, idTask }) => {
                   togglePopUpMenu={togglePopUpMenu}
                   isPopupOpen={openTaskId === task._id}
                   idTask={task._id}
+                  openAddEditCardModal={openAddEditCardModal}
+                  setNameButton={setNameButton}
+                  setIdEditTask={setIdEditTask}
+                  setTitleEditTask={setTitleEditTask}
+                  setTextEditTask={setTextEditTask}
+                  setPriorityEditTask={setPriorityEditTask}
                 />
               );
             })}
           </ScrollContent>
         </ScrollContainer>
-        <AddNewCard columnId={columnId} />
+        <AddNewCard
+          openModal={openAddEditCardModal}
+          setNameButton={setNameButton}
+        />
 
         <ColumnModal
           closeModal={toggleModal}
@@ -97,6 +118,18 @@ const Column = ({ title, tasks, columnId, idTask }) => {
           buttonText={'Add'}
           initialValue={title}
         />
+
+        {showModal && (
+          <ModalAddEditCard
+            closeModal={() => setShowModal(false)}
+            nameButton={nameButton}
+            columnId={columnId}
+            idEditTask={idEditTask}
+            titleEditTask={titleEditTask}
+            textEditTask={textEditTask}
+            priorityEditTask={priorityEditTask}
+          />
+        )}
       </ColumnContainer>
     </>
   );

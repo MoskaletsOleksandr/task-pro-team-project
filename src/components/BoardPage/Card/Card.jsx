@@ -18,20 +18,35 @@ import {
   DeadlineInfo,
   PriorityInfo,
   PopUpMenu,
+  Backdrop,
   BackDropHiden,
   BellIcon,
-  ScrollContent
 } from '../Card/Card.styled';
 import CustomPopUpItem from '../PopUp/PopUp';
 import sprite from '../../../images/sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateTasksColumnByIdThunk, deleteTaskByIdThunk } from 'redux/dashboards/thunks';
+import {
+  updateTasksColumnByIdThunk,
+  deleteTaskByIdThunk,
+} from 'redux/dashboards/thunks';
 import dayjs from 'dayjs';
 
-const TaskCard = ({ task, columnId, togglePopUpMenu, isPopupOpen, idTask }) => {
+const TaskCard = ({
+  task,
+  columnId,
+  togglePopUpMenu,
+  isPopupOpen,
+  idTask,
+  openAddEditCardModal,
+  setNameButton,
+  setIdEditTask,
+  setTitleEditTask,
+  setTextEditTask,
+  setPriorityEditTask
+}) => {
   const dispatch = useDispatch();
   const columns = useSelector(state => state.boards.currentBoard.columns);
-  const columnsLength = useSelector(state => state.boards.currentBoard.columns.length);
+  // const cardId =
 
   const selectedTask = task;
   if (!selectedTask) {
@@ -67,10 +82,9 @@ const TaskCard = ({ task, columnId, togglePopUpMenu, isPopupOpen, idTask }) => {
   console.log('formattedSelectedDeadline:', formattedSelectedDeadline);
   console.log('isTodayDeadline:', isTodayDeadline);
 
-
   const listForPopup = columns.filter(column => column._id !== columnId);
   console.log('listForPopup: ', listForPopup);
-  console.log(columnsLength);
+
   const handleMoveTask = columnId => {
     console.log('handleRemoveTask to', columnId);
     dispatch(
@@ -84,10 +98,10 @@ const TaskCard = ({ task, columnId, togglePopUpMenu, isPopupOpen, idTask }) => {
   const handleDeleteCard = () => {
     dispatch(deleteTaskByIdThunk(idTask))
       .unwrap()
-      .then((data) => {
+      .then(data => {
         console.log('Task deleted successfully:', data);
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('Error deleting task:', error);
       });
   };
@@ -127,17 +141,24 @@ const TaskCard = ({ task, columnId, togglePopUpMenu, isPopupOpen, idTask }) => {
                 <use href={sprite + '#icon-bell'} style={{ color: 'yellow' }} />
               </BellIcon>
             )}
-            {columnsLength > 1 && (
-              <WhiteIcon
-                className="icon-search"
-                onClick={() => {
-                  togglePopUpMenu(task._id);
-                }}
-              >
-                <use href={sprite + '#icon-arrow-circle-broken-right'}></use>
-              </WhiteIcon>
-            )}
-            <WhiteIcon className="icon-search">
+            <WhiteIcon
+              className="icon-search"
+              onClick={() => togglePopUpMenu(task._id)}
+            >
+              <use href={sprite + '#icon-arrow-circle-broken-right'}></use>
+            </WhiteIcon>
+            <WhiteIcon
+              className="icon-search"
+              onClick={() => {
+                openAddEditCardModal();
+                setNameButton('editCard');
+                setIdEditTask(task._id);
+                setTitleEditTask(task.title);
+                setTextEditTask(task.text);
+                setTitleEditTask(task.title);
+                setPriorityEditTask(task.priority);
+              }}
+            >
               <use href={sprite + '#icon-pencil-01'}></use>
             </WhiteIcon>
             <WhiteIcon className="icon-search" onClick={handleDeleteCard}>
@@ -153,25 +174,23 @@ const TaskCard = ({ task, columnId, togglePopUpMenu, isPopupOpen, idTask }) => {
           <BackDropHiden
             onClick={() => togglePopUpMenu(task._id)}
           ></BackDropHiden>
-          {/* <Backdrop
+          <Backdrop
             backgroundColor={priorityBorderColor}
             onClick={() => togglePopUpMenu(task._id)}
-          /> */}
+          />
         </>
       )}
       {isPopupOpen && (
         <PopUpMenu>
-          <ScrollContent>
-            {listForPopup.map(({ title, _id }) => (
-              <CustomPopUpItem
-                key={_id}
-                text={title}
-                columnId={_id}
-                handleMoveTask={handleMoveTask}
-                iconHref={sprite + '#icon-arrow-circle-broken-right'}
-              />
-            ))}
-          </ScrollContent>
+          {listForPopup.map(({ title, _id }) => (
+            <CustomPopUpItem
+              key={_id}
+              text={title}
+              columnId={_id}
+              handleMoveTask={handleMoveTask}
+              iconHref={sprite + '#icon-arrow-circle-broken-right'}
+            />
+          ))}
           {/* <CustomPopUpItem
             text="In Progress"
             iconHref={sprite + '#icon-arrow-circle-broken-right'}
@@ -182,6 +201,7 @@ const TaskCard = ({ task, columnId, togglePopUpMenu, isPopupOpen, idTask }) => {
           /> */}
         </PopUpMenu>
       )}
+
     </CustomCard>
   );
 };
