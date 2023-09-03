@@ -3,12 +3,15 @@ import { authInstance, clearToken, setToken } from 'api/axiosConfig';
 export const signUp = async body => {
   const response = await authInstance.post('users/register', body);
   setToken(`Bearer ${response.data.accessToken}`);
+  localStorage.setItem('refreshToken',response.data.refreshToken)
   return response.data;
 };
 
 export const login = async body => {
   const response = await authInstance.post('users/login', body);
   setToken(`Bearer ${response.data.accessToken}`);
+  localStorage.setItem('refreshToken',response.data.refreshToken)
+    
   return response.data;
 };
 
