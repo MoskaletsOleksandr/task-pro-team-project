@@ -18,7 +18,7 @@ import {
 
 import sprite from '../../images/sprite.svg';
 
-const Header = ({ onToggleSidebar }) => {
+const Header = ({ openSidebar }) => {
   const { theme, setTheme } = useTheme();
   const [selectedTheme, setSelectedTheme] = useState('dark');
 
@@ -60,7 +60,11 @@ const Header = ({ onToggleSidebar }) => {
 
   return (
     <Container>
-      <div onClick={onToggleSidebar}>
+      <div
+        onClick={() => {
+          openSidebar(true);
+        }}
+      >
         <IconBM>
           <use href={`${sprite}#icon-menu`}></use>
         </IconBM>

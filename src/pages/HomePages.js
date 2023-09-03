@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from 'components/Header/Header';
 
@@ -9,26 +9,12 @@ import { selectCurrentBoard } from 'redux/dashboards/selectors';
 
 import { useDispatch, useSelector } from 'react-redux';
 import Sidebar from 'components/Sidebar/Sidebar';
-import { TestNewBoardModal } from 'TestNewBoardModal/TestNewBoardModal';
 import { getAllBackgroundsThunk } from 'redux/dashboards/thunks';
-// import Backdrop from '../components/Sidebar/Backdrop';
 
 const HomePage = () => {
   // const user = useSelector(state => state.auth.user.theme);
   const dispatch = useDispatch();
-  const myRef = useRef(null);
-  const [size, setSize] = useState({});
-  const resizeHandler = () => {
-    const { clientHeight, clientWidth } = myRef.current || {};
-    setSize({ clientHeight, clientWidth });
-  };
-  useEffect(() => {
-    window.addEventListener('resize', resizeHandler);
-    resizeHandler();
-    return () => {
-      window.removeEventListener('resize', resizeHandler);
-    };
-  }, []);
+  const [openedSidebar, setOpenedSidebar] = useState(false);
 
   useEffect(() => {
     const fetchBackgrounds = async () => {
@@ -42,61 +28,57 @@ const HomePage = () => {
     fetchBackgrounds();
   }, [dispatch]);
 
-  const [showSidebar, setShowSidebar] = useState(true);
-  const [showTestModal, setShowTestModal] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1440) {
+        // Якщо ширина екрану більша або рівна 1440px, відкрийте сайдбар.
+        setOpenedSidebar(true);
+      }
+    };
 
-  const toggleModal = () => {
-    setShowTestModal(prevShowTestModal => !prevShowTestModal);
-  };
+    // Додайте слухач події resize при завантаженні компоненту.
+    window.addEventListener('resize', handleResize);
+
+    // Відразу перевірте ширину екрану після завантаження сторінки.
+    handleResize();
+
+    return () => {
+      // При видаленні компоненту видаліть слухача події resize.
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   //-------vit--------
   const currentBoard = useSelector(selectCurrentBoard);
   //-------vit--------
 
-  const handleWindowResize = () => {
-    if (window.innerWidth < 1440) {
-      setShowSidebar(false);
-    } else {
-      setShowSidebar(true);
+  const handleOutsideClick = event => {
+    if (!event.target.closest('.sidebar')) {
+      setOpenedSidebar(false);
     }
   };
 
   useEffect(() => {
-    window.addEventListener('resize', handleWindowResize);
-    return () => {
-      window.removeEventListener('resize', handleWindowResize);
-    };
-  }, []);
+    let timeoutId;
 
-  useEffect(() => {
-    if (size.clientWidth > 1439) {
-      setShowSidebar(true);
+    if (openedSidebar) {
+      timeoutId = setTimeout(() => {
+        document.addEventListener('click', handleOutsideClick);
+      }, 100);
     } else {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('click', handleOutsideClick);
     }
+
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      clearTimeout(timeoutId);
+      document.removeEventListener('click', handleOutsideClick);
     };
-  }, [size.clientWidth]);
-
-  const openSidebar = () => {
-    setShowSidebar(true);
-  };
-
-  const handleClickOutside = e => {
-    const modal = document.getElementById('modal-root');
-    if (!myRef.current.contains(e.target) && !modal.contains(e.target)) {
-      setShowSidebar(false);
-    }
-  };
+  }, [openedSidebar]);
 
   return (
     <>
       <div style={{ display: 'flex' }}>
-        <div ref={myRef}>
-          <Sidebar isOpen={showSidebar} />
-        </div>
-        {/* {showSidebar && <Backdrop onClick={toggleSidebar} />} */}
+        <Sidebar className="sidebar" isOpen={openedSidebar} />
         <div
           style={{
             flexGrow: '1',
@@ -107,31 +89,11 @@ const HomePage = () => {
             // backgroundColor: 'var(--screens-page-bg-color)', //-----vit------
           }}
         >
-          <Header openSidebar={openSidebar} />
+          <Header openSidebar={setOpenedSidebar} />
 
           {/* -------vit-------- */}
           {currentBoard ? <Outlet /> : <NewDashboard />}
           {/* -------vit-------- */}
-
-          <button
-            onClick={toggleModal}
-            style={{
-              position: 'absolute',
-              bottom: '100px',
-              right: '30px',
-              width: '200px',
-              height: '30px',
-            }}
-          >
-            Open Test Modal
-          </button>
-          {showTestModal && (
-            <TestNewBoardModal
-              closeModal={toggleModal}
-              isOpen={showTestModal}
-            />
-          )}
-          {/* <ScreensPage /> */}
         </div>
       </div>
     </>

@@ -1,31 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import sprite from '../../../images/sprite.svg';
 import { BtnAddNewCard, SvgIconPlus, WrapSvg } from './AddNewCardBtn.styled';
-import ModalAddEditCard from 'components/Modals/ModalAddEditCard/ModalAddEditCard';
 
-const AddNewCard = ({ columnId }) => {
-  const [showModal, setShowModal] = useState(false);
-
-  const openModal = () => {
-    setShowModal(true);
-  };
+const AddNewCard = ({ openModal, setNameButton }) => {
+  
   return (
     <>
-      <BtnAddNewCard type="submit" onClick={openModal}>
+      <BtnAddNewCard
+        type="button"
+        name="addNewCard"
+        onClick={e => {
+          openModal();
+          setNameButton(e.target.name);
+        }}
+      >
         <WrapSvg>
           <SvgIconPlus>
             <use href={sprite + '#icon-plus'}></use>
           </SvgIconPlus>
         </WrapSvg>
         Add another card
-      </BtnAddNewCard>
-      {showModal && (
-        <ModalAddEditCard
-          closeModal={() => setShowModal(false)}
-          nameButton="add"
-          columnId={columnId}
-        />
-      )}
+      </BtnAddNewCard>      
     </>
   );
 };
