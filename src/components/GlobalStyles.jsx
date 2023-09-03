@@ -23,6 +23,7 @@ export const GlobalStyles = () => {
             --auth-input-text-color: #ffffff;
             --auth-input-placeholder-color: #ffffff4c;
             --auth-input-border-color: #bedbb0;
+            
           }
 
           body {
@@ -60,6 +61,7 @@ export const GlobalStyles = () => {
           }
 
           .dark {
+           
             --primary-text-color: #ffffff;
             --secondary-text-color: #ffffff80;
             --link-text-color: #BEDBB0;
@@ -94,16 +96,15 @@ export const GlobalStyles = () => {
             --add-column-btn-text-color: #ffffff;
             --add-column-btn-plus-bg-color: #ffffff;
             --add-column-btn-plus-color: #121212; //vit
-            --new-dashboadr-text-color: #FFFFFF80; //vit
-            --new-dashboadr-text-accent-color: #BEDBB0;//vit 
-s
+            --new-dashboadr-text-color: #FFFFFFCC; //vit change
+            --new-dashboadr-text-accent-color: #BEDBB0; //vit
             //variables for HeaderDashboard
             --header-dashboard-title-color: #ffffff;
             --filter-text-color: #ffffffCC;
             --filter-popup-bg-color: #151515;
             --filter-popup-primary-text-color: #ffffff;
             --filter-popup-secondary-text-color: #ffffff80;
-            --filter-popup-tertiary-text-color: #ffffff50;//vit
+            --filter-popup-tertiary-text-color: #ffffff80;//vit not use
             --filter-popup-border-color: #BEDBB080;
             --filter-without-priority-color: #9b9b9b; 
             --filter-low-color: #8FA1D0;
@@ -151,7 +152,7 @@ s
             --modal-plus-btn-bg-color-hover: #9DC888;
             --modal-selected-plus-color:#ffffff;
             --modal-calendar-bg-color:#1F1F1F;
-            --modal-title-border-color: #ffffff10; //vit
+            --modal-title-border-color: #ffffffA1; //vit change
            
 
 
@@ -197,7 +198,7 @@ s
             --add-column-btn-text-color: #161616;
             --add-column-btn-plus-bg-color: #161616;
             --add-column-btn-plus-color: #ffffff; //vit
-            --new-dashboadr-text-color: #16161670; //vit
+            --new-dashboadr-text-color: #161616B2; //vit change
             --new-dashboadr-text-accent-color: #BEDBB0; //vit
                         
             //variables for HeaderDashboard
@@ -254,7 +255,7 @@ s
             --modal-plus-btn-bg-color-hover: #9DC888;
             --modal-selected-plus-color:#ffffff;
             --modal-calendar-bg-color:#ffffff;
-            --modal-title-border-color: #16161610; //vit
+            --modal-title-border-color: #1616161A; //vit
 
             //variables for progress popup
             --progress-popup-bg-color: #FCFCFC;
@@ -300,7 +301,7 @@ s
             --add-column-btn-text-color: #161616;
             --add-column-btn-plus-bg-color: #5255BC;
             --add-column-btn-plus-color: #FFFFFF; //vit
-            --new-dashboadr-text-color: #16161670; //vit
+            --new-dashboadr-text-color: #161616B2; //vit
             --new-dashboadr-text-accent-color: #5255BC; //vit
 
             //variables for HeaderDashboard
@@ -356,7 +357,7 @@ s
             --modal-plus-btn-bg-color-hover: #7B7EDE;
             --modal-selected-plus-color:#161616;
             --modal-calendar-bg-color:#ffffff;
-            --modal-title-border-color: #16161610; //vit
+            --modal-title-border-color: #161616A1; //vit
 
             //variables for progress popup
             --progress-popup-bg-color: #FCFCFC;

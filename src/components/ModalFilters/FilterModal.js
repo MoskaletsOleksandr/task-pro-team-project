@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getFilteredTasksThunk } from 'redux/dashboards/thunks';
+import { selectCurrentBoardId } from 'redux/dashboards/selectors';
+
 import {
   FiltersContainer,
   FiltersTitle,
@@ -11,12 +15,24 @@ import {
   PriorityLabel,
 } from './FiltersModal.styled';
 
-const FiltersModal = () => {
-  const [selectedFilter, setSelectedFilter] = useState('showAll');
-  console.log(selectedFilter);
+const FiltersModal = props => {
+  const [selectedFilter, setSelectedFilter] = useState('all');
+  // const currentBoardId = useSelector(state => state.boards.currentBoard._id);
+  const currentBoardId = useSelector(selectCurrentBoardId);
+
+  const dispatch = useDispatch();
+
   const handleChange = e => {
-    setSelectedFilter(e.target.value);
-    // console.log(selectedFilter);
+    const priorityStatus = e.target.value;
+    setSelectedFilter(priorityStatus);
+
+    dispatch(
+      getFilteredTasksThunk({
+        boardId: currentBoardId,
+        priority: priorityStatus,
+      })
+    );
+    // props.modalClose();
   };
 
   return (
@@ -41,10 +57,6 @@ const FiltersModal = () => {
           />
           Show all
         </AllLabels>
-
-        {/* <button type="submit" onClick={() => setSelectedFilter('all')}>
-          TEST
-        </button> */}
       </WraperAllColor>
       {/* List */}
       <FilterList>
