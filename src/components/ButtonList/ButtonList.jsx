@@ -42,7 +42,7 @@ function ButtonList() {
         style={{ display: 'flex', justifyContent: 'space-between' }}
         id={_id}
         // icon={icon}
-        // isActive={active}s
+        // isActive={active}
         />
         ))} 
       </List>

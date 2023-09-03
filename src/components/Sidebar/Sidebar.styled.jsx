@@ -30,7 +30,7 @@ transition: transform 250ms ease-in 0s, opacity 250ms ease-in 0s, visibility 250
 @media screen and (min-width: 1440px){
     position: static;
     top: 0px;
-    left: 0px;
+    float: left;
     bottom: 0px;
     width: 260px;
     height: 100vh;

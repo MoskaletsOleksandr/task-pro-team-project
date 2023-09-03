@@ -50,9 +50,9 @@ export const App = () => {
         <Route
           path="/home"
           element={
-            <PrivateRouter>
+            <PublicRouter>
               <HomePage />
-            </PrivateRouter>
+            </PublicRouter>
           }
         >
           <Route

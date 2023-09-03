@@ -89,3 +89,18 @@ export const IconDown = styled.svg`
   fill: transparent;
   stroke: var(--header-theme-select-text-color);
 `;
+
+export const Button = styled.button`
+  // width: 32px;
+  // height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 25px;
+  background-color: transparent;
+  border: none;
+
+  @media screen and (min-width: 1440px) {
+    display: none;
+  }
+`;

@@ -14,11 +14,12 @@ import {
   CustomOptionList,
   IconDown,
   TheamBtn,
+  Button,
 } from './Header.styled';
 
 import sprite from '../../images/sprite.svg';
 
-const Header = ({ onToggleSidebar }) => {
+const Header = ({ openSidebar }) => {
   const { theme, setTheme } = useTheme();
   const [selectedTheme, setSelectedTheme] = useState('dark');
 
@@ -60,11 +61,12 @@ const Header = ({ onToggleSidebar }) => {
 
   return (
     <Container>
-      <div onClick={onToggleSidebar}>
+      <Button type="button" onClick={openSidebar}>
         <IconBM>
           <use href={`${sprite}#icon-menu`}></use>
         </IconBM>
-      </div>
+      </Button>
+      
 
       <HeaderInfo>
         <TheamBtn onClick={toggleCustomOptionList}>
