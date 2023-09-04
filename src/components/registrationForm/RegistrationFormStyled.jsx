@@ -15,8 +15,7 @@ export const RegistrationFormStyled = styled.div`
   }
 `;
 export const AuthLabelStyled = styled.label`
-  // color: white;
-  // fill: white;
+  
   width: 100%;
   display: flex;
   align-items: center;

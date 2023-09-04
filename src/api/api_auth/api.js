@@ -11,7 +11,6 @@ export const login = async body => {
   const response = await authInstance.post('users/login', body);
   setToken(`Bearer ${response.data.accessToken}`);
   localStorage.setItem('refreshToken', response.data.refreshToken);
-
   return response.data;
 };
 

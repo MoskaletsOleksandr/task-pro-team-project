@@ -27,9 +27,9 @@ const StyledContainer = styled.div`
   margin-top: 20px;
 
   @media screen and (max-width: 767px) {
-  width: 100%;
-  gap: 20px;
-  padding-left: 20px;
+    width: 100%;
+    gap: 20px;
+    padding-left: 20px;
   }
 `;
 

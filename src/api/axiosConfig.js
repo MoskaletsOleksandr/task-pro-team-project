@@ -12,7 +12,6 @@ export const tasksInstance = axios.create({
   baseURL: 'https://task-pro-group-1-backend.onrender.com/tasks',
 });
 
-//auth
 export const setToken = accessToken => {
   authInstance.defaults.headers.common['Authorization'] = accessToken;
   dashBoardsInstance.defaults.headers.common['Authorization'] = accessToken;
