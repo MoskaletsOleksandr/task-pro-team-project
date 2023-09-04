@@ -1,5 +1,4 @@
 export const handleSignUpThunkFullfilled = (state, { payload }) => {
-  // state.token = payload.token;
   state.accessToken = payload.accessToken;
   state.refreshToken = payload.refreshToken;
   state.user = payload.user;
@@ -16,7 +15,6 @@ export const handleThunkRejected = (state, { error, payload }) => {
   state.isLoading = false;
 };
 export const handleSignInFulfilled = (state, { payload }) => {
-  // state.token = payload.token;
   state.accessToken = payload.accessToken;
   state.refreshToken = payload.refreshToken;
   state.user = payload.user;
@@ -25,7 +23,6 @@ export const handleSignInFulfilled = (state, { payload }) => {
 };
 
 export const handleLogOutFulfilled = (state, { payload }) => {
-  // state.token = '';
   state.accessToken = payload.accessToken;
   state.refreshToken = payload.refreshToken;
   state.isLoading = false;
@@ -73,7 +70,6 @@ export const handleGetCurrentUserThunkFulfilled = (state, { payload }) => {
   state.user = payload.user;
   state.accessToken = payload.accessToken;
   state.refreshToken = payload.refreshToken;
-  // state.token = payload.token;
   state.isLoading = false;
   state.isLoggedIn = true;
   state.isRefreshing = false;

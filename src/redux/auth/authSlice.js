@@ -28,7 +28,6 @@ import {
 import { setToken } from 'api/axiosConfig';
 
 const initialState = {
-  // token: '',
   isLoading: false,
   error: '',
   user: {},
