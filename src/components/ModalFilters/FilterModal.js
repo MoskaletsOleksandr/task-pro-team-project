@@ -17,20 +17,29 @@ import {
 
 const FiltersModal = props => {
   const savedFilter = localStorage.getItem('filterValue');
+  const savedcurrentBoardiD = localStorage.getItem('currentBoardId');
 
   const [selectedFilter, setSelectedFilter] = useState(savedFilter || 'all');
+  const [selectedCurrentBoardId, setCurrentBoardId] = useState(
+    savedcurrentBoardiD || ''
+  );
 
   const currentBoardId = useSelector(selectCurrentBoardId);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    localStorage.setItem('filterValue', selectedFilter, currentBoardId);
-  }, [currentBoardId, selectedFilter]);
+    if (selectedCurrentBoardId !== currentBoardId) {
+      setSelectedFilter('all');
+    }
+    localStorage.setItem('currentBoardId', currentBoardId);
+    localStorage.setItem('filterValue', selectedFilter);
+  }, [currentBoardId, selectedCurrentBoardId, selectedFilter]);
 
   const handleChange = e => {
     const priorityStatus = e.target.value;
     setSelectedFilter(priorityStatus);
+    setCurrentBoardId(currentBoardId);
 
     dispatch(
       getFilteredTasksThunk({
