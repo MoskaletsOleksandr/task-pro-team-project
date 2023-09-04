@@ -166,8 +166,7 @@ const ModalAddEditCard = ({
                 placeholder="Comment"
                 maxWidth="302px"
                 height="154px"
-              >                
-              </TextareaModal>
+              ></TextareaModal>
             </LabelModal>
             <TitleModal
               fontSize="12px"
