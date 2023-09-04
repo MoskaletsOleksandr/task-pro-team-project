@@ -16,7 +16,7 @@ const HomePage = () => {
   // const user = useSelector(state => state.auth.user.theme);
   const dispatch = useDispatch();
   const [openedSidebar, setOpenedSidebar] = useState(false);
-  const isMobile = useMediaQuery({ maxWidth: 1440 });
+  const isMobile = useMediaQuery({ maxWidth: 1439 });
 
   useEffect(() => {
     const fetchBackgrounds = async () => {
@@ -74,7 +74,7 @@ const HomePage = () => {
             // maxHeight: '100vh',
             display: 'flex',
             flexDirection: 'column',
-            
+
             // backgroundColor: 'var(--screens-page-bg-color)', //-----vit------
           }}
         >

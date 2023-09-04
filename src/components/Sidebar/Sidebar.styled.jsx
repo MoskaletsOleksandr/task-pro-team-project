@@ -15,7 +15,7 @@ export const Container = styled.div`
 
   // mobile
 
-  @media (max-width: 1440px) {
+  @media (max-width: 1439px) {
     position: absolute;
     top: 0;
     bottom: 0;
