@@ -81,6 +81,8 @@ export const GlobalStyles = () => {
             --sidebar-border-left-color: #BEDBB0;
             --sidebar-logout-icon-color: #bedbb0;
             --sidebar-logout-icon-color-hover: #9dc888;
+            --sidebar-inactive-icon-color: #16161680;
+            --sidebar-active-icon-color: #BEDBB0;
 
             //variables for Header
             --header-bg-color: #161616;
@@ -187,6 +189,8 @@ export const GlobalStyles = () => {
             --sidebar-logout-icon-color: #bedbb0;
             --sidebar-logout-icon-color-hover: #9dc888;
             --sidebar-border-left-color: #BEDBB0;
+            --sidebar-inactive-icon-color: #16161680;
+            --sidebar-active-icon-color: #BEDBB0;
 
             //variables for Header
             --header-bg-color: #FCFCFC;
@@ -294,6 +298,8 @@ export const GlobalStyles = () => {
             --sidebar-logout-icon-color: #ffffff;
             --sidebar-logout-icon-color-hover: #ffffff80;
             --sidebar-border-left-color: #FFFFFF;
+            --sidebar-inactive-icon-color: #16161680;
+            --sidebar-active-icon-color: #5255BC;
 
             //variables for Header
             --header-bg-color: #ffffff;

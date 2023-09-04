@@ -50,18 +50,19 @@ export const Title = styled.p`
 `;
 
 export const ActiveSvg = styled.svg`
-  fill: var(--sidebar-inactive-board-text-color);
+  fill: var(--sidebar-inactive-icon-color);
   transition: scale 250ms ease-in 0s, stroke 250ms ease-in 0s;
   &:hover,
   &:focus {
-    border: 1.5px solid #BEDBB0;
-    fill: #BEDBB0;
+    border: 1.5px solid var(--sidebar-active-icon-color);
+    fill: var(--sidebar-active-icon-color);
     scale: 1.08;
   }
 `;
 
 export const IconButton = styled.button`
   display: block;
+  width: 16px;
   height: 16px;
   background-color: transparent;
   border: none;
