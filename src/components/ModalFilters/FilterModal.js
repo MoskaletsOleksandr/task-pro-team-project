@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFilteredTasksThunk } from 'redux/dashboards/thunks';
 import { selectCurrentBoardId } from 'redux/dashboards/selectors';
@@ -16,11 +16,17 @@ import {
 } from './FiltersModal.styled';
 
 const FiltersModal = props => {
-  const [selectedFilter, setSelectedFilter] = useState('all');
-  // const currentBoardId = useSelector(state => state.boards.currentBoard._id);
+  const savedFilter = localStorage.getItem('filterValue');
+
+  const [selectedFilter, setSelectedFilter] = useState(savedFilter || 'all');
+
   const currentBoardId = useSelector(selectCurrentBoardId);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    localStorage.setItem('filterValue', selectedFilter, currentBoardId);
+  }, [currentBoardId, selectedFilter]);
 
   const handleChange = e => {
     const priorityStatus = e.target.value;

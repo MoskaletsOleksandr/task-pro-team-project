@@ -8,6 +8,7 @@ import {
 
 const Board = () => {
   const board = useSelector(state => state.boards.currentBoard);
+  console.log(`board._id: ${board._id}`);
   return (
     <DashboardContainer>
       <DashboardContent>
