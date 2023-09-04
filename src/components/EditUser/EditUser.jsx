@@ -28,12 +28,12 @@ const EditUser = ({ onClose }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchCurrentUser();
-  }, []);
+    const fetchCurrentUser = () => {
+      dispatch(GetCurrentUserThunk());
+    };
 
-  const fetchCurrentUser = () => {
-    dispatch(GetCurrentUserThunk());
-  };
+    fetchCurrentUser();
+  }, [dispatch]);
 
   const userData = useSelector(state => state.auth.user);
 
