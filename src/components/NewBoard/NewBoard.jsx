@@ -117,9 +117,9 @@ const NewBoard = ({ onClose }) => {
   const renderBackgrounds = () => {
     const placeholder = (
       <BackgroundItem
-        key="null-background"
-        isActive={selectedBackground === 'null-background'}
-        onClick={() => handleBackgroundSelect('null-background')}
+        key="null"
+        isActive={selectedBackground === 'null'}
+        onClick={() => handleBackgroundSelect('null')}
       >
         <div
           style={{
