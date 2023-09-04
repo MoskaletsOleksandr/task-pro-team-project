@@ -13,7 +13,5 @@ export const PopUpItemWrapper = styled.div`
       cursor: pointer;
 
   }
-
-
 `;
 
