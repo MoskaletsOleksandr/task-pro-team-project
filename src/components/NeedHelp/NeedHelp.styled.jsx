@@ -54,7 +54,7 @@ padding-bottom: 19px;
 `;
 
 export const Svg = styled.svg`
-stroke: var(--primary-text-color);
+stroke: var(--sidebar-needhelp-icon-color);
 `;
 
 export const Image = styled.img`

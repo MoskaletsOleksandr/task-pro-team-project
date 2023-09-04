@@ -4,7 +4,8 @@ export const ContainerSvg = styled.button`
   width: 28px;
   height: 28px;
   border-radius: 8px;
-  background-color: #161616;
+  border: none;
+  background-color: var(--modal-plus-btn-bg-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,5 +18,5 @@ export const ContainerSvg = styled.button`
   }
 `;
 export const Svg = styled.svg`
-stroke: var(--modal-selected-icon-color);
+stroke: var(--modal-selected-plus-color);
 `;

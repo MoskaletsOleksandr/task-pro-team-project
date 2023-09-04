@@ -9,6 +9,7 @@ export const Wrapper = styled.li`
   padding: 20px 14px;
   opacity: 0.4;
   scroll-snap-align: start;
+  opacity: 0.4;
 
   @media screen and (min-width: 768px) {
     padding: 20px 24px;
@@ -28,7 +29,7 @@ export const Wrapper = styled.li`
       top: 0;
       right: 0;
       height: 100%;
-      border-left: 4px solid #BEDBB0;
+      border-left: 4px solid var(--sidebar-border-left-color);
       border-bottom-left-radius: 4px;
       border-top-left-radius: 4px;
     }

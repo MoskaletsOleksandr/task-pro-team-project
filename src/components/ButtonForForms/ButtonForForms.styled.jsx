@@ -5,6 +5,7 @@ width: 302px;
 height: 49px;
 padding: 10px 0 11px;
 border-radius: 8px;
+border: none;
 // margin: 0 auto;
 display: flex;
 justify-content: center;

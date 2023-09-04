@@ -68,13 +68,17 @@ export const GlobalStyles = () => {
 
             //variables for SideBar
             --sidebar-bg-color: #121212;
-            --sidebar-logo--bg-color: #1f1f1f
+            --sidebar-logo--bg-color: #1f1f1f;
+            --sidebar-logo--icon-color: #FFFFFF;
             --sidebar-button-plus-bg-color: #BEDBB0;
             --sidebar-button-plus-bg-color-hover: #9dc888;
+            --sidebar-button-plus-icon-color: #121212;
             --sidebar-need-help-bg-color: #1f1f1f;
             --sidebar-active-board-text-color: #ffffff;
             --sidebar-active-board-bg-color: #1f1f1f;
             --sidebar-inactive-board-text-color: #ffffff80;
+            --sidebar-needhelp-icon-color: #ffffff;
+            --sidebar-border-left-color: #BEDBB0;
             --sidebar-logout-icon-color: #bedbb0;
             --sidebar-logout-icon-color-hover: #9dc888;
 
@@ -170,15 +174,19 @@ export const GlobalStyles = () => {
 
             //variables for SideBar
             --sidebar-bg-color: #ffffff;
-            --sidebar-logo--bg-color: #1f1f1f
+            --sidebar-logo--bg-color: #1f1f1f;
+            --sidebar-logo--icon-color: #FFFFFF;
             --sidebar-button-plus-bg-color: #bedbb0;
             --sidebar-button-plus-bg-color-hover: #9dc888;
+            --sidebar-button-plus-icon-color: #121212;
             --sidebar-need-help-bg-color: #F6F6F7;
             --sidebar-active-board-text-color: #161616;
             --sidebar-active-board-bg-color: #F6F6F7;
             --sidebar-inactive-board-text-color: #16161680;
+            --sidebar-needhelp-icon-color: #161616;
             --sidebar-logout-icon-color: #bedbb0;
             --sidebar-logout-icon-color-hover: #9dc888;
+            --sidebar-border-left-color: #BEDBB0;
 
             //variables for Header
             --header-bg-color: #FCFCFC;
@@ -273,15 +281,19 @@ export const GlobalStyles = () => {
 
             //variables for SideBar
             --sidebar-bg-color: #5255BC;
-            --sidebar-logo--bg-color: #ECEDFD
+            --sidebar-logo--bg-color: #ECEDFD;
+            --sidebar-logo--icon-color: #5255BC;
             --sidebar-button-plus-bg-color: #B8BCFD;
             --sidebar-button-plus-bg-color-hover: #979CEA;
+            --sidebar-button-plus-icon-color: #FFFFFF;
             --sidebar-need-help-bg-color: #ECEDFD66;
             --sidebar-active-board-text-color: #ffffff;
             --sidebar-active-board-bg-color: #ECEDFD66;
             --sidebar-inactive-board-text-color: #ffffff80;
+            --sidebar-needhelp-icon-color: #ffffff;
             --sidebar-logout-icon-color: #ffffff;
             --sidebar-logout-icon-color-hover: #ffffff80;
+            --sidebar-border-left-color: #FFFFFF;
 
             //variables for Header
             --header-bg-color: #ffffff;
