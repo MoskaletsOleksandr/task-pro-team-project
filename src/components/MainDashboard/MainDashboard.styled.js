@@ -1,34 +1,49 @@
 import styled from '@emotion/styled';
 
-
-
 export const Section = styled.section`
   width: 100vw;
   height: 100vw;
   margin-bottom: 9px;
   max-height: 100vh;
-  background-color: ${props => (props.backgroung.desktopURL === null ? 'var(--screens-page-bg-color)' : [] )};;
+
+  overflow-x: auto;
+  background-color: ${props =>
+    props.backgroung.desktopURL === null ? 'var(--screens-page-bg-color)' : []};
   background-repeat: no-repeat;
-  background-size:cover; 
-  background-image: url(${props => (props.backgroung.desktopURL !== null ? props.backgroung.desktopURL : [] )});
+  background-size: cover;
+
+  background-image: url(${props => props.backgroung.desktopURL !== null ? props.backgroung.desktopURL : []});
+
   @media screen and (min-width: 320px) and (max-width: 374px) {
     padding: 0px 15px;
+    background-image: url(${props => props.backgroung.desktopURL !== null ? props.backgroung.mobileURL : []});
+    @media screen and (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+        Section{ background-image: url(${props => props.backgroung.desktopURL !== null ? props.backgroung.mobileRetinaURL : []});}
+     
+    }
   }
 
+  //--
   @media screen and (min-width: 375px) {
     padding: 0px 20px;
   }
 
+  //--
   @media (min-width: 768px) {
     width: 100vw;
-    // max-height: 100vh;
+    /* max-height: 100vh; */
     padding: 0px 40px;
+    background-image: url(${props => props.backgroung.desktopURL !== null ? props.backgroung.tabletURL : []});
   }
 
+  //--
   @media (min-width: 1439px) {
-    /* width: 80vw; */
+    width: 100%;
     padding: unset;
-    // max-height: 100vh;
+    max-height: 100vh;
+    background-image: url(${props => props.backgroung.desktopURL !== null ? props.backgroung.desktopURL : []});
   }
 `;
 
@@ -57,8 +72,16 @@ export const BtnFilters = styled.button`
   color: var(--filter-text-color);
 
   border: none;
+  border-radius: 3px;
   background-color: var(--screens-page-bg-color);
   cursor: pointer;
+  &:hover {
+    scale: 1.04;
+    transition: scale 350ms;
+    box-shadow: 2px 1px 3px 2px rgba(0, 0, 0, 0.7);
+    -webkit-box-shadow: 2px 1px 3px 2px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 2px 1px 3px 2px rgba(0, 0, 0, 0.7);
+  }
 `;
 
 export const SectionBoards = styled.section`
@@ -134,6 +157,9 @@ export const BtnAddColumn = styled.button`
 
   &:hover,
   :focus {
+    scale: 1.04;
+    transition: scale 350ms;
+   
     background-color: var(--column-add-btn-bg-color-hover);
     transform: background-color;
   }
