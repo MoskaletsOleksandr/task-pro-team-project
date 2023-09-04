@@ -1,5 +1,11 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 import { Formik, Field } from 'formik';
+
+import { UpdateUserSchema } from '../../validation/authValidation';
+
+import { GetCurrentUserThunk, UpdateUserThunk } from 'redux/auth/thunks';
+
 import sprite from '../../images/sprite.svg';
 
 import {
@@ -7,6 +13,7 @@ import {
   AvatarWrapper,
   FileInputWrapper,
   IconUser,
+  AvatarImg,
   Inputs,
   FileInput,
   PasswordView,
@@ -18,14 +25,64 @@ import {
 } from './EditUser.styled';
 
 const EditUser = ({ onClose }) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetchCurrentUser();
+  }, []);
+
+  const fetchCurrentUser = () => {
+    dispatch(GetCurrentUserThunk());
+  };
+
+  const userData = useSelector(state => state.auth.user);
+
+  console.log(userData);
+
+  const [imageUrl, setImageUrl] = useState('');
+  const [imageFile, setImageFile] = useState(null);
+  const [userName, setUserName] = useState(userData.name);
+  const [userEmail, setUserEmail] = useState(userData.email);
   const [showPassword, setShowPassword] = useState(false);
 
   const onPasswordVisible = () => {
     setShowPassword(!showPassword);
   };
 
+  useEffect(() => {
+    if (imageFile) {
+      const reader = new FileReader();
+      reader.onload = event => {
+        setImageUrl(event.target.result);
+      };
+      reader.readAsDataURL(imageFile);
+    }
+  }, [imageFile]);
+
+  const handleFileChange = event => {
+    setImageFile(event.target.files[0]);
+  };
+
   const formSubmit = e => {
     e.preventDefault();
+
+    const { name, email, password } = e.target.elements;
+
+    const newUserData = {
+      name: name.value || userName,
+      email: email.value || userEmail,
+    };
+
+    if (password.value) {
+      newUserData.password = password.value;
+    }
+
+    if (imageFile) {
+      newUserData.avatar = imageFile;
+    }
+
+    dispatch(UpdateUserThunk({ id: userData.id, userData: newUserData }));
+
     onClose();
   };
 
@@ -34,20 +91,31 @@ const EditUser = ({ onClose }) => {
       <form onSubmit={formSubmit}>
         <Formik
           initialValues={{
-            name: 'userName',
-            email: 'userEmail',
+            name: userName,
+            email: userEmail,
             password: '',
           }}
+          validationSchema={UpdateUserSchema}
         >
           <Wrapper>
             <AvatarWrapper>
-              <IconUser>
-                <use href={`${sprite}#icon-avatar`}></use>
-              </IconUser>
+              {!imageUrl && !userData.avatarURL ? (
+                <IconUser>
+                  <use href={`${sprite}#icon-avatar`}></use>
+                </IconUser>
+              ) : (
+                <AvatarImg
+                  src={imageUrl || userData.avatarURL}
+                  alt="avatar"
+                  width={68}
+                  height={68}
+                />
+              )}
 
               <FileInputWrapper>
                 <FileInput
                   type="file"
+                  onChange={handleFileChange}
                   accept="image/jpeg, image/png, image/gif"
                 />
                 +
@@ -55,8 +123,19 @@ const EditUser = ({ onClose }) => {
             </AvatarWrapper>
 
             <Inputs>
-              <Field autoFocus name="name" type="text" />
-              <Field name="email" type="email" />
+              <Field
+                autoFocus
+                name="name"
+                type="text"
+                value={userName}
+                onChange={e => setUserName(e.target.value)}
+              />
+              <Field
+                name="email"
+                type="email"
+                value={userEmail}
+                onChange={e => setUserEmail(e.target.value)}
+              />
               <PasswordInput>
                 <Field
                   name="password"
@@ -78,6 +157,7 @@ const EditUser = ({ onClose }) => {
                 </PasswordView>
               </PasswordInput>
             </Inputs>
+
             <SendBtn type="submit">Send</SendBtn>
           </Wrapper>
         </Formik>
