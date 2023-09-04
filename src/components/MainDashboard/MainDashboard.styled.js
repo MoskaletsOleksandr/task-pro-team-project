@@ -5,6 +5,7 @@ export const Section = styled.section`
   height: 100vw;
   margin-bottom: 9px;
   max-height: 100vh;
+
   overflow-x: auto;
   background-color: ${props =>
     props.backgroung.desktopURL === null ? 'var(--screens-page-bg-color)' : []};
@@ -12,7 +13,7 @@ export const Section = styled.section`
   background-size: cover;
 
   background-image: url(${props => props.backgroung.desktopURL !== null ? props.backgroung.desktopURL : []});
-  //--
+
   @media screen and (min-width: 320px) and (max-width: 374px) {
     padding: 0px 15px;
     background-image: url(${props => props.backgroung.desktopURL !== null ? props.backgroung.mobileURL : []});
@@ -48,6 +49,7 @@ export const Section = styled.section`
 
 export const SectionTitle = styled.div`
   display: flex;
+  max-width:90vw;
   @media (min-width: 1439px) {
     padding: 0px 25px;
   }
@@ -61,7 +63,6 @@ export const BtnFilters = styled.button`
   height: 20px;
   margin-top: 14px;
   margin-left: auto;
-
   font-family: Poppins;
   font-weight: 500;
   font-size: 14px;
