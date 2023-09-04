@@ -4,22 +4,24 @@ const Input = styled.input`
 display: flex;
 width: 302px;
 // hight:50px;
-margin-top:24px;
-margin-bottom:24px;
-padding: 14px 18px  14px;
+margin-top: 24px;
+margin-bottom: 24px;
+padding: 14px 18px 14px;
 align-items: center;
 border-radius: 8px;
 border: 1px solid var(--modal-input-border-color);
 opacity: 0.4;
 box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
-background-color:var( --modal-bg-color); 
+background-color: var(--modal-bg-color);
 color: var(--modal-input-text-color);
 ::placeholder {
   color: var(--modal-input-placeholder-color);
-},
-&:focus {
-    outline: none;
-    box-shadow: none;
+}
+&:hover, &:focus {
+  outline: none;
+  border-color: var(--modal-input-border-color);
+  opacity: 1;
+}
 `;
 
 

@@ -68,12 +68,32 @@ export const ModalTextarea = styled.textarea`
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
   resize: ${props => props.resize || 'none'};
   cursor: text;
-
+  overflow-y:auto;
   &:hover,
   &:focus {
     border-color: var(--modal-input-border-color);
     opacity: 1;
   }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--vertical-scroll-bar-bg-color);
+    border-radius: 4px;
+    height: 60px;
+    margin-right: 8px; 
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: var(--vertical-scroll-slider-bg-color);
+    border-radius: 4px;
+    margin-right:8px;
+    margin-top:11px;
+    margin-bottom:11px;
+  }
+
 `;
 
 export const ModalSvg = styled.svg`
