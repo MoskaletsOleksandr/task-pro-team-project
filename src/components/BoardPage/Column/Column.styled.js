@@ -40,16 +40,23 @@ const TitleIcon = styled.div`
   margin-bottom: 14px;
   align-items: center;
   justify-content: space-between;
-  @media screen and (min-width: 320px) and (max-width: 374px) {
-    max-width: 290px;
-}
+  
+  @media screen and (max-width: 300px) {
+    min-width: 290px;
+} 
+  @media screen  and (max-width: 374px) {
+  width: 300px;
+} 
+  @media screen and (min-width: 375px) {
+  width:334px;
 
-@media screen and (min-width: 375px) and (max-width: 767 px) {
-    max-width: 334px;
-}
-
-@media screen and (min-width: 768px) {
-    max-width: 334px;
+  &:hover{
+  scale: 1.02;
+  transition: scale 250ms;
+  box-shadow: 2px 1px 4px 3px rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: 2px 1px 4px 3px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 2px 1px 4px 3px rgba(0, 0, 0, 0.7);
+  }
 }
 `;
 
@@ -57,6 +64,7 @@ const TitleIcon = styled.div`
 const ColumnContainer = styled.div`
   display: flex;
   flex-direction: column;
+
 `;
 
 

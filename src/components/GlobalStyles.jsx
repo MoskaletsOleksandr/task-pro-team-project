@@ -32,6 +32,7 @@ export const GlobalStyles = () => {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             font-size: 14px;
+            overflow: hidden;
           }
           code {
             font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

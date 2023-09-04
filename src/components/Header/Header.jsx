@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import UserInfo from 'components/UserInfo/UserInfo';
-// import { updateTheme } from 'redux/auth/authOperations';
+import { UpdateThemeThunk } from 'redux/auth/thunks';
 import { useTheme } from '../hooks/useTheme';
 
 import {
@@ -18,11 +18,11 @@ import {
 
 import sprite from '../../images/sprite.svg';
 
-const Header = ({ openSidebar }) => {
+const Header = ({ onToggleSidebar }) => {
   const { theme, setTheme } = useTheme();
   const [selectedTheme, setSelectedTheme] = useState('dark');
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [isCustomOptionListOpen, setCustomOptionListOpen] = useState(false);
 
@@ -40,31 +40,27 @@ const Header = ({ openSidebar }) => {
   const handleLightThemeClick = () => {
     setTheme('light');
     setSelectedTheme('light');
-    // dispatch(updateTheme('light'));
+    dispatch(UpdateThemeThunk('light'));
     toggleCustomOptionList();
   };
 
   const handleDarkThemeClick = () => {
     setTheme('dark');
     setSelectedTheme('dark');
-    // dispatch(updateTheme('dark'));
+    dispatch(UpdateThemeThunk('dark'));
     toggleCustomOptionList();
   };
 
   const handleVioletThemeClick = () => {
     setTheme('violet');
     setSelectedTheme('violet');
-    // dispatch(updateTheme('violet'));
+    dispatch(UpdateThemeThunk('violet'));
     toggleCustomOptionList();
   };
 
   return (
     <Container>
-      <div
-        onClick={() => {
-          openSidebar(true);
-        }}
-      >
+      <div onClick={onToggleSidebar}>
         <IconBM>
           <use href={`${sprite}#icon-menu`}></use>
         </IconBM>

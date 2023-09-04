@@ -36,7 +36,7 @@ background-color: #BEDBB0;
 border-radius: 6px;
 
 &:hover,
-&focus {
+&:focus {
 scale: 1.05;
 background-color: var(--modal-btn-bg-color-hover);
 }

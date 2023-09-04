@@ -7,6 +7,7 @@ import {
   logOut,
   sendHelpLetter,
   getCurrentUser,
+  updateUser,
 } from 'api/api_auth/api';
 import { setToken } from 'api/axiosConfig';
 import { resetBoards } from 'redux/dashboards/slise';
@@ -76,6 +77,27 @@ export const GetThemeThunk = createAsyncThunk(
   }
 );
 
+export const UpdateThemeThunk = createAsyncThunk(
+  'auth/updateTheme',
+  async (theme, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const currentToken = state.auth.accessToken;
+    const id = state.auth.user.id;
+
+    if (currentToken === '' || !id) {
+      return thunkAPI.rejectWithValue('Unable to update theme');
+    }
+
+    try {
+      setToken(`Bearer ${currentToken}`);
+      const response = await getTheme({ theme });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const SendLetterThunk = createAsyncThunk(
   'user/sendLetter',
   async (body, thunkAPI) => {
@@ -113,6 +135,18 @@ export const GetCurrentUserThunk = createAsyncThunk(
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const UpdateUserThunk = createAsyncThunk(
+  'auth/updateUser',
+  async ({ id, userData }, { rejectWithValue }) => {
+    try {
+      const updatedUser = await updateUser(id, userData);
+      return updatedUser;
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
   }
 );
