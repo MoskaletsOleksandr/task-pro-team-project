@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { GetCurrentUserThunk } from 'redux/auth/thunks';
+import { setToken } from 'api/axiosConfig';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 const AuthPage = lazy(() => import('../pages/AuthPage/AuthPage'));
@@ -25,6 +26,7 @@ export const App = () => {
     const authData = JSON.parse(localStorage.getItem('persist:auth'));
 
     if (authData && authData.accessToken) {
+      setToken(`Bearer ${authData.accessToken}`);
       dispatch(GetCurrentUserThunk());
     }
   }, [dispatch]);

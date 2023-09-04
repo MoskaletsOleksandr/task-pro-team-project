@@ -26,7 +26,7 @@ export const handleLogOutFulfilled = (state, { payload }) => {
   state.accessToken = payload.accessToken;
   state.refreshToken = payload.refreshToken;
   state.isLoading = false;
-  state.user = {};
+  state.user = null;
   state.isLoggedIn = false;
 };
 export const handleLogOutPending = (state, { payload }) => {
