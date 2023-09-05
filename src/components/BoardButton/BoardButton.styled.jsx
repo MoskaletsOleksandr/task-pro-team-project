@@ -43,6 +43,7 @@ export const Svg = styled.svg`
 
 export const Title = styled.p`
   margin-right: auto;
+  text-transform: capitalize;
   color: var(--sidebar-active-board-text-color);
   font-size: 14px;
   font-weight: 500;

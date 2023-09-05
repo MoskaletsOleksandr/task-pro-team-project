@@ -7,8 +7,8 @@ border-radius: 8px;
 width: 197px;
 height: 238px;
 margin-bottom: 28px;
-margin-left: auto;
-margin-right: auto;
+margin-left: 24px;
+margin-right: 24px;
 padding: 15px;
 
 @media screen and (min-width: 768px) {

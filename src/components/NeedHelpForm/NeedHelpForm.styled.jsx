@@ -24,11 +24,11 @@ height: 49px;
 padding: 14px 18px;
 background-color: transparent;
 border: 1px solid var(--modal-input-border-color);
-color: var(--modal-primary-text-color);
+color: var(--modal-input-text-color);
 border-radius: 8px;
 opacity: 0.4;
-margin-bottom: 4px;
-&:focus {
+margin-bottom: 14px;
+&:hover, &:focus {
   outline: none;
   opacity: 1;
 }
@@ -46,7 +46,7 @@ opacity: 0.4;
 min-height: 120px;
 margin-bottom: 15px;
 
-&:focus {
+&:hover, &:focus {
   outline: none;
   opacity: 1;
 }
