@@ -6,7 +6,7 @@ export default function ChildButtonNewBoard({ textContent }) {
   return (
     <>     
       <ContainerSvg>
-        <Svg width="14px" height="14px">
+        <Svg width="28px" height="28px">
           <use href={sprite + '#icon-plus'}></use>
         </Svg>
       </ContainerSvg>

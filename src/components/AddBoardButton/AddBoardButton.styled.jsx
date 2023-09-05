@@ -32,8 +32,9 @@ justify-content: center;
 align-items: center;
 width: 40px;
 height: 36px;
-background-color: #BEDBB0;
+background-color: var(--sidebar-button-plus-bg-color);
 border-radius: 6px;
+border: none;
 
 &:hover,
 &:focus {
@@ -43,6 +44,6 @@ background-color: var(--modal-btn-bg-color-hover);
 `;
 
 export const Svg = styled.svg`
-stroke: #121212;
+stroke: var(--sidebar-button-plus-icon-color);
 `;
 

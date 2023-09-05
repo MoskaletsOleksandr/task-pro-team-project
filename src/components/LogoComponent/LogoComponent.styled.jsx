@@ -24,8 +24,9 @@ margin-bottom: 70px;
 `;
 
 export const StyledLogo = styled.svg`
-fill: var(--primary-text-color);
+fill: var(--sidebar-logo--icon-color);
 position: absolute;
+
 `;
 
 export const StyledSpanLogo = styled.span`
