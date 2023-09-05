@@ -46,6 +46,7 @@ authInstance.interceptors.response.use(
       clearToken();
       localStorage.removeItem('refreshToken');
       localStorage.removeItem('persist:auth');
+      localStorage.removeItem('persist:boards');
       window.location.href = '/task-pro-team-project/auth/login';
     }
     return Promise.reject(error);
@@ -73,6 +74,7 @@ dashBoardsInstance.interceptors.response.use(
       clearToken();
       localStorage.removeItem('refreshToken');
       localStorage.removeItem('persist:auth');
+      localStorage.removeItem('persist:boards');
       window.location.href = '/task-pro-team-project/auth/login';
     }
     return Promise.reject(error);
@@ -100,6 +102,7 @@ tasksInstance.interceptors.response.use(
       clearToken();
       localStorage.removeItem('refreshToken');
       localStorage.removeItem('persist:auth');
+      localStorage.removeItem('persist:boards');
       window.location.href = '/task-pro-team-project/auth/login';
     }
     return Promise.reject(error);
