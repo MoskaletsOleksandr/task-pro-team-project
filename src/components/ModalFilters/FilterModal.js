@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getFilteredTasksThunk,
@@ -20,15 +20,30 @@ import {
 // import { radioButtons } from 'components/Modals/ModalAddEditCard/radioBattons';
 
 const FiltersModal = props => {
-  const [selectedFilter, setSelectedFilter] = useState('all');
-  // const currentBoardId = useSelector(state => state.boards.currentBoard._id);
+  const savedFilter = localStorage.getItem('filterValue');
+  const savedcurrentBoardiD = localStorage.getItem('currentBoardId');
+
+  const [selectedFilter, setSelectedFilter] = useState(savedFilter || 'all');
+  const [selectedCurrentBoardId, setCurrentBoardId] = useState(
+    savedcurrentBoardiD || ''
+  );
+
   const currentBoardId = useSelector(selectCurrentBoardId);
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (selectedCurrentBoardId !== currentBoardId) {
+      setSelectedFilter('all');
+    }
+    localStorage.setItem('currentBoardId', currentBoardId);
+    localStorage.setItem('filterValue', selectedFilter);
+  }, [currentBoardId, selectedCurrentBoardId, selectedFilter]);
+
   const handleChange = e => {
     const priorityStatus = e.target.value;
     setSelectedFilter(priorityStatus);
+    setCurrentBoardId(currentBoardId);
 
     if (priorityStatus === 'all') {
       dispatch(getAllTasksThunk(currentBoardId));

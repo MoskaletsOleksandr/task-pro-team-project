@@ -28,7 +28,7 @@ const MainDashboard = () => {
   const boardTitle = useSelector(selectboardTitle);
   const boardBackground = useSelector(selectBoardBackground);
   console.log('=========');
-  console.log(boardBackground.desktopURL);
+  console.log(boardBackground);
   console.log('=========');
 
   const [showTestModal, setShowTestModal] = useState(false);
