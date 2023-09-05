@@ -76,11 +76,6 @@ const TaskCard = ({
     'DD/MM/YYYY'
   );
   const isTodayDeadline = formattedSelectedDeadline === today;
-
-  console.log('today:', today);
-  console.log('formattedSelectedDeadline:', formattedSelectedDeadline);
-  console.log('isTodayDeadline:', isTodayDeadline);
-
   const listForPopup = columns.filter(column => column._id !== columnId);
   console.log('listForPopup: ', listForPopup);
   const isScrollable = listForPopup.length > 3;
@@ -159,7 +154,7 @@ const TaskCard = ({
                 setIdEditTask(task._id);
                 setTitleEditTask(task.title);
                 setTextEditTask(task.text);
-                setTitleEditTask(task.title);
+                // setTitleEditTask(task.title);
                 setPriorityEditTask(task.priority);
               }}
             >

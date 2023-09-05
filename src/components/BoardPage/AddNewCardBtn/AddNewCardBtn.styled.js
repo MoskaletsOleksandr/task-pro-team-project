@@ -29,9 +29,6 @@ export const BtnAddNewCard = styled.button`
   :focus {
     background-color: var(--column-add-btn-bg-color-hover);
     transform: background-color;
-
-    scale: 1.02;
-    transition: scale 350ms;
   }
 
   @media screen and (max-width: 300px) {

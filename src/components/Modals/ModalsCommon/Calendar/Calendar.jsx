@@ -22,17 +22,6 @@ export const Calendar = ({ deadline }) => {
             const formattedDateString = formattedDate.toISOString().split('T')[0];
             deadline(formattedDateString);
           }}
-          
-          // defaultValue={dayjs(new Date())}
-          // views={['month', 'day']}
-          // disablePast={true}
-          // onChange={date => {
-
-          //   // const newDate = String(date.$d).split(' ').splice(1, 3).join(' ');
-          //   // const newDateIso = new Date(newDate).toISOString().slice(0, 19);
-          //   // deadline(newDateIso);
-          //   deadline(formattedDate);
-
           slots={{
             openPickerIcon: () => (
               <SvgModal
@@ -126,7 +115,6 @@ export const Calendar = ({ deadline }) => {
                 '&.MuiPickersDay-today': {
                   borderWidth: 1,
                   borderColor: 'var(--modal-date-text-color)',
-                  // color: '',
                 },
               },
             },
@@ -134,7 +122,6 @@ export const Calendar = ({ deadline }) => {
               variant: 'outlined',
               sx: {
                 '& input': {
-                  // display: 'none'
                   width: '103px',
                   height: '16px',
                   color: 'var(--modal-date-text-color)',

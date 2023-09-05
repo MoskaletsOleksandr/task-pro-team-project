@@ -32,7 +32,6 @@ export const GlobalStyles = () => {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             font-size: 14px;
-            overflow: hidden;
           }
           code {
             font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -130,6 +129,8 @@ export const GlobalStyles = () => {
             --card-secondary-text-color: #ffffff80;
             --card-border-color: #FFFFFF4D;
             --card-icon-color: #ffffff80;
+            --card-hover: #191919;
+            // #262626;
 
 
             //variables for modals
@@ -233,6 +234,7 @@ export const GlobalStyles = () => {
             --card-secondary-text-color: #16161680;
             --card-icon-color: #16161680;
             --card-border-color: #e8e8e8;
+            --card-hover: #f7f7f7;
 
 
             //variables for modals
@@ -336,6 +338,7 @@ export const GlobalStyles = () => {
             --card-secondary-text-color: #16161680;
             --card-icon-color: #16161680;
             --card-border-color: #e8e8e8;
+            --card-hover: #f7f7f7;
 
             //variables for modals
             --modal-bg-color: #FCFCFC;

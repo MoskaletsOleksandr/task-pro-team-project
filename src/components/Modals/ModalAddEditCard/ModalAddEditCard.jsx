@@ -27,21 +27,18 @@ const ModalAddEditCard = ({
   titleEditTask,
   textEditTask,
   priorityEditTask,
+  // deadlineEditTask,
 }) => {
   const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
   const boardId = useSelector(state => state.boards.currentBoard._id);
-
-  useEffect(() => {
-    if (nameButton === 'editCard') {
-      setVisible(true);
-    }
-  }, [nameButton]);
-
+  
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [priority, setPriority] = useState('without');
+  const today = new Date().toISOString();
   const [deadline, setDeadline] = useState('');
+
 
   const handleChangeTitle = e => {
     const { value } = e.currentTarget;
@@ -65,17 +62,15 @@ const ModalAddEditCard = ({
     } else if (text.trim() === '') {
       toast.error('Enter Description');
       return;
-    } else if (!deadline) {
-      toast.error('Select date');
-      return;
     } else {
       try {
+        const deadlineToSend = !deadline ? today : deadline; 
         await dispatch(
           createNewTaskThunk({
             title,
             text,
             priority,
-            deadline,
+            deadline: deadlineToSend, 
             boardId,
             columnId,
           })
@@ -83,7 +78,6 @@ const ModalAddEditCard = ({
           .unwrap()
           .then(async res => {
             await res;
-            toast.success(`Card added`);
             reset();
             closeModal();
             return;
@@ -93,6 +87,7 @@ const ModalAddEditCard = ({
       }
     }
   };
+  
 
   const handleSubmitEdit = async e => {
     e.preventDefault();
@@ -102,21 +97,18 @@ const ModalAddEditCard = ({
     } else if (text.trim() === '') {
       toast.error('Enter Description');
       return;
-    } else if (!deadline) {
-      toast.error('Select date');
-      return;
     } else {
       try {
+        const deadlineToSend = !deadline ? today : deadline; 
         await dispatch(
           updateTaskByIdThunk({
             idTask: idEditTask,
-            body: { title, text, priority, deadline, boardId, columnId },
+            body: { title, text, priority,  deadline: deadlineToSend,  boardId, columnId },
           })
         )
           .unwrap()
           .then(async res => {
             await res;
-            toast.success(`Card edit`);
             reset();
             closeModal();
             return;
@@ -127,11 +119,25 @@ const ModalAddEditCard = ({
     }
   };
 
+
   const reset = () => {
     setTitle('');
     setText('');
     setDeadline('');
   };
+
+
+  useEffect(() => {
+    if (nameButton === 'editCard') {
+      setVisible(true);
+      setTitle(titleEditTask || ''); 
+      setText(textEditTask || '');
+      setPriority(priorityEditTask || 'without'); 
+      // setDeadline(deadlineEditTask || '')
+    }
+  }, [nameButton, titleEditTask, textEditTask, priorityEditTask,
+    // deadlineEditTask
+  ]);
 
   return (
     <Modal width="350px" height="522px" onClose={closeModal}>
@@ -166,7 +172,8 @@ const ModalAddEditCard = ({
                 placeholder="Comment"
                 maxWidth="302px"
                 height="154px"
-              ></TextareaModal>
+              >
+              </TextareaModal>
             </LabelModal>
             <TitleModal
               fontSize="12px"

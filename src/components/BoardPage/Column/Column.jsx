@@ -26,13 +26,13 @@ const Column = ({ title, tasks, columnId, idTask }) => {
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
   const boardId = useSelector(state => state.boards.currentBoard._id);
-
   const [showModal, setShowModal] = useState(false);
   const [nameButton, setNameButton] = useState('');  
   const [idEditTask, setIdEditTask] = useState('');
   const [titleEditTask, setTitleEditTask] = useState('');
   const [textEditTask, setTextEditTask] = useState('');
   const [priorityEditTask, setPriorityEditTask] = useState('');
+  // const [deadlineEditTask,  setDeadlineEditTask] = useState('');
   
   const openAddEditCardModal = () => {
     setShowModal(true);
@@ -98,6 +98,7 @@ const Column = ({ title, tasks, columnId, idTask }) => {
                   setTitleEditTask={setTitleEditTask}
                   setTextEditTask={setTextEditTask}
                   setPriorityEditTask={setPriorityEditTask}
+                  // setDeadline={setDeadlineEditTask}
                 />
               );
             })}
@@ -128,6 +129,7 @@ const Column = ({ title, tasks, columnId, idTask }) => {
             titleEditTask={titleEditTask}
             textEditTask={textEditTask}
             priorityEditTask={priorityEditTask}
+            // deadlineEditTask={deadlineEditTask}
           />
         )}
       </ColumnContainer>

@@ -11,11 +11,8 @@ const CustomCard = styled.div`
   padding: 14px 24px;
   border-left: 4px solid ${props => props.borderColor};
   &:hover{
-  scale: 1.02;
-  transition: scale 350ms;
-  box-shadow: 2px 1px 4px 3px rgba(0, 0, 0, 0.7);
-  -webkit-box-shadow: 2px 1px 4px 3px rgba(0, 0, 0, 0.7);
-  -moz-box-shadow: 2px 1px 4px 3px rgba(0, 0, 0, 0.7);
+    background-color: var(--card-hover);
+ 
   }
 
   @media screen and (max-width: 300px) {
