@@ -30,7 +30,7 @@ import { setToken } from 'api/axiosConfig';
 const initialState = {
   isLoading: false,
   error: '',
-  user: {},
+  user: null,
   sentLetter: false,
   isLoggedIn: false,
   isRefreshing: false,

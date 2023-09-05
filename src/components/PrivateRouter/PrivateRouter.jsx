@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
 const PrivateRouter = ({ children }) => {
-  const isAuth = useSelector(state => state.auth.accessToken);
+  const isAuth = useSelector(state => state.auth.user);
 
   return isAuth ? children : <Navigate to="/auth/register" />;
 };

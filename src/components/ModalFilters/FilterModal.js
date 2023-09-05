@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFilteredTasksThunk } from 'redux/dashboards/thunks';
+import {
+  getFilteredTasksThunk,
+  getAllTasksThunk,
+} from 'redux/dashboards/thunks';
 import { selectCurrentBoardId } from 'redux/dashboards/selectors';
 
 import {
@@ -14,6 +17,7 @@ import {
   FilterList,
   PriorityLabel,
 } from './FiltersModal.styled';
+// import { radioButtons } from 'components/Modals/ModalAddEditCard/radioBattons';
 
 const FiltersModal = props => {
   const [selectedFilter, setSelectedFilter] = useState('all');
@@ -26,13 +30,16 @@ const FiltersModal = props => {
     const priorityStatus = e.target.value;
     setSelectedFilter(priorityStatus);
 
-    dispatch(
-      getFilteredTasksThunk({
-        boardId: currentBoardId,
-        priority: priorityStatus,
-      })
-    );
-    // props.modalClose();
+    if (priorityStatus === 'all') {
+      dispatch(getAllTasksThunk(currentBoardId));
+    } else {
+      dispatch(
+        getFilteredTasksThunk({
+          boardId: currentBoardId,
+          priority: priorityStatus,
+        })
+      );
+    }
   };
 
   return (
@@ -41,11 +48,11 @@ const FiltersModal = props => {
       <WraperAllColor>
         <AllColor>Label color</AllColor>
         <AllLabels
-          style={
-            selectedFilter === 'all'
-              ? { color: 'var(--filter-popup-primary-text-color)' }
-              : {}
-          }
+        // style={
+        //   selectedFilter === 'all'
+        //     ? { color: 'var(--filter-popup-primary-text-color)' }
+        //     : {}
+        // }
         >
           <InputRadioBtn
             style={{ opacity: 0 }}
@@ -60,6 +67,28 @@ const FiltersModal = props => {
       </WraperAllColor>
       {/* List */}
       <FilterList>
+        {/* {radioButtons.map(({ priority, color }) => {
+          return (
+            <FilterItem>
+              <PriorityLabel
+                style={
+                  selectedFilter === 'without'
+                    ? { color: 'var(--filter-popup-primary-text-color)' }
+                    : {}
+                }
+              >
+                <InputRadioBtn
+                  type="radio"
+                  value="without"
+                  checked={selectedFilter === 'without'}
+                  name="filters"
+                  onChange={handleChange}
+                />
+                Without priority
+              </PriorityLabel>
+            </FilterItem>
+          );
+        })} */}
         <FilterItem>
           <PriorityLabel
             style={
