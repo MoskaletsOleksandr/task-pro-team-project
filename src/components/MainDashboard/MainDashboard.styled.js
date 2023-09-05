@@ -1,12 +1,14 @@
+// import styled, { css } from '@emotion/styled';
+
 import styled, { css } from 'styled-components';
 
 export const Section = styled.section`
-  max-width: 100vw;
-  max-height: 100vh; 
-  // overflow-y:none;
-  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  margin-bottom: 9px;
+  /* max-height: 100vh; */
+  overflow-x: auto;
   background-size: cover;
-  background-attachment: fixed;
 
   ${props =>
     props.backgroung === null &&
@@ -37,13 +39,13 @@ export const Section = styled.section`
   //--------
   @media screen and (min-width: 375px) {
     padding: 0px 20px;
+  }
 
-  @media (min-width: 768px) and (max-width: 1439px){
+  //--------
+  @media (min-width: 768px) {
     width: 100vw;
-    height: 95vh;
-    // height: 95.1vh;
+    /* max-height: 100vh; */
     padding: 0px 40px;
-    
     ${props =>
       props.backgroung !== null &&
       css`
@@ -58,12 +60,11 @@ export const Section = styled.section`
     }
   }
 
-  @media (min-width: 768px) {
+  //--------
+  @media (min-width: 1439px) {
     width: 100%;
-    padding: unset;
-    height: 92.1vh;
-    // overflow-y:none;
-
+    padding: 0px 25px;
+    max-height: 100vh;
     ${props =>
       props.backgroung !== null &&
       css`
@@ -77,21 +78,11 @@ export const Section = styled.section`
         `};
     }
   }
-
-  //--------
-  @media (min-width: 1439px) {
-    width: 100%;
-    padding: unset;
-    max-height: 100vh;
-  }
 `;
 
 export const SectionTitle = styled.div`
   display: flex;
   max-width: 90vw;
-  @media (min-width: 1439px) {
-    padding: 0px 25px;
-  }
 `;
 
 export const BtnFilters = styled.button`
@@ -107,6 +98,7 @@ export const BtnFilters = styled.button`
   font-size: 14px;
   line-height: 21px;
   letter-spacing: -0.02em;
+  /* --add-column-btn-text-color */
   color: var(--filter-text-color);
 
   border: none;
@@ -127,13 +119,10 @@ export const SectionBoards = styled.section`
   flex-direction: row;
   width: 100%;
   overflow-x: auto;
-  @media (min-width: 1439px) {
-    padding: 0px 20px;
-  }
 
   ::-webkit-scrollbar {
     height: 12px;
-    width: 100vw;
+    width: 100w;
     padding-bottom: 5px;
   }
 
@@ -145,8 +134,8 @@ export const SectionBoards = styled.section`
   ::-webkit-scrollbar-track {
     background-color: var(--horizontal-scroll-bar-bg-color);
     border-radius: 12px;
-    margin-left: 20px;
-    margin-right: 20px;
+    // margin-left: 20px;
+    // margin-right: 20px;
     padding-bottom: 5px;
   }
 `;
@@ -168,7 +157,6 @@ export const Title = styled.h1`
   letter-spacing: -0.02em;
   color: var(--add-column-btn-text-color);
 `;
-
 export const BtnAddColumn = styled.button`
   display: flex;
   justify-content: center;
@@ -195,8 +183,6 @@ export const BtnAddColumn = styled.button`
 
   &:hover,
   :focus {
-    scale: 1.04;
-    transition: scale 350ms;
     background-color: var(--column-add-btn-bg-color-hover);
     transform: background-color;
   }
