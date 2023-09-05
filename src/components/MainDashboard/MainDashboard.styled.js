@@ -1,5 +1,3 @@
-// import styled, { css } from '@emotion/styled';
-
 import styled, { css } from 'styled-components';
 
 export const Section = styled.section`
@@ -40,13 +38,7 @@ export const Section = styled.section`
   //--------
   @media screen and (min-width: 375px) {
     padding: 0px 20px;
-  }
 
-  //--------
-  @media (min-width: 768px) {
-    width: 100vw;
-    /* max-height: 100vh; */
-    padding: 0px 40px;
     ${props =>
       props.backgroung !== null &&
       css`
@@ -62,10 +54,10 @@ export const Section = styled.section`
   }
 
   //--------
-  @media (min-width: 1439px) {
+  @media (min-width: 768px) {
     width: 100%;
-    padding: unset;
-    max-height: 100vh;
+    /* max-height: 100vh; */
+    padding: 0px 40px;
     ${props =>
       props.backgroung !== null &&
       css`
@@ -78,6 +70,13 @@ export const Section = styled.section`
           background-image: url(${props => props.backgroung.desktopRetainaURL});
         `};
     }
+  }
+
+  //--------
+  @media (min-width: 1439px) {
+    width: 100%;
+    padding: unset;
+    max-height: 100vh;
   }
 `;
 
@@ -102,7 +101,6 @@ export const BtnFilters = styled.button`
   font-size: 14px;
   line-height: 21px;
   letter-spacing: -0.02em;
-  /* --add-column-btn-text-color */
   color: var(--filter-text-color);
 
   border: none;
@@ -193,7 +191,6 @@ export const BtnAddColumn = styled.button`
   :focus {
     scale: 1.04;
     transition: scale 350ms;
-
     background-color: var(--column-add-btn-bg-color-hover);
     transform: background-color;
   }
