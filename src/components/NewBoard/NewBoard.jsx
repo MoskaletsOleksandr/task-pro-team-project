@@ -140,3 +140,4 @@ const handleCreateBoard = data => {
 };
 
 export default NewBoard;
+
