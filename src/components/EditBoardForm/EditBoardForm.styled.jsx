@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 
 export const NewBoardTitle = styled.h2`
   margin: 0 0 24px 0;
@@ -65,17 +66,23 @@ export const IconTitle = styled.h3`
 export const IconWrap = styled.div`
   margin: 0 0 24px 0;
 `;
+const selectedIconStyle = css`
+  stroke: var(--modal-selected-icon-color);
+`;
 
 export const Icon = styled.svg`
   margin-right: 8px;
   width: 18px;
   height: 18px;
-  fill: var(--modal-icon-color);
+  stroke: var(--modal-icon-color);
+  fill: transparent;
   cursor: pointer;
   background-color: var(--modal-button-plus-bg-color);
 
+  ${props => props.selected === true && selectedIconStyle};
+
   &:hover {
-    fill: var(--modal-selected-icon-color);
+    stroke: var(--modal-selected-icon-color);
   }
 `;
 
@@ -101,6 +108,7 @@ export const BgIcon = styled.div`
 export const BackgroundItem = styled.div`
   cursor: pointer;
   transition: transform 0.3s;
+  background-color: var(--sidebar-active-board-bg-color);
   filter: ${({ isActive }) => (isActive ? 'grayscale(100%)' : 'none')};
   filter: ${({ isActive }) => (isActive ? 'brightness(60%)' : 'none')};
   border-radius: 6px;
@@ -113,4 +121,10 @@ export const BackgroundItem = styled.div`
 export const BackgroundImage = styled.img`
   width: 28px;
   height: 28px;
+`;
+
+export const BasicBackground = styled.svg`
+  stroke: var(--modal-icon-color);
+  fill: transparent;
+  cursor: pointer;
 `;

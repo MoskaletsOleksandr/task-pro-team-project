@@ -74,19 +74,20 @@ export const IconWrap = styled.div`
 `;
 
 const selectedIconStyle = css`
-  fill: var(--modal-selected-icon-color);
+  stroke: var(--modal-selected-icon-color);
 `;
 
 export const Icon = styled.svg`
   margin-right: 8px;
   width: 18px;
   height: 18px;
-  fill: var(--modal-icon-color);
+  stroke: var(--modal-icon-color);
+  fill: transparent;
   cursor: pointer;
   background-color: var(--modal-button-plus-bg-color);
   ${props => props.selected === true && selectedIconStyle};
   &:hover {
-    fill: var(--modal-selected-icon-color);
+    stroke: var(--modal-selected-icon-color);
   }
 `;
 
@@ -110,20 +111,25 @@ export const BgIcon = styled.div`
 `;
 
 export const BackgroundItem = styled.div`
-cursor: pointer;
-transition: transform 0.3s;
-border-radius: 6px;
-overflow: hidden;
-  ${props =>
-    props.isActive &&
-    css`
-      border-color: var(--modal-selected-background-border-color);
-      transform: scale(1.05); /* Збільште розмір при активному виборі */
-    `}
-}
+  cursor: pointer;
+  transition: transform 0.3s;
+  background-color: var(--sidebar-active-board-bg-color);
+  filter: ${({ isActive }) => (isActive ? 'grayscale(100%)' : 'none')};
+  filter: ${({ isActive }) => (isActive ? 'brightness(60%)' : 'none')};
+  border-radius: 6px;
+  overflow: hidden;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const BackgroundImage = styled.img`
   width: 28px;
   height: 28px;
+`;
+
+export const BasicBackground = styled.svg`
+  stroke: var(--modal-icon-color);
+  fill: transparent;
+  cursor: pointer;
 `;

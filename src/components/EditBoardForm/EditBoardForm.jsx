@@ -22,10 +22,16 @@ import {
   BackgroundItem,
   BackgroundImage,
   Input,
+  BasicBackground,
 } from './EditBoardForm.styled';
 
 const EditBoardForm = ({ onClose, boardId }) => {
-  const { register, handleSubmit, setValue } = useForm();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    // formState: { errors },
+  } = useForm();
   const [selectedIcon, setSelectedIcon] = useState('');
   const [selectedBackgroundId, setSelectedBackgroundId] = useState('');
   const backgrounds = useSelector(state => state.boards.backgrounds);
@@ -50,7 +56,6 @@ const EditBoardForm = ({ onClose, boardId }) => {
     timeoutId = setTimeout(() => {
       try {
         setValue('title', event.target.value);
-        toast.success('Title changed successfully');
       } catch {
         toast.error('Error changing title');
       }
@@ -61,18 +66,15 @@ const EditBoardForm = ({ onClose, boardId }) => {
     try {
       setSelectedIcon(icon);
       setValue('icon', icon);
-      toast.success('Icon selected successfully');
     } catch {
       toast.error('Error occurred while selecting the icon');
     }
   };
 
   const handleBackgroundSelect = backgroundId => {
-    // console.log(backgroundId);
     try {
       setSelectedBackgroundId(backgroundId);
       setValue('selectedBackgroundId', backgroundId);
-      toast.success('Background selected successfully');
     } catch {
       toast.error('Error selecting background');
     }
@@ -92,7 +94,6 @@ const EditBoardForm = ({ onClose, boardId }) => {
     dispatch(updateBoardByIdThunk(boardData))
       .unwrap()
       .then(response => {
-        toast.success('The board was changed successfully');
         setValue('title', data.title);
         setValue('icon', '');
         setValue('selectedIcon', data.icon);
@@ -146,9 +147,9 @@ const EditBoardForm = ({ onClose, boardId }) => {
             height: '28px',
           }}
         >
-          <svg style={{ width: '16px', height: '16px' }}>
+          <BasicBackground style={{ width: '16px', height: '16px' }}>
             <use href={sprite + '#null-background'}></use>
-          </svg>
+          </BasicBackground>
         </div>
       </BackgroundItem>
     );
@@ -173,7 +174,7 @@ const EditBoardForm = ({ onClose, boardId }) => {
           id="newBoardInput"
           type="text"
           placeholder="Title"
-          {...register('title')}
+          {...register('title', { required: 'Title is required' })}
           onChange={handleTitleChange}
         />
         <IconTitle>Icons</IconTitle>

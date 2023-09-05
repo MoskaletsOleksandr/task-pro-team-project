@@ -19,6 +19,7 @@ import {
   BackgroundImage,
   Input,
   ErrorMessage,
+  BasicBackground,
 } from './NewBoard.styled';
 import { useNavigate } from 'react-router-dom';
 // import { yupResolver } from '@hookform/resolvers/yup';
@@ -48,7 +49,6 @@ const NewBoard = ({ onClose }) => {
     timeoutId = setTimeout(() => {
       try {
         setValue('title', newValue);
-        toast.success('Title changed successfully');
       } catch {
         toast.error('Error changing title');
       }
@@ -59,7 +59,6 @@ const NewBoard = ({ onClose }) => {
     try {
       setSelectedIcon(icon);
       setValue('icon', icon);
-      toast.success('Icon selected successfully');
     } catch {
       toast.error('Error occurred while selecting the icon');
     }
@@ -69,7 +68,6 @@ const NewBoard = ({ onClose }) => {
     try {
       setSelectedBackground(backgroundId);
       setValue('background', backgroundId);
-      toast.success('Background selected successfully');
     } catch {
       toast.error('Error selecting background');
     }
@@ -80,7 +78,6 @@ const NewBoard = ({ onClose }) => {
       .then(() => {
         const normalizedTitle = data.title.toLowerCase().replace(/\s+/g, '-');
         navigate(normalizedTitle);
-        toast.success('The board was created successfully');
         setValue('title', '');
         setValue('icon', '');
         setValue('background', '');
@@ -130,9 +127,9 @@ const NewBoard = ({ onClose }) => {
             height: '28px',
           }}
         >
-          <svg style={{ width: '16px', height: '16px' }}>
+          <BasicBackground style={{ width: '16px', height: '16px' }}>
             <use href={sprite + '#null-background'}></use>
-          </svg>
+          </BasicBackground>
         </div>
       </BackgroundItem>
     );
@@ -158,7 +155,7 @@ const NewBoard = ({ onClose }) => {
           id="newBoardInput"
           type="text"
           placeholder="Title"
-          {...register('title')}
+          {...register('title', { required: 'Title is required' })}
           onChange={handleTitleChange}
         />
         <ErrorMessage>{errors.title?.message}</ErrorMessage>
