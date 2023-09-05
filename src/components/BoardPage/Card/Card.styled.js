@@ -134,8 +134,13 @@ const PopUpMenu = styled.div`
   background-color: var(--progress-popup-bg-color);
   border-radius: 8px;
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
-  top: 20%;
   right: 25%;
+  top:  ${props =>
+    props.itemCount === 1
+      ? '37%'
+      : props.itemCount === 2
+        ? '30%'
+        : '21%'};
 `;
 
 const ScrollContent = styled.div`

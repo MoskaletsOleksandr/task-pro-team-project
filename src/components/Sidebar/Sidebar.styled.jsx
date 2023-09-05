@@ -12,6 +12,7 @@ export const Container = styled.div`
     isOpen ? 'translateX(0)' : 'translateX(-100%)'};
   z-index: 100;
   width: 260px;
+  height:100vh;
 
   // mobile
 

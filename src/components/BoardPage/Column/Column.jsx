@@ -32,7 +32,7 @@ const Column = ({ title, tasks, columnId, idTask }) => {
   const [titleEditTask, setTitleEditTask] = useState('');
   const [textEditTask, setTextEditTask] = useState('');
   const [priorityEditTask, setPriorityEditTask] = useState('');
-  // const [deadlineEditTask,  setDeadlineEditTask] = useState('');
+  const [deadlineEdit,  selectedDate] = useState('');
   
   const openAddEditCardModal = () => {
     setShowModal(true);
@@ -98,7 +98,7 @@ const Column = ({ title, tasks, columnId, idTask }) => {
                   setTitleEditTask={setTitleEditTask}
                   setTextEditTask={setTextEditTask}
                   setPriorityEditTask={setPriorityEditTask}
-                  // setDeadline={setDeadlineEditTask}
+                  selectedDate={selectedDate} 
                 />
               );
             })}
@@ -129,7 +129,7 @@ const Column = ({ title, tasks, columnId, idTask }) => {
             titleEditTask={titleEditTask}
             textEditTask={textEditTask}
             priorityEditTask={priorityEditTask}
-            // deadlineEditTask={deadlineEditTask}
+            deadlineEdit={deadlineEdit}
           />
         )}
       </ColumnContainer>

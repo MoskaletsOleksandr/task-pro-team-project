@@ -13,7 +13,6 @@ import { getAllBackgroundsThunk } from 'redux/dashboards/thunks';
 import { useMediaQuery } from 'react-responsive';
 
 const HomePage = () => {
-  // const user = useSelector(state => state.auth.user.theme);
   const dispatch = useDispatch();
   const [openedSidebar, setOpenedSidebar] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 1439 });
@@ -70,8 +69,10 @@ const HomePage = () => {
         <div
           style={{
             flexGrow: '1',
-            // height: '100vh',
+            overflowX: 'hidden',
+            overflowY: 'hidden',
             // maxHeight: '100vh',
+            // maxHeight: '90vh',
             display: 'flex',
             flexDirection: 'column',
 

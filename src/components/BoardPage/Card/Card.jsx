@@ -173,7 +173,7 @@ const TaskCard = ({
         ></BackDropHiden>
       )}
       {isPopupOpen && (
-        <PopUpMenu>
+        <PopUpMenu itemCount={listForPopup.length} >
           <ScrollContent scrollable={isScrollable}>
             {listForPopup.map(({ title, _id }) => (
               <CustomPopUpItem
