@@ -1,9 +1,5 @@
 import GlobalStyles from './GlobalStyles';
 import { Routes, Route } from 'react-router-dom';
-// import WelcomePage from '../pages/WelcomePage/WelcomePage';
-// import AuthPage from '../pages/AuthPage/AuthPage';
-// import HomePage from './../pages/HomePages';
-// import ScreenPage from 'pages/ScreenPage/ScreenPage';
 import { Suspense, lazy } from 'react';
 import Loader from './Loader/Loader';
 import PublicRouter from './PublicRouter/PublicRouter';

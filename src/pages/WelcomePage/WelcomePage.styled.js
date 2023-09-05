@@ -48,13 +48,13 @@ const ContainerSvg = styled.div`
   }
 `;
 const SvgLogo = styled.svg`
-  width: 23px;
-  height: 28px;
+  width: 60px;
+  height: 55px;
   fill: white;
 
   @media screen and (max-width: 768px) {
-    width: 18px;
-    height: 24px;
+    width: 40px;
+    height: 35px;
   }
 `;
 const Title = styled.h1`
