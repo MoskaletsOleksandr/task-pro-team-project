@@ -5,7 +5,8 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 24px;
+  padding-top: 24px;
+  padding-bottom: 24px;
   margin: 0;
   background: var(--sidebar-bg-color);
   transform: ${({ isOpen }) =>

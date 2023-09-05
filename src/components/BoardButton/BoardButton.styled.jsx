@@ -9,7 +9,6 @@ export const Wrapper = styled.li`
   padding: 20px 14px;
   opacity: 0.4;
   scroll-snap-align: start;
-  opacity: 0.4;
 
   @media screen and (min-width: 768px) {
     padding: 20px 24px;
@@ -22,7 +21,7 @@ export const Wrapper = styled.li`
   &.active {
     background-color: var(--sidebar-active-board-bg-color);
     opacity: 1;
-
+  
     &::before {
       content: '';
       position: absolute;
@@ -37,38 +36,41 @@ export const Wrapper = styled.li`
 `;
 
 export const Svg = styled.svg`
-  fill: var(--sidebar-active-board-text-color);
+  stroke: var(--icon-stroke);
+  fill:var(--sidebar-active-board-bg-color);
+  opacity:1;
 `;
 
 export const Title = styled.p`
-  margin-left: 4px;
   margin-right: auto;
   color: var(--sidebar-active-board-text-color);
-  font-size: 14;
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.28px;
+  margin-left: 14px;
+  @media screen and (min-width: 768px) {
+    margin-left: 24px;
+  }
 `;
 
 export const ActiveSvg = styled.svg`
-  fill: var(--sidebar-inactive-icon-color);
-  transition: scale 250ms ease-in 0s, stroke 250ms ease-in 0s;
+  stroke: var(--sidebar-inactive-icon-color);
+  fill:var(--sidebar-active-board-bg-color);
   &:hover,
   &:focus {
-    border: 1.5px solid var(--sidebar-active-icon-color);
-    fill: var(--sidebar-active-icon-color);
-    scale: 1.08;
+     stroke: var(--progress-popup-text-color-hover);
+     cursor:pointer;
   }
 `;
 
 export const IconButton = styled.button`
   display: block;
-  width: 16px;
-  height: 16px;
   background-color: transparent;
   border: none;
 `;
 
 export const IconsWrapper = styled.div`
   display: flex;
+  align-items:center;
   gap: 8px;
 `;

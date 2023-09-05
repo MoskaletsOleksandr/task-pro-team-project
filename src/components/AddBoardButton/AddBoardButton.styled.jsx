@@ -5,16 +5,18 @@ display: flex;
 justify-content: space-between;
 width: 87.6%;
 height: 70px;
-margin-left: 14px;
+// margin-left: 14px;
 margin-bottom: 40px;
 padding: 14px 4px 14px 0;
 border-top: 1px solid rgba(255, 255, 255, 0.1);
 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
-@media screen and (max-width: 767px) {
-margin-left: 24px;
+margin-left: 14px;
+@media screen and (min-width: 768px) {
+  margin-left: 24px;
+}
 width: 81.5%;
-padding: 14px 0;
+// padding: 14px 0;
 }
 `;
 
