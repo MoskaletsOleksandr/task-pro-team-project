@@ -3,13 +3,12 @@
 import styled, { css } from 'styled-components';
 
 export const Section = styled.section`
-  width: 100vw;
-  height: 100vh;
-  margin-bottom: 9px;
-  /* max-height: 100vh; */
-
-  overflow-x: auto;
+  max-width: 100vw;
+  max-height: 100vh; 
+  // overflow-y:none;
+  background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 
   ${props =>
     props.backgroung === null &&
@@ -43,9 +42,10 @@ export const Section = styled.section`
   }
 
   //--------
-  @media (min-width: 768px) {
+  @media (min-width: 768px) and (max-width: 1439px){
     width: 100vw;
-    /* max-height: 100vh; */
+    height: 95vh;
+    // height: 95.1vh;
     padding: 0px 40px;
     ${props =>
       props.backgroung !== null &&
@@ -62,10 +62,11 @@ export const Section = styled.section`
   }
 
   //--------
-  @media (min-width: 1439px) {
+  @media (min-width: 1440px) {
     width: 100%;
     padding: unset;
-    max-height: 100vh;
+    height: 92.1vh;
+    // overflow-y:none;
     ${props =>
       props.backgroung !== null &&
       css`
@@ -129,7 +130,7 @@ export const SectionBoards = styled.section`
 
   ::-webkit-scrollbar {
     height: 12px;
-    width: 100w;
+    width: 100vw;
     padding-bottom: 5px;
   }
 
