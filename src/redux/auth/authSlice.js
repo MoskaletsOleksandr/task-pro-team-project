@@ -2,22 +2,20 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   SignUpThunk,
   SignInThunk,
-  GetThemeThunk,
   LogOutThunk,
   SendLetterThunk,
   GetCurrentUserThunk,
   UpdateUserPhotoThunk,
-  UpdateUserThunk
- 
-
+  UpdateUserThunk,
+  UpdateThemeThunk,
 } from './thunks';
 import {
   handleGetCurrentUserThunkFulfilled,
   handleGetCurrentUserThunkPending,
   handleGetCurrentUserThunkRejected,
-  handleGetThemeFulfilled,
-  handleGetThemePending,
-  handleGetThemeRejected,
+  handleUpdateThemeFulfilled,
+  handleUpdateThemePending,
+  handleUpdateThemeRejected,
   handleLogOutFulfilled,
   handleLogOutPending,
   handleLogOutRejected,
@@ -29,7 +27,7 @@ import {
   handleThunkPending,
   handleThunkRejected,
   handlerUserUpdate,
-  handlerUserUpdatePhoto
+  handlerUserUpdatePhoto,
 } from './handlers';
 import { setToken } from 'api/axiosConfig';
 
@@ -42,7 +40,6 @@ const initialState = {
   isRefreshing: false,
   accessToken: '',
   refreshToken: '',
- 
 };
 
 const authSlice = createSlice({
@@ -61,9 +58,9 @@ const authSlice = createSlice({
     builder
       .addCase(SignUpThunk.fulfilled, handleSignUpThunkFullfilled)
       .addCase(SignInThunk.fulfilled, handleSignInFulfilled)
-      .addCase(GetThemeThunk.fulfilled, handleGetThemeFulfilled)
-      .addCase(GetThemeThunk.pending, handleGetThemePending)
-      .addCase(GetThemeThunk.rejected, handleGetThemeRejected)
+      .addCase(UpdateThemeThunk.fulfilled, handleUpdateThemeFulfilled)
+      .addCase(UpdateThemeThunk.pending, handleUpdateThemePending)
+      .addCase(UpdateThemeThunk.rejected, handleUpdateThemeRejected)
       .addCase(LogOutThunk.fulfilled, handleLogOutFulfilled)
       .addCase(LogOutThunk.pending, handleLogOutPending)
       .addCase(LogOutThunk.rejected, handleLogOutRejected)
@@ -83,7 +80,7 @@ const authSlice = createSlice({
       }, handleThunkPending)
       .addMatcher(action => {
         action.type.endsWith('/rejected');
-      }, handleThunkRejected)
+      }, handleThunkRejected);
   },
 });
 

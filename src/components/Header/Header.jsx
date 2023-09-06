@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import UserInfo from 'components/UserInfo/UserInfo';
 import { UpdateThemeThunk } from 'redux/auth/thunks';
-import { useTheme } from '../hooks/useTheme';
 
 import {
   Container,
@@ -19,12 +18,9 @@ import {
 import sprite from '../../images/sprite.svg';
 
 const Header = ({ openSidebar }) => {
-  const { theme, setTheme } = useTheme();
-  const [selectedTheme, setSelectedTheme] = useState('dark');
-
-  const dispatch = useDispatch();
-
+  const theme = useSelector(state => state.auth.user.theme);
   const [isCustomOptionListOpen, setCustomOptionListOpen] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     document.body.classList.add(theme);
@@ -37,24 +33,8 @@ const Header = ({ openSidebar }) => {
     setCustomOptionListOpen(!isCustomOptionListOpen);
   };
 
-  const handleLightThemeClick = () => {
-    setTheme('light');
-    setSelectedTheme('light');
-    dispatch(UpdateThemeThunk('light'));
-    toggleCustomOptionList();
-  };
-
-  const handleDarkThemeClick = () => {
-    setTheme('dark');
-    setSelectedTheme('dark');
-    dispatch(UpdateThemeThunk('dark'));
-    toggleCustomOptionList();
-  };
-
-  const handleVioletThemeClick = () => {
-    setTheme('violet');
-    setSelectedTheme('violet');
-    dispatch(UpdateThemeThunk('violet'));
+  const handleThemeClick = selectedTheme => {
+    dispatch(UpdateThemeThunk({ theme: selectedTheme }));
     toggleCustomOptionList();
   };
 
@@ -81,22 +61,22 @@ const Header = ({ openSidebar }) => {
         <CustomSelect theme={theme}>
           <CustomOptionList open={isCustomOptionListOpen}>
             <CustomOption
-              onClick={() => handleLightThemeClick()}
-              selected={selectedTheme === 'light'}
+              onClick={() => handleThemeClick('light')}
+              selected={theme === 'light'}
             >
               Light
             </CustomOption>
 
             <CustomOption
-              onClick={() => handleDarkThemeClick()}
-              selected={selectedTheme === 'dark'}
+              onClick={() => handleThemeClick('dark')}
+              selected={theme === 'dark'}
             >
               Dark
             </CustomOption>
 
             <CustomOption
-              onClick={() => handleVioletThemeClick('violet')}
-              selected={selectedTheme === 'violet'}
+              onClick={() => handleThemeClick('violet')}
+              selected={theme === 'violet'}
             >
               Violet
             </CustomOption>

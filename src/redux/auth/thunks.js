@@ -3,11 +3,11 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   signUp,
   login,
-  getTheme,
   logOut,
   sendHelpLetter,
   getCurrentUser,
   updateUser,
+  updateTheme,
   // updateUserPhoto
 } from 'api/api_auth/api';
 import { authInstance, setToken } from 'api/axiosConfig';
@@ -58,43 +58,14 @@ export const LogOutThunk = createAsyncThunk(
   }
 );
 
-export const GetThemeThunk = createAsyncThunk(
-  'auth/theme',
-  async (body, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const currentToken = state.auth.accessToken;
-    const id = state.auth.user.id;
-    if (currentToken === '' || !id) {
-      return thunkAPI.rejectWithValue('Unable to fetch user');
-    }
-
-    try {
-      setToken(`Bearer ${currentToken}`);
-      const response = await getTheme(body);
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
 export const UpdateThemeThunk = createAsyncThunk(
-  'auth/updateTheme',
-  async (theme, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const currentToken = state.auth.accessToken;
-    const id = state.auth.user.id;
-
-    if (currentToken === '' || !id) {
-      return thunkAPI.rejectWithValue('Unable to update theme');
-    }
-
+  'boards/updateTheme',
+  async (theme, { rejectWithValue }) => {
     try {
-      setToken(`Bearer ${currentToken}`);
-      const response = await getTheme({ theme });
-      return response.data;
+      const data = await updateTheme(theme);
+      return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -140,20 +111,18 @@ export const GetCurrentUserThunk = createAsyncThunk(
   }
 );
 
-
 export const UpdateUserPhotoThunk = createAsyncThunk(
   'auth/updateUserPhoto',
-  async ( imageFile , { rejectWithValue }) => {
+  async (imageFile, { rejectWithValue }) => {
     try {
-      console.log(imageFile)
+      console.log(imageFile);
       const formData = new FormData();
       formData.append('photo', imageFile);
-        const { data } = await authInstance.patch('users/photo', formData, {
+      const { data } = await authInstance.patch('users/photo', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
       return data;
-     
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -164,10 +133,9 @@ export const UpdateUserThunk = createAsyncThunk(
   'auth/updateUser',
   async ({ userData }, { rejectWithValue }) => {
     try {
-      
       // console.log(userData)
       const updatedUser = await updateUser(userData);
-     
+
       // console.log("user:", userData);
       return updatedUser;
     } catch (error) {

@@ -33,18 +33,14 @@ export const updateUser = async body => {
 // export const updateUserPhoto = async (imageFile) => {
 //   console.log(imageFile)
 //   const response = await authInstance.patch('users/photo', imageFile);
-  
+
 //   return response.data
 // }
 
 //theme
-export const getTheme = async body => {
-  const response = await authInstance.patch('users/{id}/theme', body);
-  return response.data;
-};
 
-export const updateTheme = async (id, theme) => {
-  const response = await authInstance.patch(`users/${id}/theme`, { theme });
+export const updateTheme = async theme => {
+  const response = await authInstance.patch(`users/theme`, theme);
   return response.data;
 };
 

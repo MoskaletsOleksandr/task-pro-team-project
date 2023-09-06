@@ -65,11 +65,11 @@ export const CustomOption = styled.li`
     color: var(--header-theme-select-text-color-hover);
   }
 
-  /* ${props =>
+  ${props =>
     props.selected &&
     `
-      color: #bedbb0;
-    `} */
+      color: var(--header-theme-select-text-color-hover)
+    `}
 `;
 
 export const TheamBtn = styled.div`

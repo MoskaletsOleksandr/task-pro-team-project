@@ -37,16 +37,16 @@ export const handleLogOutRejected = (state, { error, payload }) => {
   state.error = error ? error.message : payload;
   state.isLoading = false;
 };
-export const handleGetThemeFulfilled = (state, { payload }) => {
+export const handleUpdateThemeFulfilled = (state, { payload }) => {
   state.user.theme = payload.theme;
   state.isLoading = false;
 };
-export const handleGetThemePending = (state, { payload }) => {
+export const handleUpdateThemePending = (state, { payload }) => {
   state.error = null;
   state.isLoading = true;
 };
 
-export const handleGetThemeRejected = (state, { error, payload }) => {
+export const handleUpdateThemeRejected = (state, { error, payload }) => {
   state.error = error ? error.message : payload;
   state.isLoading = false;
 };
@@ -90,17 +90,11 @@ export const handleGetCurrentUserThunkRejected = (
   state.isRefreshing = false;
 };
 
-export const handlerUserUpdatePhoto = (
-  state, { payload }) => {
-  state.user = payload.user; 
-  }
+export const handlerUserUpdatePhoto = (state, { payload }) => {
+  state.user = payload.user;
+};
 
-;
-
-export const handlerUserUpdate = (
-  state, { payload }) => {
-  console.log(payload)
-   state.user  = payload.user
-  }
-
-
+export const handlerUserUpdate = (state, { payload }) => {
+  console.log(payload);
+  state.user = payload.user;
+};
