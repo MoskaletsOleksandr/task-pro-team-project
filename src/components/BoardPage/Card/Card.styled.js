@@ -12,7 +12,6 @@ const CustomCard = styled.div`
   border-left: 4px solid ${props => props.borderColor};
   &:hover{
     background-color: var(--card-hover);
- 
   }
 
   @media screen and (max-width: 300px) {
@@ -22,7 +21,7 @@ const CustomCard = styled.div`
   min-width: 300px;
 } 
   @media screen and (min-width: 375px) {
-  min-width:334px;
+  min-width: 334px;
 }
 `;
 
@@ -205,7 +204,7 @@ const PopUpItem = styled.div`
 `;
 
 
-// Vit
+
 const BackDropHiden = styled.div`
   display: flex;
   justify-content: center;

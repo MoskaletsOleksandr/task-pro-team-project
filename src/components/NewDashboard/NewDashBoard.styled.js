@@ -6,7 +6,7 @@ export const Section = styled.section`
 `;
 
 export const InfoContainer = styled.div`
-  height: 90vh;
+  height: calc(100vh - 102px);
   widows: 100vh;
   display: flex;
   justify-content: center;
