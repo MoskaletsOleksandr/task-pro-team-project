@@ -33,6 +33,7 @@ export const ModalInput = styled.input`
   background-color: ${props =>
     props.backgroundColor || 'var(--modal-input-bg-color)'};
   color: ${props => props.color || 'var(--modal-input-text-color)'};
+  accent-color: ${props => props.accentColor || 'var(--modal-input-text-color)'};
   outline: transparent;
   opacity: 0.4;
   transition: opacity var(--timing-function);
@@ -127,6 +128,19 @@ export const ModalImg = styled.div`
     props.border || '1px solid var(--modal-input-border-color)'};
   border-radius: ${props => props.borderRadius || '6px'};
   cursor: pointer; 
+  ::after{
+    opacity:  ${props => props.radioChecked || 0};
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    display: flex;    
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid white;
+  }
 `;
 
 export const ModalButton = styled.button`
@@ -150,6 +164,7 @@ export const ModalButton = styled.button`
   color: ${props => props.color || 'var(--modal-btn-text-color)'};
   margin-top: ${props => props.marginTop || '0px'};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+  
 
   &:hover,
   &:focus {

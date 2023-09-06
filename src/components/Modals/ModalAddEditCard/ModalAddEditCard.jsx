@@ -39,7 +39,8 @@ const ModalAddEditCard = ({
   const today = new Date().toISOString();
   const [deadline, setDeadline] = useState('');
 
-
+  const checked = priority;
+  console.log(priority);
   const handleChangeTitle = e => {
     const { value } = e.currentTarget;
     setTitle(value);
@@ -189,28 +190,26 @@ const ModalAddEditCard = ({
               justifyContent="start"
             >
               {radioButtons.map(({ priority, color }) => {
+                
                 return (
                   <LabelModal key={priority} marginBottom="0px">
                     <InputModal
                       onChange={onChangeColor}
-                      checked={
-                        !visible
-                          ? priority === { priority }
-                            ? true
-                            : false
-                          : priorityEditTask
-                      }
+                      // checked={!visible? priority === { priority }? true : false : priorityEditTask}
+                      checked={checked === priority}
                       type="radio"
                       name="labelColor"
                       value={priority}
-                      display="none"
+                      accentColor={color}
+                      display = {'none'}
                       aria-label={priority}
                     />
                     <ImgModal
                       width="14px"
                       height="14px"
                       backgroundColor={color}
-                      border="transparent"
+                      radioChecked= {checked === priority ? 1:0 }
+                      border={color} 
                       borderRadius="50%"
                     />
                   </LabelModal>
