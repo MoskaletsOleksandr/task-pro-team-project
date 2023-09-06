@@ -6,6 +6,10 @@ import {
   LogOutThunk,
   SendLetterThunk,
   GetCurrentUserThunk,
+  UpdateUserPhotoThunk,
+  UpdateUserThunk
+ 
+
 } from './thunks';
 import {
   handleGetCurrentUserThunkFulfilled,
@@ -24,6 +28,8 @@ import {
   handleSignUpThunkFullfilled,
   handleThunkPending,
   handleThunkRejected,
+  handlerUserUpdate,
+  handlerUserUpdatePhoto
 } from './handlers';
 import { setToken } from 'api/axiosConfig';
 
@@ -36,6 +42,7 @@ const initialState = {
   isRefreshing: false,
   accessToken: '',
   refreshToken: '',
+ 
 };
 
 const authSlice = createSlice({
@@ -69,12 +76,14 @@ const authSlice = createSlice({
       )
       .addCase(GetCurrentUserThunk.pending, handleGetCurrentUserThunkPending)
       .addCase(GetCurrentUserThunk.rejected, handleGetCurrentUserThunkRejected)
+      .addCase(UpdateUserPhotoThunk.fulfilled, handlerUserUpdatePhoto)
+      .addCase(UpdateUserThunk.fulfilled, handlerUserUpdate)
       .addMatcher(action => {
         action.type.endsWith('/pending');
       }, handleThunkPending)
       .addMatcher(action => {
         action.type.endsWith('/rejected');
-      }, handleThunkRejected);
+      }, handleThunkRejected)
   },
 });
 

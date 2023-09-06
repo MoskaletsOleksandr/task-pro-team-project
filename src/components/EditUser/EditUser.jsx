@@ -50,6 +50,9 @@ const EditUser = ({ onClose }) => {
   };
 
   useEffect(() => {
+    if (userData.photo) {
+      setImageUrl(userData.photo)
+    }
     if (imageFile) {
       const reader = new FileReader();
       reader.onload = event => {

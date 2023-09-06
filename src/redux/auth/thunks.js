@@ -8,7 +8,7 @@ import {
   sendHelpLetter,
   getCurrentUser,
   updateUser,
-  updateUserPhoto
+  // updateUserPhoto
 } from 'api/api_auth/api';
 import { authInstance, setToken } from 'api/axiosConfig';
 import { resetBoards } from 'redux/dashboards/slise';
