@@ -1,4 +1,4 @@
-import { toast } from "react-hot-toast";
+import { toast } from 'react-hot-toast';
 
 // export const addTaskToBoard = (board, task) => {
 //   const columnId = task.columnId;
@@ -23,23 +23,19 @@ import { toast } from "react-hot-toast";
 // };
 
 export const addTaskToBoard = (board, task) => {
-  try {
-    const columnId = task.columnId;
+  const columnId = task.columnId;
 
-    const updatedBoard = JSON.parse(JSON.stringify(board));
+  const updatedBoard = JSON.parse(JSON.stringify(board));
 
-    const column = updatedBoard.columns.find(col => col._id === columnId);
+  const column = updatedBoard.columns.find(col => col._id === columnId);
 
-    if (column) {
-      column.tasks.push(task);
-      toast.success('Task added successfully to the board.');
-    } else {
-      throw new Error(`Column with ID ${columnId} not found.`);
-    }
+  if (!task.title) {
 
-    return updatedBoard;
-  } catch (error) {
-    toast.error('Error adding task to the board.');
-    return board; 
+    toast.error('Task title is required'); 
+    return updatedBoard; 
   }
+
+  column.tasks.push(task);
+
+  return updatedBoard;
 };
