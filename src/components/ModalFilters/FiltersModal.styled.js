@@ -59,6 +59,7 @@ export const PriorityLabel = styled.label`
   line-height: 18px;
   letter-spacing: -0.02em;
   color: var(--filter-popup-secondary-text-color);
+  transition: color 350ms;
 `;
 
 export const AllColor = styled.p`
@@ -104,14 +105,15 @@ export const RadioCustom = styled.div`
   ::before {
     opacity: ${props => (props.checked ? 1 : 0)};
     position: absolute;
-    left: calc(100% / 2 - 18px / 3);
-    top: calc(100% / 2 - 18px / 3);
+    left: calc(2px);
+    top: calc(2px);
     display: flex;
     content: '';
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     background-color: transparent;
     border: 2px solid white;
+    transition: opacity 350ms;
   }
 `;
