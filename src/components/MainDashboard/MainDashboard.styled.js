@@ -108,13 +108,7 @@ export const BtnFilters = styled.button`
   border-radius: 3px;
   background-color: var(--screens-page-bg-color);
   cursor: pointer;
-  &:hover {
-    scale: 1.04;
-    transition: scale 350ms;
-    box-shadow: 2px 1px 3px 2px rgba(0, 0, 0, 0.7);
-    -webkit-box-shadow: 2px 1px 3px 2px rgba(0, 0, 0, 0.7);
-    -moz-box-shadow: 2px 1px 3px 2px rgba(0, 0, 0, 0.7);
-  }
+  
 `;
 
 export const SectionBoards = styled.section`
@@ -186,7 +180,7 @@ export const BtnAddColumn = styled.button`
 
   &:hover,
   :focus {
-    background-color: var(--column-add-btn-bg-color-hover);
+    background-color: var(--column-add-btn-bg-color-hover);   
     transform: background-color;
   }
 `;
