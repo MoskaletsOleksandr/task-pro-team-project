@@ -16,6 +16,7 @@ import {
   FilterItem,
   FilterList,
   PriorityLabel,
+  RadioCustom,
 } from './FiltersModal.styled';
 // import { radioButtons } from 'components/Modals/ModalAddEditCard/radioBattons';
 
@@ -64,7 +65,7 @@ const FiltersModal = props => {
         <AllColor>Label color</AllColor>
         <AllLabels>
           <InputRadioBtn
-            display = {'none'}
+            display={'none'}
             type="radio"
             value="all"
             checked={selectedFilter === 'all'}
@@ -75,7 +76,7 @@ const FiltersModal = props => {
         </AllLabels>
       </WraperAllColor>
       {/* List */}
-      <FilterList>      
+      <FilterList>
         <FilterItem>
           <PriorityLabel
             style={
@@ -85,14 +86,18 @@ const FiltersModal = props => {
             }
           >
             <InputRadioBtn
-              display = {'none'}
+              display={'none'}
               type="radio"
               value="without"
               checked={selectedFilter === 'without'}
               name="filters"
               onChange={handleChange}
-              backgroundColor= 'var(--filter-without-priority-color)'
+              backgroundColor="var(--filter-without-priority-color)"
             />
+            <RadioCustom
+              checked={selectedFilter === 'without'}
+              backgroundColor="var(--filter-without-priority-color)"
+            ></RadioCustom>
             Without priority
           </PriorityLabel>
         </FilterItem>
@@ -106,14 +111,17 @@ const FiltersModal = props => {
             }
           >
             <InputRadioBtn
-              display = {'none'}
+              display={'none'}
               type="radio"
               value="low"
               checked={selectedFilter === 'low'}
               name="filters"
               onChange={handleChange}
-              backgroundColor= 'var(--filter-low-color)'
             />
+            <RadioCustom
+              checked={selectedFilter === 'low'}
+              backgroundColor="var(--filter-low-color)"
+            ></RadioCustom>
             Low
           </PriorityLabel>
         </FilterItem>
@@ -126,14 +134,18 @@ const FiltersModal = props => {
             }
           >
             <InputRadioBtn
-              display = {'none'}
+              display={'none'}
               type="radio"
               value="medium"
               checked={selectedFilter === 'medium'}
               name="filters"
               onChange={handleChange}
-              backgroundColor= 'var(--filter-medium-color)'
+              backgroundColor="var(--filter-medium-color)"
             />
+            <RadioCustom
+              checked={selectedFilter === 'medium'}
+              backgroundColor="var(--filter-medium-color)"
+            ></RadioCustom>
             Medium
           </PriorityLabel>
         </FilterItem>
@@ -147,14 +159,18 @@ const FiltersModal = props => {
             }
           >
             <InputRadioBtn
-              display = {'none'}
+              display={'none'}
               type="radio"
               value="high"
               checked={selectedFilter === 'high'}
               name="filters"
               onChange={handleChange}
-              backgroundColor= 'var(--filter-high-color)'
+              backgroundColor="var(--filter-high-color)"
             />
+            <RadioCustom
+              checked={selectedFilter === 'high'}
+              backgroundColor="var(--filter-high-color)"
+            ></RadioCustom>
             High
           </PriorityLabel>
         </FilterItem>

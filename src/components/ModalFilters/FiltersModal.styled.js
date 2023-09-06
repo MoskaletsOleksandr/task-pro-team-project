@@ -38,19 +38,15 @@ export const FilterItem = styled.li`
 
   &:nth-of-type(1) {
     accent-color: var(--filter-without-priority-color);
-   
   }
   &:nth-of-type(2) {
     accent-color: var(--filter-low-color);
-   
   }
   &:nth-of-type(3) {
     accent-color: var(--filter-medium-color);
-  
   }
   &:nth-of-type(4) {
     accent-color: var(--filter-high-color);
-    
   }
 `;
 
@@ -62,8 +58,8 @@ export const PriorityLabel = styled.label`
   font-size: 12px;
   line-height: 18px;
   letter-spacing: -0.02em;
-
   color: var(--filter-popup-secondary-text-color);
+  transition: color 350ms;
 `;
 
 export const AllColor = styled.p`
@@ -89,33 +85,35 @@ export const AllLabels = styled.label`
 `;
 
 export const InputRadioBtn = styled.input`
-position: relative;
+  position: relative;
   display: ${props => props.display || 'flex'};
   transform: scale(1.6);
   margin-right: 16px;
   /* background: red; */
- 
-  ::before{
+`;
+export const RadioCustom = styled.div`
+  position: relative;
+  margin-right: 8px;
+  display: flex;
+
+  content: '';
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: ${props => props.backgroundColor};
+
+  ::before {
+    opacity: ${props => (props.checked ? 1 : 0)};
     position: absolute;
+    left: calc(2px);
+    top: calc(2px);
     display: flex;
     content: '';
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    background-color:${props => props.backgroundColor}; ;
-      
-  }
-  ::after{
-    opacity:  ${props => props.checked?  1:0};
-    position: absolute;
-    left: calc(50% - 5px);;
-    top: calc(50% - 5px);;
-    display: flex;    
-    content: '';
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
     background-color: transparent;
     border: 2px solid white;
+    transition: opacity 350ms;
   }
 `;
