@@ -129,7 +129,7 @@ export const ModalImg = styled.div`
   border-radius: ${props => props.borderRadius || '6px'};
   cursor: pointer; 
   ::after{
-    opacity:  ${props => props.radioChecked || 1};
+    opacity:  ${props => props.radioChecked || 0};
     position: absolute;
     left: 1px;
     top: 1px;
