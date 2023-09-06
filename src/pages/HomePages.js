@@ -11,11 +11,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import Sidebar from 'components/Sidebar/Sidebar';
 import { getAllBackgroundsThunk } from 'redux/dashboards/thunks';
 import { useMediaQuery } from 'react-responsive';
+import { setToken } from 'api/axiosConfig';
+import { GetCurrentUserThunk } from 'redux/auth/thunks';
 
 const HomePage = () => {
   const dispatch = useDispatch();
   const [openedSidebar, setOpenedSidebar] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 1439 });
+
+  useEffect(() => {
+    // const authData = JSON.parse(localStorage.getItem('persist:auth'));
+
+    // if (authData && authData.accessToken) {
+    //   setToken(`Bearer ${authData.accessToken}`);
+    dispatch(GetCurrentUserThunk());
+    // }
+  }, [dispatch]);
 
   useEffect(() => {
     const fetchBackgrounds = async () => {
