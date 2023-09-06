@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Sidebar from 'components/Sidebar/Sidebar';
 import { getAllBackgroundsThunk } from 'redux/dashboards/thunks';
 import { useMediaQuery } from 'react-responsive';
-import { setToken } from 'api/axiosConfig';
+// import { setToken } from 'api/axiosConfig';
 import { GetCurrentUserThunk } from 'redux/auth/thunks';
 
 const HomePage = () => {
