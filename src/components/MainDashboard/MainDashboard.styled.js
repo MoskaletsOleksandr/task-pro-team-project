@@ -82,7 +82,6 @@ export const Section = styled.section`
     height: calc(100vh - 68px);
     padding: 0px 25px;
     /* max-height: 100vh; */
-   
   }
 `;
 
@@ -111,7 +110,6 @@ export const BtnFilters = styled.button`
   border-radius: 3px;
   background-color: var(--screens-page-bg-color);
   cursor: pointer;
-  
 `;
 
 export const SectionBoards = styled.section`
@@ -182,7 +180,7 @@ export const BtnAddColumn = styled.button`
 
   &:hover,
   :focus {
-    background-color: var(--column-add-btn-bg-color-hover);   
+    background-color: var(--column-add-btn-bg-color-hover);
     transform: background-color;
   }
 `;
