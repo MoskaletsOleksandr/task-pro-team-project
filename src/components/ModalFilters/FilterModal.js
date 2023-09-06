@@ -62,15 +62,10 @@ const FiltersModal = props => {
       <FiltersTitle>Filters</FiltersTitle>
       <WraperAllColor>
         <AllColor>Label color</AllColor>
-        <AllLabels
-        // style={
-        //   selectedFilter === 'all'
-        //     ? { color: 'var(--filter-popup-primary-text-color)' }
-        //     : {}
-        // }
-        >
+        <AllLabels>
           <InputRadioBtn
-            style={{ opacity: 0 }}
+            // style={{ opacity: 0 }}
+            display = {'none'}
             type="radio"
             value="all"
             checked={selectedFilter === 'all'}
@@ -81,29 +76,7 @@ const FiltersModal = props => {
         </AllLabels>
       </WraperAllColor>
       {/* List */}
-      <FilterList>
-        {/* {radioButtons.map(({ priority, color }) => {
-          return (
-            <FilterItem>
-              <PriorityLabel
-                style={
-                  selectedFilter === 'without'
-                    ? { color: 'var(--filter-popup-primary-text-color)' }
-                    : {}
-                }
-              >
-                <InputRadioBtn
-                  type="radio"
-                  value="without"
-                  checked={selectedFilter === 'without'}
-                  name="filters"
-                  onChange={handleChange}
-                />
-                Without priority
-              </PriorityLabel>
-            </FilterItem>
-          );
-        })} */}
+      <FilterList>      
         <FilterItem>
           <PriorityLabel
             style={
@@ -118,6 +91,7 @@ const FiltersModal = props => {
               checked={selectedFilter === 'without'}
               name="filters"
               onChange={handleChange}
+              backgroundColor= 'var(--filter-without-priority-color)'
             />
             Without priority
           </PriorityLabel>
@@ -137,6 +111,7 @@ const FiltersModal = props => {
               checked={selectedFilter === 'low'}
               name="filters"
               onChange={handleChange}
+              backgroundColor= 'var(--filter-low-color)'
             />
             Low
           </PriorityLabel>
@@ -155,6 +130,7 @@ const FiltersModal = props => {
               checked={selectedFilter === 'medium'}
               name="filters"
               onChange={handleChange}
+              backgroundColor= 'var(--filter-medium-color)'
             />
             Medium
           </PriorityLabel>
@@ -174,6 +150,7 @@ const FiltersModal = props => {
               checked={selectedFilter === 'high'}
               name="filters"
               onChange={handleChange}
+              backgroundColor= 'var(--filter-high-color)'
             />
             High
           </PriorityLabel>

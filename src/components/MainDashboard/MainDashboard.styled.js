@@ -9,6 +9,7 @@ export const Section = styled.section`
   /* max-height: 100vh; */
   overflow-x: auto;
   background-size: cover;
+  background-repeat: no-repeat;
 
   ${props =>
     props.backgroung === null &&
@@ -39,13 +40,6 @@ export const Section = styled.section`
   //--------
   @media screen and (min-width: 375px) {
     padding: 0px 20px;
-  }
-
-  //--------
-  @media (min-width: 768px) {
-    width: 100vw;
-    /* max-height: 100vh; */
-    padding: 0px 40px;
     ${props =>
       props.backgroung !== null &&
       css`
@@ -61,10 +55,10 @@ export const Section = styled.section`
   }
 
   //--------
-  @media (min-width: 1439px) {
-    width: 100%;
-    padding: 0px 25px;
-    max-height: 100vh;
+  @media (min-width: 768px) {
+    width: 100vw;
+    /* max-height: 100vh; */
+    padding: 0px 40px;
     ${props =>
       props.backgroung !== null &&
       css`
@@ -77,6 +71,14 @@ export const Section = styled.section`
           background-image: url(${props => props.backgroung.desktopRetainaURL});
         `};
     }
+  }
+
+  //--------
+  @media (min-width: 1439px) {
+    width: 100%;
+    padding: 0px 25px;
+    max-height: 100vh;
+   
   }
 `;
 

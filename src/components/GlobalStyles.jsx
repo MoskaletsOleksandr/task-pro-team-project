@@ -117,6 +117,7 @@ export const GlobalStyles = () => {
             --filter-low-color: #8FA1D0;
             --filter-medium-color: #E09CB5;
             --filter-high-color: #BEDBB0;
+            --filter-checked-color: #ffffff; //vit
             
             //variables for columns
             --vertical-scroll-bar-bg-color: #121212;
@@ -229,6 +230,7 @@ export const GlobalStyles = () => {
             --filter-low-color: #8FA1D0;
             --filter-medium-color: #E09CB5;
             --filter-high-color: #BEDBB0;
+            --filter-checked-color: #161616; //vit
 
             //variables for columns
             --vertical-scroll-bar-bg-color: #1616161A;
@@ -340,6 +342,7 @@ export const GlobalStyles = () => {
             --filter-low-color: #8FA1D0;
             --filter-medium-color: #E09CB5;
             --filter-high-color: #BEDBB0;
+            --filter-checked-color: #5255BC; //vit
 
             //variables for columns
             --vertical-scroll-bar-bg-color: #B8BCFD;
