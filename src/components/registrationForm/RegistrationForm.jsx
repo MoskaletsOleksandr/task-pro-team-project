@@ -9,7 +9,6 @@ import { authValidationSchema } from 'validation/authValidation';
 import { useDispatch } from 'react-redux';
 import { SignUpThunk } from 'redux/auth/thunks';
 import { toast } from 'react-hot-toast';
-import { GoogleButton } from 'components/common/GoogleButton/GoogleButton';
 
 function RegistrationForm() {
   const dispatch = useDispatch();
@@ -68,7 +67,6 @@ function RegistrationForm() {
             />
 
             <AuthButton>Register Now </AuthButton>
-            <GoogleButton />
           </Form>
         )}
       </Formik>

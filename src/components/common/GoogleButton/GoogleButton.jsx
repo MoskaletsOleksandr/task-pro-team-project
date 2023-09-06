@@ -24,7 +24,6 @@ const StyledContainer = styled.div`
   border-radius: 8px;
   color: #161616;
   padding-left: 40px;
-  margin-top: 20px;
 
   @media screen and (max-width: 767px) {
     width: 100%;

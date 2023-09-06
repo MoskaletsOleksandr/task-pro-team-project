@@ -1,3 +1,4 @@
+import { GoogleButton } from 'components/common/GoogleButton/GoogleButton';
 import photoTitle from '../../images/Image-title.png';
 import sprite from '../../images/sprite.svg';
 import {
@@ -35,6 +36,7 @@ const WelcomePage = () => {
         <Nav>
           <RegistrationBtn to="auth/register">Registration</RegistrationBtn>
           <LoginBtn to="auth/login">Log In</LoginBtn>
+          <GoogleButton />
         </Nav>
       </ContentMain>
     </Container>
