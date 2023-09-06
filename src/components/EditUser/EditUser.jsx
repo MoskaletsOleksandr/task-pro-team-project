@@ -74,8 +74,8 @@ const EditUser = ({ onClose }) => {
     const { name, email, password } = e.target.elements;
 
     const newUserData = {
-      name: name.value || userName,
-      email: email.value || userEmail,
+      name: userName,
+      email: userEmail,
       
     };
 
