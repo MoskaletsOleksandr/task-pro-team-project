@@ -1,17 +1,22 @@
+import React from 'react';
 import BoardList from 'components/BoardList/BoardList';
 import LogoutBtn from 'components/LogoutBtn/LogoutBtn';
 import NeedHelp from 'components/NeedHelp/NeedHelp';
 import LogoComponent from 'components/LogoComponent/LogoComponent';
-import { Container } from './Sidebar.styled';
+import { Container, BackDropHidden } from './Sidebar.styled';
+
 
 function Sidebar({ isOpen }) {
   return (
-    <Container className="sidebar" isOpen={isOpen}>
-      <LogoComponent />
-      <BoardList />
-      <NeedHelp />
-      <LogoutBtn />
-    </Container>
+    <>
+      {isOpen && <BackDropHidden isOpen={isOpen} />}
+      <Container className="sidebar" isOpen={isOpen}>
+        <LogoComponent />
+        <BoardList />
+        <NeedHelp />
+        <LogoutBtn />
+      </Container>
+    </>
   );
 }
 

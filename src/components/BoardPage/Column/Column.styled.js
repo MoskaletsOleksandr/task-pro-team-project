@@ -38,6 +38,7 @@ const TitleIcon = styled.div`
   padding-top: 18px;
   padding-bottom: 17px;
   margin-bottom: 14px;
+  margin-right: 8px;
   align-items: center;
   justify-content: space-between;
   
@@ -49,7 +50,6 @@ const TitleIcon = styled.div`
 } 
   @media screen and (min-width: 375px) {
   width:334px;
-
 }
 `;
 
@@ -74,7 +74,8 @@ const ScrollContent = styled.div`
 overflow-y: auto;
 padding-right: 8px;
 box-sizing: border-box;
-height:66vh;
+height: calc(100vh - 290px);
+
 
 
 ::-webkit-scrollbar {
