@@ -10,7 +10,7 @@ import {
   updateUser,
   updateUserPhoto
 } from 'api/api_auth/api';
-import { setToken } from 'api/axiosConfig';
+import { authInstance, setToken } from 'api/axiosConfig';
 import { resetBoards } from 'redux/dashboards/slise';
 
 export const SignUpThunk = createAsyncThunk(
@@ -148,7 +148,7 @@ export const UpdateUserPhotoThunk = createAsyncThunk(
       console.log(imageFile)
       const formData = new FormData();
       formData.append('photo', imageFile);
-        const { data } = await updateUserPhoto('/photo', formData, {
+        const { data } = await authInstance.patch('users/photo', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 

@@ -30,10 +30,12 @@ export const updateUser = async body => {
   return response.data;
 };
 
-export const updateUserPhoto = async () => {
-  const response = await authInstance.patch('users/photo');
-  return response.data
-}
+// export const updateUserPhoto = async (imageFile) => {
+//   console.log(imageFile)
+//   const response = await authInstance.patch('users/photo', imageFile);
+  
+//   return response.data
+// }
 
 //theme
 export const getTheme = async body => {
