@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-
 import sprite from '../../images/sprite.svg';
 import { createNewBoardThunk } from 'redux/dashboards/thunks';
 import ButtonForForms from 'components/ButtonForForms/ButtonForForms';
 import ChildButtonNewBoard from 'components/ButtonForForms/ChildButtonNewBoard';
 import { toast } from 'react-hot-toast';
-
 import {
   NewBoardTitle,
   IconTitle,
@@ -22,8 +20,6 @@ import {
   BasicBackground,
 } from './NewBoard.styled';
 import { useNavigate } from 'react-router-dom';
-// import { yupResolver } from '@hookform/resolvers/yup';
-// import { TitleSchema } from 'schemas';
 
 const NewBoard = ({ onClose }) => {
   const {
@@ -32,7 +28,6 @@ const NewBoard = ({ onClose }) => {
     setValue,
     formState: { errors },
   } = useForm({
-    // resolver: yupResolver(TitleSchema),
     mode: 'onChange',
   });
   const [selectedIcon, setSelectedIcon] = useState('');
@@ -74,6 +69,21 @@ const NewBoard = ({ onClose }) => {
   };
 
   const handleCreateBoard = data => {
+    if (!data.title) {
+      toast.error('Title is required');
+      return;
+    }
+
+    if (!data.icon) {
+      toast.error('Icon is required');
+      return;
+    }
+
+    if (!data.background) {
+      toast.error('Background is required');
+      return;
+    }
+
     dispatch(createNewBoardThunk(data))
       .then(() => {
         const normalizedTitle = data.title.toLowerCase().replace(/\s+/g, '-');
@@ -162,9 +172,11 @@ const NewBoard = ({ onClose }) => {
 
         <IconTitle>Icons</IconTitle>
         <IconWrap>{renderIcons()}</IconWrap>
+        <ErrorMessage>{errors.icon?.message}</ErrorMessage>
 
         <BackgroundTitle>Background</BackgroundTitle>
         <BgIcon>{renderBackgrounds()}</BgIcon>
+        <ErrorMessage>{errors.background?.message}</ErrorMessage>
 
         <ButtonForForms
           textButton={() => <ChildButtonNewBoard textContent="Create" />}

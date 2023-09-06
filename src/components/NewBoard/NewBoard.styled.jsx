@@ -115,7 +115,7 @@ export const BackgroundItem = styled.div`
   transition: transform 0.3s;
   background-color: var(--sidebar-active-board-bg-color);
   filter: ${({ isActive }) => (isActive ? 'grayscale(100%)' : 'none')};
-  filter: ${({ isActive }) => (isActive ? 'brightness(60%)' : 'none')};
+  filter: ${({ isActive }) => (isActive ? 'brightness(30%)' : 'none')};
   border-radius: 6px;
   overflow: hidden;
   &:hover {

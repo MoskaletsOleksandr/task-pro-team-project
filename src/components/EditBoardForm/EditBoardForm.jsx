@@ -86,11 +86,16 @@ const EditBoardForm = ({ onClose, boardId }) => {
       id: board._id,
       body: {
         title: data.title,
-        icon: data.icon,
-        background: data.selectedBackgroundId,
+        icon: selectedIcon, // Використовуємо вибрану іконку зі стану selectedIcon
+        background: data.selectedBackgroundId
+          ? data.selectedBackgroundId
+          : selectedBackgroundId._id,
       },
     };
 
+    console.log('====================================');
+    console.log('data: ', data);
+    console.log('====================================');
     dispatch(updateBoardByIdThunk(boardData))
       .unwrap()
       .then(response => {
@@ -101,7 +106,7 @@ const EditBoardForm = ({ onClose, boardId }) => {
         onClose();
       })
       .catch(error => {
-        toast.error('Error occurred while editing the board');
+        toast.error('No fields to update');
         console.error('Error:', error);
       });
 
@@ -183,7 +188,7 @@ const EditBoardForm = ({ onClose, boardId }) => {
         <BackgroundTitle>Background</BackgroundTitle>
         <BgIcon>{renderBackgrounds()}</BgIcon>
         <ButtonForForms
-          textButton={() => <ChildButtonNewBoard textContent="Create" />}
+          textButton={() => <ChildButtonNewBoard textContent="Edit" />}
           type="submit"
         />
       </form>
