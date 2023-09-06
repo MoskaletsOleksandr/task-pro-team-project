@@ -108,12 +108,12 @@ position: relative;
   ::after{
     opacity:  ${props => props.checked?  1:0};
     position: absolute;
-    left: 1px;
-    top: 1px;
+    left: 2px;
+    top: 2px;
     display: flex;    
     content: '';
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background-color: transparent;
     border: 2px solid white;

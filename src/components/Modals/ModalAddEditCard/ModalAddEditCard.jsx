@@ -209,6 +209,7 @@ const ModalAddEditCard = ({
                       height="14px"
                       backgroundColor={color}
                       radioChecked= {checked === priority ? 1:0 }
+                      border={color} 
                       borderRadius="50%"
                     />
                   </LabelModal>

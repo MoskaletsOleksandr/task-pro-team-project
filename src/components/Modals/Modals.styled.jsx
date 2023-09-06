@@ -131,8 +131,8 @@ export const ModalImg = styled.div`
   ::after{
     opacity:  ${props => props.radioChecked || 0};
     position: absolute;
-    left: 1px;
-    top: 1px;
+    left: 2px;
+    top: 2px;
     display: flex;    
     content: '';
     width: 10px;
