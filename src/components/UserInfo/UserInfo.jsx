@@ -15,8 +15,8 @@ const UserInfo = () => {
   const [showModal, setShowModal] = useState(false);
   const user = useSelector(state => state.auth.user);
 
-  const parsedUser = JSON.parse(user);
-  const { name, photo } = parsedUser;
+  // const parsedUser = JSON.parse(user);
+  const { name, photo } = user;
 
   const toggleModal = () => {
     setShowModal(!showModal);
