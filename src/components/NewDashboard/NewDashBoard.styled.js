@@ -11,6 +11,7 @@ export const InfoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
 `;
 
 export const InfoText = styled.p`
@@ -26,4 +27,5 @@ export const InfoText = styled.p`
 
 export const InfoTextAccent = styled.span`
   color: var(--new-dashboadr-text-accent-color);
+  cursor: pointer;
 `;
