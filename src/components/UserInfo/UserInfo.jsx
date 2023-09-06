@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
-
 import ModalEditProfile from 'components/ModalEditProfile';
-
 import sprite from '../../images/sprite.svg';
-
 import {
   UserName,
   IconAvatar,
   Container,
   AvasarSetin,
+  AvatarImg,
+  Name,
 } from './UserInfo.styled';
+import { useSelector } from 'react-redux';
 
 const UserInfo = () => {
   const [showModal, setShowModal] = useState(false);
+  const user = useSelector(state => state.auth.user);
+  let { name, photo } = user;
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -20,11 +22,17 @@ const UserInfo = () => {
 
   return (
     <Container>
-      <UserName>User</UserName>
-      <AvasarSetin>
-        <IconAvatar onClick={toggleModal}>
-          <use href={`${sprite}#icon-avatar`}></use>
-        </IconAvatar>
+      <UserName>
+        <Name>{name}</Name>
+      </UserName>
+      <AvasarSetin onClick={toggleModal}>
+        {photo ? (
+          <AvatarImg src={photo} />
+        ) : (
+          <IconAvatar>
+            <use href={`${sprite}#icon-avatar`}></use>
+          </IconAvatar>
+        )}
         {showModal && (
           <ModalEditProfile closeModal={toggleModal} isOpen={showModal} />
         )}

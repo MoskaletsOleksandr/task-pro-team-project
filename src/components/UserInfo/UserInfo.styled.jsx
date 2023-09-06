@@ -40,3 +40,7 @@ export const AvatarImg = styled.img`
     transform: scale(1.1);
   }
 `;
+
+export const Name = styled.p`
+  font-weight: medium;
+`;
