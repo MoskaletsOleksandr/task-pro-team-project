@@ -4,7 +4,11 @@ import { Formik, Field } from 'formik';
 
 import { UpdateUserSchema } from '../../validation/authValidation';
 
-import { GetCurrentUserThunk, UpdateUserPhotoThunk, UpdateUserThunk } from 'redux/auth/thunks';
+import {
+  GetCurrentUserThunk,
+  UpdateUserPhotoThunk,
+  UpdateUserThunk,
+} from 'redux/auth/thunks';
 
 import sprite from '../../images/sprite.svg';
 
@@ -51,7 +55,7 @@ const EditUser = ({ onClose }) => {
 
   useEffect(() => {
     if (userData.photo) {
-      setImageUrl(userData.photo)
+      setImageUrl(userData.photo);
     }
     if (imageFile) {
       const reader = new FileReader();
@@ -60,9 +64,8 @@ const EditUser = ({ onClose }) => {
       };
       reader.readAsDataURL(imageFile);
     }
-  }, [imageFile]);
+  }, [imageFile, userData.photo]);
 
-  
   const handleFileChange = event => {
     // console.log(event.target.files[0])
     setImageFile(event.target.files[0]);
@@ -71,24 +74,26 @@ const EditUser = ({ onClose }) => {
   const formSubmit = e => {
     e.preventDefault();
 
-    const { name, email, password } = e.target.elements;
+    const {
+      // name, email,
+      password,
+    } = e.target.elements;
 
     const newUserData = {
       name: userName,
       email: userEmail,
-      
     };
 
     if (password.value) {
       newUserData.password = password.value;
     }
-// console.log(newUserData);
+    // console.log(newUserData);
     // if (imageFile) {
     //   newUserData.photo = imageFile;
     // }
 
     dispatch(UpdateUserThunk({ userData: newUserData }));
-    dispatch(UpdateUserPhotoThunk( imageFile ));
+    dispatch(UpdateUserPhotoThunk(imageFile));
 
     onClose();
   };
