@@ -4,7 +4,7 @@ import { Formik, Field } from 'formik';
 
 import { UpdateUserSchema } from '../../validation/authValidation';
 
-import { GetCurrentUserThunk, UpdateUserThunk } from 'redux/auth/thunks';
+import { GetCurrentUserThunk, UpdateUserPhotoThunk, UpdateUserThunk } from 'redux/auth/thunks';
 
 import sprite from '../../images/sprite.svg';
 
@@ -37,7 +37,7 @@ const EditUser = ({ onClose }) => {
 
   const userData = useSelector(state => state.auth.user);
 
-  console.log(userData);
+  // console.log(userData);
 
   const [imageUrl, setImageUrl] = useState('');
   const [imageFile, setImageFile] = useState(null);
@@ -50,6 +50,9 @@ const EditUser = ({ onClose }) => {
   };
 
   useEffect(() => {
+    if (userData.photo) {
+      setImageUrl(userData.photo)
+    }
     if (imageFile) {
       const reader = new FileReader();
       reader.onload = event => {
@@ -59,7 +62,9 @@ const EditUser = ({ onClose }) => {
     }
   }, [imageFile]);
 
+  
   const handleFileChange = event => {
+    // console.log(event.target.files[0])
     setImageFile(event.target.files[0]);
   };
 
@@ -69,19 +74,21 @@ const EditUser = ({ onClose }) => {
     const { name, email, password } = e.target.elements;
 
     const newUserData = {
-      name: name.value || userName,
-      email: email.value || userEmail,
+      name: userName,
+      email: userEmail,
+      
     };
 
     if (password.value) {
       newUserData.password = password.value;
     }
+// console.log(newUserData);
+    // if (imageFile) {
+    //   newUserData.photo = imageFile;
+    // }
 
-    if (imageFile) {
-      newUserData.avatar = imageFile;
-    }
-
-    dispatch(UpdateUserThunk({ id: userData.id, userData: newUserData }));
+    dispatch(UpdateUserThunk({ userData: newUserData }));
+    dispatch(UpdateUserPhotoThunk( imageFile ));
 
     onClose();
   };

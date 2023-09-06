@@ -89,3 +89,18 @@ export const handleGetCurrentUserThunkRejected = (
   state.isLoading = false;
   state.isRefreshing = false;
 };
+
+export const handlerUserUpdatePhoto = (
+  state, { payload }) => {
+  state.user = payload.user; 
+  }
+
+;
+
+export const handlerUserUpdate = (
+  state, { payload }) => {
+  console.log(payload)
+   state.user  = payload.user
+  }
+
+

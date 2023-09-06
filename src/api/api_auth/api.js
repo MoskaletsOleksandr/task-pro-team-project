@@ -26,9 +26,16 @@ export const getCurrentUser = async body => {
 };
 
 export const updateUser = async body => {
-  const response = await authInstance.put('users/{id}/update', body);
+  const response = await authInstance.put('users/update', body);
   return response.data;
 };
+
+// export const updateUserPhoto = async (imageFile) => {
+//   console.log(imageFile)
+//   const response = await authInstance.patch('users/photo', imageFile);
+  
+//   return response.data
+// }
 
 //theme
 export const getTheme = async body => {
