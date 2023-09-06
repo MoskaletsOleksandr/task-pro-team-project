@@ -62,7 +62,7 @@ const FiltersModal = props => {
       <FiltersTitle>Filters</FiltersTitle>
       <WraperAllColor>
         <AllColor>Label color</AllColor>
-        <AllLabels>
+        <AllLabels checked={selectedFilter === 'all'}>
           <InputRadioBtn
             display={'none'}
             type="radio"

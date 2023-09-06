@@ -73,15 +73,18 @@ export const AllColor = styled.p`
 
 export const AllLabels = styled.label`
   display: flex;
-
   margin-left: auto;
-
   font-family: Poppins;
   font-weight: 400;
   font-size: 12px;
   line-height: 18px;
   letter-spacing: -0.02em;
-  color: var(--filter-popup-secondary-text-color);
+  color: ${props =>
+    props.checked ? 'white' : 'var(--filter-popup-secondary-text-color)'};
+  &:hover {
+    color: white;
+    transition: color 350ms;
+  }
 `;
 
 export const InputRadioBtn = styled.input`
