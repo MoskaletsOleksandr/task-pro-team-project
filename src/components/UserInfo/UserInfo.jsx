@@ -14,7 +14,9 @@ import { useSelector } from 'react-redux';
 const UserInfo = () => {
   const [showModal, setShowModal] = useState(false);
   const user = useSelector(state => state.auth.user);
-  let { name, photo } = user;
+
+  const parsedUser = JSON.parse(user);
+  const { name, photo } = parsedUser;
 
   const toggleModal = () => {
     setShowModal(!showModal);
