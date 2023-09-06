@@ -1,23 +1,25 @@
 import { Modal } from 'components/common/Modal';
 import sprite from '../../../images/sprite.svg';
 import { Formik, Form } from 'formik';
-import TitleModal from '../ModalsCommon/TitleModal';
-import LabelModal from '../ModalsCommon/LabelModal';
-import InputModal from '../ModalsCommon/InputModal';
-import TextareaModal from '../ModalsCommon/TextareaModal';
-import ImgModal from '../ModalsCommon/ImgModal';
-import WrapperComponentModal from '../ModalsCommon/WrapperComponentModal';
-import ButtonPlusModal from '../ModalsCommon/ButtonPlusModal';
-import { Calendar } from '../ModalsCommon/Calendar/Calendar';
 import { useEffect, useState } from 'react';
 import { CloseButton, CloseSVG } from 'components/Modal/Modal.styled';
-import { radioButtons } from './radioBattons';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   createNewTaskThunk,
   updateTaskByIdThunk,
 } from 'redux/dashboards/thunks';
 import { toast } from 'react-hot-toast';
+import TextModal from '../ModalsCommon/TextModal/TextModal';
+import RadioLabelModal from '../ModalsCommon/RadioLabelModal/RadioLabelModal';
+import RadioInputModal from '../ModalsCommon/RadioInputModal/RadioInputModal';
+import WrapperComponentModal from '../ModalsCommon/WrapperComponentModal/WrapperComponentModal';
+import TitleModal from '../ModalsCommon/TitleModal/TitleModal';
+import TextareaModal from '../ModalsCommon/TextareaModal/TextareaModal';
+import LabelModal from '../ModalsCommon/LabelModal/LabelModal';
+import InputModal from '../ModalsCommon/InputModal/InputModal';
+import { Calendar } from '../ModalsCommon/Calendar/Calendar';
+import ButtonPlusModal from '../ModalsCommon/ButtonPlusModal/ButtonPlusModal';
+import { radioButtons } from './radioButtons';
 
 const ModalAddEditCard = ({
   closeModal,
@@ -39,7 +41,6 @@ const ModalAddEditCard = ({
   const today = new Date().toISOString();
   const [deadline, setDeadline] = useState('');
 
-
   const handleChangeTitle = e => {
     const { value } = e.currentTarget;
     setTitle(value);
@@ -50,10 +51,10 @@ const ModalAddEditCard = ({
     setText(value);
   };
 
-  const onChangeColor = e => {
-    setPriority(e.target.value);
+  const onChangeColor = e => {    
+    setPriority(e.target.value);    
   };
-
+  
   const handleSubmitAdd = async e => {
     e.preventDefault();
     if (title.trim() === '') {
@@ -88,7 +89,6 @@ const ModalAddEditCard = ({
     }
   };
   
-
   const handleSubmitEdit = async e => {
     e.preventDefault();
     if (title.trim() === '') {
@@ -125,8 +125,7 @@ const ModalAddEditCard = ({
     setText('');
     setDeadline('');
   };
-
-
+  
   useEffect(() => {
     if (nameButton === 'editCard') {
       setVisible(true);
@@ -140,7 +139,7 @@ const ModalAddEditCard = ({
   ]);
 
   return (
-    <Modal width="350px" height="522px" onClose={closeModal}>
+    <Modal onClose={closeModal}>
       <>
         <CloseButton onClick={closeModal}>
           <CloseSVG>
@@ -153,7 +152,7 @@ const ModalAddEditCard = ({
             <LabelModal>
               <InputModal
                 onChange={handleChangeTitle}
-                value={title}
+                value={title}               
                 type="text"
                 name="modalAddEditCardTitle"
                 title="Enter title"
@@ -172,64 +171,49 @@ const ModalAddEditCard = ({
                 placeholder="Comment"
                 maxWidth="302px"
                 height="154px"
-              >
-              </TextareaModal>
+              ></TextareaModal>
             </LabelModal>
-            <TitleModal
-              fontSize="12px"
-              marginBottom="4px"
-              color="var(--modal-secondary-text-color)"
-            >
-              Label color
-            </TitleModal>
+            <TextModal>Label color</TextModal>
             <WrapperComponentModal
               marginBottom="14px"
               gap="8px"
               maxWidth="252px"
               justifyContent="start"
             >
-              {radioButtons.map(({ priority, color }) => {
+              {radioButtons.map(({ priorityButton, color }) => {
                 return (
-                  <LabelModal key={priority} marginBottom="0px">
-                    <InputModal
+                  <RadioLabelModal
+                    key={priorityButton}
+                    backgroundColor={color}
+                  >
+                    <RadioInputModal
                       onChange={onChangeColor}
-                      checked={
-                        !visible
-                          ? priority === { priority }
-                            ? true
-                            : false
-                          : priorityEditTask
-                      }
+                      // checked={                        
+                      //   !visible
+                      //     ? 
+                      //     priority === { priority }
+                      //       ? true
+                      //       : false
+                      //     : priorityEditTask                          
+                      // }
+                      
                       type="radio"
                       name="labelColor"
-                      value={priority}
-                      display="none"
+                      value={priority}                      
+                      accentColor={color}
                       aria-label={priority}
                     />
-                    <ImgModal
-                      width="14px"
-                      height="14px"
-                      backgroundColor={color}
-                      border="transparent"
-                      borderRadius="50%"
-                    />
-                  </LabelModal>
+                  </RadioLabelModal>
                 );
               })}
             </WrapperComponentModal>
-            <TitleModal
-              fontSize="12px"
-              marginBottom="4px"
-              color="var(--modal-secondary-text-color)"
-            >
-              Deadline
-            </TitleModal>
+
+            <TextModal>Deadline</TextModal>
             <WrapperComponentModal marginBottom="0px">
               {!deadline && (
                 <TitleModal
                   marginBottom="0px"
                   fontSize="14px"
-                  fontWeight="500"
                   color="var(--modal-date-text-color)"
                 >
                   Today,

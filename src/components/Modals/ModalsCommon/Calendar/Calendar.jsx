@@ -3,8 +3,9 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
 
 import sprite from '../../../../images/sprite.svg';
-import SvgModal from '../SvgModal';
+
 import { DesktopDatePicker } from '@mui/x-date-pickers';
+import SvgModal from '../SvgModal/SvgModal';
 
 export const Calendar = ({ deadline }) => {
   dayjs().format();

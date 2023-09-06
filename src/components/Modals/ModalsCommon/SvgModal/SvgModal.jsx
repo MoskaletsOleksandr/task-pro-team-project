@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { ModalSvg } from '../Modals.styled';
+import ModalSvg from './ModalSvg';
 
 const SvgModal = ({ children, ...rest }) => {
   return <ModalSvg {...rest}>{children}</ModalSvg>;

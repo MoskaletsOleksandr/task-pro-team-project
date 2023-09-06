@@ -1,8 +1,8 @@
-import ButtonModal from './ButtonModal';
-import SvgModal from './SvgModal';
-import SvgPlusModal from './SvgPlusModal';
+import ButtonModal from '../ButtonModal/ButtonModal';
+import SvgModal from '../SvgModal/SvgModal';
+import SvgPlusModal from '../SvgPlusModal/SvgPlusModal';
 // import WrapperComponentModal from "./WrapperComponentModal";
-import sprite from '../../../images/sprite.svg';
+import sprite from '../../../../images/sprite.svg';
 
 const ButtonPlusModal = ({ onClick, name, children, type, ...rest }) => {
   return (

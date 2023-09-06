@@ -1,4 +1,5 @@
-import { ModalButton } from '../Modals.styled';
+import ModalButton from "./ModalButton.styled";
+
 
 const ButtonModal = ({ onClick, name, children, type, ...rest }) => {
   return (

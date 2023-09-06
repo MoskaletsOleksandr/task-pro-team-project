@@ -1,4 +1,4 @@
-import { ModalTitle } from '../Modals.styled';
+import ModalTitle from "./ModalTitle.styled";
 
 const TitleModal = props => {
   return <ModalTitle {...props} />;
