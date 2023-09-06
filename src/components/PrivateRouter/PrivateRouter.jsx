@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom';
 const PrivateRouter = ({ children }) => {
   const isAuth = useSelector(state => state.auth.user);
 
-  return isAuth ? children : <Navigate to="/auth/register" />;
+  return isAuth ? children : <Navigate to="/" />;
 };
 
 export default PrivateRouter;
