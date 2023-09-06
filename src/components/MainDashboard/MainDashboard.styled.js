@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 export const Section = styled.section`
   width: 100vw;
   height: 100vh;
-  margin-bottom: 9px;
+  /* margin-bottom: 9px; */
   /* max-height: 100vh; */
   overflow-x: auto;
   background-size: cover;
@@ -75,9 +75,10 @@ export const Section = styled.section`
 
   //--------
   @media (min-width: 1439px) {
-    width: 100%;
+    width: calc(100vw - 260px);
+    height: calc(100vh - 68px);
     padding: 0px 25px;
-    max-height: 100vh;
+    /* max-height: 100vh; */
    
   }
 `;
