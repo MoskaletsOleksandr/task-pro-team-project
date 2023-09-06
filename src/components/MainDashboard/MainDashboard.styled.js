@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 export const Section = styled.section`
   width: 100vw;
   height: 100vh;
-  margin-bottom: 9px;
+  /* margin-bottom: 9px; */
   /* max-height: 100vh; */
   overflow-x: auto;
   background-size: cover;
@@ -75,9 +75,10 @@ export const Section = styled.section`
 
   //--------
   @media (min-width: 1439px) {
-    width: 100%;
+    width: calc(100vw - 260px);
+    height: calc(100vh - 68px);
     padding: 0px 25px;
-    max-height: 100vh;
+    /* max-height: 100vh; */
    
   }
 `;
@@ -107,13 +108,7 @@ export const BtnFilters = styled.button`
   border-radius: 3px;
   background-color: var(--screens-page-bg-color);
   cursor: pointer;
-  &:hover {
-    scale: 1.04;
-    transition: scale 350ms;
-    box-shadow: 2px 1px 3px 2px rgba(0, 0, 0, 0.7);
-    -webkit-box-shadow: 2px 1px 3px 2px rgba(0, 0, 0, 0.7);
-    -moz-box-shadow: 2px 1px 3px 2px rgba(0, 0, 0, 0.7);
-  }
+  
 `;
 
 export const SectionBoards = styled.section`
@@ -185,7 +180,7 @@ export const BtnAddColumn = styled.button`
 
   &:hover,
   :focus {
-    background-color: var(--column-add-btn-bg-color-hover);
+    background-color: var(--column-add-btn-bg-color-hover);   
     transform: background-color;
   }
 `;

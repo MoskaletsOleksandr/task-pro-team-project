@@ -64,7 +64,6 @@ const FiltersModal = props => {
         <AllColor>Label color</AllColor>
         <AllLabels>
           <InputRadioBtn
-            // style={{ opacity: 0 }}
             display = {'none'}
             type="radio"
             value="all"
@@ -86,6 +85,7 @@ const FiltersModal = props => {
             }
           >
             <InputRadioBtn
+              display = {'none'}
               type="radio"
               value="without"
               checked={selectedFilter === 'without'}
@@ -106,6 +106,7 @@ const FiltersModal = props => {
             }
           >
             <InputRadioBtn
+              display = {'none'}
               type="radio"
               value="low"
               checked={selectedFilter === 'low'}
@@ -125,6 +126,7 @@ const FiltersModal = props => {
             }
           >
             <InputRadioBtn
+              display = {'none'}
               type="radio"
               value="medium"
               checked={selectedFilter === 'medium'}
@@ -145,6 +147,7 @@ const FiltersModal = props => {
             }
           >
             <InputRadioBtn
+              display = {'none'}
               type="radio"
               value="high"
               checked={selectedFilter === 'high'}

@@ -108,8 +108,8 @@ position: relative;
   ::after{
     opacity:  ${props => props.checked?  1:0};
     position: absolute;
-    left: 2px;
-    top: 2px;
+    left: calc(50% - 5px);;
+    top: calc(50% - 5px);;
     display: flex;    
     content: '';
     width: 10px;
