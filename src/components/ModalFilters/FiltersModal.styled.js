@@ -80,9 +80,11 @@ export const AllLabels = styled.label`
   line-height: 18px;
   letter-spacing: -0.02em;
   color: ${props =>
-    props.checked ? 'white' : 'var(--filter-popup-secondary-text-color)'};
+    props.checked
+      ? 'var(--filter-popup-primary-text-color);'
+      : 'var(--filter-popup-secondary-text-color)'};
   &:hover {
-    color: white;
+    color: var(--filter-popup-primary-text-color);
     transition: color 350ms;
   }
 `;
