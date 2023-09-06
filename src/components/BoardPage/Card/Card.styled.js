@@ -1,31 +1,31 @@
 import styled from '@emotion/styled';
 
-
 const CustomCard = styled.div`
   max-height: 154px;
-  position:relative;
+  position: relative;
   margin-bottom: 9px;
   border-radius: 8px;
   background-color: var(--card-bg-color);
   color: #fff;
   padding: 14px 24px;
   border-left: 4px solid ${props => props.borderColor};
-  &:hover{
+  &:hover {
     background-color: var(--card-hover);
   }
 
   @media screen and (max-width: 300px) {
     min-width: 290px;
-} 
-  @media screen  and (max-width: 374px) {
-  min-width: 300px;
-} 
+  }
+  @media screen and (max-width: 374px) {
+    min-width: 300px;
+  }
   @media screen and (min-width: 375px) {
-  min-width: 334px;
-}
+    min-width: 334px;
+  }
 `;
 
 const TruncatedText = styled.div`
+  width: 280px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -49,10 +49,10 @@ const PriorityCircle = styled.div`
 `;
 
 const CardContentWrapper = styled.div`
-margin-bottom: 14px;
-font-size: 14px;
-font-family: 'Poppins';
-text-transform: capitalize;
+  margin-bottom: 14px;
+  font-size: 14px;
+  font-family: 'Poppins';
+  text-transform: capitalize;
 `;
 
 const TitleTypography = styled.h4`
@@ -129,47 +129,41 @@ const PopUpMenu = styled.div`
   flex-direction: column;
   width: 160px;
   padding: 10px;
-  max-height:85px;
+  max-height: 85px;
   background-color: var(--progress-popup-bg-color);
   border-radius: 8px;
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
   right: 25%;
-  top:  ${props =>
-    props.itemCount === 1
-      ? '37%'
-      : props.itemCount === 2
-        ? '30%'
-        : '21%'};
+  top: ${props =>
+    props.itemCount === 1 ? '37%' : props.itemCount === 2 ? '30%' : '21%'};
 `;
 
 const ScrollContent = styled.div`
-overflow-y: ${props => props.scrollable ? 'auto' : 'hidden'};
-display: flex;
-flex-direction: column;
-gap: 6px;
+  overflow-y: ${props => (props.scrollable ? 'auto' : 'hidden')};
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 
-::-webkit-scrollbar {
-  width: 8px;
-  margin-left:8px;
-}
+  ::-webkit-scrollbar {
+    width: 8px;
+    margin-left: 8px;
+  }
 
-::-webkit-scrollbar-thumb {
-  // background-color: var(--column-add-btn-bg-color);
-  background-color: var(--vertical-scroll-bar-bg-color);
-  border-radius: 4px;
-  // height: 10px;
-  margin-left:8px;
-}
+  ::-webkit-scrollbar-thumb {
+    // background-color: var(--column-add-btn-bg-color);
+    background-color: var(--vertical-scroll-bar-bg-color);
+    border-radius: 4px;
+    // height: 10px;
+    margin-left: 8px;
+  }
 
-::-webkit-scrollbar-track {
-  // background-color: var(--screens-page-bg-color);
-  background-color: var(--vertical-scroll-slider-bg-color);
-  border-radius: 4px;
-  margin-left:8px;
-}
-
+  ::-webkit-scrollbar-track {
+    // background-color: var(--screens-page-bg-color);
+    background-color: var(--vertical-scroll-slider-bg-color);
+    border-radius: 4px;
+    margin-left: 8px;
+  }
 `;
-
 
 const WhiteIcon = styled.svg`
   width: 14px;
@@ -179,7 +173,7 @@ const WhiteIcon = styled.svg`
   fill: none;
   &:hover {
     stroke: var(--progress-popup-text-color-hover);
-    cursor: pointer
+    cursor: pointer;
   }
 `;
 
@@ -203,8 +197,6 @@ const PopUpItem = styled.div`
   }
 `;
 
-
-
 const BackDropHiden = styled.div`
   display: flex;
   justify-content: center;
@@ -219,7 +211,6 @@ const BackDropHiden = styled.div`
   z-index: 1;
   width: 100%;
 `;
-
 
 export {
   PriorityCircle,
@@ -242,5 +233,5 @@ export {
   PopUpItem,
   BellIcon,
   BackDropHiden,
-  ScrollContent
+  ScrollContent,
 };
