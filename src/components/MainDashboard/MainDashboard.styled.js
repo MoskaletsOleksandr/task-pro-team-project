@@ -35,11 +35,13 @@ export const Section = styled.section`
 
   @media screen and (min-width: 320px) and (max-width: 374px) {
     padding: 0px 15px;
+    height: calc(100vh - 68px);
   }
 
   //--------
   @media screen and (min-width: 375px) {
     padding: 0px 20px;
+    height: calc(100vh - 68px);
     ${props =>
       props.backgroung !== null &&
       css`
@@ -57,6 +59,7 @@ export const Section = styled.section`
   //--------
   @media (min-width: 768px) {
     width: 100vw;
+    height: calc(100vh - 68px);
     /* max-height: 100vh; */
     padding: 0px 40px;
     ${props =>
@@ -167,7 +170,6 @@ export const BtnAddColumn = styled.button`
   line-height: 21px;
   letter-spacing: -0.02em;
   color: var(--add-column-btn-text-color);
-  margin-left: 16px;
 
   border: none;
   border-radius: 8px;

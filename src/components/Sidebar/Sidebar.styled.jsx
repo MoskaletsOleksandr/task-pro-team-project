@@ -15,12 +15,26 @@ export const Container = styled.div`
   width: 260px;
   height:100vh;
 
-  // mobile
-
   @media (max-width: 1439px) {
     position: absolute;
     top: 0;
     bottom: 0;
     transition: transform 500ms;
+  }
+`;
+
+
+export const BackDropHidden = styled.div`
+  display: none;
+  @media (max-width: 1439px) {
+    display: ${({ isOpen }) => (isOpen ? 'block' : 'none')}; /* Show only on tablets and mobile */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--progress-backdrop);
+    overflow-y: auto;
+    z-index: 1;
   }
 `;

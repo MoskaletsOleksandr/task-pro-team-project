@@ -9,12 +9,10 @@ const DashboardContainer = styled.div`
 const DashboardContent = styled.div`
   display: flex;
   padding-bottom: 16px;
-  gap: 14px;
 `;
 
 const ColumnWrapper = styled.div`
-  // margin-right: 18px;
-  // margin-right: 18px;
+  margin-right: 15px;
 `;
 
 export { ColumnWrapper, DashboardContainer, DashboardContent };
