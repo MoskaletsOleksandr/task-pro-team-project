@@ -81,7 +81,6 @@ const EditBoardForm = ({ onClose, boardId }) => {
   };
 
   const handleEditBoardForm = data => {
-    console.log(data);
     const boardData = {
       id: board._id,
       body: {
@@ -93,9 +92,6 @@ const EditBoardForm = ({ onClose, boardId }) => {
       },
     };
 
-    console.log('====================================');
-    console.log('data: ', data);
-    console.log('====================================');
     dispatch(updateBoardByIdThunk(boardData))
       .unwrap()
       .then(response => {

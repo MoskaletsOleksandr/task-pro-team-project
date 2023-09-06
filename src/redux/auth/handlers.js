@@ -95,6 +95,5 @@ export const handlerUserUpdatePhoto = (state, { payload }) => {
 };
 
 export const handlerUserUpdate = (state, { payload }) => {
-  console.log(payload);
   state.user = payload.user;
 };

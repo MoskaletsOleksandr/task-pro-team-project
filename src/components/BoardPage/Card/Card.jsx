@@ -20,7 +20,7 @@ import {
   PopUpMenu,
   BackDropHiden,
   BellIcon,
-  ScrollContent
+  ScrollContent,
 } from '../Card/Card.styled';
 import CustomPopUpItem from '../PopUp/PopUp';
 import sprite from '../../../images/sprite.svg';
@@ -46,7 +46,9 @@ const TaskCard = ({
 }) => {
   const dispatch = useDispatch();
   const columns = useSelector(state => state.boards.currentBoard.columns);
-  const columnsLength = useSelector(state => state.boards.currentBoard.columns.length);
+  const columnsLength = useSelector(
+    state => state.boards.currentBoard.columns.length
+  );
 
   const selectedTask = task;
   if (!selectedTask) {
@@ -70,18 +72,15 @@ const TaskCard = ({
     priorityBorderColor = 'var(--filter-without-priority-color)';
   }
 
-
   const today = new Date().toLocaleDateString('en-GB');
   const formattedSelectedDeadline = dayjs(selectedTask.deadline).format(
     'DD/MM/YYYY'
   );
   const isTodayDeadline = formattedSelectedDeadline === today;
   const listForPopup = columns.filter(column => column._id !== columnId);
-  console.log('listForPopup: ', listForPopup);
   const isScrollable = listForPopup.length > 3;
 
   const handleMoveTask = columnId => {
-    console.log('handleRemoveTask to', columnId);
     dispatch(
       updateTasksColumnByIdThunk({
         idTask: task._id,
@@ -173,7 +172,7 @@ const TaskCard = ({
         ></BackDropHiden>
       )}
       {isPopupOpen && (
-        <PopUpMenu itemCount={listForPopup.length} >
+        <PopUpMenu itemCount={listForPopup.length}>
           <ScrollContent scrollable={isScrollable}>
             {listForPopup.map(({ title, _id }) => (
               <CustomPopUpItem

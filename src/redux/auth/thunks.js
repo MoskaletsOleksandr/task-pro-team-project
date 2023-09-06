@@ -115,7 +115,6 @@ export const UpdateUserPhotoThunk = createAsyncThunk(
   'auth/updateUserPhoto',
   async (imageFile, { rejectWithValue }) => {
     try {
-      console.log(imageFile);
       const formData = new FormData();
       formData.append('photo', imageFile);
       const { data } = await authInstance.patch('users/photo', formData, {
@@ -133,10 +132,8 @@ export const UpdateUserThunk = createAsyncThunk(
   'auth/updateUser',
   async ({ userData }, { rejectWithValue }) => {
     try {
-      // console.log(userData)
       const updatedUser = await updateUser(userData);
 
-      // console.log("user:", userData);
       return updatedUser;
     } catch (error) {
       return rejectWithValue(error.message);

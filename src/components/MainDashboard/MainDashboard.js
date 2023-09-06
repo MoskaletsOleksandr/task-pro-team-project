@@ -27,10 +27,6 @@ const MainDashboard = () => {
   // const boardTitle = useSelector(state => state.boards.currentBoard.title);
   const boardTitle = useSelector(selectboardTitle);
   const boardBackground = useSelector(selectBoardBackground);
-  console.log('=========');
-  console.log(boardBackground);
-  console.log('=========');
-
   const [showTestModal, setShowTestModal] = useState(false);
   const [
     currentColumns,

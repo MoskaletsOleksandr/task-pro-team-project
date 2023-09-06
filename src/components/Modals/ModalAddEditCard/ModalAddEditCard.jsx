@@ -32,7 +32,7 @@ const ModalAddEditCard = ({
   const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
   const boardId = useSelector(state => state.boards.currentBoard._id);
-  
+
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [priority, setPriority] = useState('without');
@@ -40,7 +40,6 @@ const ModalAddEditCard = ({
   const [deadline, setDeadline] = useState('');
 
   const checked = priority;
-  console.log(priority);
   const handleChangeTitle = e => {
     const { value } = e.currentTarget;
     setTitle(value);
@@ -65,13 +64,13 @@ const ModalAddEditCard = ({
       return;
     } else {
       try {
-        const deadlineToSend = !deadline ? today : deadline; 
+        const deadlineToSend = !deadline ? today : deadline;
         await dispatch(
           createNewTaskThunk({
             title,
             text,
             priority,
-            deadline: deadlineToSend, 
+            deadline: deadlineToSend,
             boardId,
             columnId,
           })
@@ -88,7 +87,6 @@ const ModalAddEditCard = ({
       }
     }
   };
-  
 
   const handleSubmitEdit = async e => {
     e.preventDefault();
@@ -100,11 +98,18 @@ const ModalAddEditCard = ({
       return;
     } else {
       try {
-        const deadlineToSend = !deadline ? today : deadline; 
+        const deadlineToSend = !deadline ? today : deadline;
         await dispatch(
           updateTaskByIdThunk({
             idTask: idEditTask,
-            body: { title, text, priority,  deadline: deadlineToSend,  boardId, columnId },
+            body: {
+              title,
+              text,
+              priority,
+              deadline: deadlineToSend,
+              boardId,
+              columnId,
+            },
           })
         )
           .unwrap()
@@ -120,23 +125,25 @@ const ModalAddEditCard = ({
     }
   };
 
-
   const reset = () => {
     setTitle('');
     setText('');
     setDeadline('');
   };
 
-
   useEffect(() => {
     if (nameButton === 'editCard') {
       setVisible(true);
-      setTitle(titleEditTask || ''); 
+      setTitle(titleEditTask || '');
       setText(textEditTask || '');
-      setPriority(priorityEditTask || 'without'); 
+      setPriority(priorityEditTask || 'without');
       // setDeadline(deadlineEditTask || '')
     }
-  }, [nameButton, titleEditTask, textEditTask, priorityEditTask,
+  }, [
+    nameButton,
+    titleEditTask,
+    textEditTask,
+    priorityEditTask,
     // deadlineEditTask
   ]);
 
@@ -173,8 +180,7 @@ const ModalAddEditCard = ({
                 placeholder="Comment"
                 maxWidth="302px"
                 height="154px"
-              >
-              </TextareaModal>
+              ></TextareaModal>
             </LabelModal>
             <TitleModal
               fontSize="12px"
@@ -190,7 +196,6 @@ const ModalAddEditCard = ({
               justifyContent="start"
             >
               {radioButtons.map(({ priority, color }) => {
-                
                 return (
                   <LabelModal key={priority} marginBottom="0px">
                     <InputModal
@@ -201,15 +206,15 @@ const ModalAddEditCard = ({
                       name="labelColor"
                       value={priority}
                       accentColor={color}
-                      display = {'none'}
+                      display={'none'}
                       aria-label={priority}
                     />
                     <ImgModal
                       width="14px"
                       height="14px"
                       backgroundColor={color}
-                      radioChecked= {checked === priority ? 1:0 }
-                      border={color} 
+                      radioChecked={checked === priority ? 1 : 0}
+                      border={color}
                       borderRadius="50%"
                     />
                   </LabelModal>

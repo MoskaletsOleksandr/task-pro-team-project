@@ -41,8 +41,6 @@ const EditUser = ({ onClose }) => {
 
   const userData = useSelector(state => state.auth.user);
 
-  // console.log(userData);
-
   const [imageUrl, setImageUrl] = useState('');
   const [imageFile, setImageFile] = useState(null);
   const [userName, setUserName] = useState(userData.name);
@@ -67,7 +65,6 @@ const EditUser = ({ onClose }) => {
   }, [imageFile, userData.photo]);
 
   const handleFileChange = event => {
-    // console.log(event.target.files[0])
     setImageFile(event.target.files[0]);
   };
 
@@ -87,7 +84,6 @@ const EditUser = ({ onClose }) => {
     if (password.value) {
       newUserData.password = password.value;
     }
-    // console.log(newUserData);
     // if (imageFile) {
     //   newUserData.photo = imageFile;
     // }

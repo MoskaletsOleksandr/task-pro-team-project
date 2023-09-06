@@ -18,7 +18,6 @@ import {
   PriorityLabel,
   RadioCustom,
 } from './FiltersModal.styled';
-// import { radioButtons } from 'components/Modals/ModalAddEditCard/radioBattons';
 
 const FiltersModal = props => {
   const savedFilter = localStorage.getItem('filterValue');
