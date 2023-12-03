@@ -111,30 +111,42 @@ export const GetCurrentUserThunk = createAsyncThunk(
   }
 );
 
-export const UpdateUserPhotoThunk = createAsyncThunk(
-  'auth/updateUserPhoto',
-  async (imageFile, { rejectWithValue }) => {
-    try {
-      const formData = new FormData();
-      formData.append('photo', imageFile);
-      const { data } = await authInstance.patch('users/photo', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
+// export const UpdateUserPhotoThunk = createAsyncThunk(
+//   'auth/updateUserPhoto',
+//   async (imageFile, { rejectWithValue }) => {
+//     try {
+//       const formData = new FormData();
+//       formData.append('photo', imageFile);
+//       const { data } = await authInstance.patch('users/photo', formData, {
+//         headers: { 'Content-Type': 'multipart/form-data' },
+//       });
 
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
+//       return data;
+//     } catch (error) {
+//       return rejectWithValue(error.message);
+//     }
+//   }
+// );
 
 export const UpdateUserThunk = createAsyncThunk(
   'auth/updateUser',
-  async ({ userData }, { rejectWithValue }) => {
+  async ({imageFile, userData }, { rejectWithValue }) => {
+    // console.log("imageFile:", imageFile);
+    // console.log('userData:', userData )
+    // const {name, email} = userData;
     try {
-      const updatedUser = await updateUser(userData);
+      const formData = new FormData();
+      formData.append('photo', imageFile);
+      formData.append('name', userData.name);
+      formData.append('email', userData.email)
+      formData.append('password', userData.password)
 
-      return updatedUser;
+      const { data } = await authInstance.patch('users/update', formData, {headers: { 'Content-Type': 'multipart/form-data' },
+              });
+              console.log(data)
+              return data;
+
+     
     } catch (error) {
       return rejectWithValue(error.message);
     }

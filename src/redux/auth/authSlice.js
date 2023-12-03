@@ -73,7 +73,7 @@ const authSlice = createSlice({
       )
       .addCase(GetCurrentUserThunk.pending, handleGetCurrentUserThunkPending)
       .addCase(GetCurrentUserThunk.rejected, handleGetCurrentUserThunkRejected)
-      .addCase(UpdateUserPhotoThunk.fulfilled, handlerUserUpdatePhoto)
+      // .addCase(UpdateUserPhotoThunk.fulfilled, handlerUserUpdatePhoto)
       .addCase(UpdateUserThunk.fulfilled, handlerUserUpdate)
       .addMatcher(action => {
         action.type.endsWith('/pending');

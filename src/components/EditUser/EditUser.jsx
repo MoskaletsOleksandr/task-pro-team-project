@@ -45,6 +45,7 @@ const EditUser = ({ onClose }) => {
   const [imageFile, setImageFile] = useState(null);
   const [userName, setUserName] = useState(userData.name);
   const [userEmail, setUserEmail] = useState(userData.email);
+  const [userPassword, setUserPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false);
 
   const onPasswordVisible = () => {
@@ -64,39 +65,67 @@ const EditUser = ({ onClose }) => {
     }
   }, [imageFile, userData.photo]);
 
-  const handleFileChange = event => {
-    setImageFile(event.target.files[0]);
+  const handleFileChange = e => {
+    setImageFile(e.target.files[0]);
   };
+  const nameChange = e => {
+    setUserName(e.target.value)
+  }
+  const emailChange =e => {
+    setUserEmail(e.target.value);
+  }
+  const passwordUpdate = e =>{
+    setUserPassword(e.target.value)
+  }
 
-  const formSubmit = e => {
+  const handleSubmit = (e)=>{
     e.preventDefault();
-
-    const {
-      // name, email,
-      password,
-    } = e.target.elements;
-
-    const newUserData = {
-      name: userName,
-      email: userEmail,
-    };
-
-    if (password.value) {
-      newUserData.password = password.value;
+    if(userPassword){
+      const newUser = {
+        name:userName,
+        email: userEmail,
+        password: userPassword
+      }
+      dispatch(UpdateUserThunk({imageFile, userData: newUser}));
+      onClose();
+    } else{
+      const newUser = {
+        name:userName,
+        email: userEmail
+      }
+      dispatch(UpdateUserThunk({imageFile, userData: newUser}))
+      onClose()
     }
-    // if (imageFile) {
-    //   newUserData.photo = imageFile;
-    // }
+  }
+  // const formSubmit = e => {
+  //   e.preventDefault();
 
-    dispatch(UpdateUserThunk({ userData: newUserData }));
-    dispatch(UpdateUserPhotoThunk(imageFile));
+  //   const {
+  //     // name, email,
+  //     password,
+  //   } = e.target.elements;
 
-    onClose();
-  };
+  //   const newUserData = {
+  //     name: userName,
+  //     email: userEmail,
+  //   };
+
+  //   if (password.value) {
+  //     newUserData.password = password.value;
+  //   }
+  //   // if (imageFile) {
+  //   //   newUserData.photo = imageFile;
+  //   // }
+
+  //   dispatch(UpdateUserThunk({ userData: newUserData }));
+  //   dispatch(UpdateUserPhotoThunk(imageFile));
+
+  //   onClose();
+  // };
 
   return (
     <>
-      <form onSubmit={formSubmit}>
+      <form onSubmit={handleSubmit}>
         <Formik
           initialValues={{
             name: userName,
@@ -136,18 +165,20 @@ const EditUser = ({ onClose }) => {
                 name="name"
                 type="text"
                 value={userName}
-                onChange={e => setUserName(e.target.value)}
+                onChange={nameChange}
               />
               <Field
                 name="email"
                 type="email"
                 value={userEmail}
-                onChange={e => setUserEmail(e.target.value)}
+                onChange={emailChange}
               />
               <PasswordInput>
                 <Field
                   name="password"
-                  type={showPassword ? 'text' : 'password'}
+                  type='password'
+                  value = {userPassword}
+                  onChange={passwordUpdate}
                   placeholder="Password"
                 />
                 <ErrorText name="password" component="div" />
