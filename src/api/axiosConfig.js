@@ -1,18 +1,18 @@
 import axios from 'axios';
 
 export const authInstance = axios.create({
-  // baseURL: 'https://task-pro-group-1-backend.onrender.com',
-  baseURL: 'https://localhost:8000'
+  baseURL: 'https://task-pro-group-1-backend.onrender.com',
+  // baseURL: 'https://localhost:8000'
 });
 
 export const dashBoardsInstance = axios.create({
-  // baseURL: 'https://task-pro-group-1-backend.onrender.com/boards',
-  baseURL: 'https://localhost:8000'
+  baseURL: 'https://task-pro-group-1-backend.onrender.com/boards',
+  // baseURL: 'https://localhost:8000/boards'
 });
 
 export const tasksInstance = axios.create({
-  // baseURL: 'https://task-pro-group-1-backend.onrender.com/tasks',
-  baseURL: 'https://localhost:8000'
+  baseURL: 'https://task-pro-group-1-backend.onrender.com/tasks',
+  // baseURL: 'https://localhost:8000/tasks'
 });
 
 export const setToken = accessToken => {

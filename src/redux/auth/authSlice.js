@@ -5,7 +5,7 @@ import {
   LogOutThunk,
   SendLetterThunk,
   GetCurrentUserThunk,
-  UpdateUserPhotoThunk,
+  // UpdateUserPhotoThunk,
   UpdateUserThunk,
   UpdateThemeThunk,
 } from './thunks';
@@ -27,7 +27,8 @@ import {
   handleThunkPending,
   handleThunkRejected,
   handlerUserUpdate,
-  handlerUserUpdatePhoto,
+  handlerUserUpdatePending,
+  // handleSignInRejected,
 } from './handlers';
 import { setToken } from 'api/axiosConfig';
 
@@ -58,6 +59,7 @@ const authSlice = createSlice({
     builder
       .addCase(SignUpThunk.fulfilled, handleSignUpThunkFullfilled)
       .addCase(SignInThunk.fulfilled, handleSignInFulfilled)
+      // .addCase(SignInThunk.rejected, handleSignInRejected )
       .addCase(UpdateThemeThunk.fulfilled, handleUpdateThemeFulfilled)
       .addCase(UpdateThemeThunk.pending, handleUpdateThemePending)
       .addCase(UpdateThemeThunk.rejected, handleUpdateThemeRejected)
@@ -67,20 +69,14 @@ const authSlice = createSlice({
       .addCase(SendLetterThunk.fulfilled, handleSendLetterThunkFulfilled)
       .addCase(SendLetterThunk.pending, handleSendLetterThunkPending)
       .addCase(SendLetterThunk.rejected, handleSendLetterThunkRejected)
-      .addCase(
-        GetCurrentUserThunk.fulfilled,
-        handleGetCurrentUserThunkFulfilled
-      )
+      .addCase(GetCurrentUserThunk.fulfilled,handleGetCurrentUserThunkFulfilled)
       .addCase(GetCurrentUserThunk.pending, handleGetCurrentUserThunkPending)
       .addCase(GetCurrentUserThunk.rejected, handleGetCurrentUserThunkRejected)
-      // .addCase(UpdateUserPhotoThunk.fulfilled, handlerUserUpdatePhoto)
       .addCase(UpdateUserThunk.fulfilled, handlerUserUpdate)
-      .addMatcher(action => {
-        action.type.endsWith('/pending');
-      }, handleThunkPending)
-      .addMatcher(action => {
-        action.type.endsWith('/rejected');
-      }, handleThunkRejected);
+      .addCase(UpdateUserThunk.pending,handlerUserUpdatePending)
+      .addCase(UpdateUserThunk.rejected,)
+      .addMatcher(action => {action.type.endsWith('/pending')}, handleThunkPending)
+      .addMatcher(action => {action.type.endsWith('/rejected')}, handleThunkRejected);
   },
 });
 

@@ -6,7 +6,6 @@ import { UpdateUserSchema } from '../../validation/authValidation';
 
 import {
   GetCurrentUserThunk,
-  UpdateUserPhotoThunk,
   UpdateUserThunk,
 } from 'redux/auth/thunks';
 
@@ -97,32 +96,7 @@ const EditUser = ({ onClose }) => {
       onClose()
     }
   }
-  // const formSubmit = e => {
-  //   e.preventDefault();
-
-  //   const {
-  //     // name, email,
-  //     password,
-  //   } = e.target.elements;
-
-  //   const newUserData = {
-  //     name: userName,
-  //     email: userEmail,
-  //   };
-
-  //   if (password.value) {
-  //     newUserData.password = password.value;
-  //   }
-  //   // if (imageFile) {
-  //   //   newUserData.photo = imageFile;
-  //   // }
-
-  //   dispatch(UpdateUserThunk({ userData: newUserData }));
-  //   dispatch(UpdateUserPhotoThunk(imageFile));
-
-  //   onClose();
-  // };
-
+  
   return (
     <>
       <form onSubmit={handleSubmit}>

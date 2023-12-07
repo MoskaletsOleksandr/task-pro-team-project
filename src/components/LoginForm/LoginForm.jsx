@@ -21,16 +21,27 @@ function LoginForm() {
     email: '',
     password: '',
   };
+  // const onSubmit = async (values, { resetForm }) => {
+  //   try {
+  //     await dispatch(SignInThunk(values)).unwrap();
+  //     toast.success('Logged in successfully');
+  //   } catch (error) {
+  //     toast.error('Login failed');
+  //   }
+  //   resetForm();
+  // };
+
   const onSubmit = async (values, { resetForm }) => {
     try {
-      await dispatch(SignInThunk(values)).unwrap();
+      const result = await dispatch(SignInThunk(values)).unwrap();
+      if (result.error) {
+        throw new Error('Login or password failed');       }
       toast.success('Logged in successfully');
     } catch (error) {
-      toast.error('Login failed');
+      toast.error('Login or password failed');
     }
     resetForm();
   };
-
   return (
     <RegistrationFormStyled>
       <Formik

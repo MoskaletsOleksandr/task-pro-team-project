@@ -6,9 +6,8 @@ import {
   logOut,
   sendHelpLetter,
   getCurrentUser,
-  updateUser,
   updateTheme,
-  // updateUserPhoto
+
 } from 'api/api_auth/api';
 import { authInstance, setToken } from 'api/axiosConfig';
 import { resetBoards } from 'redux/dashboards/slise';
@@ -111,42 +110,21 @@ export const GetCurrentUserThunk = createAsyncThunk(
   }
 );
 
-// export const UpdateUserPhotoThunk = createAsyncThunk(
-//   'auth/updateUserPhoto',
-//   async (imageFile, { rejectWithValue }) => {
-//     try {
-//       const formData = new FormData();
-//       formData.append('photo', imageFile);
-//       const { data } = await authInstance.patch('users/photo', formData, {
-//         headers: { 'Content-Type': 'multipart/form-data' },
-//       });
-
-//       return data;
-//     } catch (error) {
-//       return rejectWithValue(error.message);
-//     }
-//   }
-// );
 
 export const UpdateUserThunk = createAsyncThunk(
   'auth/updateUser',
   async ({imageFile, userData }, { rejectWithValue }) => {
-    // console.log("imageFile:", imageFile);
-    // console.log('userData:', userData )
-    // const {name, email} = userData;
     try {
       const formData = new FormData();
       formData.append('photo', imageFile);
       formData.append('name', userData.name);
       formData.append('email', userData.email)
       formData.append('password', userData.password)
-
-      const { data } = await authInstance.patch('users/update', formData, {headers: { 'Content-Type': 'multipart/form-data' },
-              });
-              console.log(data)
-              return data;
-
      
+      const { data } = await authInstance.patch('users/update', formData, {headers: { 'Content-Type': 'multipart/form-data' }});
+      return data;
+
+    
     } catch (error) {
       return rejectWithValue(error.message);
     }
