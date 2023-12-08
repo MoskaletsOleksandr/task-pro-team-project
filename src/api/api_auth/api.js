@@ -25,10 +25,10 @@ export const getCurrentUser = async body => {
   return response;
 };
 
-export const updateUser = async body => {
-  const response = await authInstance.put('users/update', body);
-  return response.data;
-};
+// export const updateUser = async body => {
+//   const response = await authInstance.patch('users/update', body);
+//   return response.data;
+// };
 
 // export const updateUserPhoto = async (imageFile) => {
 //   console.log(imageFile)

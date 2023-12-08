@@ -22,6 +22,11 @@ export const handleSignInFulfilled = (state, { payload }) => {
   state.isLoggedIn = true;
 };
 
+// export const handleSignInRejected = (state, {error, payload}) =>{
+//   state.error = error ? error.message : payload;
+//   state.isLoading = false;
+// }
+
 export const handleLogOutFulfilled = (state, { payload }) => {
   state.accessToken = payload.accessToken;
   state.refreshToken = payload.refreshToken;
@@ -90,10 +95,19 @@ export const handleGetCurrentUserThunkRejected = (
   state.isRefreshing = false;
 };
 
-export const handlerUserUpdatePhoto = (state, { payload }) => {
-  state.user = payload.user;
-};
+
 
 export const handlerUserUpdate = (state, { payload }) => {
-  state.user = payload.user;
+  state.user.name = payload.name;
+  state.user.email = payload.email;
+  state.user.photo = payload.photo;
 };
+
+export const handlerUserUpdatePending = (state) =>{
+  state.isLoading = true
+}
+export const handlerUserUpdateRejected = (state, {error, payload}) => {
+  state.error= error ? error.message :payload;
+  state.isLoading = false;
+  state.isRefreshing = false;
+} 

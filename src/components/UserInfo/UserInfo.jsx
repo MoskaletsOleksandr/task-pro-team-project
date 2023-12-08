@@ -35,10 +35,10 @@ const UserInfo = () => {
             <use href={`${sprite}#icon-avatar`}></use>
           </IconAvatar>
         )}
+          </AvasarSetin>
         {showModal && (
           <ModalEditProfile closeModal={toggleModal} isOpen={showModal} />
         )}
-      </AvasarSetin>
     </Container>
   );
 };

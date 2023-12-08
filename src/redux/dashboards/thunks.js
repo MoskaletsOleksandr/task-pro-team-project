@@ -18,6 +18,7 @@ import {
   updateTaskById,
   updateTasksColumnById,
 } from 'api/boardsApi/tasksApi';
+import toast from 'react-hot-toast';
 
 //Отримання всіх дощок
 export const getAllBoardsThunk = createAsyncThunk(
@@ -56,6 +57,7 @@ export const createNewBoardThunk = createAsyncThunk(
       dispatch(getAllBoardsThunk());
       return data;
     } catch (error) {
+      toast.error('A board with this name already exists')
       return rejectWithValue(error.message);
     }
   }
